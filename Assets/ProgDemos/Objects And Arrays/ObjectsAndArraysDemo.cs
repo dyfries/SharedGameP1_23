@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ObjectsandArraysDemo : MonoBehaviour
+public class ObjectsAndArraysDemo : MonoBehaviour
 {
     // https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Array.html
     // 1D arrays
+
     public int[] array = new int[4];
+
     public GameObject[] objects = new GameObject[4];
 
 
     // 2D 
+
     public int[][] arrayOfArrays = new int[4][]; // can't fill totally here. 
 
 
@@ -26,6 +29,9 @@ public class ObjectsandArraysDemo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        array = new int[5];
+
+
         int sum = 0;
         // Basic Arrays
         for (int i = 0; i < array.Length; i++) {
@@ -44,8 +50,6 @@ public class ObjectsandArraysDemo : MonoBehaviour
                 arrayOfArrays[i][j] = Random.Range(0, 10);
             }
         }
-
-
 
         // Jagged array 
         for (int i = 0; i < arrayOfArrays.Length; i++) {
