@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class SimpleCollider2D : MonoBehaviour
+public class SimpleDeathCollider2D : MonoBehaviour
 {
     [Header("Events")]
     public UnityEvent OnTriggerEnter_Event = new UnityEvent();
