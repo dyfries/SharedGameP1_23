@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4e5e820efef02754495741543b1644aa
+=======
+guid: b25d848fd2d84c447a513b6366cbc33d
+>>>>>>> parent of 90ac374 (removed unnecessary files for solo work)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
