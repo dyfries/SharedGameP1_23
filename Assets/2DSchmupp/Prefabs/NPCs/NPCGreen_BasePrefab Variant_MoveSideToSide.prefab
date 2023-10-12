@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7071013959156727827
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6316492519148678184, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: moveForceX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316492519148678184, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: moveSideToSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161992183559241862, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_Name
+      value: NPCGreen_BasePrefab Variant_MoveSideToSide
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7161992183559241862, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9079032871131448885}
+  m_SourcePrefab: {fileID: 100100000, guid: addf86f2996143e43a3037b265c86272, type: 3}
+--- !u!1 &91699590074581141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7161992183559241862, guid: addf86f2996143e43a3037b265c86272, type: 3}
+  m_PrefabInstance: {fileID: 7071013959156727827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9079032871131448885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91699590074581141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b675d472e3ddfee408622a9fcbd1c091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTriggerEnter_Event:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnter_Event:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyOnCollision: 1
+  destroyOnTrigger: 0
+  spawnOnCollision: 1
+  spawnOnTrigger: 0
+  objectToSpawn: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
+  DEBUG_MODE: 0
