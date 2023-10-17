@@ -1,0 +1,30 @@
+Methods
+
+-GetWaveSettings(GameObject prefabToSpawn,Vector2 RelativePos,
+ FlightPatterns flightPattern, SpawnPatterns spawnPattern, float SpawnTimer)
+-Method for each WavePattern
+
+
+Enums - will be on NPC
+-FlightPatterns
+	-LeftToRight
+	-RightToLeft
+	-Forward
+
+Our Enum
+-WavePatterns
+	-V
+	-LOffset
+	-ROffset
+	-Sequential
+
+-What does the Spawner need from us
+
+Ref to array of NPC's
+Delay for each NPC(float)?
+Enum - Pattern
+Offset for each NPC
+
+What do we need to know from the NPC Team?
+-Flight pattern enum
+
