@@ -6,6 +6,8 @@ using UnityEngine;
 // Will expand it later. 
 public class NPC_Spawner : MonoBehaviour
 {
+    // [ ] We will need a new object of type WaveSettings that can hold the info about a given wave. 
+
     // Currently using generic GameObject so we can spawn anything. 
     // If we needed to communicate with the NPC, we would need to chose the correct type. 
     public GameObject prefabToSpawn;
@@ -13,6 +15,9 @@ public class NPC_Spawner : MonoBehaviour
     [Header("Area of effect")]
     public float spawnableWidth = 10f;
 
+    // [ ] wave controls - When do we spawn a new wave - each n seconds, spawn a new wave
+    // what goes in a wave - set of prefabs of the enemies to spawn
+    // controls over 
     [Header("Timer Settings")]
     private float currentTimer;
     public float spawnTimer;
