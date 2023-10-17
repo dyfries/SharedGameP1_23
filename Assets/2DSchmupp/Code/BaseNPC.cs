@@ -80,4 +80,14 @@ public class BaseNPC : MonoBehaviour
             shipBaseSprite.sprite = baseMove;
         }
     }
+
+    public int GetCurrentHealth() {
+        // Calculate and retrieve the current health. 
+
+        //.. code goes
+
+        Debug.LogWarning("GetCurrentHealth is a stub");
+        return 10;
+    }
+
 }
