@@ -6,18 +6,23 @@ using UnityEngine;
 // Will expand it later. 
 public class NPC_Spawner : MonoBehaviour
 {
-    // [ ] We will need a new object of type WaveSettings that can hold the info about a given wave. 
-
     // Currently using generic GameObject so we can spawn anything. 
     // If we needed to communicate with the NPC, we would need to chose the correct type. 
     public GameObject prefabToSpawn;
 
+
+    public GameObject[] waveList;
+    public int waveIndex;
+
+    private float waveTimer;
+    public float waveDelay;
+
+    public GameObject[] spawnList;
+    public int spawnIndex;
+
     [Header("Area of effect")]
     public float spawnableWidth = 10f;
 
-    // [ ] wave controls - When do we spawn a new wave - each n seconds, spawn a new wave
-    // what goes in a wave - set of prefabs of the enemies to spawn
-    // controls over 
     [Header("Timer Settings")]
     private float currentTimer;
     public float spawnTimer;
@@ -37,21 +42,62 @@ public class NPC_Spawner : MonoBehaviour
         if (spawnOnStart) {
             SpawnNPC();        
         }
+
+        waveIndex = 0;
+        spawnIndex = 0;
+
+        waveTimer = 0;
         currentTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!spawnLimit || amountSpawnedSoFar < totalToSpawn) {
+
+        if (waveTimer >= waveDelay)
+        {
+            if (currentTimer >= spawnTimer)
+            {
+                Debug.Log("Spawn NPC Stub.");
+                //SpawnNPC();
+
+                if (spawnIndex == spawnList.Length - 1)
+                { 
+                    spawnIndex = 0;
+                    waveIndex++;
+
+                    if (waveIndex == waveList.Length - 1)
+                    {
+                        Debug.Log("Wave Complete Stub.");
+                        waveIndex = 0;
+                    }
+
+                    waveTimer = 0;                    
+                }
+                else
+                {
+                    spawnIndex++;
+                    currentTimer = 0;
+                }
+            }
+            else
+            {
+                currentTimer += Time.deltaTime;
+            }            
+        }
+        else
+        {
+            waveTimer += Time.deltaTime;
+        }
+
+        /*if(!spawnLimit || amountSpawnedSoFar < totalToSpawn) {
             currentTimer += Time.deltaTime;
             if (currentTimer > spawnTimer) {
                 SpawnNPC();
                 currentTimer = 0;
                 amountSpawnedSoFar++;
             }
-        }
-        
+        }*/        
     }
 
     public void SpawnNPC() {
@@ -71,7 +117,5 @@ public class NPC_Spawner : MonoBehaviour
 
         // [ ] maybe we track it later but for now we won't keep a reference (it gets tricky when dealing with destroying the objects). 
 
-    }
-
-    
+    }    
 }
