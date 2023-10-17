@@ -9,6 +9,10 @@ using UnityEngine;
 public class BaseNPC : MonoBehaviour
 {
 
+    // [ ] Different flight patterns
+        // straight, right, left, straight then r/l, back and forth, ???
+    //  [ ] communicated from the spawner
+
     // Move back and forth. Using physics for now. 
     public Rigidbody2D rigid;
 
@@ -76,4 +80,14 @@ public class BaseNPC : MonoBehaviour
             shipBaseSprite.sprite = baseMove;
         }
     }
+
+    public int GetCurrentHealth() {
+        // Calculate and retrieve the current health. 
+
+        //.. code goes
+
+        Debug.LogWarning("GetCurrentHealth is a stub");
+        return 10;
+    }
+
 }
