@@ -7,6 +7,9 @@ public class RaycastingDemo : MonoBehaviour
 
     public LayerMask layerMask; // Needs Bitmask operations
     // Start is called before the first frame update
+
+    public ContactFilter2D contactFilter;
+
     void Start()
     {
         
@@ -38,6 +41,18 @@ public class RaycastingDemo : MonoBehaviour
             Debug.DrawRay(transform.position + transform.right * .1f, transform.up * 10f, Color.green);
         } else {
             Debug.DrawRay(transform.position + transform.right * .1f, transform.up * 10f, Color.red);
+        }
+
+
+
+        // raycast many objects using a contact filter. 
+        RaycastHit2D[] arrayHits = new RaycastHit2D[10];
+        int numHits = Physics2D.Raycast(transform.position, transform.up, contactFilter, arrayHits, 10f);
+
+        Debug.Log("Objects returned: " + numHits);
+
+        for(int i = 0; i < numHits; i++) {
+            Debug.Log("HIT: " + arrayHits[i].collider.gameObject.name);
         }
 
     }
