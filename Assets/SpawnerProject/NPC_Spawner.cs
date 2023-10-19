@@ -67,7 +67,7 @@ public class NPC_Spawner : MonoBehaviour
             if (_currentTimer >= _spawnDelay)
             {
                 // Spawn NPC here.
-                //SpawnNPC();
+                SpawnNPC();
                 print("SPAWNING NPC");
 
                 // If spawn index points to the last NPC in the array, reset.
