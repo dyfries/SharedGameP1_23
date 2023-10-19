@@ -9,25 +9,24 @@ using UnityEngine;
 public class SpawnWaveSettings : ScriptableObject
 {
     //Variables
-    [SerializeField]
-    private BaseNPC[] NPCArray = null;
-    [SerializeField]
+    [SerializeField, Header("Array Of Non-Player Characters")]
+    private Npc[] NPCArray = null;
+    [SerializeField, Header("Wave Pattern")]
     private WavePatterns wavePatterns;
-    [SerializeField]
+    [SerializeField, Range(0, 5)]
     private float delayBetweenSpawns = 0f;
-    [SerializeField]
-    private float horizontalSpaceBetweenNPCS = 0f;
-    [SerializeField]
+    [SerializeField, Range(1, 10)]
     private float waveSpeed = 1f;
+    [SerializeField, Range(2, 10), Header("Horizontal Distance Between Non-Player Characters")]
+    private float xOffset = 0f;
 
     //add wave timer / trigger for next wave to spawn
-
     //Need Flight Pattern from NPC guys.
 
     //Accessors
-    public BaseNPC[] GetNPCArray() { return NPCArray; }
+    public Npc[] GetNPCArray() { return NPCArray; }
     public WavePatterns GetWavePattern() { return wavePatterns; }
-    public float GetHorizontalSpacing () { return horizontalSpaceBetweenNPCS; }
+    public float GetXOffset () { return xOffset; }
     public float GetDelayBetweenSpawns() { return delayBetweenSpawns; }
     public float GetWaveSpeed () {  return waveSpeed; }
 }
