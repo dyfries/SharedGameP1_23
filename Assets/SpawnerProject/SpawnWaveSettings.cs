@@ -10,8 +10,10 @@ public class SpawnWaveSettings : ScriptableObject
 {
     //Variables
     [SerializeField, Header("Array Of Non-Player Characters")]
-    private Npc[] NPCArray = null;
-    [SerializeField, Header("Wave Pattern")]
+    private NPCMovement[] NPCArray = null;
+
+    // 
+    [SerializeField, Header("Wave Pattern Settings")]
     private WavePatterns wavePatterns;
     [SerializeField, Range(0, 5)]
     private float delayBetweenSpawns = 0f;
@@ -21,10 +23,10 @@ public class SpawnWaveSettings : ScriptableObject
     private float xOffset = 0f;
 
     //add wave timer / trigger for next wave to spawn
-    //Need Flight Pattern from NPC guys.
+    //Need Flight Pattern from NPCMovement guys.
 
     //Accessors
-    public Npc[] GetNPCArray() { return NPCArray; }
+    public NPCMovement[] GetNPCArray() { return NPCArray; }
     public WavePatterns GetWavePattern() { return wavePatterns; }
     public float GetXOffset () { return xOffset; }
     public float GetDelayBetweenSpawns() { return delayBetweenSpawns; }
