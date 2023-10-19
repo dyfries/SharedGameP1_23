@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // This first draft will simply spawn one unit per time, randomly in a line. 
@@ -8,86 +9,97 @@ public class NPC_Spawner : MonoBehaviour
 {
     // Currently using generic GameObject so we can spawn anything. 
     // If we needed to communicate with the NPC, we would need to chose the correct type. 
+    [SerializeField] private SpawnWaveSettings[] _settingsArray;
+
     public GameObject prefabToSpawn;
 
 
-    public GameObject[] waveList;
-    public int waveIndex;
+    [SerializeField] private GameObject[] waveList;
 
-    private float waveTimer;
-    public float waveDelay;
+    [Header("Timer Settings")]
+    [SerializeField] private float _waveDelay;
+    [SerializeField] private float _spawnDelay;
 
-    public GameObject[] spawnList;
-    public int spawnIndex;
+    //public GameObject[] spawnList;
+    private int spawnIndex;
 
+    // TODO: REPLACE WITH VAR IN WAVESETTINGS.
     [Header("Area of effect")]
     public float spawnableWidth = 10f;
 
-    [Header("Timer Settings")]
-    private float currentTimer;
-    public float spawnTimer;
+    // Local counters.
+    private float _waveTimer = 0f;
+    private float _currentTimer = 0f;
+    private int _waveIndex = 0;
 
-    [Header("Amount to spawn")]
-    public bool spawnLimit = false;
-    private int amountSpawnedSoFar = 0;
-    public int totalToSpawn = 10;
+    //[Header("Amount to spawn")]
+    //public bool spawnLimit = false;
+    //private int amountSpawnedSoFar = 0;
+    //public int totalToSpawn = 10;
 
-    [Header("Initialization Settings")]
-    public bool spawnOnStart = true;
+    //[Header("Initialization Settings")]
+    //public bool spawnOnStart = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Spawn one at start. 
+        /*
+        // Spawn one at start.
         if (spawnOnStart) {
             SpawnNPC();        
-        }
+        }*/
 
-        waveIndex = 0;
+        _waveIndex = 0;
         spawnIndex = 0;
 
-        waveTimer = 0;
-        currentTimer = 0;
+        _waveTimer = 0;
+        _currentTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (waveTimer >= waveDelay)
+        if (_waveTimer >= _waveDelay)
         {
-            if (currentTimer >= spawnTimer)
+            // Start spawning wave.
+
+            if (_currentTimer >= _spawnDelay)
             {
-                Debug.Log("Spawn NPC Stub.");
+                // Spawn NPC here.
                 //SpawnNPC();
+                print("SPAWNING NPC");
 
-                if (spawnIndex == spawnList.Length - 1)
-                { 
+                // If spawn index points to the last NPC in the array, reset.
+                //if (spawnIndex == spawnList.Length - 1)
+                if (spawnIndex == _settingsArray[_waveIndex].GetNPCArray().Length - 1)
+                {
                     spawnIndex = 0;
-                    waveIndex++;
-
+                    /*waveIndex++;
+                    // Reset wave index.
                     if (waveIndex == waveList.Length - 1)
                     {
-                        Debug.Log("Wave Complete Stub.");
+                        // Wave complete. Reset wave.
                         waveIndex = 0;
-                    }
-
-                    waveTimer = 0;                    
+                    }*/
+                    // Reset wave index.
+                    _waveIndex = (_waveIndex + 1) % _settingsArray.Length;
+                    _waveTimer = 0;                    
                 }
                 else
                 {
                     spawnIndex++;
-                    currentTimer = 0;
+                    _currentTimer = 0;
                 }
             }
             else
             {
-                currentTimer += Time.deltaTime;
+                _currentTimer += Time.deltaTime;
             }            
         }
         else
         {
-            waveTimer += Time.deltaTime;
+            _waveTimer += Time.deltaTime;
         }
 
         /*if(!spawnLimit || amountSpawnedSoFar < totalToSpawn) {
