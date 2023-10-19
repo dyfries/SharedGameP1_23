@@ -3,38 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class NpcMovement : MonoBehaviour
 {
 
     private int currentHealth;
 
-    private int speed = 1;
+    [Header("Flight Settings")]
+    //Flight Settings to adjust how fast NPC moves, and when to switch directions
+    [Range(1, 5)]
+    [SerializeField] private int speed = 1;
+    [Range(1f,3f)]
+    [SerializeField] private float flipTime = 3f;
+
     private int flip = 1;
-    private float movementTime = 3f;
     private float timer = 0;
     private Transform position;
     private Rigidbody2D rigid;
     private bool goUp = false;
 
-    public listOfPatterns pattern;
+    [Header("Flight Pattern")]
+    //List of patterns to select from
+    [SerializeField] public listOfPatterns pattern;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        /*
-         * 
-         *
-         * Grab player transform
-         * 
-         * Set starting position for pattern
-         * Grabbed from waveSettings team
-         * 
-         * Grab rigidbody
-         * 
-         */
-        position = this.transform;
 
-        //Grab starting position
+        position = this.transform;
 
         rigid = this.GetComponent<Rigidbody2D>();
 
@@ -44,28 +41,36 @@ public class NpcMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    private void FixedUpdate()
+    {
         //Choose the movement pattern dependant on the chosen pattern
-        if(pattern == listOfPatterns.topToBottom)
+        if (pattern == listOfPatterns.topToBottom)
         {
             TopToBottom();
-        }else if(pattern == listOfPatterns.leftToRight)
+        }
+        else if (pattern == listOfPatterns.leftToRight)
         {
             LeftToRight();
-        }else if(pattern == listOfPatterns.rightToLeft)
+        }
+        else if (pattern == listOfPatterns.rightToLeft)
         {
             RightToLeft();
-        }else if(pattern == listOfPatterns.topLeftToBottomRight)
+        }
+        else if (pattern == listOfPatterns.topLeftToBottomRight)
         {
             TopToBottom();
             LeftToRight();
-        }else if(pattern == listOfPatterns.zigZag)
+        }
+        else if (pattern == listOfPatterns.zigZag)
         {
             ZigZag();
-        }else if(pattern == listOfPatterns.vShape)
+        }
+        else if (pattern == listOfPatterns.vShape)
         {
             VShape();
         }
-
     }
 
     private void Move(Vector2 velocity)
@@ -73,10 +78,6 @@ public class NpcMovement : MonoBehaviour
         /*Moves the NPC a certain direction for a set time
          * 
          * Will be used multiple times dependant on pattern
-         * 
-         * Get wave settings team to create variables for 
-         * speed and time, will pull those variables in order to
-         * adjust the NPC's movement
         */
 
         rigid.AddForce(velocity * speed);
@@ -107,12 +108,12 @@ public class NpcMovement : MonoBehaviour
 
     public void SetTime(float time)
     {
-        movementTime = time;
+        flipTime = time;
     }
 
     public float GetTime()
     {
-        return movementTime;
+        return flipTime;
     }
     private void TakeDamage(int damage)
     {
@@ -145,7 +146,7 @@ public class NpcMovement : MonoBehaviour
     private void ZigZag()
     {
         timer += Time.deltaTime;
-        if(timer >= movementTime) //Flip the left/right direction
+        if(timer >= flipTime) //Flip the left/right direction
         {
             flip = -flip;
             rigid.velocity = new Vector2(0, 0);
@@ -158,7 +159,7 @@ public class NpcMovement : MonoBehaviour
     private void VShape()
     {
         timer += Time.deltaTime;
-        if(timer >= movementTime && goUp == false)
+        if(timer >= flipTime && goUp == false)
         {
             rigid.velocity = new Vector2(0, 0);
             goUp = true;
