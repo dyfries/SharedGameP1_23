@@ -157,8 +157,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d34cb100dbf49de46abe5181042ade27, type: 2}
   prefabToSpawn: {fileID: 0}
   waveList: []
-  _waveDelay: 1
-  _spawnDelay: 0.1
+  _waveDelay: 2
+  _spawnDelay: 0.2
   spawnableWidth: 10
 --- !u!4 &1957614643
 Transform:
