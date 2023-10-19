@@ -12,12 +12,12 @@ public class NpcMovement : MonoBehaviour
     [Header("Flight Settings")]
     //Flight Settings to adjust how fast NPC moves, and when to switch directions
     [Range(1, 5)]
-    [SerializeField] private int speed = 1;
+    [SerializeField] private int speed = 1; //How fast the NPC will move
     [Range(1f,3f)]
-    [SerializeField] private float flipTime = 3f;
+    [SerializeField] private float flipTime = 3f; //How long to move a certain direction before switching
 
-    private int flip = 1;
-    private float timer = 0;
+    private int flip = 1; //Controls whether or not the Vector2 is moving in a positive or negative direction on axis
+    private float currentDirectionTimer = 0; //Countdown time for movement
     private Transform position;
     private Rigidbody2D rigid;
     private bool goUp = false;
@@ -95,32 +95,36 @@ public class NpcMovement : MonoBehaviour
         //Set Method that sets the NPC's Health
         currentHealth = health;
     }
-
-    public void SetSpeed(int speed)
-    {
-        this.speed = speed;
-    }
-
-    public int GetSpeed()
-    {
-        return this.speed;
-    }
-
-    public void SetTime(float time)
-    {
-        flipTime = time;
-    }
-
-    public float GetTime()
-    {
-        return flipTime;
-    }
     private void TakeDamage(int damage)
     {
         //Method that deducts hp from NPC
         currentHealth -= damage;
     }
 
+
+    public void SetSpeed(int speed)
+    {
+        //Set Methods that sets the NPC's Speed
+        this.speed = speed;
+    }
+
+    public int GetSpeed()
+    {
+        //Get Method that gets the NPC's speed
+        return this.speed;
+    }
+
+    public void SetTime(float time)
+    {
+        //Set Method that sets the NPC's flip timer
+        flipTime = time;
+    }
+
+    public float GetTime()
+    {
+        //Get Method that Gets the NPC's flip timer
+        return flipTime;
+    }
     public void SetPattern(listOfPatterns pattern)
     {
         //Method that sets the pattern to be used
@@ -130,27 +134,31 @@ public class NpcMovement : MonoBehaviour
     //Methods that dictate movement dependant on pattern
     private void TopToBottom()
     {
+        //Stub to be revamped in future
         Move(new Vector2(0, -1));
     }
 
     private void LeftToRight()
     {
+        //Stub to be revamped in future
         Move(new Vector2(1, 0));
     }
 
     private void RightToLeft()
     {
+        //Stub to be revamped in future
         Move(new Vector2(-1, 0));
     }
 
     private void ZigZag()
     {
-        timer += Time.deltaTime;
-        if(timer >= flipTime) //Flip the left/right direction
+        //Stub to be revamped in future
+        currentDirectionTimer += Time.deltaTime;
+        if(currentDirectionTimer >= flipTime) //Flip the left/right direction
         {
             flip = -flip;
             rigid.velocity = new Vector2(0, 0);
-            timer = 0;
+            currentDirectionTimer = 0;
         }
         Move(new Vector2(flip, -1));
 
@@ -158,8 +166,9 @@ public class NpcMovement : MonoBehaviour
 
     private void VShape()
     {
-        timer += Time.deltaTime;
-        if(timer >= flipTime && goUp == false)
+        //Stub to be revamped in future
+        currentDirectionTimer += Time.deltaTime;
+        if(currentDirectionTimer >= flipTime && goUp == false)
         {
             rigid.velocity = new Vector2(0, 0);
             goUp = true;
