@@ -9,28 +9,41 @@ using UnityEngine;
 public class SpawnWaveSettings : ScriptableObject
 {
     //Variables
-    [SerializeField, Header("Array Of Non-Player Characters")]
-    private NPCMovement[] NPCArray = null;
+    [SerializeField]
+    private NPCMovement npcMovement = null;
 
-    // 
-    [SerializeField, Header("Wave Pattern Settings")]
+    [SerializeField]
+    private int npcSpawnCount;
+
+    [SerializeField]
+    private float waveOffset;
+
+    [SerializeField]
+    private listOfPatterns flightPattern;
+
+    [SerializeField]
     private WavePatterns wavePatterns;
     [SerializeField, Range(0, 5)]
     private float delayBetweenSpawns = 0f;
     [SerializeField, Range(1, 10)]
     private float waveSpeed = 1f;
-    [SerializeField, Range(2, 10), Header("Horizontal Distance Between Non-Player Characters")]
-    private float xOffset = 0f;
+    [SerializeField, Range(2, 10)]
+    private float localOffset = 0f;
+
+    
 
     //add wave timer / trigger for next wave to spawn
     //Need Flight Pattern from NPCMovement guys.
 
     //Accessors
-    public NPCMovement[] GetNPCArray() { return NPCArray; }
+    public NPCMovement GetNPCArray() { return npcMovement; }
     public WavePatterns GetWavePattern() { return wavePatterns; }
-    public float GetXOffset () { return xOffset; }
+    public listOfPatterns GetFlightPattern() {  return flightPattern; }
+    public float GetXOffset () { return localOffset; }
     public float GetDelayBetweenSpawns() { return delayBetweenSpawns; }
     public float GetWaveSpeed () {  return waveSpeed; }
+    public int GetNPCSpawnCount () {  return npcSpawnCount; }
+    public float GetWaveOffset() {  return waveOffset; }
 }
 
 //enum to describe the pattern of the spawn wave. Paterns to be defined by spawner.
