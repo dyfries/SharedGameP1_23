@@ -11,16 +11,22 @@ public class NPCMovement : MonoBehaviour
 
     [Header("Flight Settings")]
     //Flight Settings to adjust how fast NPC moves, and when to switch directions
-    [Range(1, 5)]
-    [SerializeField] private int speed = 1; //How fast the NPC will move
-    [Range(1f,3f)]
+    [Range(0f, 5f)]
+    [SerializeField] private float speed = 1f; //How fast the NPC will move
+    [Range(0f,3f)]
     [SerializeField] private float flipTime = 3f; //How long to move a certain direction before switching
+    [Range(-1f, 1f)]
+    [SerializeField] private float moveX = 1f;
+    [Range(0f, 1f)]
+    [SerializeField] private float startMoveY = 1f;
+    private bool flip = false;
 
-    private int flip = 1; //Controls whether or not the Vector2 is moving in a positive or negative direction on axis
+    private int inverse = 1; //Controls whether or not the Vector2 is moving in a positive or negative direction on axis
     private float currentDirectionTimer = 0; //Countdown time for movement
     private Transform position;
     private Rigidbody2D rigid;
     private bool goUp = false;
+    private bool linearHasRun = true;
 
     [Header("Flight Pattern")]
     //List of patterns to select from
@@ -34,8 +40,9 @@ public class NPCMovement : MonoBehaviour
         position = this.transform;
 
         rigid = this.GetComponent<Rigidbody2D>();
+        rigid.gravityScale = 0;
 
- 
+        rigid.AddForce(new Vector2(0, -startMoveY) * speed, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
@@ -46,22 +53,9 @@ public class NPCMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //Choose the movement pattern dependant on the chosen pattern
-        if (pattern == listOfPatterns.topToBottom)
+        if (pattern == listOfPatterns.linear)
         {
-            TopToBottom();
-        }
-        else if (pattern == listOfPatterns.leftToRight)
-        {
-            LeftToRight();
-        }
-        else if (pattern == listOfPatterns.rightToLeft)
-        {
-            RightToLeft();
-        }
-        else if (pattern == listOfPatterns.topLeftToBottomRight)
-        {
-            TopToBottom();
-            LeftToRight();
+            linear();
         }
         else if (pattern == listOfPatterns.zigZag)
         {
@@ -108,10 +102,10 @@ public class NPCMovement : MonoBehaviour
         this.speed = speed;
     }
 
-    public int GetSpeed()
+    public float GetSpeed()
     {
         //Get Method that gets the NPC's speed
-        return this.speed;
+        return speed;
     }
 
     public void SetTime(float time)
@@ -132,22 +126,21 @@ public class NPCMovement : MonoBehaviour
     }
 
     //Methods that dictate movement dependant on pattern
-    private void TopToBottom()
+    private void linear()
     {
-        //Stub to be revamped in future
-        Move(new Vector2(0, -1));
-    }
-
-    private void LeftToRight()
-    {
-        //Stub to be revamped in future
-        Move(new Vector2(1, 0));
-    }
-
-    private void RightToLeft()
-    {
-        //Stub to be revamped in future
-        Move(new Vector2(-1, 0));
+        if (linearHasRun) {
+            rigid.AddForce(new Vector2(moveX, 0) * speed, ForceMode2D.Impulse);
+            linearHasRun = false;   
+        }
+        if (flip)
+        {
+            currentDirectionTimer += Time.deltaTime;
+            if(currentDirectionTimer >= flipTime)
+            {
+                rigid.velocity = new Vector2(rigid.velocity.x * -1, rigid.velocity.y);
+                currentDirectionTimer = 0;
+            }
+        }
     }
 
     private void ZigZag()
@@ -156,11 +149,11 @@ public class NPCMovement : MonoBehaviour
         currentDirectionTimer += Time.deltaTime;
         if(currentDirectionTimer >= flipTime) //Flip the left/right direction
         {
-            flip = -flip;
+            inverse = -inverse;
             rigid.velocity = new Vector2(0, 0);
             currentDirectionTimer = 0;
         }
-        Move(new Vector2(flip, -1));
+        Move(new Vector2(inverse, -1));
 
     }
 
@@ -188,10 +181,7 @@ public class NPCMovement : MonoBehaviour
 
 public enum listOfPatterns
 {
-    topToBottom,
-    leftToRight,
-    rightToLeft,
-    topLeftToBottomRight,
+    linear,
     zigZag,
     vShape
 }
