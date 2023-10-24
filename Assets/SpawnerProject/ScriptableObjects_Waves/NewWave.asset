@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: NewWave
   m_EditorClassIdentifier: 
   npcMovement: {fileID: 0}
-  npcSpawnCount: 10
-  waveOffset: 0
-  flightPattern: 0
+
+  npcSpawnCount: 5
+  waveOffset: 1
+  flightPattern: 1
   wavePatterns: 0
-  delayBetweenSpawns: 0.77
-  waveSpeed: 2.8
-  localOffset: 2
+  delayBetweenSpawns: 1.01
+  waveSpeed: 1
+  localOffset: 0
