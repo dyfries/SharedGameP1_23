@@ -14,92 +14,71 @@ public class NPC_Spawner : MonoBehaviour
     public GameObject prefabToSpawn;
 
 
-    [SerializeField] private GameObject[] waveList;
-
-    [Header("Timer Settings")]
-    [SerializeField] private float _waveDelay;
-    [SerializeField] private float _spawnDelay;
-
-    //public GameObject[] spawnList;
-    private int spawnIndex;
-
     // TODO: REPLACE WITH VAR IN WAVESETTINGS.
     [Header("Area of effect")]
     public float spawnableWidth = 10f;
 
+    public float delayBetweenWaves = 5f;
+
     // Local counters.
-    private float _waveTimer = 0f;
-    private float _currentTimer = 0f;
+    private float waveIntervalTimer = 0f;
+    private float npcIntervalTimer = 0f;
+
+    private int _spawnIndex;
     private int _waveIndex = 0;
-
-    //[Header("Amount to spawn")]
-    //public bool spawnLimit = false;
-    //private int amountSpawnedSoFar = 0;
-    //public int totalToSpawn = 10;
-
-    //[Header("Initialization Settings")]
-    //public bool spawnOnStart = true;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        // Spawn one at start.
-        if (spawnOnStart) {
-            SpawnNPC();        
-        }*/
-
         _waveIndex = 0;
-        spawnIndex = 0;
+        _spawnIndex = 0;
 
-        _waveTimer = 0;
-        _currentTimer = 0;
+        waveIntervalTimer = 0;
+        npcIntervalTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float delayBetweenSpawns = _settingsArray[_waveIndex].GetDelayBetweenSpawns();
 
-        if (_waveTimer >= _waveDelay)
+        //if (waveIntervalTimer >= _settingsArray.GetDelayBetweenWaves())
+        if (waveIntervalTimer >= delayBetweenWaves)
         {
             // Start spawning wave.
 
-            if (_currentTimer >= _spawnDelay)
+            if (npcIntervalTimer >= delayBetweenSpawns)
             {
                 // Spawn NPC here.
+
                 SpawnNPC();
+
                 print("SPAWNING NPC");
 
-                // If spawn index points to the last NPC in the array, reset.
-                //if (spawnIndex == spawnList.Length - 1)
-                if (spawnIndex == _settingsArray[_waveIndex].GetNPCArray().Length - 1)
+                // If spawn index points to the last NPC in the array, reset.                
+                if (_spawnIndex == _settingsArray[_waveIndex].GetNPCArray().Length - 1)
                 {
-                    spawnIndex = 0;
-                    /*waveIndex++;
-                    // Reset wave index.
-                    if (waveIndex == waveList.Length - 1)
-                    {
-                        // Wave complete. Reset wave.
-                        waveIndex = 0;
-                    }*/
+                    _spawnIndex = 0;
+
                     // Reset wave index.
                     _waveIndex = (_waveIndex + 1) % _settingsArray.Length;
-                    _waveTimer = 0;                    
+                    waveIntervalTimer = 0;
                 }
                 else
                 {
-                    spawnIndex++;
-                    _currentTimer = 0;
+                    _spawnIndex++;
+                    npcIntervalTimer = 0;
                 }
             }
             else
             {
-                _currentTimer += Time.deltaTime;
+                npcIntervalTimer += Time.deltaTime;
             }            
         }
         else
         {
-            _waveTimer += Time.deltaTime;
+            waveIntervalTimer += Time.deltaTime;
         }
 
         /*if(!spawnLimit || amountSpawnedSoFar < totalToSpawn) {
