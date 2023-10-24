@@ -57,7 +57,7 @@ public class NPC_Spawner : MonoBehaviour
                 print("SPAWNING NPC");
 
                 // If spawn index points to the last NPC in the array, reset.                
-                if (_spawnIndex == _settingsArray[_waveIndex].GetNPCArray().Length - 1)
+                if (_spawnIndex >= _settingsArray[_waveIndex].GetNPCSpawnCount())
                 {
                     _spawnIndex = 0;
 
