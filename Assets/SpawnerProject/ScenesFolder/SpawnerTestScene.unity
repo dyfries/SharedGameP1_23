@@ -272,6 +272,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2785849458411189196, guid: e4e8b86ef5dc4f54d9f372b296d379c7, type: 3}
     - target: {fileID: 6382588125464501824, guid: d359379fc10b169498b65b42d5143c75, type: 3}
+      propertyPath: delayBetweenWaves
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382588125464501824, guid: d359379fc10b169498b65b42d5143c75, type: 3}
+      propertyPath: _settingsArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382588125464501824, guid: d359379fc10b169498b65b42d5143c75, type: 3}
       propertyPath: _settingsArray.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: b6cf8df9e2e2d9548890249d7a837a0a, type: 2}

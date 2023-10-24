@@ -13,11 +13,6 @@ public class NPC_Spawner : MonoBehaviour
 
     public GameObject prefabToSpawn;
 
-
-    // TODO: REPLACE WITH VAR IN WAVESETTINGS.
-    [Header("Area of effect")]
-    public float spawnableWidth = 10f;
-
     public float delayBetweenWaves = 5f;
 
     // Local counters.
@@ -52,9 +47,19 @@ public class NPC_Spawner : MonoBehaviour
             {
                 // Spawn NPC here.
 
-                SpawnNPC();
+                if(prefabToSpawn != null)
+                {
+                    SpawnNPC();                    
+                    Debug.Log(_spawnIndex);
+                    Debug.Log(_waveIndex);
+                    Debug.Log(delayBetweenSpawns);
+                }
+                else
+                {
+                    Debug.LogError(gameObject.name + " needs NPC prefab assigned in inspector.");
+                }
 
-                print("SPAWNING NPC");
+                
 
                 // If spawn index points to the last NPC in the array, reset.                
                 if (_spawnIndex >= _settingsArray[_waveIndex].GetNPCSpawnCount())
@@ -93,18 +98,44 @@ public class NPC_Spawner : MonoBehaviour
 
     public void SpawnNPC() {
         // chose random location
-        float xPos = Random.Range(-spawnableWidth, spawnableWidth);
+
+        float xOffset = _spawnIndex * _settingsArray[_waveIndex].GetXOffset();
+        Vector3 spawnLocation = transform.position;
+
+
         // Create instance
         // use the current position as the origin, Z is always 0 for 2D
-        Vector3 spawnLocation = new Vector3(transform.position.x + xPos, transform.position.y, 0);
+        if (_settingsArray[_waveIndex].GetWavePattern() == WavePatterns.LOffset)
+        {
+            spawnLocation.x -= xOffset;
+        }
+        else if (_settingsArray[_waveIndex].GetWavePattern() == WavePatterns.ROffset)
+        {
+            spawnLocation.x += xOffset;
+        }
+        else if (_settingsArray[_waveIndex].GetWavePattern() == WavePatterns.FlyingV)
+        {
+            if (_spawnIndex > 0)
+            {
+                Vector3 flyingVSpawn = new Vector3 (transform.position.x - xOffset, transform.position.y, transform.position.z);
+                GameObject leftVNPC = Instantiate(prefabToSpawn, flyingVSpawn, Quaternion.identity, transform);
+                leftVNPC.GetComponent<NPCMovement>().pattern = _settingsArray[_waveIndex].GetFlightPattern();
+                spawnLocation.x += xOffset;
+            }
+        }
+
 
         // Lots of different options here: 
         // Prefab to spawn in the reference to the Prefab - Use the prefab on disk on in the scene, so you can set this in the Spawner prefab as well. 
         // location already includes our local position, 
         // Quaterinion.identity is a fancy way of saying no rotation. It is a zero'd Quaternion (we will talk about later). 
         // Settings this spawner as the parent, don't do this if the spawner moves or all child objects will move with it. 
-        GameObject go = Instantiate(prefabToSpawn, spawnLocation,Quaternion.identity, transform);
-        // not using the GO here just demonstrating that it is being created. 
+
+
+        GameObject go = Instantiate(prefabToSpawn, spawnLocation ,Quaternion.identity, transform);
+
+        go.GetComponent<NPCMovement>().pattern = _settingsArray[_waveIndex].GetFlightPattern();        
+
 
         // [ ] maybe we track it later but for now we won't keep a reference (it gets tricky when dealing with destroying the objects). 
 

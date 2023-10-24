@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80175cfad244a8646b8a6cd8f9ee0eac, type: 3}
   m_Name: WaveSettings
   m_EditorClassIdentifier: 
-  NPCArray:
-  - {fileID: -8779520478082902022, guid: e4e8b86ef5dc4f54d9f372b296d379c7, type: 3}
+  npcMovement: {fileID: 0}
+  npcSpawnCount: 5
+  waveOffset: 0
+  flightPattern: 0
   wavePatterns: 0
-  delayBetweenSpawns: 0.4
-  waveSpeed: 1
-  xOffset: 0
+  delayBetweenSpawns: 0.87
+  waveSpeed: 5.3
+  localOffset: 2
