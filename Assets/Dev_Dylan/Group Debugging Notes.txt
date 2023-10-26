@@ -1,0 +1,50 @@
+Spawner: 
+    -Prefab to spawn not linked up to wave settings prefab to spawn.
+
+    Spawning +1 count right now. 
+
+    Sequential should cover Sequential, X offset both sides
+        - Local offset should be X Spawn offset Per Unit
+
+    First settings not loaded? 
+
+Settings: 
+
+    Bugs: 
+
+
+    Minor Revision: 
+
+    Sequential should cover Sequential, X offset both sides
+    - Local offset should be X Spawn offset Per Unit (-10, 10)
+
+    Minor: 
+
+        V shape should be wave type: 
+        NOT MOVEMENT 
+
+
+    Wave Offset
+
+
+
+
+NPC: 
+
+    Swap out floats for V2 for startingInpulseForce, continiousMovementForce
+
+
+ Start settings: 
+
+    V start force
+
+Flight Settings; 
+
+    C continious force. 
+
+
+Features: 
+
+    multiple path flight? 
+
+Fly v1 for t1, then fly v2 for t2, 

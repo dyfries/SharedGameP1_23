@@ -49,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   flipTime: 3
-  moveX: 1
+  moveX: -1
   startMoveY: 1
-  pattern: 4
+  pattern: 0
 --- !u!50 &-5957187421711177728
 Rigidbody2D:
   serializedVersion: 4
