@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   npcMovement: {fileID: -3043108592805561880, guid: c748ca8de98bcad4d9156e4fffa8a3ca, type: 3}
-  npcSpawnCount: 7
+  npcSpawnCount: 6
   waveOffset: 11.14
   flightPattern: 2
   wavePatterns: 3
