@@ -53,7 +53,11 @@ public class Ability_Simple : MonoBehaviour {
 
     // [ ] Upgrade to Animation System 
 
-    // --- 2D Simple Sprites ---
+    public enum ArtStyle { Sprites, Animation }
+    [Header("Swaps Between using Sprites and Animation System")]
+    public ArtStyle currentArtStyle = ArtStyle.Sprites;
+
+    [Header(" --- 2D Simple Sprites --- ")]
     // The reference to the renderer. 
     public SpriteRenderer spriteRenderer;
     // Sprite States 
@@ -63,12 +67,27 @@ public class Ability_Simple : MonoBehaviour {
     public Sprite winddownSprite;
     public Sprite cooldownSprite;
 
+    [Header(" --- Animator ---  ")]
+    public Animator anim;
+    private string anim_windupString = "Lazer_Windup";
+    private string anim_firingString = "Lazer_Firing";
+    private string anim_winddownString = "Lazer_Winddown";
+
+
     // ------------------------------------------------------------------
     public bool DEBUG_MODE = false;
 
     // ------------------------------------------------------------------
     // --- Functions --- 
     // ------------------------------------------------------------------
+
+    // ========================== Initialization ===========================
+    protected void Start() {
+        if(currentArtStyle == ArtStyle.Sprites) {
+
+        }
+    }
+
     // ========================== Public Facing ===========================
     // Public facing method that TRIES to activate the ability (only succeeds if it is in ready state)
     // You may want to have additional initializiation or conditions before the private start windup function runs. 
@@ -90,8 +109,18 @@ public class Ability_Simple : MonoBehaviour {
 
     // Enter a ready state
     private void StartReady() {
+
         stageOfAbility = StageOfAbility.ready;
-        spriteRenderer.sprite = readySprite;
+
+        // start ready state
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = readySprite;
+        } else {
+            // Should be off already but just demonstrating
+            anim.SetBool(anim_windupString, false);
+            anim.SetBool(anim_firingString, false);
+            anim.SetBool(anim_winddownString, false);
+        }
     }
 
     // Starting the windup, begin displaying effects, start audio, but physics is not activated yet. 
@@ -101,7 +130,12 @@ public class Ability_Simple : MonoBehaviour {
         stageOfAbility = StageOfAbility.windup;
 
         // start animation
-        spriteRenderer.sprite = windupSprite;
+        if(currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = windupSprite;
+        } else {
+            anim.SetBool(anim_windupString, true);
+        }
+        
 
         // play sound effect
         // [ ] TO DO
@@ -123,7 +157,12 @@ public class Ability_Simple : MonoBehaviour {
         stageOfAbility = StageOfAbility.firing;
 
         // next stage of animation
-        spriteRenderer.sprite = firingSprite;
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = firingSprite;
+        } else {
+            anim.SetBool(anim_windupString, false);
+            anim.SetBool(anim_firingString, true);
+        }
 
         // Activate physics check
         abilityRigidbody.simulated = true;
@@ -140,8 +179,13 @@ public class Ability_Simple : MonoBehaviour {
         // Update to current state
         stageOfAbility = StageOfAbility.winddown;
 
-        // last stage of animation, 
-        spriteRenderer.sprite = winddownSprite;
+        // last stage of animation
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = winddownSprite;
+        } else {
+            anim.SetBool(anim_firingString, false);
+            anim.SetBool(anim_winddownString, true);
+        }
 
         // disable physics check perhaps
         abilityRigidbody.simulated = false;
@@ -162,7 +206,11 @@ public class Ability_Simple : MonoBehaviour {
         stageOfAbility = StageOfAbility.cooldown;
 
         // Disable art or set cooldown art (or UI)
-        spriteRenderer.sprite = cooldownSprite;
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = cooldownSprite;
+        } else {
+            anim.SetBool(anim_winddownString, false);
+        }
 
         currentTimer = 0;
     }
