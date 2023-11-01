@@ -1,13 +1,25 @@
-using JetBrains.Annotations;
+using JetBrains.Annotations; // Not sure where some of these are coming from. 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
+
+// Using enums is useful here since it shares the properties we want our
+// state machine to have, namely we can always only be in one state at any
+// given moment. 
+// Ready - Available to fire if activated
+// Windup - Has started but hasn't fired yet (eg not physics)
+// Firing - is damaging/healing/shielding/whatever
+// Winddown - Has finished firing and cleaning up the effects, no physics. 
+// Cooldown - Done but not ready to fire again yet. 
 public enum StageOfAbility {ready, windup, firing, winddown, cooldown };
+
 public class Ability_Simple : MonoBehaviour {
 
     [Header("Timers")]
+    // I'm just sharing this for all the current timers. 
     private float currentTimer = 0;
 
     [Header("Timers for the stages of Ability activation")]
@@ -17,8 +29,6 @@ public class Ability_Simple : MonoBehaviour {
 
     [Header("Cooldown Timer for the whole ability")]
     public float activatedAbility_CooldownTimer = 3f;
-
-    
 
 
     // Art 
@@ -36,21 +46,33 @@ public class Ability_Simple : MonoBehaviour {
     [Header("Enum of current State in the State Machine")]
     public StageOfAbility stageOfAbility;
 
-
+    [Header("I'm going to use a Rigidbody for collisions (for now)")]
     public Rigidbody2D abilityRigidbody; // for enabling trigger using simulated bool in RB. 
 
-    // art stuff
+    // --- ART STUFF ---
+
+    // [ ] Upgrade to Animation System 
+
+    // --- 2D Simple Sprites ---
+    // The reference to the renderer. 
     public SpriteRenderer spriteRenderer;
+    // Sprite States 
     public Sprite readySprite;
     public Sprite windupSprite;
     public Sprite firingSprite;
     public Sprite winddownSprite;
     public Sprite cooldownSprite;
 
+    // ------------------------------------------------------------------
+    public bool DEBUG_MODE = false;
 
-    // Start is called before the first frame update
-    // Public facing method. You may want to have additional initializiation before the private start windup function runs. 
-    // For example, you could check if the cooldown is activated here, if the player has sufficient mana etc 
+    // ------------------------------------------------------------------
+    // --- Functions --- 
+    // ------------------------------------------------------------------
+    // ========================== Public Facing ===========================
+    // Public facing method that TRIES to activate the ability (only succeeds if it is in ready state)
+    // You may want to have additional initializiation or conditions before the private start windup function runs. 
+    // For example, you could check if the player has sufficient mana etc 
     public void ActivateAbility()
     {
         // Check cooldown
@@ -58,12 +80,15 @@ public class Ability_Simple : MonoBehaviour {
         // Start execution here. 
         if(stageOfAbility == StageOfAbility.ready) {
             StartWindup();
-            Debug.Log("Calling Starting Wind Up State From Activate Ability");
+            if(DEBUG_MODE) 
+                Debug.Log("Calling Starting Wind Up State From Activate Ability");
         }
     }
 
-    // Entering a new state functions
+    // ========================== State Activations ===========================
+    // Entering a new state functions, called but Update when first transitioning to a given state. 
 
+    // Enter a ready state
     private void StartReady() {
         stageOfAbility = StageOfAbility.ready;
         spriteRenderer.sprite = readySprite;
@@ -71,48 +96,72 @@ public class Ability_Simple : MonoBehaviour {
 
     // Starting the windup, begin displaying effects, start audio, but physics is not activated yet. 
     private void StartWindup() {
+
+        // Update to current state
         stageOfAbility = StageOfAbility.windup;
 
         // start animation
         spriteRenderer.sprite = windupSprite;
-        // Start firing timer
 
         // play sound effect
+        // [ ] TO DO
         // start effects
+
+        // Start firing timer
         currentTimer = 0;
 
-        Debug.Log("Calling StartWindup State Completed");
+        if (DEBUG_MODE)
+            Debug.Log("Calling StartWindup State Completed");
     }
 
     // The ability actually activates. check the physics overlap
     // You could also do a raycast or sphere/circle (etc) cast here instead. 
     // This is a simple way for visualizing in a prototype though. 
     private void StartFiring() {
+
+        // Update to current state
         stageOfAbility = StageOfAbility.firing;
+
         // next stage of animation
         spriteRenderer.sprite = firingSprite;
+
         // Activate physics check
         abilityRigidbody.simulated = true;
-        Debug.Log("Calling StartFiring State Completed");
 
         currentTimer = 0;
+
+        if (DEBUG_MODE)
+            Debug.Log("Calling StartFiring State Completed");
     }
 
     // Disable the physics and play the last frame of animation. 
     private void StartWinddown() {
+
+        // Update to current state
         stageOfAbility = StageOfAbility.winddown;
+
         // last stage of animation, 
         spriteRenderer.sprite = winddownSprite;
+
         // disable physics check perhaps
         abilityRigidbody.simulated = false;
+
         // maybe immobilized or be unable to activate other abilities 
-        Debug.Log("Calling StartWinddown State Completed");
+        // start animation
+        
 
         currentTimer = 0;
+
+        if (DEBUG_MODE)
+            Debug.Log("Calling StartWinddown State Completed");
     }
 
+    // Enter cooldown state. May shut off effects and trigger UI's
     private void StartCooldown() {
+        // Update to current state
         stageOfAbility = StageOfAbility.cooldown;
+
+        // Disable art or set cooldown art (or UI)
         spriteRenderer.sprite = cooldownSprite;
 
         currentTimer = 0;
@@ -120,8 +169,12 @@ public class Ability_Simple : MonoBehaviour {
 
     // Could be done with a simple timer setup, coroutines or an Animation
 
+    // ========================== Update Loop ===========================
 
     // Update is called once per frame
+    // These states are being controlled with a Timer. 
+    // Could replaced with coroutines in the future (esp in Unreal Navmesh)
+    // But for now this is simple. 
     void Update()
     {
         // Get Input
@@ -141,27 +194,31 @@ public class Ability_Simple : MonoBehaviour {
 
 
 
-            // Waiting for input. 
+            // Waiting for input. Just wait in Ready until Activated
 
 
 
         } else if (stageOfAbility == StageOfAbility.windup) {
+            // Check timer and advance to Firing state if the timer is done
             if (currentTimer >= activatedAbility_WindupTimer) {
                 // Next stage
                 StartFiring();
             }
         } else if (stageOfAbility == StageOfAbility.firing) {
+            // Check timer and advance to Winddown state if the timer is done
             if (currentTimer >= activatedAbility_FiringTimer) {
                 // Next stage
                 //  stageOfAbility = Stage
                 StartWinddown();
             }
         } else if (stageOfAbility == StageOfAbility.winddown) {
+            // Check timer and advance to Cooldown state if the timer is done
             if (currentTimer >= activatedAbility_WinddownTimer) {
                 StartCooldown();
             }
         // Cooldown
         } else if (stageOfAbility == StageOfAbility.cooldown) {
+            // Check timer and advance to Ready state if the timer is done
             if (currentTimer >= activatedAbility_CooldownTimer) {
                 StartReady();
             }
@@ -170,5 +227,19 @@ public class Ability_Simple : MonoBehaviour {
         // Right now cooldown is seperate but we could probably use it as a state in the state machine. 
     }
 
-     
+
+    //========================== Extra ===========================
+    // Could be useful to export the ratio of current to total time to a 0..1 value range. 
+    public float GetTimerCompletionRatio() {
+        float returnValue = 0;
+        if (stageOfAbility == StageOfAbility.cooldown) {
+            return currentTimer / activatedAbility_CooldownTimer;
+        } else {
+            Debug.LogWarning("Not Yet Completed. This will probably crash your systems until you fix it. ");
+            return -1f;
+        }
+
+        return returnValue;
+    }
+
 }
