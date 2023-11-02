@@ -7,6 +7,7 @@ public class Ability_ShotGunBlast : Ability_Simple
 
     [Header("Now in Ability ShotGunBlast Subclass")]
     public GameObject projectile;
+    public Transform playerPos;
 
     protected void Start()
     {
@@ -24,8 +25,10 @@ public class Ability_ShotGunBlast : Ability_Simple
 
         // Add projectiles
 
-        Instantiate(projectile);
-        
+        Instantiate(projectile, playerPos, /*Quaternion.Angle(*/);
+        Instantiate(projectile, playerPos);
+        Instantiate(projectile, playerPos);
+
     }
 
 }
