@@ -19,7 +19,7 @@ public class Ability_MissileBarrage : Ability_Simple
 
         if(stageOfAbility == StageOfAbility.windup)
         {
-            windupTimer += Time.deltaTime;
+            windupTimer += Time.deltaTime/activatedAbility_WindupTimer;
 
             for (int i = 0; i < amountOfMissiles; i++)
             {
@@ -59,6 +59,7 @@ public class Ability_MissileBarrage : Ability_Simple
         StartCoroutine(StageredFire());
 
         //old code launches missles all at same time
+        //
         //foreach (Rigidbody2D rb in missiles)
         //{
         //    rb.AddForce(Vector2.up * missileForce, ForceMode2D.Impulse);

@@ -123,60 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &260695371
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 260695372}
-  - component: {fileID: 260695373}
-  m_Layer: 0
-  m_Name: MissileBarrage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &260695372
+--- !u!4 &260695372 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+  m_PrefabInstance: {fileID: 7106390189297171819}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260695371}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7504686942398894420}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &260695373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260695371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bc117c4d05ce744887e37de9798009b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activatedAbility_WindupTimer: 1
-  activatedAbility_FiringTimer: 1
-  activatedAbility_WinddownTimer: 1
-  activatedAbility_CooldownTimer: 3
-  stageOfAbility: 0
-  abilityRigidbody: {fileID: 0}
-  DEBUG_MODE: 0
-  missile: {fileID: 181925676369742074, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
-  amountOfMissiles: 10
-  missileForce: 10
 --- !u!1001 &488820494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -831,6 +782,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: {x: 30, y: 20}
+--- !u!1001 &7106390189297171819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7504686942398894420}
+    m_Modifications:
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868526165038866156, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_Name
+      value: MissileBarrage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
 --- !u!1 &7476119986887636895
 GameObject:
   m_ObjectHideFlags: 0
