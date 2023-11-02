@@ -61,7 +61,7 @@ public class Ability_Blink : Ability_Simple
         }
 
         //Add the blink distance to the player's current position
-        rb.position += blinkDistance;
+        rb.MovePosition(blinkDistance);
     }
 
     protected override void StartWinddown()
