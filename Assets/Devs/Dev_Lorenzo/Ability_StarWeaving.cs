@@ -6,7 +6,6 @@ using UnityEngine;
 public class Ability_StarWeaving : Ability_Simple
 {
     [Header("Dash Settings")]
-    [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Vector2 _defaultDashDirection = Vector2.right;
     [SerializeField] private float _dashSpeed = 1f;
     [Header("Projectile Settings")]
@@ -54,7 +53,7 @@ public class Ability_StarWeaving : Ability_Simple
             }
 
             // Do dash.
-            _rb.velocity = direction * _dashSpeed;
+            abilityRigidbody.velocity = direction * _dashSpeed;
 
             yield return null;
         }
