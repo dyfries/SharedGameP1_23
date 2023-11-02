@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Teacher : Person
 {
+
+    public List<Student> studentsInClass; 
     // Override means other function is overriding a parent class function. 
     // This should be in the child function. 
     public override string GetPersonType() {

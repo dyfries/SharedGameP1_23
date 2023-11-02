@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Person : MonoBehaviour
 {
-    private int iAmPrivate;
+
     protected string myName = "Dylan";
+    protected int id = 0;
 
     // Virtual means this class can be extended by child subclasses. 
     public virtual string GetPersonType() {
