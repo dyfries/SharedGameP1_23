@@ -6,8 +6,14 @@ public class Ability_SpeedBoost : Ability_Simple {
 
     [Header("Now in Ability Speedboost Subclass")]
     public PlayerController pc;
-    [SerializeField] private Vector2 boostSpeed;
+    [Header("Variables to be set")]
+    [SerializeField] private Vector2 boostSpeed = new Vector2(60f,40f);
     private Vector2 cachedOriginalSpeed;
+
+    [Header("Art")]
+    [SerializeField] private List<GameObject> regularEngineEffects;
+    [SerializeField] private List<GameObject> boostedEngineEffects;
+
 
     protected void Start() {
         pc = GetComponentInParent<PlayerController>();
@@ -16,7 +22,6 @@ public class Ability_SpeedBoost : Ability_Simple {
             enabled = false;
         } else {
             cachedOriginalSpeed = pc.moveForce;
-            boostSpeed = pc.moveForce * 2f;
         }
 
     }
@@ -26,14 +31,33 @@ public class Ability_SpeedBoost : Ability_Simple {
         base.StartFiring(); // 
 
         // Add Speed
-
         pc.moveForce = boostSpeed;
+
+        // Art Effects
+        foreach (GameObject effects in regularEngineEffects) {
+            effects.SetActive(false);
+        }
+
+        foreach(GameObject effects in boostedEngineEffects) {
+            effects.SetActive(true);
+        }
+
+        // [ ] Increase sound pitch and volume here. 
 
     }
 
     protected override void StartWinddown() {
         base.StartWinddown();
         pc.moveForce = cachedOriginalSpeed;
+
+        // Art Effects
+        foreach (GameObject effects in regularEngineEffects) {
+            effects.SetActive(true);
+        }
+
+        foreach (GameObject effects in boostedEngineEffects) {
+            effects.SetActive(false);
+        }
     }
 
 

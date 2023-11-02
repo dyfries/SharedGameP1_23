@@ -45,10 +45,11 @@ public abstract class Ability_Simple : MonoBehaviour {
     // to be air tight in the state machine, then allow the animations to follow that. 
     [Header("Enum of current State in the State Machine")]
     public StageOfAbility stageOfAbility;
-
+    
+    /*
     [Header("I'm going to use a Rigidbody for collisions (for now)")]
     public Rigidbody2D abilityRigidbody; // for enabling trigger using simulated bool in RB. 
-
+    */
     // --- ART STUFF ---
 
     // [ ] Upgrade to Animation System 
