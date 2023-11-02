@@ -912,6 +912,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6531463822133999704, guid: 78377359e40e9fc478bfb054cfc72c5c, type: 3}
+      propertyPath: boostSpeed.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531463822133999704, guid: 78377359e40e9fc478bfb054cfc72c5c, type: 3}
+      propertyPath: boostSpeed.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531463822133999704, guid: 78377359e40e9fc478bfb054cfc72c5c, type: 3}
       propertyPath: boostedEngineEffects.Array.size
       value: 3
       objectReference: {fileID: 0}

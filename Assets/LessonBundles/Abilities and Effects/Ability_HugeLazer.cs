@@ -15,6 +15,9 @@ public class Ability_HugeLazer : Ability_Simple
     private string anim_firingString = "Lazer_Firing";
     private string anim_winddownString = "Lazer_Winddown";
 
+    [Header(" --- Physics Reference --- ")]
+    public Rigidbody2D abilityRigidbody;
+
     protected void Start() {
         if(anim == null) {
             anim = GetComponentInChildren<Animator>();

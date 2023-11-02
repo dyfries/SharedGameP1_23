@@ -285,7 +285,6 @@ MonoBehaviour:
   activatedAbility_WinddownTimer: 3.52
   activatedAbility_CooldownTimer: 15.08
   stageOfAbility: 0
-  abilityRigidbody: {fileID: 0}
   DEBUG_MODE: 0
   pc: {fileID: 0}
   boostSpeed: {x: 0, y: 0}
@@ -761,14 +760,6 @@ PrefabInstance:
     - target: {fileID: 2049594550875731446, guid: 451ea696dba343547a76e8845405df1d, type: 3}
       propertyPath: m_Name
       value: Player_3_LazerAndBoost
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345488081263851904, guid: 451ea696dba343547a76e8845405df1d, type: 3}
-      propertyPath: boostSpeed.x
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345488081263851904, guid: 451ea696dba343547a76e8845405df1d, type: 3}
-      propertyPath: boostSpeed.y
-      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
