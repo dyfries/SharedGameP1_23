@@ -14,9 +14,14 @@ using UnityEngine;
 // Firing - is damaging/healing/shielding/whatever
 // Winddown - Has finished firing and cleaning up the effects, no physics. 
 // Cooldown - Done but not ready to fire again yet. 
-public enum StageOfAbility { ready, windup, firing, winddown, cooldown };
 
-public abstract class Ability_Simple : MonoBehaviour {
+// In original Ability_Simple
+//public enum StageOfAbility {ready, windup, firing, winddown, cooldown };
+
+public abstract class Ability_Simple_Old : MonoBehaviour {
+
+    [Header("Ability Information")]
+    public string abilityName = "Default";
 
     [Header("Timers")]
     // I'm just sharing this for all the current timers. 
@@ -30,6 +35,14 @@ public abstract class Ability_Simple : MonoBehaviour {
     [Header("Cooldown Timer for the whole ability")]
     public float activatedAbility_CooldownTimer = 3f;
 
+
+    // Art 
+    // Could be sprites, or animation states. 
+    // The animator needs its state to be set to floats and bools so 
+    // having the logic in the script tightly control that is a good idea. 
+    // You can have some of the "logic" in the animation graph itself
+    // (in terms of blend trees or branching)
+
     // An enum is a natural way to store current state since it can only
     // be in one of a selection of states. 
     // you still have to control any logic that needs to fire when transitioning states
@@ -37,6 +50,35 @@ public abstract class Ability_Simple : MonoBehaviour {
     // to be air tight in the state machine, then allow the animations to follow that. 
     [Header("Enum of current State in the State Machine")]
     public StageOfAbility stageOfAbility;
+    
+    /*
+    [Header("I'm going to use a Rigidbody for collisions (for now)")]
+    public Rigidbody2D abilityRigidbody; // for enabling trigger using simulated bool in RB. 
+    */
+    // --- ART STUFF ---
+
+    // [ ] Upgrade to Animation System 
+    /*
+    public enum ArtStyle { Sprites, Animation }
+    [Header("Swaps Between using Sprites and Animation System")]
+    public ArtStyle currentArtStyle = ArtStyle.Sprites;
+
+    [Header(" --- 2D Simple Sprites --- ")]
+    // The reference to the renderer. 
+    public SpriteRenderer spriteRenderer;
+    // Sprite States 
+    public Sprite readySprite;
+    public Sprite windupSprite;
+    public Sprite firingSprite;
+    public Sprite winddownSprite;
+    public Sprite cooldownSprite;
+
+    [Header(" --- Animator ---  ")]
+    public Animator anim;
+    private string anim_windupString = "Lazer_Windup";
+    private string anim_firingString = "Lazer_Firing";
+    private string anim_winddownString = "Lazer_Winddown";
+    */
 
     // ------------------------------------------------------------------
     public bool DEBUG_MODE = false;
@@ -52,13 +94,14 @@ public abstract class Ability_Simple : MonoBehaviour {
     // Public facing method that TRIES to activate the ability (only succeeds if it is in ready state)
     // You may want to have additional initializiation or conditions before the private start windup function runs. 
     // For example, you could check if the player has sufficient mana etc 
-    public virtual void ActivateAbility() {
+    public virtual void ActivateAbility()
+    {
         // Check cooldown
         // if ready
         // Start execution here. 
-        if (stageOfAbility == StageOfAbility.ready) {
+        if(stageOfAbility == StageOfAbility.ready) {
             StartWindup();
-            if (DEBUG_MODE)
+            if(DEBUG_MODE) 
                 Debug.Log("Calling Starting Wind Up State From Activate Ability");
         }
     }
@@ -71,6 +114,17 @@ public abstract class Ability_Simple : MonoBehaviour {
 
         stageOfAbility = StageOfAbility.ready;
 
+        /*
+        // start ready state
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = readySprite;
+        } else {
+            // Should be off already but just demonstrating
+            anim.SetBool(anim_windupString, false);
+            anim.SetBool(anim_firingString, false);
+            anim.SetBool(anim_winddownString, false);
+        }
+        */
     }
 
     // Starting the windup, begin displaying effects, start audio, but physics is not activated yet. 
@@ -78,6 +132,19 @@ public abstract class Ability_Simple : MonoBehaviour {
 
         // Update to current state
         stageOfAbility = StageOfAbility.windup;
+
+        /*
+        // start animation
+        if(currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = windupSprite;
+        } else {
+            anim.SetBool(anim_windupString, true);
+        }
+        */
+
+        // play sound effect
+        // [ ] TO DO
+        // start effects
 
         // Start firing timer
         currentTimer = 0;
@@ -94,6 +161,20 @@ public abstract class Ability_Simple : MonoBehaviour {
         // Update to current state
         stageOfAbility = StageOfAbility.firing;
 
+        /*
+        // next stage of animation
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = firingSprite;
+        } else {
+            anim.SetBool(anim_windupString, false);
+            anim.SetBool(anim_firingString, true);
+        }
+
+        // [ ] Remove later
+        // Activate physics check
+        if(abilityRigidbody != null)
+         abilityRigidbody.simulated = true;
+        */
         currentTimer = 0;
 
         if (DEBUG_MODE)
@@ -106,6 +187,24 @@ public abstract class Ability_Simple : MonoBehaviour {
         // Update to current state
         stageOfAbility = StageOfAbility.winddown;
 
+        /*
+        // last stage of animation
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = winddownSprite;
+        } else {
+            anim.SetBool(anim_firingString, false);
+            anim.SetBool(anim_winddownString, true);
+        }
+
+        // disable physics check perhaps
+        if (abilityRigidbody != null)
+            abilityRigidbody.simulated = false;
+
+        */
+        // maybe immobilized or be unable to activate other abilities 
+        // start animation
+        
+
         currentTimer = 0;
 
         if (DEBUG_MODE)
@@ -116,6 +215,15 @@ public abstract class Ability_Simple : MonoBehaviour {
     protected virtual void StartCooldown() {
         // Update to current state
         stageOfAbility = StageOfAbility.cooldown;
+
+        /*
+        // Disable art or set cooldown art (or UI)
+        if (currentArtStyle == ArtStyle.Sprites) {
+            spriteRenderer.sprite = cooldownSprite;
+        } else {
+            anim.SetBool(anim_winddownString, false);
+        }
+        */
 
         currentTimer = 0;
     }
@@ -128,20 +236,27 @@ public abstract class Ability_Simple : MonoBehaviour {
     // These states are being controlled with a Timer. 
     // Could replaced with coroutines in the future (esp in Unreal Navmesh)
     // But for now this is simple. 
-    protected virtual void Update() {
+    protected virtual void Update()
+    {
         // Get Input
         currentTimer += Time.deltaTime;
-
-
+        
+        /*
+        // I had this in start but this way it will work if people change the enum while its running. 
+        if (currentArtStyle == ArtStyle.Sprites) {
+            anim.enabled = false; // disable animator if 
+        } else {
+            anim.enabled = true;
+        }
+        */
+        
         // A little awkward to put this here but its simple. 
         // Often the input would be coming from a different class however
         // and you want the AI and Player to have a similar ActivateAbility function available. 
-        // [ ] Right now all abilities fire, we may want to be able to select active. 
-        /* Moving to ability manager
         if (Input.GetButtonDown("Jump")) {
             ActivateAbility();
         }
-        */
+
 
         // These all just check the current state against the current state timer
         // It also transitions to the next state when the timer is up and resets it. 
@@ -171,7 +286,7 @@ public abstract class Ability_Simple : MonoBehaviour {
             if (currentTimer >= activatedAbility_WinddownTimer) {
                 StartCooldown();
             }
-            // Cooldown
+        // Cooldown
         } else if (stageOfAbility == StageOfAbility.cooldown) {
             // Check timer and advance to Ready state if the timer is done
             if (currentTimer >= activatedAbility_CooldownTimer) {
