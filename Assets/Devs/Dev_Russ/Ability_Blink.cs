@@ -6,9 +6,8 @@ public class Ability_Blink : Ability_Simple
 {
     [Header("Ability Blink Subclass")]
     public Rigidbody2D rb;
-    private Transform selfTransform;
     private Vector2 cachedSpeed;
-    private Vector3 blinkDistance;
+    private Vector2 blinkDistance;
     private float baseDistance = 5f;
 
     //Either multiply with a base float to get a blink linked with current speed
@@ -26,8 +25,6 @@ public class Ability_Blink : Ability_Simple
             Debug.LogWarning("No Rigidbody2D found");
             enabled = false;
         }
-
-        selfTransform = transform;
     }
 
     protected override void StartFiring()
@@ -64,7 +61,7 @@ public class Ability_Blink : Ability_Simple
         }
 
         //Add the blink distance to the player's current position
-        selfTransform.position += blinkDistance;
+        rb.position += blinkDistance;
     }
 
     protected override void StartWinddown()
