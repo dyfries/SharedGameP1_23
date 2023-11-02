@@ -34,7 +34,7 @@ public class Ability_StarWeaving : Ability_Simple
         // Cache dash direction.
         Vector2 direction = abilityRigidbody.velocity.normalized;
         // Get the ability owner's rotation.
-        Vector2 abilityForwards = abilityRigidbody.transform.forward;
+        Vector2 abilityForwards = abilityRigidbody.transform.up;
 
         if (direction == Vector2.zero) direction = _defaultDashDirection;
 
