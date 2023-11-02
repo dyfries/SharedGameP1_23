@@ -52,10 +52,9 @@ MonoBehaviour:
   stageOfAbility: 0
   abilityRigidbody: {fileID: 0}
   DEBUG_MODE: 0
-  _rb: {fileID: 0}
   _defaultDashDirection: {x: 1, y: 0}
   _dashSpeed: 1
-  _projectile: {fileID: 3963591687228475006, guid: dcc70068ebbf1b04d9f45c475ead6c36, type: 3}
+  _projectile: {fileID: 8432302690744590679, guid: dcc70068ebbf1b04d9f45c475ead6c36, type: 3}
   _projectileSpawnPoint: {fileID: 3945656806590045142}
   _projectileSpawnInterval: 0.1
 --- !u!1 &1315554123537638390
