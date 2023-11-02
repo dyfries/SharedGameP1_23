@@ -16,7 +16,7 @@ public class Projectile_StarWeavingOrb : MonoBehaviour
     private float _lifeTimer = 0f;
     private bool _movementStarted = false;
 
-    public void InitializeProjectile(Vector2 direction)
+    public void SetDirection(Vector2 direction)
     {
         _projectileDirection = direction;
     }

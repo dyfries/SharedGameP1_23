@@ -9,7 +9,7 @@ public class Ability_StarWeaving : Ability_Simple
     [SerializeField] private Vector2 _defaultDashDirection = Vector2.right;
     [SerializeField] private float _dashSpeed = 1f;
     [Header("Projectile Settings")]
-    [SerializeField] private GameObject _projectile;
+    [SerializeField] private Projectile_StarWeavingOrb _projectile;
     [SerializeField] private Transform _projectileSpawnPoint;
     [SerializeField] private float _projectileSpawnInterval = 0.2f;
 
@@ -32,9 +32,9 @@ public class Ability_StarWeaving : Ability_Simple
     private IEnumerator StartAbilityDash()
     {
         // Cache dash direction.
-        Vector2 direction = _rb.velocity.normalized;
+        Vector2 direction = abilityRigidbody.velocity.normalized;
         // Get the ability owner's rotation.
-        Quaternion projectileRotation = _rb.transform.rotation;
+        Vector2 abilityForwards = abilityRigidbody.transform.forward;
 
         if (direction == Vector2.zero) direction = _defaultDashDirection;
 
@@ -45,7 +45,8 @@ public class Ability_StarWeaving : Ability_Simple
             {
                 _projectileTimer = _projectileSpawnInterval;
                 // Spawn projectiles.
-                GameObject projectile = Instantiate(_projectile, _projectileSpawnPoint.position, projectileRotation);
+                Projectile_StarWeavingOrb projectile = Instantiate(_projectile, _projectileSpawnPoint.position, Quaternion.identity);
+                projectile.SetDirection(abilityForwards);
             }
             else
             {
