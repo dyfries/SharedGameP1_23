@@ -137,9 +137,11 @@ public abstract class Ability_Simple : MonoBehaviour {
         // Often the input would be coming from a different class however
         // and you want the AI and Player to have a similar ActivateAbility function available. 
         // [ ] Right now all abilities fire, we may want to be able to select active. 
+        /* Moving to ability manager
         if (Input.GetButtonDown("Jump")) {
             ActivateAbility();
         }
+        */
 
         // These all just check the current state against the current state timer
         // It also transitions to the next state when the timer is up and resets it. 
