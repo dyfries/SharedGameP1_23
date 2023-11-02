@@ -6,8 +6,9 @@ using UnityEngine;
 public class Ability_StarWeaving : Ability_Simple
 {
     [Header("Dash Settings")]
+    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Vector2 _defaultDashDirection = Vector2.right;
-    [SerializeField] private float _dashSpeed = 1f;
+    [SerializeField] private float _dashVelocity = 1f;
     [Header("Projectile Settings")]
     [SerializeField] private Projectile_StarWeavingOrb _projectile;
     [SerializeField] private Transform _projectileSpawnPoint;
@@ -32,9 +33,9 @@ public class Ability_StarWeaving : Ability_Simple
     private IEnumerator StartAbilityDash()
     {
         // Cache dash direction.
-        Vector2 direction = abilityRigidbody.velocity.normalized;
+        Vector2 direction = _rigidbody.velocity.normalized;
         // Get the ability owner's rotation.
-        Vector2 abilityForwards = abilityRigidbody.transform.up;
+        Vector2 abilityForwards = _rigidbody.transform.up;
 
         if (direction == Vector2.zero) direction = _defaultDashDirection;
 
@@ -54,7 +55,7 @@ public class Ability_StarWeaving : Ability_Simple
             }
 
             // Do dash.
-            abilityRigidbody.velocity = direction * _dashSpeed;
+            _rigidbody.velocity = direction * _dashVelocity;
 
             yield return null;
         }
