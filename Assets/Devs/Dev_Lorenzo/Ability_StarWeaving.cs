@@ -19,10 +19,39 @@ public class Ability_StarWeaving : Ability_Simple
     {
         base.StartFiring();
         _projectileTimer = 0f;
+        StartCoroutine(StartAbilityDash());
     }
 
-    private IEnumerator StartSpawningProjectiles()
+    protected override void StartWinddown()
     {
+        base.StartWinddown();
+        // Just to be safe.
+        StopAllCoroutines();
+    }
+
+    private IEnumerator StartAbilityDash()
+    {
+        Vector2 direction = _rb.velocity.normalized;
+        if (direction == Vector2.zero) direction = _defaultDashDirection;
+
+        while (stageOfAbility == StageOfAbility.firing)
+        {
+            // Spawn projectiles at intervals.
+            if (_projectileTimer <= 0f)
+            {
+                _projectileTimer = _projectileSpawnInterval;
+                // Spawn projectiles.
+            }
+            else
+            {
+                _projectileTimer -= Time.deltaTime;
+            }
+
+            // Do dash.
+            //_rb.velocity
+
+            yield return null;
+        }
         yield return null;
     }
 }
