@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatedAbility_WindupTimer: 1
-  activatedAbility_FiringTimer: 2
+  activatedAbility_FiringTimer: 1
   activatedAbility_WinddownTimer: 1
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0

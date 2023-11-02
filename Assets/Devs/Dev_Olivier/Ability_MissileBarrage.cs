@@ -8,7 +8,31 @@ public class Ability_MissileBarrage : Ability_Simple
     [SerializeField] private Rigidbody2D missile;
     [SerializeField] private int amountOfMissiles = 5;
     [SerializeField] private float missileForce = 10;
+
     private Rigidbody2D[] missiles;
+    private Vector2 barrageOrigin;
+    private float windupTimer = 0;
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if(stageOfAbility == StageOfAbility.windup)
+        {
+            windupTimer += Time.deltaTime;
+
+            for (int i = 0; i < amountOfMissiles; i++)
+            {
+                //centers arrow of missile above player
+                float xPos = (i * missile.transform.localScale.x) - ((float)amountOfMissiles / 2 * missile.transform.localScale.x) + (missile.transform.localScale.x / 2);
+                Vector2 spawnPosition = new Vector2(barrageOrigin.x + xPos, barrageOrigin.y + (1 - Mathf.Abs(xPos)));
+
+                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, spawnPosition, windupTimer);
+
+            }
+        }
+
+    }
 
     protected override void StartWindup()
     {
@@ -16,15 +40,12 @@ public class Ability_MissileBarrage : Ability_Simple
 
         missiles = new Rigidbody2D[amountOfMissiles];
 
+        barrageOrigin = transform.position;
+
         for (int i = 0; i < amountOfMissiles; i++)
         {
-
-            //centers arrow of missile above player
-            float xPos = (i*missile.transform.localScale.x) - ((float)amountOfMissiles/2*missile.transform.localScale.x) + (missile.transform.localScale.x/2);
-            Vector2 spawnPosition = new Vector2(transform.position.x + xPos, transform.position.y + (1-Mathf.Abs(xPos)));
-
             //create missiles in scene and keep track of them
-            Rigidbody2D newMissile = Instantiate(missile, spawnPosition, Quaternion.identity);
+            Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.identity);
             newMissile.GetComponent<Collider2D>().enabled = false;
             missiles[i] = newMissile;
         }
