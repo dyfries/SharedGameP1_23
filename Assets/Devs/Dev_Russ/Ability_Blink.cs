@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Ability_Blink : Ability_Simple
 {
-    [Header("Now in Ability Blink Subclass")]
-    public PlayerController pc;
+    [Header("Ability Blink Subclass")]
     public Rigidbody2D rb;
     private Transform selfTransform;
     private Vector2 cachedSpeed;
@@ -28,16 +27,6 @@ public class Ability_Blink : Ability_Simple
             enabled = false;
         }
 
-        pc = GetComponent<PlayerController>();
-        if (pc == null)
-        {
-            Debug.LogWarning("No Rigidbody2D found");
-            enabled = false;
-        }
-        else
-        {
-
-        }
         selfTransform = transform;
     }
 
@@ -47,14 +36,14 @@ public class Ability_Blink : Ability_Simple
         base.StartFiring();
 
         if (!staticDistance)
-        {
+        {//Distance based on velocity
             cachedSpeed = rb.velocity;
             Debug.Log(rb.velocity);
             blinkDistance = cachedSpeed / blinkMultiplier;
             Debug.Log(blinkDistance);
         }
         else
-        {
+        {//Set distance
             if (rb.velocity.x < -1)
             {
                 blinkDistance.x -= baseDistance;
@@ -81,6 +70,8 @@ public class Ability_Blink : Ability_Simple
     protected override void StartWinddown()
     {
         base.StartWinddown();
+
+        //Return blinkDistance to 0, to prevent continuous growth
         blinkDistance = new Vector2(0, 0);
     }
 }
