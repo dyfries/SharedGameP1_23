@@ -17,9 +17,10 @@ public class Ability_Blink : Ability_Simple
     [SerializeField] private bool staticDistance = false;
     protected void Start()
     {
+        //We want instant teleportation
         activatedAbility_WindupTimer = 0f;
 
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponentInParent<Rigidbody2D>();
         if (rb == null)
         {
             Debug.LogWarning("No Rigidbody2D found");
@@ -58,6 +59,7 @@ public class Ability_Blink : Ability_Simple
             {
                 blinkDistance.y += baseDistance;
             }
+            Debug.Log(blinkDistance);
         }
 
         //Add the blink distance to the player's current position
