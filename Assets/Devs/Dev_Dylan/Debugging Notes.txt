@@ -1,0 +1,53 @@
+Bugs and errors and stuff list:  
+
+Minor Bugs - Easy Fixed - 5 min 
+
+Spawner: 
+
+
+        GameObject go = Instantiate(prefabToSpawn, spawnLocation ,Quaternion.identity, transform);
+
+        go.GetComponent<NPCMovement>().pattern = _settingsArray[_waveIndex].GetFlightPattern();        
+        // Spawn <NPCMovement> 
+
+        Make sure it exists before grabbing scripts. 
+        make sure settings array index and object exists before grabbing value. 
+
+
+
+
+ - Prefab var in both settings and spawner (which is it? remove the other)
+ - NPC spawn count. Spawner is always spawning and extra one (down to 0. )
+
+
+ Settings:
+
+  V Shape is a Wave pattern not a flight pattern. 
+  Local offset (slider ) should go to 0 (min)
+  wave speed - should go to close to 0 (what is a good min) 
+  Has both delay between spawns and wave speed, which is it? Wave speed does nothing rn? 
+  Sequential / L R offsets could all be the same if the local offset included -ve values. 
+
+  Wave offset doesn't work yet. 
+
+NPC: 
+
+Start Move Y - should this be set by spawner? 
+
+Move X and Start move Y could be a vector. 
+
+Flip time - naming? Only makes sense in context of zip zag
+
+  rigid.AddForce(new Vector2(moveX, 0) * speed, ForceMode2D.Impulse); // Impulse is for applying a single frame worth of force, use ForceMode2D.Force here. 
+
+
+Whole V Shape - Kind of a little specific, maybe we could make it more general, like Move in VectorA for time tA, then move in Vector B for tB? Like a sequence of movement steps? 
+
+//             rigid.velocity = new Vector2(0, 0);
+
+This is what gives it its halting feeling, just give force in opposite direction (you could also apply an impulse to help it change more quickly. )
+
+
+Major bugs - More work - investigate further or discuss solutions
+
+Fixes - Values for the sliders, naming of vars are not clearFuture Features
