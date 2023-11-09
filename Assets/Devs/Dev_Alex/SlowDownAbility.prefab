@@ -52,4 +52,5 @@ MonoBehaviour:
   abilityRigidbody: {fileID: 0}
   DEBUG_MODE: 0
   radius: 5
-  slowDownRate: 0.5
+  slowDownRate: 0.7
+  freezeBlock: {fileID: 5403427817954351278, guid: d0a26c4f640c017409673b0eeb52084c, type: 3}

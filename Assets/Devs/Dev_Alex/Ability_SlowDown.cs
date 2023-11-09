@@ -12,6 +12,7 @@ public class Ability_SlowDown : Ability_Simple
 
     private List<GameObject> objectsInRadius = new List<GameObject>();  // a list of the objects within radius
     private float initialDrag;  // A variable to kepe track of the objects initial drag
+    public GameObject freezeBlock;
     protected void Start()
     {
         gameObject.AddComponent<CircleCollider2D>();
@@ -38,6 +39,7 @@ public class Ability_SlowDown : Ability_Simple
         {
             if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
             {
+                Instantiate(freezeBlock, objectsInRadius[i].transform.position, objectsInRadius[i].transform.rotation, objectsInRadius[i].transform); //puts the object in a freeze block
                 objectsInRadius[i].GetComponent<SpriteRenderer>().color = Color.blue; //temp color change to show animation
             }
         }
@@ -87,11 +89,11 @@ public class Ability_SlowDown : Ability_Simple
         for (int i = 0; i < objectsInRadius.Count; i++) // go through every object in radius
         {
             objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = -slowDownRate; //reverse slow down rate
-            if (objectsInRadius[i].gameObject.name.Contains("NPC"))
+            if (objectsInRadius[i].gameObject.name.Contains("NPC")) //check if game object is an NPC
             {
                 Rigidbody2D rb = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>();
                 float forceAmount = objectsInRadius[i].gameObject.GetComponent<BaseNPC>().startMoveForceY;
-                rb.AddForce(new Vector2 (0,forceAmount)); //so speed continues
+                rb.AddForce(new Vector2 (0,forceAmount), ForceMode2D.Impulse); //so speed continues, using impulse right now
             }
         }
     }
