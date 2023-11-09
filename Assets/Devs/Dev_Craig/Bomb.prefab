@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8479616870196878328}
   - component: {fileID: 2190504630137534846}
   - component: {fileID: 3280572794497613364}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,5 +166,4 @@ MonoBehaviour:
   activatedAbility_WinddownTimer: 1
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
-  abilityRigidbody: {fileID: 8479616870196878328}
   DEBUG_MODE: 0

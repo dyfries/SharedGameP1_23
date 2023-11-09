@@ -19,7 +19,8 @@ public class Ability_Bomb : Ability_Simple
     {
         base.StartWindup();
         //Instansiate Projectile
-        GameObject spawnedBomb = Instantiate(this.gameObject, new Vector2(0f, 0f), Quaternion.identity);
+        GameObject spawnedBomb = Instantiate(this.gameObject, transform.parent.GetComponent<Transform>().position, Quaternion.identity);
+        Debug.Log(transform.parent.GetComponent<Transform>().position);
         spriteRenderer = spawnedBomb.GetComponent<SpriteRenderer>();
         spawnedCollider = spawnedBomb.GetComponent <CircleCollider2D>();
         spriteRenderer.enabled = true;
