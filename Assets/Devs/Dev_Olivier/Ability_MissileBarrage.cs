@@ -73,14 +73,6 @@ public class Ability_MissileBarrage : Ability_Simple
 
         StartCoroutine(StageredFire());
 
-        //old code launches missles all at same time
-        //
-        //foreach (Rigidbody2D rb in missiles)
-        //{
-        //    rb.AddForce(Vector2.up * missileForce, ForceMode2D.Impulse);
-        //    rb.GetComponent<Collider2D>().enabled = true;
-        //}
-
     }
 
     IEnumerator StageredFire()
