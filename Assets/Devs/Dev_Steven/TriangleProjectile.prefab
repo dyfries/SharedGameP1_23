@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2081156362006355983
 Transform:
   m_ObjectHideFlags: 0
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.16
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -603,7 +603,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    gravitySource: 0
+    gravitySource: 1
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -4838,6 +4838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2239981746660492527}
   - component: {fileID: 359209429816787159}
+  - component: {fileID: -3411099614055476868}
   - component: {fileID: 2946882374922764550}
   - component: {fileID: 45098233659159778}
   m_Layer: 7
@@ -4856,8 +4857,8 @@ Transform:
   m_GameObject: {fileID: 7077374961082085434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.076, y: -1.591, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2689201376893747170}
@@ -4916,6 +4917,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3411099614055476868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7077374961082085434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b675d472e3ddfee408622a9fcbd1c091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTriggerEnter_Event:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionEnter_Event:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyOnCollision: 1
+  destroyOnTrigger: 1
+  spawnOnCollision: 1
+  spawnOnTrigger: 1
+  objectToSpawn: {fileID: 7506890194209598262, guid: a8baf382e9dbea04d95041732f700a66, type: 3}
+  DEBUG_MODE: 0
 --- !u!50 &2946882374922764550
 Rigidbody2D:
   serializedVersion: 4

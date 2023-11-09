@@ -325,15 +325,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694b4c4c014b60a458e3f014647a28f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activatedAbility_WindupTimer: 1
-  activatedAbility_FiringTimer: 2
+  activatedAbility_WindupTimer: 0.5
+  activatedAbility_FiringTimer: 1
   activatedAbility_WinddownTimer: 1
-  activatedAbility_CooldownTimer: 3
+  activatedAbility_CooldownTimer: 1
   stageOfAbility: 0
   DEBUG_MODE: 0
   projectilePrefab: {fileID: 7077374961082085434, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
   explosionPrefab: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
   projectileCount: 10
+  projectileSpeed: 2
 --- !u!1 &5363076298248227533
 GameObject:
   m_ObjectHideFlags: 0

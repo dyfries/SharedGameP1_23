@@ -12,6 +12,7 @@ public class Ability_HellFire : Ability_Simple
     //public float destroyAbilityIn = 2f;
 
     public int projectileCount;
+    public float projectileSpeed;
     private float angleStep;
 
     private GameObject[] projectiles;
@@ -49,10 +50,14 @@ public class Ability_HellFire : Ability_Simple
         for (int i = 0; i < projectileCount; i++)
         {
             float angle = i * angleStep;
+            Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
             GameObject projectile;
             //projectile = Instantiate(projectilePrefab, transform.position, Random.rotation, gameObject.transform);
-            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(0f, 0f, angle), gameObject.transform);
-            projectile.GetComponent<Rigidbody2D>().AddForce(transform.forward * 5f, ForceMode2D.Impulse);
+            projectile = Instantiate(projectilePrefab, transform.position, rotation, gameObject.transform);
+            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.transform.up * projectileSpeed, ForceMode2D.Impulse);
+
+            Destroy(projectile, 3f);
         }
 
         base.StartWindup();

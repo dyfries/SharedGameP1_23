@@ -729,14 +729,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Steven
       objectReference: {fileID: 0}
-    - target: {fileID: 2952683817922155675, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7378205887430790177, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7544014668475222762, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -792,11 +784,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2239981746660492527, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.076
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2239981746660492527, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.591
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2239981746660492527, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
       propertyPath: m_LocalPosition.z
