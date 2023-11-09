@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2821936703795463604}
-  - component: {fileID: 8508150421867749779}
+  - component: {fileID: 3832979199679129517}
   m_Layer: 0
   m_Name: PlayerAbility_Lazer
   m_TagString: Untagged
@@ -139,7 +139,7 @@ Transform:
   - {fileID: 8609089521264202453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8508150421867749779
+--- !u!114 &3832979199679129517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,24 +148,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7470418316160927018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d7e65cffeb508349b9711f5c56353ab, type: 3}
+  m_Script: {fileID: 11500000, guid: fdff9219167fd5c479e12579779153b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activatedAbility_WindupTimer: 1
-  activatedAbility_FiringTimer: 1
-  activatedAbility_WinddownTimer: 2
+  activatedAbility_FiringTimer: 2
+  activatedAbility_WinddownTimer: 1
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
   abilityRigidbody: {fileID: 6323492970882524978}
-  currentArtStyle: 1
-  spriteRenderer: {fileID: 3696231824765123332}
-  readySprite: {fileID: 755393123, guid: 3a7e0c191199bef419ebb99404fee540, type: 3}
-  windupSprite: {fileID: 1250782008, guid: 3a7e0c191199bef419ebb99404fee540, type: 3}
-  firingSprite: {fileID: -402540857, guid: 3a7e0c191199bef419ebb99404fee540, type: 3}
-  winddownSprite: {fileID: 561210439, guid: 3a7e0c191199bef419ebb99404fee540, type: 3}
-  cooldownSprite: {fileID: -731570306, guid: 3a7e0c191199bef419ebb99404fee540, type: 3}
+  DEBUG_MODE: 0
+  boostSpeed: {x: 0, y: 0}
   anim: {fileID: 5196258595802570312}
-  DEBUG_MODE: 1
 --- !u!1 &8594460444634355461
 GameObject:
   m_ObjectHideFlags: 0
