@@ -7,8 +7,10 @@ public class Invincibility_Ability : Ability_Simple
     [Header("Invinisbilty")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CircleCollider2D collide;
+    [SerializeField] private LayerMask nothingLayer;
+    [SerializeField] private LayerMask npcLayer;
     private Color defaultColor = Color.white;
-    private Color invinsibilityColor = Color.grey;
+    private Color invinsibilityColor = Color.grey; // Change this to lerp colors
 
     protected override void StartWindup()
     {
@@ -22,7 +24,9 @@ public class Invincibility_Ability : Ability_Simple
         base.StartFiring();
 
         // Stop collisions by turning off collider
-        collide.enabled = false;
+        // Stop collisions with enemies only
+        collide.excludeLayers = npcLayer;
+        //collide.enabled = false;
     }
 
     protected override void StartCooldown()
@@ -30,7 +34,8 @@ public class Invincibility_Ability : Ability_Simple
         base.StartCooldown();
 
         // Return to colliding
-        collide.enabled = true;
+        //collide.enabled = true;
+        collide.excludeLayers = nothingLayer;
 
         // Stop invinsibility flashing
         spriteRenderer.color = defaultColor;
