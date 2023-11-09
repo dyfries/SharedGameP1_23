@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8060324528584972278}
   - component: {fileID: 3762732614928108934}
   - component: {fileID: 3346544400418746681}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BrokenBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 8490738662062484033}
   - component: {fileID: 7342425063138719607}
   - component: {fileID: 3605642621025558078}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
