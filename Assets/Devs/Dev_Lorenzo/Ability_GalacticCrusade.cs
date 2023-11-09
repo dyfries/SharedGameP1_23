@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability_CosmicBombardment : Ability_Simple
+public class Ability_GalacticCrusade : Ability_Simple
 {
     // On activation, starts bombardment.
     // Bombardment persists for a duration, independent from this ability (working similarly to a buff).
