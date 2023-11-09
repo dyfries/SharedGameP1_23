@@ -29,8 +29,15 @@ public class Ability_SlowDown : Ability_Simple
     {
         base.StartFiring();
         SlowDown(); //call slow down
-        
+
         //animation
+        for (int i = 0; i < objectsInRadius.Count; i++)
+        {
+            if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
+            {
+                objectsInRadius[i].GetComponent<SpriteRenderer>().color = Color.blue; //temp color change to show animation
+            }
+        }
     }
 
     protected override void StartWinddown()
@@ -39,6 +46,13 @@ public class Ability_SlowDown : Ability_Simple
         StopSlowDown(); //reverse slow down
 
         //animation
+        for (int i = 0; i < objectsInRadius.Count; i++)
+        {
+            if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
+            {
+                objectsInRadius[i].GetComponent<SpriteRenderer>().color = Color.white; //temp color change to show animation
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
