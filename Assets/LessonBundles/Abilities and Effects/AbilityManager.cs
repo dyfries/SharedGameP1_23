@@ -33,15 +33,20 @@ public class AbilityManager : MonoBehaviour {
         }
     }
 
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            SelectNextAbility();
+        }
+
+        if (Input.GetButtonDown("Jump")) {
+            Activate();
+        }
+    }
 
     // Start is called before the first frame update
     void Start() {
-        Debug.Log("-- Testing One ability at a time -- ");
-        Activate();
-        SelectNextAbility();
-        Activate();
-
-        Debug.Log("-- Testing Whole Array of Abilities at once -- ");
-        ActivateAll();
+        if(abilityList.Length > 0) {
+            currentAbility = abilityList[0];
+        }
     }
 }
