@@ -49,7 +49,11 @@ public class Ability_Bomb : Ability_Simple
 
         //Enable collider
         if(spawnedCollider != null)
+        {
             spawnedCollider.enabled = true;
+            StartCoroutine(TurnOffCollider());
+        }
+           
 
         //Stop projectile from moving
         if(bombRigidBody != null)
@@ -67,8 +71,15 @@ public class Ability_Bomb : Ability_Simple
         //Disable collider and destroy the dead bomb
         if(spawnedCollider != null)
         {
+            StopAllCoroutines();
             Destroy(spawnedCollider.gameObject);
         }
        
+    }
+
+    private IEnumerator TurnOffCollider()
+    {
+        yield return new WaitForSeconds(0.3f);
+        spawnedCollider.enabled = false;
     }
 }
