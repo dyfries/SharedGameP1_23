@@ -38,7 +38,6 @@ public class Ability_GalacticCrusade : Ability_Simple
     {
         base.StartWinddown();
         // Just to be safe.
-        StopAllCoroutines();
     }
 
     private void OnDrawGizmos()
