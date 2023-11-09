@@ -14,8 +14,9 @@ public class Ability_SlowDown : Ability_Simple
     private float initialDrag;  // A variable to kepe track of the objects initial drag
     protected void Start()
     {
-        gameObject.GetComponent<CircleCollider2D>().radius = radius; //sets player's radius to the radius variable
+        gameObject.AddComponent<CircleCollider2D>();
         gameObject.GetComponent<CircleCollider2D>().isTrigger = true; //makes the collider a trigger
+        gameObject.GetComponent<CircleCollider2D>().radius = radius; //sets player's radius to the radius variable
     }
 
     // Update is called once per frame
