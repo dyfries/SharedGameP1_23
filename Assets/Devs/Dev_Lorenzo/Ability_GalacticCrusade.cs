@@ -15,24 +15,20 @@ public class Ability_GalacticCrusade : Ability_Simple
     [SerializeField] private int _spawnAreaWidth = 1;
     [SerializeField] private bool _previewSpawnAreaGizmo = false;
 
-    private List<GalacticCrusadeSpawner> _spawnerInstances = new();
-
     private void Awake()
     {
         // TODO: Spawners should already be part of this ability prefab.
         // Create and initialize spawners.
         foreach (GalacticCrusadeSpawner spawner in _spawners)
         {
-            GalacticCrusadeSpawner spawnerInstance = Instantiate(spawner, gameObject.transform);
-            spawnerInstance.InitializeSpawner(_spawnAreaCenter, _spawnAreaWidth);
-            _spawnerInstances.Add(spawnerInstance);
+            spawner.InitializeSpawner(_spawnAreaCenter, _spawnAreaWidth);
         }
     }
 
     protected override void StartFiring()
     {
         base.StartFiring();
-        foreach (GalacticCrusadeSpawner spawner in _spawnerInstances)
+        foreach (GalacticCrusadeSpawner spawner in _spawners)
         {
             spawner.StartSpawner();
         }
