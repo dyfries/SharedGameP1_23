@@ -49,7 +49,6 @@ public class Ability_Blink : Ability_Simple
             else if (rb.velocity.x > 1)
             {
                 blinkDistance.x += baseDistance;
-
             }
             if (rb.velocity.y < -1)
             {
@@ -74,3 +73,35 @@ public class Ability_Blink : Ability_Simple
         blinkDistance = new Vector2(0, 0);
     }
 }
+
+
+//Task List
+/*
+ * [o] Base blink mechanic working (bugs are fine rn)
+ * 
+ * Incorporate levels of the ability (3 levels for starters)
+ *      Level 1: base blink, with barrier that damages set area around player
+ *      Level 2: lower the cooldown, enlarge the barrier
+ *      Level 3: allow barrier to reverse projectiles velocity
+ *      
+ * 
+ * Level 1:
+ *  [0] Base blink movement
+ *  [] Create enum state that provides level of ability //subject to change for other ways
+ *  [] Create variables for level 1
+ *  [] Barrier around player on exit
+ *
+ * Level 2:
+ *  [] Create variables for level 2
+ *  [] Enlarge barrier
+ *  
+ * Level 3:
+ *  [] Create collider detection method
+ *  [] Reverse rigidbody2d velocities affected
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
