@@ -10,7 +10,12 @@ public class Ability_Blink : Ability_Simple
     private Vector2 cachedSpeed;
     private Vector2 blinkDistance;
     [SerializeField] private float baseDistance = 5f;
-    [SerializeField] private Animation blinkAnimation;
+
+    [Header("Animations")]
+    public Animator anim;
+    private string anim_windupString = "Blink_WindUp";
+    private string anim_teleportString = "Blink_Teleport";
+    private string anim_winddownString = "Blink_Winddown";
     [SerializeField] private GameObject blinkBubble;
 
 
@@ -21,8 +26,8 @@ public class Ability_Blink : Ability_Simple
     [SerializeField] private bool staticDistance = false;
     protected void Start()
     {
-        //We want instant teleportation
-        activatedAbility_WindupTimer = 0f;
+        //We want almost instant teleportation
+        activatedAbility_WindupTimer = 0.5f;
 
         rb = GetComponentInParent<Rigidbody2D>();
         if (rb == null)
@@ -30,13 +35,30 @@ public class Ability_Blink : Ability_Simple
             Debug.LogWarning("No Rigidbody2D found");
             enabled = false;
         }
+
+        if (anim == null)
+        {
+            anim = GetComponentInChildren<Animator>();
+            if (anim == null)
+            {
+                Debug.LogWarning("Animator cannot be found by Huge Lazer ability");
+            }
+        }
+
     }
 
+    protected override void StartWindup()
+    {
+        base.StartWindup();
+
+        anim.SetBool(anim_windupString, true);
+    }
     protected override void StartFiring()
     {
 
         base.StartFiring();
-
+        anim.SetBool(anim_windupString, false);
+        anim.SetBool(anim_teleportString, true);
         // Will choose what kind of movement is used dependant on whether boolean is on
         if (!staticDistance)
         {// Distance based on velocity
@@ -76,6 +98,9 @@ public class Ability_Blink : Ability_Simple
 
         //Return blinkDistance to 0, to prevent continuous growth
         blinkDistance = new Vector2(0, 0);
+
+        anim.SetBool(anim_teleportString, false);
+        anim.SetBool(anim_winddownString, true);
     }
 
 }
