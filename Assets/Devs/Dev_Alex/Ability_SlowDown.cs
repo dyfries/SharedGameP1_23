@@ -6,37 +6,39 @@ using UnityEngine;
 
 public class Ability_SlowDown : Ability_Simple
 {
-    // Start is called before the first frame update
-    private int radius = 5;
-    private float slowDownRate = 0.5f;
-    private List<GameObject> objectsInRadius = new List<GameObject>(); 
-    private float initialDrag; 
+    [Header("Slow Down Ability Settings")]
+    [SerializeField] private int radius = 5; //radius of player 
+    [SerializeField] private float slowDownRate = 0.5f; // rate to add to drag to slow down object
+
+    private List<GameObject> objectsInRadius = new List<GameObject>();  // a list of the objects within radius
+    private float initialDrag;  // A variable to kepe track of the objects initial drag
     protected void Start()
     {
-        gameObject.GetComponent<CircleCollider2D>().radius = radius;
-        gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
+        gameObject.GetComponent<CircleCollider2D>().radius = radius; //sets player's radius to the radius variable
+        gameObject.GetComponent<CircleCollider2D>().isTrigger = true; //makes the collider a trigger
     }
 
     // Update is called once per frame
+    protected override void StartWindup()
+    {
+        base.StartWindup(); 
+
+        //animation
+    }
     protected override void StartFiring()
     {
         base.StartFiring();
-        for(int i =0; i< objectsInRadius.Count; i++)
-        {
-            initialDrag = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag;
-            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = initialDrag+ slowDownRate;
-        }
+        SlowDown(); //call slow down
+        
+        //animation
     }
 
     protected override void StartWinddown()
     {
         base.StartWinddown();
-        for (int i = 0; i < objectsInRadius.Count; i++)
-        {
-            initialDrag = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag;
-            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = -slowDownRate;
-        }
+        StopSlowDown(); //reverse slow down
 
+        //animation
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,6 +54,21 @@ public class Ability_SlowDown : Ability_Simple
             objectsInRadius.Remove(collision.gameObject);
         }
     }
+    
+    private void SlowDown()
+    {
+        for (int i = 0; i < objectsInRadius.Count; i++)
+        {
+            initialDrag = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag;
+            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = initialDrag + slowDownRate;
+        }
+    }
 
-
+    private void StopSlowDown()
+    {
+        for (int i = 0; i < objectsInRadius.Count; i++) // go through every object in radius
+        {
+            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = -slowDownRate;
+        }
+    }
 }
