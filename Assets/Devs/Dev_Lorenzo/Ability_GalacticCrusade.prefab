@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1839765505576930682}
   - component: {fileID: 7722693464782458179}
   m_Layer: 0
-  m_Name: Ability_CosmicBombardment
+  m_Name: Ability_GalacticCrusade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
