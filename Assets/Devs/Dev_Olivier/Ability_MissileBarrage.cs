@@ -8,14 +8,21 @@ public class Ability_MissileBarrage : Ability_Simple
     [SerializeField] private Rigidbody2D missile;
     [SerializeField] private int amountOfMissiles = 5;
     [SerializeField] private float missileForce = 10;
+    [SerializeField] private AnimationCurve windupCurve;
 
     private Rigidbody2D[] missiles;
+    private Vector3[] startRotations;
     private Vector2 barrageOrigin;
     private float windupTimer = 0;
 
     protected override void Update()
     {
         base.Update();
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            ActivateAbility();
+        }
 
         if(stageOfAbility == StageOfAbility.windup)
         {
@@ -27,8 +34,13 @@ public class Ability_MissileBarrage : Ability_Simple
                 float xPos = (i * missile.transform.localScale.x) - ((float)amountOfMissiles / 2 * missile.transform.localScale.x) + (missile.transform.localScale.x / 2);
                 Vector2 spawnPosition = new Vector2(barrageOrigin.x + xPos, barrageOrigin.y + (1 - Mathf.Abs(xPos)));
 
-                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, spawnPosition, windupTimer);
+                //lerps missiles from player position to their desired position in arrow formation
+                //happens in first half of the windup
+                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, spawnPosition, windupCurve.Evaluate(windupTimer*2));
 
+                //lerps rotaion to be forward
+                //happens in second half of the windup
+                missiles[i].transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((windupTimer*2)-1));
             }
         }
 
@@ -38,16 +50,19 @@ public class Ability_MissileBarrage : Ability_Simple
     {
         base.StartWindup();
 
-        missiles = new Rigidbody2D[amountOfMissiles];
+        windupTimer = 0;
 
+        missiles = new Rigidbody2D[amountOfMissiles];
+        startRotations = new Vector3[amountOfMissiles];
         barrageOrigin = transform.position;
 
         for (int i = 0; i < amountOfMissiles; i++)
         {
             //create missiles in scene and keep track of them
-            Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.identity);
+            Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.Euler(Vector3.forward* Random.Range(0f,360f)));
             newMissile.GetComponent<Collider2D>().enabled = false;
             missiles[i] = newMissile;
+            startRotations[i] = missiles[i].transform.rotation.eulerAngles;
         }
 
     }
