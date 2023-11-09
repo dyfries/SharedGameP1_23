@@ -19,6 +19,7 @@ public class Ability_GalacticCrusade : Ability_Simple
 
     private void Awake()
     {
+        // TODO: Spawners should already be part of this ability prefab.
         // Create and initialize spawners.
         foreach (GalacticCrusadeSpawner spawner in _spawners)
         {
