@@ -24,9 +24,9 @@ public class Ability_MissileBarrage : Ability_Simple
             ActivateAbility();
         }
 
-        if(stageOfAbility == StageOfAbility.windup)
+        if (stageOfAbility == StageOfAbility.windup)
         {
-            windupTimer += Time.deltaTime/activatedAbility_WindupTimer;
+            windupTimer += Time.deltaTime / activatedAbility_WindupTimer;
 
             for (int i = 0; i < amountOfMissiles; i++)
             {
@@ -36,11 +36,11 @@ public class Ability_MissileBarrage : Ability_Simple
 
                 //lerps missiles from player position to their desired position in arrow formation
                 //happens in first half of the windup
-                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, spawnPosition, windupCurve.Evaluate(windupTimer*2));
+                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, spawnPosition, windupCurve.Evaluate(windupTimer * 2));
 
                 //lerps rotaion to be forward
                 //happens in second half of the windup
-                missiles[i].transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((windupTimer*2)-1));
+                missiles[i].transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((windupTimer * 2) - 1));
             }
         }
 
@@ -59,7 +59,7 @@ public class Ability_MissileBarrage : Ability_Simple
         for (int i = 0; i < amountOfMissiles; i++)
         {
             //create missiles in scene and keep track of them
-            Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.Euler(Vector3.forward* Random.Range(0f,360f)));
+            Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)));
             newMissile.GetComponent<Collider2D>().enabled = false;
             missiles[i] = newMissile;
             startRotations[i] = missiles[i].transform.rotation.eulerAngles;
@@ -85,19 +85,26 @@ public class Ability_MissileBarrage : Ability_Simple
 
     IEnumerator StageredFire()
     {
-        //staggers when missiles are fired for coolness points
-        for (int i = 0; i < amountOfMissiles; i++)
+        for (int i = 0; i < amountOfMissiles; i ++)
         {
-            int missileToGet = i;
-            if(i % 2 == 1)
+            int currentMissile;
+
+            //stagger order being launched so that edges go first and middle goes last
+            if (i % 2 == 0)
             {
-                missileToGet = (amountOfMissiles - i);
+                currentMissile = i / 2;
             }
+            else
+            {
+                currentMissile = amountOfMissiles - Mathf.CeilToInt((float)i/2f);
+            }
+
             //calculate how long to wait based on how many missles we need to fire in how much time
             yield return new WaitForSeconds(activatedAbility_FiringTimer / amountOfMissiles);
-            missiles[missileToGet].AddForce(Vector2.up * missileForce, ForceMode2D.Impulse);
-            missiles[missileToGet].GetComponent<Collider2D>().enabled = true;
+            missiles[currentMissile].AddForce(Vector2.up * missileForce, ForceMode2D.Impulse);
+            missiles[currentMissile].GetComponent<Collider2D>().enabled = true;
         }
+
     }
 
 }

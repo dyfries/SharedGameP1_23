@@ -791,6 +791,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7504686942398894420}
     m_Modifications:
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: amountOfMissiles
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: activatedAbility_WindupTimer
       value: 1
       objectReference: {fileID: 0}
