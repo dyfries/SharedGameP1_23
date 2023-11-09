@@ -13,9 +13,7 @@ public class Ability_Blink : Ability_Simple
 
     [Header("Animations")]
     public Animator anim;
-    private string anim_windupString = "Blink_WindUp";
-    private string anim_teleportString = "Blink_Teleport";
-    private string anim_winddownString = "Blink_Winddown";
+    private string anim_windupString = "WindUp";
     [SerializeField] private GameObject blinkBubble;
 
 
@@ -58,7 +56,6 @@ public class Ability_Blink : Ability_Simple
 
         base.StartFiring();
         anim.SetBool(anim_windupString, false);
-        anim.SetBool(anim_teleportString, true);
         // Will choose what kind of movement is used dependant on whether boolean is on
         if (!staticDistance)
         {// Distance based on velocity
@@ -99,8 +96,6 @@ public class Ability_Blink : Ability_Simple
         //Return blinkDistance to 0, to prevent continuous growth
         blinkDistance = new Vector2(0, 0);
 
-        anim.SetBool(anim_teleportString, false);
-        anim.SetBool(anim_winddownString, true);
     }
 
 }
