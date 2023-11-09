@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3945656806590045142}
+  - {fileID: 3543358485697357698}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7722693464782458179
@@ -51,10 +51,11 @@ MonoBehaviour:
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
   DEBUG_MODE: 0
-  _spawnAreaPosition: {x: 0, y: 0}
+  _spawners: []
+  _spawnAreaCenter: {x: 0, y: 0}
   _spawnAreaWidth: 1
   _previewSpawnAreaGizmo: 0
---- !u!1 &1315554123537638390
+--- !u!1 &7871398472854634059
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,21 +63,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3945656806590045142}
+  - component: {fileID: 3543358485697357698}
+  - component: {fileID: 5057765006942154332}
   m_Layer: 0
-  m_Name: Projectile Spawn Point
+  m_Name: Crusade Spawner (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3945656806590045142
+--- !u!4 &3543358485697357698
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315554123537638390}
+  m_GameObject: {fileID: 7871398472854634059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -85,3 +87,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1839765505576930682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5057765006942154332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871398472854634059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c354aafa588da44af1aab4b55e8bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _npcToSpawn: {fileID: 3963591687228475006, guid: 335b63b5af5882d4aacfe710fe471b72, type: 3}
+  _spawnInterval: 1
+  _spawnDelay: 0
+  _maxSpawnCount: 1
+  _spawnAreaCenter: {x: 0, y: 0}
+  _spawnAreaWidth: 1
