@@ -6,8 +6,8 @@ public class Ability_ShotGunBlast : Ability_Simple
 {
 
     [Header("Now in Ability ShotGunBlast Subclass")]
-    public GameObject projectile;
-    public Transform playerPos;
+    public GameObject projectile; //rigidbody2d?
+    public Transform startPoint;
 
     protected void Start()
     {
@@ -24,10 +24,10 @@ public class Ability_ShotGunBlast : Ability_Simple
         base.StartFiring();
 
         // Add projectiles
-
-        Instantiate(projectile, playerPos, /*Quaternion.Angle(*/);
-        Instantiate(projectile, playerPos);
-        Instantiate(projectile, playerPos);
+        /*GameObject newProjectile = */
+        Instantiate(projectile, startPoint/*,Quaternion.AngleAxis()    Quaternion.Angle(transform.rotation, */);
+        Instantiate(projectile, startPoint);
+        Instantiate(projectile, startPoint);
 
     }
 
