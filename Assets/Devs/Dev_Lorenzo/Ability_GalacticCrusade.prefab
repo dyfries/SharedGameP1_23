@@ -45,16 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fefe5e955dea9428ed66d5c088c36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activatedAbility_WindupTimer: 1
-  activatedAbility_FiringTimer: 2
-  activatedAbility_WinddownTimer: 1
+  activatedAbility_WindupTimer: 0
+  activatedAbility_FiringTimer: 0
+  activatedAbility_WinddownTimer: 0
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
-  DEBUG_MODE: 0
-  _spawners: []
+  DEBUG_MODE: 1
+  _spawners:
+  - {fileID: 5057765006942154332}
   _spawnAreaCenter: {x: 0, y: 0}
-  _spawnAreaWidth: 1
-  _previewSpawnAreaGizmo: 0
+  _spawnAreaWidth: 10
+  _previewSpawnAreaGizmo: 1
 --- !u!1 &7871398472854634059
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +103,6 @@ MonoBehaviour:
   _npcToSpawn: {fileID: 3963591687228475006, guid: 335b63b5af5882d4aacfe710fe471b72, type: 3}
   _spawnInterval: 1
   _spawnDelay: 0
-  _maxSpawnCount: 1
+  _maxSpawnCount: 5
   _spawnAreaCenter: {x: 0, y: 0}
   _spawnAreaWidth: 1
