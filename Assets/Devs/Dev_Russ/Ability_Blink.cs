@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,10 @@ public class Ability_Blink : Ability_Simple
     public Rigidbody2D rb;
     private Vector2 cachedSpeed;
     private Vector2 blinkDistance;
-    private float baseDistance = 5f;
+    [SerializeField] private float baseDistance = 5f;
+    [SerializeField] private Animation blinkAnimation;
+    [SerializeField] private GameObject blinkBubble;
+
 
     //Either multiply with a base float to get a blink linked with current speed
     //Or use a base distance
@@ -33,15 +37,16 @@ public class Ability_Blink : Ability_Simple
 
         base.StartFiring();
 
+        // Will choose what kind of movement is used dependant on whether boolean is on
         if (!staticDistance)
-        {//Distance based on velocity
+        {// Distance based on velocity
             cachedSpeed = rb.velocity;
             Debug.Log(rb.velocity);
             blinkDistance = cachedSpeed / blinkMultiplier;
             Debug.Log(blinkDistance);
         }
         else
-        {//Set distance
+        {// Set distance
             if (rb.velocity.x < -1)
             {
                 blinkDistance.x -= baseDistance;
@@ -72,6 +77,7 @@ public class Ability_Blink : Ability_Simple
         //Return blinkDistance to 0, to prevent continuous growth
         blinkDistance = new Vector2(0, 0);
     }
+
 }
 
 
@@ -87,6 +93,7 @@ public class Ability_Blink : Ability_Simple
  * 
  * Level 1:
  *  [0] Base blink movement
+ *  [] Incorporate blink animations
  *  [] Create enum state that provides level of ability //subject to change for other ways
  *  [] Create variables for level 1
  *  [] Barrier around player on exit
