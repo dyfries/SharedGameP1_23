@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Ability_Bomb : Ability_Simple
 {
+    //Used to make sure the inital collider is off.
     private CircleCollider2D bombCollider;
+    //Bomb Sprite.
     private SpriteRenderer spriteRenderer;
+    //Collider that will damage enemies.
     private CircleCollider2D spawnedCollider;
+    //How we will apply force to the bomb.
     private Rigidbody2D bombRigidBody;
+    //The amount of force to apply.
     private float bombLaunchSpeed = 1500f;
+    //Ensure we only apply this force once.
     private bool doOnce = true;
 
-    //Acquire virtual functions.
     private void Awake()
     {
         bombCollider = GetComponent<CircleCollider2D>();
@@ -38,7 +43,10 @@ public class Ability_Bomb : Ability_Simple
     protected override void StartFiring()
     {
         base.StartFiring();
+        //Seems like sometimes the impulse would increase as if the button was fired more than once.
+        //This is to attempt to fix that bug.
         doOnce = true;
+
         //Enable collider
         if(spawnedCollider != null)
             spawnedCollider.enabled = true;
@@ -56,7 +64,7 @@ public class Ability_Bomb : Ability_Simple
     protected override void StartWinddown()
     {
         base.StartWinddown();
-        //Disable collider
+        //Disable collider and destroy the dead bomb
         if(spawnedCollider != null)
         {
             Destroy(spawnedCollider.gameObject);
