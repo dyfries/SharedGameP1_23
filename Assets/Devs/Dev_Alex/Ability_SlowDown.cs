@@ -24,6 +24,7 @@ public class Ability_SlowDown : Ability_Simple
         base.StartWindup(); 
 
         //animation
+   
     }
     protected override void StartFiring()
     {
@@ -31,6 +32,7 @@ public class Ability_SlowDown : Ability_Simple
         SlowDown(); //call slow down
 
         //animation
+        //going to implement a freeze blast animation and an animation that freezes objects in radius
         for (int i = 0; i < objectsInRadius.Count; i++)
         {
             if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
@@ -46,6 +48,7 @@ public class Ability_SlowDown : Ability_Simple
         StopSlowDown(); //reverse slow down
 
         //animation
+        //going to implement some sort of melting animation
         for (int i = 0; i < objectsInRadius.Count; i++)
         {
             if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
@@ -82,7 +85,13 @@ public class Ability_SlowDown : Ability_Simple
     {
         for (int i = 0; i < objectsInRadius.Count; i++) // go through every object in radius
         {
-            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = -slowDownRate;
+            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = -slowDownRate; //reverse slow down rate
+            if (objectsInRadius[i].gameObject.name.Contains("NPC"))
+            {
+                Rigidbody2D rb = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>();
+                float forceAmount = objectsInRadius[i].gameObject.GetComponent<BaseNPC>().startMoveForceY;
+                rb.AddForce(new Vector2 (0,forceAmount)); //so speed continues
+            }
         }
     }
 }
