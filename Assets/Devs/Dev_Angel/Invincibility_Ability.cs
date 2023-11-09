@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invisibility_Ability : Ability_Simple
+public class Invincibility_Ability : Ability_Simple
 {
     [Header("Invinisbilty")]
     [SerializeField] private SpriteRenderer spriteRenderer;
