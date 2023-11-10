@@ -197,12 +197,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1839765505576930682, guid: 0972d92194a51d746bdad4c00b23a872, type: 3}
   m_PrefabInstance: {fileID: 177805510}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &217997306 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
-  m_PrefabInstance: {fileID: 393255977}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &393255977
+--- !u!1001 &730502774
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -253,22 +248,6 @@ PrefabInstance:
     - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7722693464782458179, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
-      propertyPath: activatedAbility_FiringTimer
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7722693464782458179, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
-      propertyPath: activatedAbility_WindupTimer
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7722693464782458179, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
-      propertyPath: activatedAbility_CooldownTimer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7722693464782458179, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
-      propertyPath: activatedAbility_WinddownTimer
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -451,6 +430,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1774617711 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+  m_PrefabInstance: {fileID: 730502774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2099102612
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +467,7 @@ Transform:
   m_Children:
   - {fileID: 1596664778}
   - {fileID: 177805511}
-  - {fileID: 217997306}
+  - {fileID: 1774617711}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2099102614
