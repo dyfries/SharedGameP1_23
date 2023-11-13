@@ -52,7 +52,7 @@ public class Ability_MissileBarrage : Ability_Simple
 
                 //lerps rotaion to be forward
                 //happens in second half of the windup
-                missiles[i].transform.rotation = Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((windupTimer * 2) - 1));
+                missiles[i].GetComponent<Projectile_Missile>().setHeadingDirection(Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((windupTimer * 2) - 1)).eulerAngles.z);
             }
         }
 

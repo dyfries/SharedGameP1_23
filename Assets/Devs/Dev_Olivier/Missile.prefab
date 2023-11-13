@@ -473,7 +473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf056f62f4f3a584da1cfadfe356d7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   wobbleAmount: 10
+  wobbleSpeed: 10
   mainThrust: {fileID: 2281305726924438447}
   rightThrust: {fileID: 3818252783736243190}
   leftThrust: {fileID: 7882265242407569080}

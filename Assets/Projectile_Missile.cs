@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class Projectile_Missile : MonoBehaviour
@@ -15,11 +15,12 @@ public class Projectile_Missile : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private AudioSource explodeAudio;
-    private Quaternion headingDirection;
+    private float headingDirection;
 
     private float timer;
 
     public void setMoveSpeed(float _moveSpeed) { moveSpeed = _moveSpeed; }
+    public void setHeadingDirection(float _headingDirection) { headingDirection = _headingDirection; }
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class Projectile_Missile : MonoBehaviour
         explodeAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
 
-        headingDirection = Quaternion.Euler(Vector3.zero);
+        //headingDirection = 0;
 
         timer += Random.Range(0, 10f);
 
@@ -37,8 +38,9 @@ public class Projectile_Missile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         timer += Time.deltaTime * wobbleSpeed;
-        transform.rotation = Quaternion.Euler(Vector3.forward * (Mathf.Sin(timer) * wobbleAmount));
+        transform.rotation = Quaternion.Euler(Vector3.forward * (headingDirection + (Mathf.Sin(timer) * wobbleAmount)));
 
         float rot = transform.rotation.eulerAngles.z;
         rot -= 180;
