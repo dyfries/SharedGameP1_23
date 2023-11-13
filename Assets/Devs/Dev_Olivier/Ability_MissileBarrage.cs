@@ -9,6 +9,7 @@ public class Ability_MissileBarrage : Ability_Simple
     [SerializeField] private int amountOfMissiles = 5;
     [SerializeField] private float missileForce = 10;
     [SerializeField] private AnimationCurve windupCurve;
+    [SerializeField] private float horizontalSpacing = 0;
 
     private Rigidbody2D[] missiles;
     private Vector3[] startRotations;
@@ -42,13 +43,18 @@ public class Ability_MissileBarrage : Ability_Simple
 
             for (int i = 0; i < amountOfMissiles; i++)
             {
+                
+                float missileUnit = missile.transform.localScale.x + (horizontalSpacing* missile.transform.localScale.x/2);
+
+                float xPos = (i * missileUnit) - ((float)amountOfMissiles / 2 * missileUnit) + (missile.transform.localScale.x / 2) + (horizontalSpacing * missile.transform.localScale.x/4);
                 //centers arrow of missile above player
-                float xPos = (i * missile.transform.localScale.x) - ((float)amountOfMissiles / 2 * missile.transform.localScale.x) + (missile.transform.localScale.x / 2);
-                Vector2 spawnPosition = new Vector2(barrageOrigin.x + xPos, barrageOrigin.y + (1 - Mathf.Abs(xPos)));
+                float yPos = windupCurve.Evaluate(1 - (Mathf.Abs(xPos)/1.75f));
+                //Vector2 formationPos = new Vector2(barrageOrigin.x + xPos, barrageOrigin.y + (1 - Mathf.Abs(xPos)));
+                Vector2 formationPos = new Vector2(barrageOrigin.x + xPos,barrageOrigin.y + yPos);
 
                 //lerps missiles from player position to their desired position in arrow formation
                 //happens in first half of the windup
-                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, spawnPosition, windupCurve.Evaluate(windupTimer * 2));
+                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, formationPos, windupCurve.Evaluate(windupTimer * 2));
 
                 //lerps rotaion to be forward
                 //happens in second half of the windup
