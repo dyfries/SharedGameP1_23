@@ -14,6 +14,18 @@ public class Ability_MissileBarrage : Ability_Simple
     private Vector3[] startRotations;
     private Vector2 barrageOrigin;
     private float windupTimer = 0;
+    private AudioSource releaseAudio;
+
+    private void Awake()
+    {
+        releaseAudio = GetComponentInChildren<AudioSource>();
+    }
+
+    public override void ActivateAbility()
+    {
+        base.ActivateAbility();
+        releaseAudio.Play();
+    }
 
     protected override void Update()
     {
