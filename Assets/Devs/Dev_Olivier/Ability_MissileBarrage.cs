@@ -105,7 +105,8 @@ public class Ability_MissileBarrage : Ability_Simple
 
             //calculate how long to wait based on how many missles we need to fire in how much time
             yield return new WaitForSeconds(activatedAbility_FiringTimer / amountOfMissiles);
-            missiles[currentMissile].AddForce(Vector2.up * missileForce, ForceMode2D.Impulse);
+            //missiles[currentMissile].AddForce(Vector2.up * missileForce, ForceMode2D.Impulse);
+            missiles[currentMissile].GetComponent<Projectile_Missile>().setMoveSpeed(missileForce);
             missiles[currentMissile].GetComponent<Collider2D>().enabled = true;
         }
 

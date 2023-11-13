@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Projectile_Missile : MonoBehaviour
 {
+    [SerializeField] float moveSpeed = 0;
+
+    [SerializeField] float wobbleAmount = 10;
+    [SerializeField] float wobbleSpeed = 10;
 
     [SerializeField] GameObject mainThrust;
     [SerializeField] GameObject rightThrust;
@@ -11,17 +15,31 @@ public class Projectile_Missile : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private AudioSource explodeAudio;
+    private Quaternion headingDirection;
+
+    private float timer;
+
+    public void setMoveSpeed(float _moveSpeed) { moveSpeed = _moveSpeed; }
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         explodeAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
+
+        headingDirection = Quaternion.Euler(Vector3.zero);
+
+        timer += Random.Range(0, 10f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime * wobbleSpeed;
+        transform.rotation = Quaternion.Euler(Vector3.forward * (Mathf.Sin(timer) * wobbleAmount));
+
         float rot = transform.rotation.eulerAngles.z;
         rot -= 180;
 
@@ -35,6 +53,11 @@ public class Projectile_Missile : MonoBehaviour
 
 
 
+    }
+
+    private void FixedUpdate()
+    {
+        rb.AddForce(transform.up * moveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
