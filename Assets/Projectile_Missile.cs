@@ -9,10 +9,12 @@ public class Projectile_Missile : MonoBehaviour
     [SerializeField] GameObject leftThrust;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private AudioSource explodeAudio;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         explodeAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -48,7 +50,11 @@ public class Projectile_Missile : MonoBehaviour
             }
         }
 
+        animator.SetTrigger("Explode");
+
         rb.simulated = false;
     }
+
+    public void DestroySelf() { Destroy(gameObject); }
 
 }
