@@ -80,6 +80,8 @@ public class Projectile_Missile : MonoBehaviour
         rb.simulated = false;
     }
 
-    public void DestroySelf() { Destroy(gameObject); }
+    public void DestroySelf() { 
+        explodeAudio.Stop();
+        Destroy(gameObject); }
 
 }
