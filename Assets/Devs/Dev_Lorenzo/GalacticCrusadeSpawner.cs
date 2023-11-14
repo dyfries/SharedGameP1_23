@@ -40,10 +40,10 @@ public class GalacticCrusadeSpawner : MonoBehaviour
         else _spawnTimer += Time.deltaTime;
     }
 
-    public void InitializeSpawner(Vector2 spawnAreaCenter, float spawnAreaWidth)
+    public void InitializeSpawner(Vector2 spawnAreaCenter, Vector2 boundsSize)
     {
         _spawnAreaCenter = spawnAreaCenter;
-        _spawnAreaWidth = spawnAreaWidth;
+        _boundsSize = boundsSize;
     }
 
     public void StartSpawner()
