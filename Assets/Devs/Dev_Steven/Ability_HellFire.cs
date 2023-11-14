@@ -17,6 +17,8 @@ public class Ability_HellFire : Ability_Simple
     private float angleStep;
 
     public List<GameObject> projectiles;
+
+    public GameObject targetCrosshair;
     
 
     private void Awake()
@@ -26,11 +28,12 @@ public class Ability_HellFire : Ability_Simple
         {
             Debug.LogError(gameObject.name + " can't locate SpriteRenderer in children of parent object.");
         }
+        targetCrosshair.SetActive(false);
     }
 
-    void Start()
+    protected void Start()
     {
-        angleStep = 360f / projectileCount;
+        StartReady();
     }
 
     protected override void Update()
@@ -42,12 +45,16 @@ public class Ability_HellFire : Ability_Simple
     {
         playerSpriteRenderer.color = Color.white;
 
+        angleStep = 360f / projectileCount;
+
         base.StartReady();
     }
 
     protected override void StartWindup()
     {
         playerSpriteRenderer.color = Color.green;
+
+        targetCrosshair.SetActive(true);
 
         for (int i = 0; i < projectileCount; i++)
         {
@@ -66,6 +73,8 @@ public class Ability_HellFire : Ability_Simple
     protected override void StartFiring()
     {
         playerSpriteRenderer.color = Color.red;
+
+        targetCrosshair.SetActive(false);
 
         for (int i = 0; i < projectiles.Count; i++)
         {
