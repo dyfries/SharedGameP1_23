@@ -27,6 +27,7 @@ public class Ability_Blink : Ability_Simple
         //We want almost instant teleportation
         activatedAbility_WindupTimer = 0.5f;
 
+        blinkBubble.SetActive(false);
         rb = GetComponentInParent<Rigidbody2D>();
         if (rb == null)
         {
@@ -48,7 +49,7 @@ public class Ability_Blink : Ability_Simple
     protected override void StartWindup()
     {
         base.StartWindup();
-
+        blinkBubble.SetActive(true);
         anim.SetBool(anim_windupString, true);
     }
     protected override void StartFiring()
@@ -95,7 +96,7 @@ public class Ability_Blink : Ability_Simple
 
         //Return blinkDistance to 0, to prevent continuous growth
         blinkDistance = new Vector2(0, 0);
-
+        blinkBubble.SetActive(false);
     }
 
 }
