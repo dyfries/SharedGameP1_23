@@ -13,7 +13,7 @@ public class Ability_Bomb : Ability_Simple
     //How we will apply force to the bomb.
     private Rigidbody2D bombRigidBody;
     //The amount of force to apply.
-    private float bombLaunchSpeed = 1500f;
+    private float bombLaunchSpeed = 1000f;
     //Ensure we only apply this force once.
     private bool doOnce = true;
 
@@ -50,7 +50,9 @@ public class Ability_Bomb : Ability_Simple
         //Enable collider
         if(spawnedCollider != null)
         {
-            spawnedCollider.enabled = true;
+            
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, spawnedCollider.radius, Vector2.zero);
+            Debug.Log(hit.collider.gameObject.name);
             StartCoroutine(TurnOffCollider());
         }
            
