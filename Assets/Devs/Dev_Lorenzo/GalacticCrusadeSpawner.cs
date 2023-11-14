@@ -10,7 +10,7 @@ public class GalacticCrusadeSpawner : MonoBehaviour
     [SerializeField] private int _maxSpawnCount = 1;
 
     [SerializeField] private Vector2 _spawnAreaCenter;        // Offsets from bounds center.
-    [SerializeField] private float _spawnAreaWidth = 1;
+    [SerializeField] private Vector2 _boundsSize;
     private int _spawnCount = 0;
     private float _spawnTimer = 0f;
 
@@ -31,7 +31,7 @@ public class GalacticCrusadeSpawner : MonoBehaviour
         if (_spawnTimer >= _spawnInterval)
         {
             // Spawn units here.
-            float xExtent = _spawnAreaWidth / 2f;
+            float xExtent = _boundsSize.x / 2f;
             Vector2 randomSpawnPoint = new Vector2(Random.Range(_spawnAreaCenter.x - xExtent, _spawnAreaCenter.y + xExtent), _spawnAreaCenter.y);
             Instantiate(_npcToSpawn, randomSpawnPoint, Quaternion.identity);
             _spawnTimer = 0f;
