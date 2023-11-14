@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _npcToSpawn: {fileID: 3963591687228475006, guid: 335b63b5af5882d4aacfe710fe471b72, type: 3}
-  _spawnInterval: 1
+  _spawnInterval: 0.5
   _spawnDelay: 0
   _maxSpawnCount: 5
   _spawnAreaCenter: {x: 0, y: 0}
