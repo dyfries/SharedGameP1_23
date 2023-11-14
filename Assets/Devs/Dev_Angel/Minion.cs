@@ -20,6 +20,7 @@ public class Minion : MonoBehaviour
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
 	}
+
 	private void Update()
 	{
 		movingTimer += Time.deltaTime;
