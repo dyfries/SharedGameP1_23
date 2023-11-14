@@ -17,6 +17,10 @@ public class Ability_Bomb : Ability_Simple
     //Ensure we only apply this force once.
     private bool doOnce = true;
 
+    private bool spawnOnce = true;
+
+    private GameObject spawnedBomb;
+
     private void Awake()
     {
         bombCollider = GetComponent<CircleCollider2D>();
@@ -27,17 +31,20 @@ public class Ability_Bomb : Ability_Simple
     {
         base.StartWindup();
         //Instansiate Projectile
-        GameObject spawnedBomb = Instantiate(this.gameObject, transform.parent.GetComponent<Transform>().position, Quaternion.identity);
-        bombRigidBody = spawnedBomb.GetComponent<Rigidbody2D>();
+
+        
 
         if (doOnce)
         {
             doOnce = false;
+            Vector3 spawnPos = transform.parent.GetComponent<Transform>().position;
+            spawnedBomb = Instantiate(this.gameObject, spawnPos, Quaternion.identity);
+            bombRigidBody = spawnedBomb.GetComponent<Rigidbody2D>();
             bombRigidBody.AddForce(Vector2.up * bombLaunchSpeed * Time.deltaTime, ForceMode2D.Impulse);
         }
 
         spriteRenderer = spawnedBomb.GetComponent<SpriteRenderer>();
-        spawnedCollider = spawnedBomb.GetComponent <CircleCollider2D>();
+        spawnedCollider = spawnedBomb.GetComponent<CircleCollider2D>();
         spriteRenderer.enabled = true;
     }
     protected override void StartFiring()
