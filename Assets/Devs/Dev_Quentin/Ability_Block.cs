@@ -10,9 +10,9 @@ public class Ability_Block : Ability_Simple
 
     [Header(" --- Animator ---  ")]
     public Animator anim;
-    private string anim_windupString = "Lazer_Windup";
-    private string anim_firingString = "Lazer_Firing";
-    private string anim_winddownString = "Lazer_Winddown";
+    private string anim_windupString = "Shield_Windup";
+    private string anim_firingString = "Shield_On";
+    private string anim_winddownString = "Shield_Winddown";
 
     // For refrence, the way the shield should work is that the shield animtion will play when you press a button.
     // Then when it hits "StartWinddown" it will play the recharge animation for a set amount of time.
@@ -25,7 +25,7 @@ public class Ability_Block : Ability_Simple
             anim = GetComponentInChildren<Animator>();
             if (anim == null)
             {
-                Debug.LogWarning("Animator cannot be found by Huge Lazer ability");
+                Debug.LogWarning("Animator cannot be found by Block ability");
             }
         }
     }
@@ -42,7 +42,7 @@ public class Ability_Block : Ability_Simple
     {
         base.StartFiring();
         Block.GetComponent<CircleCollider2D>().enabled = true;
-        BrokenBlock.SetActive(false);
+        //BrokenBlock.SetActive(false);
         // When in StartFiring shield is fully charged
         anim.SetBool(anim_windupString, false);
         anim.SetBool(anim_firingString, true);
@@ -53,8 +53,8 @@ public class Ability_Block : Ability_Simple
     {
         base.StartWinddown();
         Block.GetComponent<CircleCollider2D>().enabled = false;
-        BrokenBlock.SetActive(true);
-        Block.SetActive(false);
+        //BrokenBlock.SetActive(true);
+        //Block.SetActive(false);
         // When StartWinddown is active then shield will entire it's broken/recharge state
         anim.SetBool(anim_firingString, false);
         anim.SetBool(anim_winddownString, true);
