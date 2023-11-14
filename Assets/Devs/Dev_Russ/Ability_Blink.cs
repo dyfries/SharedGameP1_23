@@ -19,14 +19,14 @@ public class Ability_Blink : Ability_Simple
 
     //Either multiply with a base float to get a blink linked with current speed
     //Or use a base distance
-    [Header("Multiplier for distance to be teleported")]
-    [SerializeField] private float blinkMultiplier = 1.5f;
+    [Header("Divisor for distance to be teleported")]
+    [SerializeField] private float blinkDivisor = 1.5f;
     [SerializeField] private bool staticDistance = false;
     protected void Start()
     {
         //We want almost instant teleportation
-        activatedAbility_WindupTimer = 0.5f;
 
+        blinkBubble.SetActive(false);
         rb = GetComponentInParent<Rigidbody2D>();
         if (rb == null)
         {
@@ -48,20 +48,19 @@ public class Ability_Blink : Ability_Simple
     protected override void StartWindup()
     {
         base.StartWindup();
-
-        anim.SetBool(anim_windupString, true);
+        blinkBubble.SetActive(true);
+        anim.SetBool("Windup", true);
     }
     protected override void StartFiring()
     {
-
+        anim.SetBool("Windup", false);
         base.StartFiring();
-        anim.SetBool(anim_windupString, false);
         // Will choose what kind of movement is used dependant on whether boolean is on
         if (!staticDistance)
         {// Distance based on velocity
             cachedSpeed = rb.velocity;
             Debug.Log(rb.velocity);
-            blinkDistance = cachedSpeed / blinkMultiplier;
+            blinkDistance = cachedSpeed / blinkDivisor;
             Debug.Log(blinkDistance);
         }
         else
@@ -95,7 +94,7 @@ public class Ability_Blink : Ability_Simple
 
         //Return blinkDistance to 0, to prevent continuous growth
         blinkDistance = new Vector2(0, 0);
-
+        blinkBubble.SetActive(false);
     }
 
 }
