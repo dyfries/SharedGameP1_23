@@ -68,6 +68,7 @@ public class GalacticCrusadeShip : MonoBehaviour
         while (_timer < _exitLifetime)
         {
             transform.Translate(Vector2.up * Time.deltaTime * _moveSpeed);
+            yield return null;
         }
     }
 }
