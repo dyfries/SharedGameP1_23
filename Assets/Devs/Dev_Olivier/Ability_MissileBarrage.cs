@@ -8,8 +8,11 @@ public class Ability_MissileBarrage : Ability_Simple
     [SerializeField] private Rigidbody2D missile;
     [SerializeField] private int amountOfMissiles = 5;
     [SerializeField] private float missileForce = 10;
-    [SerializeField] private AnimationCurve windupCurve;
     [SerializeField] private float horizontalSpacing = 0;
+    [SerializeField] private float verticalSpacing = 1;
+    [SerializeField] private AnimationCurve windupCurve;
+    [SerializeField] private AnimationCurve missilePlacementCurve;
+
 
     private Rigidbody2D[] missiles;
     private Vector3[] startRotations;
@@ -43,14 +46,11 @@ public class Ability_MissileBarrage : Ability_Simple
 
             for (int i = 0; i < amountOfMissiles; i++)
             {
-                
+                //centers missile formation above player
                 float missileUnit = missile.transform.localScale.x + (horizontalSpacing* missile.transform.localScale.x/2);
-
                 float xPos = (i * missileUnit) - ((float)amountOfMissiles / 2 * missileUnit) + (missile.transform.localScale.x / 2) + (horizontalSpacing * missile.transform.localScale.x/4);
-                //centers arrow of missile above player
-                float yPos = windupCurve.Evaluate(1 - (Mathf.Abs(xPos)/1.75f));
-                //Vector2 formationPos = new Vector2(barrageOrigin.x + xPos, barrageOrigin.y + (1 - Mathf.Abs(xPos)));
-                Vector2 formationPos = new Vector2(barrageOrigin.x + xPos,barrageOrigin.y + yPos);
+                float yPos = missilePlacementCurve.Evaluate(1 - (Mathf.Abs(xPos)/((amountOfMissiles-1)* missile.transform.localScale.x)));
+                Vector2 formationPos = new Vector2(barrageOrigin.x + xPos,barrageOrigin.y + (yPos*verticalSpacing));
 
                 //lerps missiles from player position to their desired position in arrow formation
                 //happens in first half of the windup
@@ -113,6 +113,7 @@ public class Ability_MissileBarrage : Ability_Simple
             yield return new WaitForSeconds(activatedAbility_FiringTimer / amountOfMissiles);
             //missiles[currentMissile].AddForce(Vector2.up * missileForce, ForceMode2D.Impulse);
             missiles[currentMissile].GetComponent<Projectile_Missile>().setMoveSpeed(missileForce);
+            missiles[currentMissile].GetComponent<Projectile_Missile>().setIsWobble(true);
             missiles[currentMissile].GetComponent<Collider2D>().enabled = true;
         }
 

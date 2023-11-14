@@ -5,6 +5,7 @@ public class Projectile_Missile : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 0;
 
+    [SerializeField] bool isWobble = false;
     [SerializeField] float wobbleAmount = 10;
     [SerializeField] float wobbleSpeed = 10;
 
@@ -21,6 +22,8 @@ public class Projectile_Missile : MonoBehaviour
 
     public void setMoveSpeed(float _moveSpeed) { moveSpeed = _moveSpeed; }
     public void setHeadingDirection(float _headingDirection) { headingDirection = _headingDirection; }
+    public float getHeadingDirection() { return headingDirection; }
+    public void setIsWobble(bool _isWobble) { isWobble = _isWobble; }
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +32,6 @@ public class Projectile_Missile : MonoBehaviour
         explodeAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
 
-        //headingDirection = 0;
-
         timer += Random.Range(0, 10f);
 
     }
@@ -38,22 +39,32 @@ public class Projectile_Missile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //sets an offset for the rocket to missile as it flies
+        float wobble;
+        if (isWobble)
+        {
+            timer += Time.deltaTime * wobbleSpeed;
+            wobble = Mathf.Sin(timer) * wobbleAmount;
+        }
+        else
+        {
+            wobble = 0;
+        }
 
-        timer += Time.deltaTime * wobbleSpeed;
-        transform.rotation = Quaternion.Euler(Vector3.forward * (headingDirection + (Mathf.Sin(timer) * wobbleAmount)));
+        //rotates missile to desired direction
+        transform.rotation = Quaternion.Euler(Vector3.forward * (headingDirection + wobble));
 
-        float rot = transform.rotation.eulerAngles.z;
-        rot -= 180;
-
+        //"animates" the thrusters
         if (leftThrust && rightThrust && mainThrust)
         {
-            leftThrust.SetActive(rot < 0 && Mathf.Abs(rot) < 175);
-            rightThrust.SetActive(rot > 0 && Mathf.Abs(rot) < 175);
+            float signedRot = transform.rotation.eulerAngles.z;
+            signedRot -= 180;
+
+            leftThrust.SetActive(signedRot < 0 && Mathf.Abs(signedRot) < 175);
+            rightThrust.SetActive(signedRot > 0 && Mathf.Abs(signedRot) < 175);
 
             mainThrust.SetActive(rb.velocity.magnitude > 0.5f);
         }
-
-
 
     }
 
@@ -65,7 +76,7 @@ public class Projectile_Missile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         explodeAudio.Play();
-        
+
         if (transform.GetChild(0).childCount > 0)
         {
             for (int i = 0; i < transform.GetChild(0).childCount; i++)
@@ -80,8 +91,10 @@ public class Projectile_Missile : MonoBehaviour
         rb.simulated = false;
     }
 
-    public void DestroySelf() { 
+    public void DestroySelf()
+    {
         explodeAudio.Stop();
-        Destroy(gameObject); }
+        Destroy(gameObject);
+    }
 
 }

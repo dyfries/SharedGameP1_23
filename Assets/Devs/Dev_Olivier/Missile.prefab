@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 2866493997463173804}
   - component: {fileID: 6256795774747460236}
   - component: {fileID: 7075748147514652505}
+  - component: {fileID: 813251787469143121}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -474,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+  isWobble: 0
   wobbleAmount: 10
   wobbleSpeed: 10
   mainThrust: {fileID: 2281305726924438447}
@@ -596,6 +598,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &813251787469143121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4424785087360883035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c94e55ea7cd6ec408773040a3c2d31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seekingMask:
+    serializedVersion: 2
+    m_Bits: 256
+  seekingRadius: 3
 --- !u!1 &7882265242407569080
 GameObject:
   m_ObjectHideFlags: 0
