@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatedAbility_WindupTimer: 0.5
-  activatedAbility_FiringTimer: 1
+  activatedAbility_FiringTimer: 1.5
   activatedAbility_WinddownTimer: 1
   activatedAbility_CooldownTimer: 1
   stageOfAbility: 0
@@ -335,6 +335,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
   projectileCount: 10
   projectileSpeed: 2
+  projectiles: []
 --- !u!1 &5363076298248227533
 GameObject:
   m_ObjectHideFlags: 0

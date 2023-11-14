@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Ability_HellFire : Ability_Simple
@@ -15,7 +16,8 @@ public class Ability_HellFire : Ability_Simple
     public float projectileSpeed;
     private float angleStep;
 
-    private GameObject[] projectiles;
+    public List<GameObject> projectiles;
+    
 
     private void Awake()
     {
@@ -54,11 +56,9 @@ public class Ability_HellFire : Ability_Simple
 
             GameObject projectile;
             //projectile = Instantiate(projectilePrefab, transform.position, Random.rotation, gameObject.transform);
-            projectile = Instantiate(projectilePrefab, transform.position, rotation, gameObject.transform);
-            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.transform.up * projectileSpeed, ForceMode2D.Impulse);
-
-            Destroy(projectile, 3f);
-        }
+            projectile = Instantiate(projectilePrefab, transform.position, rotation, gameObject.transform);            
+            projectiles.Add(projectile);
+        }        
 
         base.StartWindup();
     }
@@ -67,9 +67,9 @@ public class Ability_HellFire : Ability_Simple
     {
         playerSpriteRenderer.color = Color.red;
 
-        for (int i = 0; i < projectileCount; i++)
+        for (int i = 0; i < projectiles.Count; i++)
         {
-            //projectiles[i].transform.Translate(transform.up);
+            projectiles[i].GetComponent<Rigidbody2D>().AddForce(projectiles[i].transform.up * projectileSpeed, ForceMode2D.Impulse);
         }
 
         base.StartFiring();
@@ -79,12 +79,16 @@ public class Ability_HellFire : Ability_Simple
     {
         playerSpriteRenderer.color = Color.grey;
 
-        for (int i = 0; i < projectileCount; i++)
+        for (int i = 0; i < projectiles.Count; i++)
         {
-            //Destroy(projectiles[i], 2f);
-            //GameObject explosion;
-            //explosion = Instantiate(explosionPrefab, projectiles[i].gameObject.transform.position, projectiles[i].gameObject.transform.rotation);
-            //Destroy(explosion, 1.5f);
+            if (projectiles[i] != null)
+            {
+                Destroy(projectiles[i]);
+
+                GameObject explosion;
+                explosion = Instantiate(explosionPrefab, projectiles[i].gameObject.transform.position, projectiles[i].gameObject.transform.rotation);
+                Destroy(explosion, 1.5f);
+            }
         }
 
         base.StartWinddown();
@@ -93,6 +97,13 @@ public class Ability_HellFire : Ability_Simple
     protected override void StartCooldown()
     {
         playerSpriteRenderer.color = Color.magenta;
+
+        projectiles.Clear();
+
+        for (int i = 0; i < projectiles.Count; i++)
+        {
+
+        }
 
         base.StartCooldown();
     }

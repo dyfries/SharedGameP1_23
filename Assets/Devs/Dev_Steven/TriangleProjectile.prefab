@@ -4939,7 +4939,7 @@ MonoBehaviour:
   destroyOnTrigger: 1
   spawnOnCollision: 1
   spawnOnTrigger: 1
-  objectToSpawn: {fileID: 7506890194209598262, guid: a8baf382e9dbea04d95041732f700a66, type: 3}
+  objectToSpawn: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
   DEBUG_MODE: 0
 --- !u!50 &2946882374922764550
 Rigidbody2D:
