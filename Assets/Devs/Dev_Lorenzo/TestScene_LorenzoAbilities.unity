@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ability_StarWeaving
       objectReference: {fileID: 0}
+    - target: {fileID: 916736950336164537, guid: 0972d92194a51d746bdad4c00b23a872, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1839765505576930682, guid: 0972d92194a51d746bdad4c00b23a872, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -193,6 +197,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1839765505576930682, guid: 0972d92194a51d746bdad4c00b23a872, type: 3}
   m_PrefabInstance: {fileID: 177805510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &730502774
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2099102613}
+    m_Modifications:
+    - target: {fileID: 916736950336164537, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_Name
+      value: Ability_GalacticCrusade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
 --- !u!1 &1052382789
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +430,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1774617711 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1839765505576930682, guid: 7dc51a97eaac4b0499e5b6390ca38582, type: 3}
+  m_PrefabInstance: {fileID: 730502774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2099102612
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +467,7 @@ Transform:
   m_Children:
   - {fileID: 1596664778}
   - {fileID: 177805511}
+  - {fileID: 1774617711}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2099102614
