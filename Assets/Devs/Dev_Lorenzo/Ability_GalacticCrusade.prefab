@@ -53,8 +53,8 @@ MonoBehaviour:
   DEBUG_MODE: 1
   _spawners:
   - {fileID: 5057765006942154332}
-  _spawnAreaCenter: {x: 0, y: 0}
-  _spawnAreaWidth: 10
+  _boundsCenter: {x: 0, y: 0}
+  _boundsSize: {x: 20, y: 30}
   _previewSpawnAreaGizmo: 1
 --- !u!1 &7871398472854634059
 GameObject:
@@ -105,4 +105,4 @@ MonoBehaviour:
   _spawnDelay: 0
   _maxSpawnCount: 5
   _spawnAreaCenter: {x: 0, y: 0}
-  _spawnAreaWidth: 1
+  _boundsSize: {x: 0, y: 0}

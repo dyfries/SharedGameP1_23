@@ -32,7 +32,8 @@ public class GalacticCrusadeSpawner : MonoBehaviour
         {
             // Spawn units here.
             float xExtent = _boundsSize.x / 2f;
-            Vector2 randomSpawnPoint = new Vector2(Random.Range(_spawnAreaCenter.x - xExtent, _spawnAreaCenter.y + xExtent), _spawnAreaCenter.y);
+            float yPosition = -_boundsSize.y / 2f;
+            Vector2 randomSpawnPoint = new Vector2(Random.Range(_spawnAreaCenter.x - xExtent, _spawnAreaCenter.y + xExtent), yPosition);
             Instantiate(_npcToSpawn, randomSpawnPoint, Quaternion.identity);
             // Set timers and counts.
             _spawnTimer = 0f;
