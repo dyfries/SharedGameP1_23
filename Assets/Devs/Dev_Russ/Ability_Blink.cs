@@ -13,7 +13,6 @@ public class Ability_Blink : Ability_Simple
 
     [Header("Animations")]
     public Animator anim;
-    private string anim_windupString = "WindUp";
     [SerializeField] private GameObject blinkBubble;
 
 
