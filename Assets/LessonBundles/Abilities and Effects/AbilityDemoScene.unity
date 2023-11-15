@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boundaries
       objectReference: {fileID: 0}
+    - target: {fileID: 1646394054934392448, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2954057221919692530, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -445,6 +449,10 @@ PrefabInstance:
     - target: {fileID: 7161992183559241862, guid: addf86f2996143e43a3037b265c86272, type: 3}
       propertyPath: m_Name
       value: NPCGreen_BasePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161992183559241862, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
       propertyPath: m_LocalPosition.x
@@ -760,6 +768,10 @@ PrefabInstance:
     - target: {fileID: 2049594550875731446, guid: 451ea696dba343547a76e8845405df1d, type: 3}
       propertyPath: m_Name
       value: Player_3_LazerAndBoost
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049594550875731446, guid: 451ea696dba343547a76e8845405df1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
