@@ -64,12 +64,14 @@ public class GalacticCrusadeShip : MonoBehaviour
         // Strafe left and right while firing projectiles.
         float strafeTimer = 0f;
         _timer = 0f;
+        Vector2 strafeDirection = Vector2.right;
+        if (Random.Range(0, 2) == 0) strafeDirection *= -1;
         while (_timer < _firingDuration)
         {
             // Strafe movement using sine.
             strafeTimer += Time.deltaTime * _sineMoveStrength;
             float sinValue = Mathf.Sin(strafeTimer);
-            transform.Translate(Vector2.right * sinValue * _moveSpeed * Time.deltaTime);
+            transform.Translate(strafeDirection * sinValue * _moveSpeed * Time.deltaTime);
 
             // Shoot projectiles.
             if (_projectileTimer >= _attackSpeed)

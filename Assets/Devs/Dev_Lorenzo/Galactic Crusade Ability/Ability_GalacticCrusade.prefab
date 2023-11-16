@@ -54,7 +54,7 @@ MonoBehaviour:
   _spawners:
   - {fileID: 5057765006942154332}
   _boundsCenter: {x: 0, y: 0}
-  _boundsSize: {x: 17.5, y: 15}
+  _boundsSize: {x: 13, y: 15}
   _previewSpawnAreaGizmo: 1
 --- !u!1 &7871398472854634059
 GameObject:
@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _npcToSpawn: {fileID: 3963591687228475006, guid: 335b63b5af5882d4aacfe710fe471b72, type: 3}
-  _spawnInterval: 0.35
+  _spawnInterval: 0.1
   _spawnDelay: 0
-  _maxSpawnCount: 10
+  _maxSpawnCount: 8
   _spawnAreaCenter: {x: 0, y: 0}
   _boundsSize: {x: 0, y: 0}
