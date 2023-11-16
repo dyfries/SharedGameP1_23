@@ -7,6 +7,7 @@ public class HeatSeeker : MonoBehaviour
 
     [SerializeField] private LayerMask seekingMask;
     [SerializeField] private float seekingRadius = 5;
+    [SerializeField] private float seekSpeed = 0.1f;
 
     private Projectile_Missile missile;
 
@@ -48,7 +49,7 @@ public class HeatSeeker : MonoBehaviour
             if (desiredDirection != 0)
             {
                 float normalDirection = desiredDirection / Mathf.Abs(desiredDirection);
-                missile.setHeadingDirection(missile.getHeadingDirection() + (normalDirection/10));
+                missile.setHeadingDirection(missile.getHeadingDirection() + (normalDirection*seekSpeed));
             }
         }
     }

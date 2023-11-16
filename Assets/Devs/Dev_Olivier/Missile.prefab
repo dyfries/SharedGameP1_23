@@ -413,7 +413,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -612,8 +612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seekingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   seekingRadius: 3
+  seekSpeed: 0.3
 --- !u!1 &7882265242407569080
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ public class Ability_MissileBarrage : Ability_Simple
 
                 //offset the missiles to the player position
                 xPos += barrageOrigin.x;
-                yPos += barrageOrigin.x;
+                yPos += barrageOrigin.y;
 
                 //creates a vector out of the found positions
                 Vector2 formationPos = new Vector2(xPos, yPos);
