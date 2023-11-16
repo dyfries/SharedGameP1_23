@@ -17,8 +17,7 @@ public class Minion : MonoBehaviour
 	private float findEnemyRadius = 15;
 
 	[Header("Self Destruct")]
-	[SerializeField] private float destructTimer;
-	[SerializeField] private float destructTimeAmount = 10;
+	[SerializeField] private float destructTimeAmount = 2;
 
 	[Header("Hit NPC")]
 	private float distanceBetween;
@@ -43,9 +42,6 @@ public class Minion : MonoBehaviour
 
 		// When distance is small damage NPC
 		HitNPC();
-
-		// Self destruct after time
-		SelfDestruct();
     }
 
 	// If npc is null find a new closest enemy within range
@@ -86,11 +82,9 @@ public class Minion : MonoBehaviour
     }
 
 	// After destructTimeAmount seconds self destruct
-	private void SelfDestruct()
+	public void SelfDestruct()
     {
-		if(destructTimer >= destructTimeAmount)
-        {
-			Destroy(gameObject);
-        }
-    }
+
+		Destroy(gameObject, destructTimeAmount);
+	}
 }

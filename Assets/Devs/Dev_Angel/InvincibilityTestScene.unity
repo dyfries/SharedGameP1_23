@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: npcLayer.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: activatedAbility_WinddownTimer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2144538258753338674, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

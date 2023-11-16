@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Invincibility_Ability : Ability_Simple
@@ -15,12 +13,17 @@ public class Invincibility_Ability : Ability_Simple
     [Header("Spawn Minions")]
     [SerializeField] private GameObject minionPrefab;
     private float spawnOffset = 1;
+    private GameObject leftMinion;
+    private GameObject rightMinion;
+    private Animator leftAnim;
+    private Animator rightAnim;
 
     protected override void StartWindup()
     {
         base.StartWindup();
 
         spriteRenderer.color = invinsibilityColor;
+        Debug.Log("Starting");
     }
 
     protected override void StartFiring()
@@ -33,6 +36,8 @@ public class Invincibility_Ability : Ability_Simple
         //collide.enabled = false;
 
         SpawnMinions();
+
+        Debug.Log("Firing");
     }
 
     protected override void StartCooldown()
@@ -45,14 +50,28 @@ public class Invincibility_Ability : Ability_Simple
 
         // Stop invinsibility flashing
         spriteRenderer.color = defaultColor;
+
+        // Play minions exploding animation
+        leftAnim.SetTrigger("Explode");
+        rightAnim.SetTrigger("Explode");
+
+        // Self destruct minions
+        leftMinion.GetComponent<Minion>().SelfDestruct();
+        rightMinion.GetComponent<Minion>().SelfDestruct();
     }
 
     private void SpawnMinions()
     {
-        Vector3 leftMinion = new Vector3(transform.position.x - spawnOffset, transform.position.y, 0);
-        Vector3 rightMinion = new Vector3(transform.position.x + spawnOffset, transform.position.y, 0);
+        // Setting a new position to spawn minions in with offset
+        Vector3 leftMinionPosition = new Vector3(transform.position.x - spawnOffset, transform.position.y, 0);
+        Vector3 rightMinionPosition = new Vector3(transform.position.x + spawnOffset, transform.position.y, 0);
 
-        Instantiate(minionPrefab, leftMinion, Quaternion.identity);
-        Instantiate(minionPrefab, rightMinion, Quaternion.identity);
+        // Spawning minions in and caching their gameObjects
+        leftMinion = Instantiate(minionPrefab, leftMinionPosition, Quaternion.identity);
+        rightMinion = Instantiate(minionPrefab, rightMinionPosition, Quaternion.identity);
+
+        // Getting animators to set explosion sprite
+        leftAnim = leftMinion.GetComponent<Animator>();
+        rightAnim = rightMinion.GetComponent<Animator>();
     }
 }
