@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8843622368188265645}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.9047777, b: 0.47450984, a: 1}
+  m_Color: {r: 0.9087307, g: 0.47450984, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,7 +111,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8843622368188265645}
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.43040225, g: 0.9811321, b: 0.9083399, a: 1}
+  m_Color: {r: 0.36470592, g: 1, b: 0.89634174, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -177,10 +177,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8843622368188265645}
-  - component: {fileID: 3610443745775919754}
+  - component: {fileID: 1150324556963945627}
   - component: {fileID: 9218004849152254964}
   m_Layer: 0
-  m_Name: Ship_GalacticCrusadeShip_2
+  m_Name: Projectile_GalacticCrusadeBullet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ Transform:
   - {fileID: 3686812818675511953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3610443745775919754
+--- !u!114 &1150324556963945627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,18 +213,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3963591687228475006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764713c5c3dc6404b8ac3fc4f45b4d37, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cb68a26909820b4ba80b7263623e9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileSpawnPoint: {fileID: 8843622368188265645}
-  _projectile: {fileID: 3963591687228475006, guid: fdc5e644cc7312748bcc9b674b2e9bae, type: 3}
-  _moveSpeed: 10
-  _initialMovementDuration: 0.25
-  _firingDuration: 4
-  _exitLifetime: 7
-  _sineMoveStrength: 9
-  _attackSpeed: 0.5
-  _debugMode: 0
+  _rb: {fileID: 9218004849152254964}
+  _moveSpeed: 12
+  _projectileLifetime: 3
 --- !u!50 &9218004849152254964
 Rigidbody2D:
   serializedVersion: 4
@@ -279,7 +273,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8843622368188265645}
@@ -326,7 +320,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.3831773, b: 0.36470592, a: 1}
+  m_Color: {r: 0.36470592, g: 0.49262828, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

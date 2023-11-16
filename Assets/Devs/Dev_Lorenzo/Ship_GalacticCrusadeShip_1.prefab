@@ -217,14 +217,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpawnPoint: {fileID: 8843622368188265645}
-  _projectile: {fileID: 3963591687228475006, guid: dcc70068ebbf1b04d9f45c475ead6c36, type: 3}
+  _projectile: {fileID: 3963591687228475006, guid: fdc5e644cc7312748bcc9b674b2e9bae, type: 3}
   _moveSpeed: 10
   _initialMovementDuration: 0.25
-  _firingDuration: 5
-  _exitLifetime: 20
-  _sineMoveStrength: 8
+  _firingDuration: 4
+  _exitLifetime: 7
+  _sineMoveStrength: 9
   _attackSpeed: 0.5
-  DebugMode: 0
+  _debugMode: 0
 --- !u!50 &9218004849152254964
 Rigidbody2D:
   serializedVersion: 4
