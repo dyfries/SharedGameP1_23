@@ -10,19 +10,22 @@ public class Ability_MissileBarrage : Ability_Simple
     [SerializeField] private float horizontalSpacing = 0;
     [SerializeField] private AnimationCurve windupCurve;
     [SerializeField] private AnimationCurve missilePlacementCurve;
+    [SerializeField] private AnimationCurve outlineRegenCurve;
 
     private Rigidbody2D[] missiles;
     private Vector3[] startRotations;
     private Vector2 barrageOrigin;
-    private float windupTimer = 0;
+    private float timer = 0;
     private AudioSource releaseAudio;
     private ParticleSystem winddownParticles;
+    private SpriteRenderer outline;
 
     private void Awake()
     {
         releaseAudio = GetComponentInChildren<AudioSource>();
         winddownParticles = GetComponentInChildren<ParticleSystem>();
         winddownParticles.Stop();
+        outline = GetComponentInChildren<SpriteRenderer>();
     }
 
     public override void ActivateAbility()
@@ -42,7 +45,7 @@ public class Ability_MissileBarrage : Ability_Simple
 
         if (stageOfAbility == StageOfAbility.windup)
         {
-            windupTimer += Time.deltaTime / activatedAbility_WindupTimer;
+            timer += Time.deltaTime / activatedAbility_WindupTimer;
 
             for (int i = 0; i < amountOfMissiles; i++)
             {
@@ -70,32 +73,46 @@ public class Ability_MissileBarrage : Ability_Simple
 
                 //lerps missiles from player position to their desired position in arrow formation
                 //happens in first half of the windup
-                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, formationPos, windupCurve.Evaluate(windupTimer * 2));
+                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, formationPos, windupCurve.Evaluate(timer * 2));
 
                 //lerps rotaion to be forward
                 //happens in second half of the windup
-                missiles[i].GetComponent<Projectile_Missile>().setHeadingDirection(Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((windupTimer * 2) - 1)).eulerAngles.z);
+                missiles[i].GetComponent<Projectile_Missile>().setHeadingDirection(Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((timer * 2) - 1)).eulerAngles.z);
             }
         }
+
+        if (stageOfAbility == StageOfAbility.cooldown)
+        {
+            
+            timer += Time.deltaTime / activatedAbility_CooldownTimer;
+
+            Color clear = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
+            Color opaque = new Color(outline.color.r, outline.color.g, outline.color.b, 1);
+
+            outline.color = Color.Lerp(clear, opaque, outlineRegenCurve.Evaluate(timer));
+
+        }
+
+    }
+
+    protected override void StartWinddown()
+    {
+        base.StartWinddown();
+        winddownParticles.Play();
     }
 
     protected override void StartCooldown()
     {
         base.StartCooldown();
-        winddownParticles.Play();
-    }
-
-    protected override void StartReady()
-    {
-        base.StartReady();
         winddownParticles.Stop();
+        timer = 0;
     }
 
     protected override void StartWindup()
     {
         base.StartWindup();
 
-        windupTimer = 0;
+        timer = 0;
 
         missiles = new Rigidbody2D[amountOfMissiles];
         startRotations = new Vector3[amountOfMissiles];
@@ -109,6 +126,8 @@ public class Ability_MissileBarrage : Ability_Simple
             missiles[i] = newMissile;
             startRotations[i] = missiles[i].transform.rotation.eulerAngles;
         }
+
+        outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
 
     }
 
