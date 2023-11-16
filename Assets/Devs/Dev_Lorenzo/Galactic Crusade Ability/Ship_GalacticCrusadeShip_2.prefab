@@ -220,10 +220,10 @@ MonoBehaviour:
   _projectile: {fileID: 3963591687228475006, guid: fdc5e644cc7312748bcc9b674b2e9bae, type: 3}
   _moveSpeed: 10
   _initialMovementDuration: 0.35
-  _firingDuration: 4
-  _exitLifetime: 7
+  _firingDuration: 5
+  _exitLifetime: 5
   _sineMoveStrength: 9
-  _attackSpeed: 0.5
+  _attackSpeed: 0.4
   _debugMode: 0
 --- !u!50 &9218004849152254964
 Rigidbody2D:

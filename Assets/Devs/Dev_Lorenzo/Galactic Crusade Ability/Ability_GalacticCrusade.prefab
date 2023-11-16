@@ -54,7 +54,7 @@ MonoBehaviour:
   _spawners:
   - {fileID: 5057765006942154332}
   _boundsCenter: {x: 0, y: 0}
-  _boundsSize: {x: 13, y: 15}
+  _boundsSize: {x: 12, y: 15}
   _previewSpawnAreaGizmo: 1
 --- !u!1 &7871398472854634059
 GameObject:

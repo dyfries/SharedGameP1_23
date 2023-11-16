@@ -23,10 +23,10 @@ public class GalacticCrusadeSpawner : MonoBehaviour
         this.enabled = false;
 
         // Generate X positions.
-        for (int i = 0; i < +_maxSpawnCount; i++)
+        for (float i = 0; i < +_maxSpawnCount; i++)
         {
-            float startingXPos = _spawnAreaCenter.x - _boundsSize.x;
-            float xMultiplier = i / _maxSpawnCount;
+            float startingXPos = _spawnAreaCenter.x - (_boundsSize.x / 2f);
+            float xMultiplier = i / (_maxSpawnCount - 1);
             float xPosition = startingXPos + (_boundsSize.x * xMultiplier);
             _xSpawnPositions.Add(xPosition);
         }
@@ -43,10 +43,16 @@ public class GalacticCrusadeSpawner : MonoBehaviour
         if (_spawnTimer >= _spawnInterval)
         {
             // Spawn units here.
-            float xExtent = _boundsSize.x / 2f;
+            float xPosition = _xSpawnPositions[_spawnCount];
             float yPosition = -_boundsSize.y / 2f;
-            Vector2 randomSpawnPoint = new Vector2(Random.Range(_spawnAreaCenter.x - xExtent, _spawnAreaCenter.y + xExtent), yPosition);
-            Instantiate(_npcToSpawn, randomSpawnPoint, Quaternion.identity);
+            Vector2 randomSpawnPosition = new Vector2(xPosition, yPosition);
+            // OLD SPAWNING METHOD
+            
+            //float xExtent = _boundsSize.x / 2f;
+            //float yPosition = -_boundsSize.y / 2f;
+            //Vector2 randomSpawnPosition = new Vector2(Random.Range(_spawnAreaCenter.x - xExtent, _spawnAreaCenter.y + xExtent), yPosition);
+            
+            Instantiate(_npcToSpawn, randomSpawnPosition, Quaternion.identity);
             // Set timers and counts.
             _spawnTimer = 0f;
             _spawnCount++;
