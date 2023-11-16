@@ -40,7 +40,6 @@ public class Ability_SlowDown : Ability_Simple
             if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
             {
                 Instantiate(freezeBlock, objectsInRadius[i].transform.position, objectsInRadius[i].transform.rotation, objectsInRadius[i].transform); //puts the object in a freeze block
-                objectsInRadius[i].GetComponent<SpriteRenderer>().color = Color.blue; //temp color change to show animation
             }
         }
     }
@@ -56,7 +55,7 @@ public class Ability_SlowDown : Ability_Simple
         {
             if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
             {
-                objectsInRadius[i].GetComponent<SpriteRenderer>().color = Color.white; //temp color change to show animation
+
             }
         }
     }
