@@ -222,8 +222,9 @@ MonoBehaviour:
   _initialMovementDuration: 0.25
   _firingDuration: 5
   _exitLifetime: 20
-  _sineMoveStrength: 1
+  _sineMoveStrength: 8
   _attackSpeed: 0.5
+  DebugMode: 0
 --- !u!50 &9218004849152254964
 Rigidbody2D:
   serializedVersion: 4
