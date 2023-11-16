@@ -1792,6 +1792,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7504686942398894420}
     m_Modifications:
+    - target: {fileID: 1185676572114169942, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: outlineRegenCurve.m_PreInfinity
       value: 2
@@ -1917,7 +1921,11 @@ PrefabInstance:
       value: MissileBarrage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7951716107565712829, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+    - {fileID: 8208231540777509584, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+    - {fileID: 8819249686090164664, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+    - {fileID: 486801254935112487, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
