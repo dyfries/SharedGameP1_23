@@ -12,10 +12,18 @@ public class Ability_Ring : Ability_Simple
     public float maxSize = 1f;
     public float destroyAbilityIn = 2f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         playerSpriteRenderer = transform.parent.GetComponentInChildren<SpriteRenderer>();
+        if (playerSpriteRenderer == null )
+        {
+            Debug.LogError(gameObject.name + " can't locate SpriteRenderer in children of parent object.");
+        }        
+    }
+
+    void Start()
+    {
+
     }
 
     protected override void Update()
@@ -65,7 +73,9 @@ public class Ability_Ring : Ability_Simple
             Destroy(ability.transform.GetChild(i).gameObject);
             
             GameObject explosion;
-            explosion = Instantiate(explosionPrefab, ability.transform.GetChild(i).gameObject.transform.position, ability.transform.GetChild(i).gameObject.transform.rotation);          
+            explosion = Instantiate(explosionPrefab, ability.transform.GetChild(i).gameObject.transform.position, ability.transform.GetChild(i).gameObject.transform.rotation);
+            Destroy(explosion, 1.5f);
+            
         }
         
         base.StartWinddown();
