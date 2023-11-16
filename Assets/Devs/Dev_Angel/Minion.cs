@@ -21,6 +21,10 @@ public class Minion : MonoBehaviour
 	private float destructTimer;
 	private float destructTimeAmount = 10;
 
+	[Header("Hit NPC")]
+	private float distanceBetween;
+	private float hitDistance = 0.5f;
+
 	private void Start()
 	{
 		rigid = GetComponent<Rigidbody2D>();
@@ -32,12 +36,14 @@ public class Minion : MonoBehaviour
 		destructTimer += Time.deltaTime;
 		currentPosition = transform.position;
 
-
 		// Find the closest enemy within range
 		FindClosestEnemy();
 
 		// Move towards the closest NPC enemy
 		MoveToClosestNPC();
+
+		// When distance is small damage NPC
+		HitNPC();
 
 		// Self destruct after time
 		SelfDestruct();
@@ -65,14 +71,19 @@ public class Minion : MonoBehaviour
 
 		// Add a move force in that direction
 		rigid.AddForce(moveTowards.normalized * moveForce);
-
-		Debug.Log(moveTowards.normalized);
-        Debug.DrawRay(currentPosition, closestEnemyPosition);
     }
 
+	// When the distance between NPC and minion is small enough, damage NPC or kill NPC
 	private void HitNPC()
     {
+		// Finding the distance between npc vector and currnet position vector
+		distanceBetween = Mathf.Sqrt(Mathf.Pow(closestEnemyPosition.x - currentPosition.x, 2) + Mathf.Pow(closestEnemyPosition.y - currentPosition.y, 2));
 
+		if (distanceBetween < hitDistance)
+        {
+			// Destroy npc --- change to damage npc
+			Destroy(npc.gameObject);
+        }
     }
 
 	// After destructTimeAmount seconds self destruct
