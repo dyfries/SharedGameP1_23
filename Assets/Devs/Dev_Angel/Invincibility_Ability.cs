@@ -12,6 +12,10 @@ public class Invincibility_Ability : Ability_Simple
     private Color defaultColor = Color.white;
     private Color invinsibilityColor = Color.grey; // Change this to lerp colors
 
+    [Header("Spawn Minions")]
+    [SerializeField] private GameObject minionPrefab;
+    private float spawnOffset = 1;
+
     protected override void StartWindup()
     {
         base.StartWindup();
@@ -27,6 +31,8 @@ public class Invincibility_Ability : Ability_Simple
         // Stop collisions with enemies only
         collide.excludeLayers = npcLayer;
         //collide.enabled = false;
+
+        SpawnMinions();
     }
 
     protected override void StartCooldown()
@@ -39,5 +45,14 @@ public class Invincibility_Ability : Ability_Simple
 
         // Stop invinsibility flashing
         spriteRenderer.color = defaultColor;
+    }
+
+    private void SpawnMinions()
+    {
+        Vector3 leftMinion = new Vector3(transform.position.x - spawnOffset, transform.position.y, 0);
+        Vector3 rightMinion = new Vector3(transform.position.x + spawnOffset, transform.position.y, 0);
+
+        Instantiate(minionPrefab, leftMinion, Quaternion.identity);
+        Instantiate(minionPrefab, rightMinion, Quaternion.identity);
     }
 }
