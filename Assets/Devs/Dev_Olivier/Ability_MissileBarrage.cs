@@ -16,10 +16,13 @@ public class Ability_MissileBarrage : Ability_Simple
     private Vector2 barrageOrigin;
     private float windupTimer = 0;
     private AudioSource releaseAudio;
+    private ParticleSystem winddownParticles;
 
     private void Awake()
     {
         releaseAudio = GetComponentInChildren<AudioSource>();
+        winddownParticles = GetComponentInChildren<ParticleSystem>();
+        winddownParticles.Stop();
     }
 
     public override void ActivateAbility()
@@ -74,6 +77,18 @@ public class Ability_MissileBarrage : Ability_Simple
                 missiles[i].GetComponent<Projectile_Missile>().setHeadingDirection(Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((windupTimer * 2) - 1)).eulerAngles.z);
             }
         }
+    }
+
+    protected override void StartCooldown()
+    {
+        base.StartCooldown();
+        winddownParticles.Play();
+    }
+
+    protected override void StartReady()
+    {
+        base.StartReady();
+        winddownParticles.Stop();
     }
 
     protected override void StartWindup()
