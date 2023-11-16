@@ -5,19 +5,30 @@ public class Ability_HellFire : Ability_Simple
 {
     private SpriteRenderer playerSpriteRenderer;
 
+    [Header("Prefab References")]
     public GameObject projectilePrefab;
     public GameObject explosionPrefab;
+    public GameObject crosshairPrefab;
 
-    public int projectileCount = 10;
+    [Header("Ability Settings")]
+    public int projectileCount = 9;
     public float projectileSpeed = 2f;
-    public float rotationSpeed = 2f;
+    public float targetDistance = 4f;
+    private Vector3 targetPosition;
+    public float rotationSpeed = 150f;
     private float angleStep;
 
     public List<GameObject> projectiles;
 
-    private Vector3 targetPosition;
-    public GameObject crosshairPrefab;
+    [Header("Audio Sources")]
+    public AudioSource readySound;
+    public AudioSource windupSound;
+    public AudioSource firingSound;
+    public AudioSource winddownSound;
+    public AudioSource cooldownSound;
 
+    public AudioSource launchSound;
+    public AudioSource explosionSound;
 
     private void Awake()
     {
@@ -35,10 +46,33 @@ public class Ability_HellFire : Ability_Simple
 
     protected override void Update()
     {
+        if (stageOfAbility == StageOfAbility.windup)
+        {
+            for (int i = 0; i < projectiles.Count; i++)
+            {
+                if (projectiles[i] != null)
+                {
+
+                }
+            }
+        }
+
         if (stageOfAbility == StageOfAbility.firing)
         {
             for (int i = 0; i < projectiles.Count; i++)
             {
+                if (projectiles[i] != null)
+                {
+                    //projectiles[i].GetComponent<Rigidbody2D>().AddForce(projectiles[i].transform.up * projectileSpeed, ForceMode2D.Impulse);
+                    projectiles[i].transform.position = projectiles[i].transform.position + projectiles[i].transform.up * projectileSpeed * Time.deltaTime;
+                }
+            }
+        }
+
+        if (stageOfAbility == StageOfAbility.winddown)
+        {
+            for (int i = 0; i < projectiles.Count; i++)
+            {               
                 if (projectiles[i] != null)
                 {
                     Vector3 rotateTowards = (targetPosition - projectiles[i].transform.position).normalized;
@@ -54,20 +88,8 @@ public class Ability_HellFire : Ability_Simple
                         // Rotate Right
                         projectiles[i].transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
                     }
-                }
-            }
-        }
 
-        if (stageOfAbility == StageOfAbility.windup 
-            || stageOfAbility == StageOfAbility.firing 
-            || stageOfAbility == StageOfAbility.winddown)
-        {
-            for (int i = 0; i < projectiles.Count; i++)
-            {               
-                if (projectiles[i] != null)
-                {
-                    //projectiles[i].GetComponent<Rigidbody2D>().AddForce(projectiles[i].transform.up * projectileSpeed, ForceMode2D.Impulse);
-                    projectiles[i].transform.position = projectiles[i].transform.position + projectiles[i].transform.up * projectileSpeed * Time.deltaTime;                    
+                    projectiles[i].transform.position = projectiles[i].transform.position + projectiles[i].transform.up * (projectileSpeed * 2f) * Time.deltaTime;                    
                 }
             }
         }
@@ -82,6 +104,8 @@ public class Ability_HellFire : Ability_Simple
                 {
                     Destroy(projectiles[i]);
 
+                    explosionSound.Play();
+
                     GameObject explosion;
                     explosion = Instantiate(explosionPrefab, projectiles[i].gameObject.transform.position, projectiles[i].gameObject.transform.rotation);
                     Destroy(explosion, 1.5f);
@@ -94,7 +118,8 @@ public class Ability_HellFire : Ability_Simple
 
     protected override void StartReady()
     {
-        playerSpriteRenderer.color = Color.white;        
+        playerSpriteRenderer.color = Color.white;
+        readySound.Play();
 
         base.StartReady();
     }
@@ -102,12 +127,21 @@ public class Ability_HellFire : Ability_Simple
     protected override void StartWindup()
     {
         playerSpriteRenderer.color = Color.green;
+        windupSound.Play();
 
-        targetPosition = transform.position + Vector3.up * 3f;
+        targetPosition = transform.position + Vector3.up * targetDistance;
 
-        GameObject crosshair;
+        GameObject crosshair;       
         crosshair = Instantiate(crosshairPrefab, targetPosition, Quaternion.identity);
-        Destroy(crosshair, 3f);
+        Destroy(crosshair, activatedAbility_WindupTimer + activatedAbility_FiringTimer + activatedAbility_WinddownTimer);
+
+
+        base.StartWindup();
+    }
+
+    protected override void StartFiring()
+    {
+        playerSpriteRenderer.color = Color.red;       
 
         for (int i = 0; i < projectileCount; i++)
         {
@@ -120,19 +154,16 @@ public class Ability_HellFire : Ability_Simple
             projectile = Instantiate(projectilePrefab, transform.position, rotation, gameObject.transform);
             projectile.name = "Projectile " + i;
             projectiles.Add(projectile);
-        }        
 
-        base.StartWindup();
-    }
-
-    protected override void StartFiring()
-    {
-        playerSpriteRenderer.color = Color.red;
-
+            launchSound.Play();
+        }
 
         for (int i = 0; i < projectiles.Count; i++)
         {
-            //projectiles[i].GetComponent<Rigidbody2D>().AddForce(projectiles[i].transform.up * projectileSpeed, ForceMode2D.Impulse);
+            if (projectiles[i] != null)
+            {
+
+            }
         }
 
         base.StartFiring();
@@ -141,16 +172,13 @@ public class Ability_HellFire : Ability_Simple
     protected override void StartWinddown()
     {
         playerSpriteRenderer.color = Color.grey;
+        winddownSound.Play();
 
         for (int i = 0; i < projectiles.Count; i++)
         {
             if (projectiles[i] != null)
             {
-                Destroy(projectiles[i]);
-
-                GameObject explosion;
-                explosion = Instantiate(explosionPrefab, projectiles[i].gameObject.transform.position, projectiles[i].gameObject.transform.rotation);
-                Destroy(explosion, 1.5f);
+                firingSound.Play();
             }
         }
 
@@ -160,13 +188,23 @@ public class Ability_HellFire : Ability_Simple
     protected override void StartCooldown()
     {
         playerSpriteRenderer.color = Color.magenta;
-
-        projectiles.Clear();
+        cooldownSound.Play();
 
         for (int i = 0; i < projectiles.Count; i++)
         {
+            if (projectiles[i] != null)
+            {
+                Destroy(projectiles[i]);
 
+                explosionSound.Play();
+
+                GameObject explosion;
+                explosion = Instantiate(explosionPrefab, projectiles[i].gameObject.transform.position, projectiles[i].gameObject.transform.rotation);
+                Destroy(explosion, 1.5f);
+            }
         }
+
+        projectiles.Clear();
 
         base.StartCooldown();
     }

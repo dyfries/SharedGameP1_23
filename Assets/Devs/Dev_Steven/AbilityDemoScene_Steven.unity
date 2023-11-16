@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1646394054934392448, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2954057221919692530, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -728,18 +728,6 @@ PrefabInstance:
     - target: {fileID: 1130344428241443519, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
       propertyPath: m_Name
       value: Player_Steven
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921651950076879985, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
-      propertyPath: rotationSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921651950076879985, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
-      propertyPath: projectileSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921651950076879985, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
-      propertyPath: activatedAbility_WindupTimer
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7544014668475222762, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
       propertyPath: m_LocalPosition.x
