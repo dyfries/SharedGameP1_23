@@ -10,16 +10,15 @@ public class Minion : MonoBehaviour
 	private Vector3 currentPosition;
 	private Vector3 closestEnemyPosition;
 	private Vector3 moveTowards;
-	[SerializeField] private float moveForce = 10;
-	private float movingTimer;
+	[SerializeField] private float moveForce = 25;
 
 	[Header("Find NPC")]
 	private BaseNPC npc;
 	private float findEnemyRadius = 15;
 
 	[Header("Self Destruct")]
-	private float destructTimer;
-	private float destructTimeAmount = 10;
+	[SerializeField] private float destructTimer;
+	[SerializeField] private float destructTimeAmount = 10;
 
 	[Header("Hit NPC")]
 	private float distanceBetween;
@@ -32,7 +31,7 @@ public class Minion : MonoBehaviour
 
 	private void Update()
 	{
-		movingTimer += Time.deltaTime;
+		// Updating destruct timer and current position
 		destructTimer += Time.deltaTime;
 		currentPosition = transform.position;
 
