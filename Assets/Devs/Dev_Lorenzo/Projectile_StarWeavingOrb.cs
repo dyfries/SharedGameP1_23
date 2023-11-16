@@ -11,7 +11,7 @@ public class Projectile_StarWeavingOrb : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _projectileLifetime = 1f;
 
-    private Vector2 _projectileDirection;
+    private Vector2 _projectileDirection = Vector2.up;
     private float _delayTimer = 0f;
     private float _lifeTimer = 0f;
     private bool _movementStarted = false;

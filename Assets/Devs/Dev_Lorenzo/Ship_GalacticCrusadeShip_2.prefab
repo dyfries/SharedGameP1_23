@@ -219,10 +219,10 @@ MonoBehaviour:
   _projectileSpawnPoint: {fileID: 8843622368188265645}
   _projectile: {fileID: 3963591687228475006, guid: dcc70068ebbf1b04d9f45c475ead6c36, type: 3}
   _moveSpeed: 10
-  _initialMovementDuration: 0.5
+  _initialMovementDuration: 0.25
   _firingDuration: 5
   _exitLifetime: 20
-  _sineMoveStrength: 180
+  _sineMoveStrength: 1
   _attackSpeed: 0.5
 --- !u!50 &9218004849152254964
 Rigidbody2D:
