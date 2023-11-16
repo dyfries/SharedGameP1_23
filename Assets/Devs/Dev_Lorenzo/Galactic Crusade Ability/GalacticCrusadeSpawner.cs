@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GalacticCrusadeSpawner : MonoBehaviour
@@ -11,13 +12,24 @@ public class GalacticCrusadeSpawner : MonoBehaviour
 
     [SerializeField] private Vector2 _spawnAreaCenter;        // Offsets from bounds center.
     [SerializeField] private Vector2 _boundsSize;
+
     private int _spawnCount = 0;
     private float _spawnTimer = 0f;
+    private List<float> _xSpawnPositions = new();       // X positions are cached to spawn NPCs randomly and evenly.
 
 
     private void Awake()
     {
         this.enabled = false;
+
+        // Generate X positions.
+        for (int i = 0; i < +_maxSpawnCount; i++)
+        {
+            float startingXPos = _spawnAreaCenter.x - _boundsSize.x;
+            float xMultiplier = i / _maxSpawnCount;
+            float xPosition = startingXPos + (_boundsSize.x * xMultiplier);
+            _xSpawnPositions.Add(xPosition);
+        }
     }
 
     private void Update()
@@ -53,10 +65,17 @@ public class GalacticCrusadeSpawner : MonoBehaviour
         this.enabled = true;
         _spawnCount = 0;
         _spawnTimer = 0f - _spawnDelay;
+        ShuffleXPositions();
     }
 
     public void EndSpawner()
     {
         this.enabled = false;
+    }
+
+    private void ShuffleXPositions()
+    {
+        System.Random rng = new System.Random();
+        _xSpawnPositions = _xSpawnPositions.OrderBy((x) => rng.Next()).ToList();
     }
 }
