@@ -5,7 +5,8 @@ using UnityEngine;
 public class Ability_Block : Ability_Simple
 {
     [Header("Ability Block Subclass")]
-    public GameObject Block;
+    public GameObject ArtBlock;
+    //public GameObject BrokenBlock;
 
     [Header(" --- Animator ---  ")]
     public Animator anim;
