@@ -6,7 +6,6 @@ public class Ability_Block : Ability_Simple
 {
     [Header("Ability Block Subclass")]
     public GameObject Block;
-    public GameObject BrokenBlock;
 
     [Header(" --- Animator ---  ")]
     public Animator anim;
@@ -41,8 +40,7 @@ public class Ability_Block : Ability_Simple
     protected override void StartFiring()
     {
         base.StartFiring();
-        Block.GetComponent<CircleCollider2D>().enabled = true;
-        //BrokenBlock.SetActive(false);
+        ArtBlock.GetComponent<CircleCollider2D>().enabled = true;
         // When in StartFiring shield is fully charged
         anim.SetBool(anim_windupString, false);
         anim.SetBool(anim_firingString, true);
@@ -52,9 +50,7 @@ public class Ability_Block : Ability_Simple
     protected override void StartWinddown()
     {
         base.StartWinddown();
-        Block.GetComponent<CircleCollider2D>().enabled = false;
-        //BrokenBlock.SetActive(true);
-        //Block.SetActive(false);
+        ArtBlock.GetComponent<CircleCollider2D>().enabled = false;
         // When StartWinddown is active then shield will entire it's broken/recharge state
         anim.SetBool(anim_firingString, false);
         anim.SetBool(anim_winddownString, true);
