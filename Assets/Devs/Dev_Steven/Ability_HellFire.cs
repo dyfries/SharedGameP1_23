@@ -11,10 +11,16 @@ public class Ability_HellFire : Ability_Simple
     public GameObject crosshairPrefab;
 
     [Header("Ability Settings")]
+    [Range(1, 100)]
     public int projectileCount = 9;
-    public float projectileSpeed = 2f;
+    [Range(0.1f, 5f)]
+    public float launchSpeed = 2f;
+    [Range(0.1f, 5f)]
+    public float targetSpeed = 4f;
+    [Range(2f, 10f)]
     public float targetDistance = 4f;
     private Vector3 targetPosition;
+    [Range(0f, 300f)]
     public float rotationSpeed = 150f;
     private float angleStep;
 
@@ -46,7 +52,7 @@ public class Ability_HellFire : Ability_Simple
 
     protected override void Update()
     {
-        if (stageOfAbility == StageOfAbility.windup)
+        /*if (stageOfAbility == StageOfAbility.windup)
         {
             for (int i = 0; i < projectiles.Count; i++)
             {
@@ -55,7 +61,7 @@ public class Ability_HellFire : Ability_Simple
 
                 }
             }
-        }
+        }*/
 
         if (stageOfAbility == StageOfAbility.firing)
         {
@@ -64,7 +70,7 @@ public class Ability_HellFire : Ability_Simple
                 if (projectiles[i] != null)
                 {
                     //projectiles[i].GetComponent<Rigidbody2D>().AddForce(projectiles[i].transform.up * projectileSpeed, ForceMode2D.Impulse);
-                    projectiles[i].transform.position = projectiles[i].transform.position + projectiles[i].transform.up * projectileSpeed * Time.deltaTime;
+                    projectiles[i].transform.position = projectiles[i].transform.position + launchSpeed * Time.deltaTime * projectiles[i].transform.up;
                 }
             }
         }
@@ -89,7 +95,7 @@ public class Ability_HellFire : Ability_Simple
                         projectiles[i].transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
                     }
 
-                    projectiles[i].transform.position = projectiles[i].transform.position + projectiles[i].transform.up * (projectileSpeed * 2f) * Time.deltaTime;                    
+                    projectiles[i].transform.position = projectiles[i].transform.position + targetSpeed * Time.deltaTime * projectiles[i].transform.up;                    
                 }
             }
         }
@@ -98,6 +104,10 @@ public class Ability_HellFire : Ability_Simple
         {
             if (projectiles[i] != null)
             {
+                Physics2D.Raycast(projectiles[i].transform.position, projectiles[i].transform.up, 3f);
+                Debug.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * 3f, Color.red);
+
+
                 float distanceFromTarget = Vector2.Distance(targetPosition, projectiles[i].transform.position);
 
                 if (distanceFromTarget < 0.3f)

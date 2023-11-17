@@ -735,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7544014668475222762, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7544014668475222762, guid: d2cb8114b8876b64eb8ddc7e3c83e1c9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -782,6 +782,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2081156362006355983, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.068
+      objectReference: {fileID: 0}
     - target: {fileID: 2239981746660492527, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -824,7 +828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7077374961082085434, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
       propertyPath: m_Name
-      value: TriangleProjectile
+      value: HellfireProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 7077374961082085434, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
       propertyPath: m_IsActive
