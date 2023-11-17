@@ -30,18 +30,21 @@ public class Minion : MonoBehaviour
 
 	private void Update()
 	{
-		// Updating destruct timer and current position
-		destructTimer += Time.deltaTime;
+		// Updating current position
 		currentPosition = transform.position;
 
 		// Find the closest enemy within range
 		FindClosestEnemy();
 
-		// Move towards the closest NPC enemy
-		MoveToClosestNPC();
+		// Only run if there is an npc nearby
+		if(npc != null)
+        {
+			// Move towards the closest NPC enemy
+			MoveToClosestNPC();
 
-		// When distance is small damage NPC
-		HitNPC();
+			// When distance is small damage NPC
+			HitNPC();
+		}
     }
 
 	// If npc is null find a new closest enemy within range
@@ -58,8 +61,8 @@ public class Minion : MonoBehaviour
 
 	private void MoveToClosestNPC()
 	{
-		// If npc is not null set the position
-		if (npc != null) { closestEnemyPosition = npc.transform.position; }
+		// Set npc position
+		closestEnemyPosition = npc.transform.position;
 
 		// Find the direction the minion should move
 		moveTowards = closestEnemyPosition - currentPosition;
@@ -84,7 +87,6 @@ public class Minion : MonoBehaviour
 	// After destructTimeAmount seconds self destruct
 	public void SelfDestruct()
     {
-
 		Destroy(gameObject, destructTimeAmount);
 	}
 }

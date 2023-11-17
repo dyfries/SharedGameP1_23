@@ -2,76 +2,97 @@ using UnityEngine;
 
 public class Invincibility_Ability : Ability_Simple
 {
-    [Header("Invinisbilty")]
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private CircleCollider2D collide;
-    [SerializeField] private LayerMask nothingLayer;
-    [SerializeField] private LayerMask npcLayer;
-    private Color defaultColor = Color.white;
-    private Color invinsibilityColor = Color.grey; // Change this to lerp colors
+	[Header("Invinisbilty")]
+	[SerializeField] private SpriteRenderer spriteRenderer;
+	[SerializeField] private CircleCollider2D collide;
+	[SerializeField] private LayerMask nothingLayer;
+	[SerializeField] private LayerMask npcLayer;
+	private Color defaultColor = Color.white;
+	private Color invinsibilityColor = Color.grey; // Change this to lerp colors
 
-    [Header("Spawn Minions")]
-    [SerializeField] private GameObject minionPrefab;
-    private float spawnOffset = 1;
-    private GameObject leftMinion;
-    private GameObject rightMinion;
-    private Animator leftAnim;
-    private Animator rightAnim;
+	[Header("Spawn Minions")]
+	[SerializeField] private GameObject minionPrefab;
+	private float spawnOffset = 1;
+	private GameObject leftMinion;
+	private GameObject rightMinion;
+	private Animator leftAnim;
+	private Animator rightAnim;
 
-    protected override void StartWindup()
-    {
-        base.StartWindup();
+	[Header("Audio")]
+	[SerializeField] private AudioSource minionLeftAudioOutput;
+	[SerializeField] private AudioSource minionRightAudioOutput;
+	[SerializeField] private AudioClip minionState;
 
-        spriteRenderer.color = invinsibilityColor;
-        Debug.Log("Starting");
-    }
+	protected override void StartWindup()
+	{
+		base.StartWindup();
 
-    protected override void StartFiring()
-    {
-        base.StartFiring();
+		spriteRenderer.color = invinsibilityColor;
+		Debug.Log("Starting");
+	}
 
-        // Stop collisions by turning off collider
-        // Stop collisions with enemies only
-        collide.excludeLayers = npcLayer;
-        //collide.enabled = false;
+	protected override void StartFiring()
+	{
+		base.StartFiring();
 
-        SpawnMinions();
+		// Stop collisions by turning off collider
+		// Stop collisions with enemies only
+		collide.excludeLayers = npcLayer;
+		//collide.enabled = false;
 
-        Debug.Log("Firing");
-    }
+		SpawnMinions();
 
-    protected override void StartCooldown()
-    {
-        base.StartCooldown();
+		Debug.Log("Firing");
+	}
 
-        // Return to colliding
-        //collide.enabled = true;
-        collide.excludeLayers = nothingLayer;
+	protected override void StartCooldown()
+	{
+		base.StartCooldown();
 
-        // Stop invinsibility flashing
-        spriteRenderer.color = defaultColor;
+		// Return to colliding
+		//collide.enabled = true;
+		collide.excludeLayers = nothingLayer;
 
-        // Play minions exploding animation
-        leftAnim.SetTrigger("Explode");
-        rightAnim.SetTrigger("Explode");
+		// Stop invinsibility flashing
+		spriteRenderer.color = defaultColor;
 
-        // Self destruct minions
-        leftMinion.GetComponent<Minion>().SelfDestruct();
-        rightMinion.GetComponent<Minion>().SelfDestruct();
-    }
+		// Play minions exploding animation
+		leftAnim.SetTrigger("Explode");
+		rightAnim.SetTrigger("Explode");
 
-    private void SpawnMinions()
-    {
-        // Setting a new position to spawn minions in with offset
-        Vector3 leftMinionPosition = new Vector3(transform.position.x - spawnOffset, transform.position.y, 0);
-        Vector3 rightMinionPosition = new Vector3(transform.position.x + spawnOffset, transform.position.y, 0);
+		// Self destruct minions
+		leftMinion.GetComponent<Minion>().SelfDestruct();
+		rightMinion.GetComponent<Minion>().SelfDestruct();
+	}
 
-        // Spawning minions in and caching their gameObjects
-        leftMinion = Instantiate(minionPrefab, leftMinionPosition, Quaternion.identity);
-        rightMinion = Instantiate(minionPrefab, rightMinionPosition, Quaternion.identity);
+	private void SpawnMinions()
+	{
+		// Setting a new position to spawn minions in with offset
+		Vector3 leftMinionPosition = new Vector3(transform.position.x - spawnOffset, transform.position.y, 0);
+		Vector3 rightMinionPosition = new Vector3(transform.position.x + spawnOffset, transform.position.y, 0);
 
-        // Getting animators to set explosion sprite
-        leftAnim = leftMinion.GetComponent<Animator>();
-        rightAnim = rightMinion.GetComponent<Animator>();
-    }
+		// Spawning minions in and caching their gameObjects
+		leftMinion = Instantiate(minionPrefab, leftMinionPosition, Quaternion.identity);
+		rightMinion = Instantiate(minionPrefab, rightMinionPosition, Quaternion.identity);
+
+		// Getting animators to set explosion sprite
+		leftAnim = leftMinion.GetComponent<Animator>();
+		rightAnim = rightMinion.GetComponent<Animator>();
+
+		// Setting minion audioOutputs
+		minionLeftAudioOutput = leftMinion.GetComponent<AudioSource>();
+		minionRightAudioOutput = rightMinion.GetComponent<AudioSource>();
+
+		// Play spawning sound
+		//	Left
+		minionLeftAudioOutput.loop = false; // Turn off looping from buzzing noise
+		minionLeftAudioOutput.clip = minionState;
+		minionLeftAudioOutput.Play();
+
+		//	Right
+		minionLeftAudioOutput.loop = false; // Turn off looping from buzzing noise
+		minionLeftAudioOutput.clip = minionState;
+		minionLeftAudioOutput.Play();
+
+	}
 }
