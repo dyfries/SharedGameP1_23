@@ -17,6 +17,7 @@ public class Projectile_Missile : MonoBehaviour
     private Animator animator;
     private AudioSource explodeAudio;
     private float headingDirection;
+    private float wobble;
 
     private float timer;
 
@@ -40,7 +41,7 @@ public class Projectile_Missile : MonoBehaviour
     void Update()
     {
         //sets an offset for the rocket to missile as it flies
-        float wobble;
+
         if (isWobble)
         {
             timer += Time.deltaTime * wobbleSpeed;
