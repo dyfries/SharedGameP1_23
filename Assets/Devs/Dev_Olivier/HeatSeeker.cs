@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HeatSeeker : MonoBehaviour
@@ -49,17 +47,31 @@ public class HeatSeeker : MonoBehaviour
             if (desiredDirection != 0)
             {
                 float normalDirection = desiredDirection / Mathf.Abs(desiredDirection);
-                missile.setHeadingDirection(missile.getHeadingDirection() + (normalDirection*seekSpeed));
+                missile.setHeadingDirection(missile.getHeadingDirection() + (normalDirection * seekSpeed));
             }
         }
     }
 
     private Transform FindNearest()
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, seekingRadius, seekingMask);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, seekingRadius, seekingMask);
+        Collider2D nearest = null;
+
         try
         {
-            return hit.transform;
+            nearest = hits[0];
+            float dist = Vector2.Distance(transform.position, nearest.transform.position);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                float currentDist = Vector2.Distance(transform.position, hits[i].transform.position);
+                if (currentDist < dist)
+                {
+                    nearest = hits[i];
+                    dist = Vector2.Distance(transform.position, nearest.transform.position);
+                }
+            }
+
+            return nearest.transform;
         }
         catch { return null; }
     }
