@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3879354031032489849}
   - component: {fileID: 3455370074155148001}
   m_Layer: 0
-  m_Name: Crosshair
+  m_Name: Steven_Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

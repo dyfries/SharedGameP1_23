@@ -50,13 +50,13 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -4838,12 +4838,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2239981746660492527}
   - component: {fileID: 359209429816787159}
-  - component: {fileID: -3411099614055476868}
   - component: {fileID: 2946882374922764550}
   - component: {fileID: 7411356989093660120}
   - component: {fileID: 4430124662573157882}
   m_Layer: 7
-  m_Name: TriangleProjectile
+  m_Name: Steven_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4918,30 +4917,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3411099614055476868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7077374961082085434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b675d472e3ddfee408622a9fcbd1c091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTriggerEnter_Event:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollisionEnter_Event:
-    m_PersistentCalls:
-      m_Calls: []
-  destroyOnCollision: 1
-  destroyOnTrigger: 1
-  spawnOnCollision: 1
-  spawnOnTrigger: 1
-  objectToSpawn: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
-  DEBUG_MODE: 0
 --- !u!50 &2946882374922764550
 Rigidbody2D:
   serializedVersion: 4
@@ -4981,10 +4956,10 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

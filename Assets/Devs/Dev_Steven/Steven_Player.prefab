@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 5693463884532135468}
   - component: {fileID: 6835851233476038401}
   m_Layer: 6
-  m_Name: Player_Steven
-  m_TagString: Untagged
+  m_Name: Steven_Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 3921651950076879985}
   m_Layer: 6
   m_Name: PlayerAbility_Hellfire
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -456,19 +456,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedAbility_WindupTimer: 1
   activatedAbility_FiringTimer: 1
-  activatedAbility_WinddownTimer: 3
-  activatedAbility_CooldownTimer: 2
+  activatedAbility_WinddownTimer: 5
+  activatedAbility_CooldownTimer: 1.5
   stageOfAbility: 0
-  DEBUG_MODE: 0
+  DEBUG_MODE: 1
   projectilePrefab: {fileID: 7077374961082085434, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
   explosionPrefab: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
   crosshairPrefab: {fileID: 419417887185677520, guid: 25fb06408e0b1e948a9be76c889cfd45, type: 3}
-  projectileCount: 19
+  NPCLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  projectileCount: 9
   launchSpeed: 2
   targetSpeed: 4
   targetDistance: 4
   rotationSpeed: 150
+  detectionRange: 1
+  destroyRange: 0.2
+  explosionDestroyTime: 1.5
+  randomSpawnAngle: 0
+  showCrosshair: 1
+  destroyProjectileOnCollision: 1
+  destroyNPCOnCollision: 1
+  lockOnSetting: 2
   projectiles: []
+  targetPositions: []
   readySound: {fileID: 7112921514879816379}
   windupSound: {fileID: 2863290195208643056}
   firingSound: {fileID: 3876277252800195568}
@@ -743,7 +755,7 @@ GameObject:
   - component: {fileID: 1916652322308559898}
   m_Layer: 6
   m_Name: SoundEffects
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,7 +923,7 @@ GameObject:
   - component: {fileID: 4148414425520187488}
   m_Layer: 6
   m_Name: PlayerArt
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1277,7 +1289,7 @@ GameObject:
   - component: {fileID: 6801423931233224198}
   m_Layer: 6
   m_Name: PlayerAbility_Fish
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1616,6 +1628,10 @@ PrefabInstance:
     - target: {fileID: 7470418316160927018, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470418316160927018, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8594460444634355461, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
       propertyPath: m_Layer
