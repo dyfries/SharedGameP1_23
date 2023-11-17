@@ -19,8 +19,8 @@ public class OutlineSprite : MonoBehaviour
 
         for (int i = 0; i < 8; i++)
         {
-            GameObject outline = Instantiate(new GameObject(i.ToString(), typeof(SpriteMask)),transform);
-            //outline.transform.parent = transform;
+            GameObject outline = new GameObject(i.ToString(), typeof(SpriteMask));
+            outline.transform.parent = transform;
 
             outline.transform.position = new Vector2(offsetMatrix[0, i] * pixelUnit, offsetMatrix[1, i] * pixelUnit);
 
