@@ -354,7 +354,7 @@ public class Ability_HellFire : Ability_Simple
                     else if (lockOnSetting == lockOn.RayCastLockOn)
                     {
                         Gizmos.color = Color.yellow;
-                        Gizmos.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * destroyRange);
+                        Gizmos.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * detectionRange);
                     }
                 }
             }
