@@ -165,4 +165,40 @@ public class Ability_MissileBarrage : Ability_Simple
 
     }
 
+    private void OnDrawGizmos()
+    {
+        if (DEBUG_MODE)
+        {
+            for (int i = 0; i < amountOfMissiles; i++)
+            {
+                //gets a unit to mesure the missile and the space between missiles
+                float missileUnit = missile.transform.localScale.x;
+                float spacingUnit = horizontalSpacing * missile.transform.localScale.x;
+
+                //line up the missiles side by side with spacing included
+                float xPos = i * (missileUnit + spacingUnit);
+                //offset the line of missiles left to center it on the ship
+                xPos -= (amountOfMissiles - 1) * (missileUnit + spacingUnit) / 2f;
+
+                //find points to make a triangle with the y coordinates of the line of missiles
+                //triangle ranges from 0 - 1 in position
+                float yPos = 1 - (Mathf.Abs(xPos) / ((amountOfMissiles - 1) * (missileUnit + spacingUnit) / 2f));
+                //evaluates to a curve for extra style
+                yPos = missilePlacementCurve.Evaluate(yPos);
+
+                //offset the missiles to the player position
+                xPos += barrageOrigin.x;
+                yPos += barrageOrigin.y;
+
+                //creates a vector out of the found positions
+                Vector2 formationPos = new Vector2(xPos, yPos);
+
+                //lerps missiles from player position to their desired position in arrow formation
+                //happens in first half of the windup
+                Gizmos.DrawWireSphere(formationPos, missileUnit/2);
+
+            }
+        }
+    }
+
 }
