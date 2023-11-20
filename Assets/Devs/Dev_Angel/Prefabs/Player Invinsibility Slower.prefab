@@ -16,6 +16,26 @@ PrefabInstance:
       propertyPath: minionPrefab
       value: 
       objectReference: {fileID: 7177986700455007822, guid: 23b6cb02456659f4cab23a1271f829f8, type: 3}
+    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: defaultColor.b
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: defaultColor.g
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: invinsibilityColor.b
+      value: 0.113296546
+      objectReference: {fileID: 0}
+    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: invinsibilityColor.g
+      value: 0.113296546
+      objectReference: {fileID: 0}
+    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: invinsibilityColor.r
+      value: 0.3584906
+      objectReference: {fileID: 0}
     - target: {fileID: 2144538258753338674, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -59,6 +79,22 @@ PrefabInstance:
     - target: {fileID: 6172190136236319537, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
       propertyPath: m_Name
       value: Player Invinsibility Slower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172190136236319537, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406091369679704822, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: m_Color.b
+      value: 0.042452812
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406091369679704822, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: m_Color.g
+      value: 0.042452812
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406091369679704822, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,8 +7,8 @@ public class Invincibility_Ability : Ability_Simple
 	[SerializeField] private CircleCollider2D collide;
 	[SerializeField] private LayerMask nothingLayer;
 	[SerializeField] private LayerMask npcLayer;
-	private Color defaultColor = Color.white;
-	private Color invinsibilityColor = Color.grey; // Change this to lerp colors
+	[SerializeField] private Color defaultColor = Color.white;
+	[SerializeField] private Color invinsibilityColor = Color.grey;
 
 	[Header("Spawn Minions")]
 	[SerializeField] private GameObject minionPrefab;
