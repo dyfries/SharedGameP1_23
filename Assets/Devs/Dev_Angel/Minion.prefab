@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6fbc9a471b09d4fb2542776a018bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 25
-  destructTimeAmount: 2
+  moveForce: 1
+  destructTimeAmount: 1.08
 --- !u!50 &2085387322423413169
 Rigidbody2D:
   serializedVersion: 4

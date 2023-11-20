@@ -10,20 +10,20 @@ public class Minion : MonoBehaviour
 	private Vector3 currentPosition;
 	private Vector3 closestEnemyPosition;
 	private Vector3 moveTowards;
-	[SerializeField] private float moveForce = 25;
+	[SerializeField] private float moveForce = 1;
 
 	[Header("Find NPC")]
 	private BaseNPC npc;
 	private float findEnemyRadius = 15;
 
-	[Header("Self Destruct")]
-	[SerializeField] private float destructTimeAmount = 2;
-
 	[Header("Hit NPC")]
 	private float distanceBetween;
 	private float hitDistance = 0.5f;
 
-	private void Start()
+    [Header("Self Destruct")]
+    [SerializeField] private float destructTimeAmount = 2; // After Animation explode starts
+
+    private void Start()
 	{
 		rigid = GetComponent<Rigidbody2D>();
 	}

@@ -49,10 +49,19 @@ MonoBehaviour:
   activatedAbility_WinddownTimer: 0
   activatedAbility_CooldownTimer: 4
   stageOfAbility: 0
-  abilityRigidbody: {fileID: 3870411605498088437}
   DEBUG_MODE: 0
   spriteRenderer: {fileID: 6406091369679704822}
   collide: {fileID: 3269255543243948069}
+  nothingLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  minionPrefab: {fileID: 1159814088753771391, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}
+  minionLeftAudioOutput: {fileID: 0}
+  minionRightAudioOutput: {fileID: 0}
+  minionState: {fileID: 8300000, guid: aa571014dd338aa4ba7779c153a7d6bb, type: 3}
 --- !u!1 &2612130695357902953
 GameObject:
   m_ObjectHideFlags: 0
