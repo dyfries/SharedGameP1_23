@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 6555662453694796164}
   - component: {fileID: 3269255543243948069}
   - component: {fileID: 5622902692444586941}
+  - component: {fileID: 4962541069713216641}
   m_Layer: 6
   m_Name: Player Invinsibility
   m_TagString: Untagged
@@ -453,7 +454,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ffa6f81ef7706c34a9275a7115648d51, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -537,6 +538,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4962541069713216641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172190136236319537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d503ad3ed2e4ce44c8a318a5a1716dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7562265510754849700
 GameObject:
   m_ObjectHideFlags: 0
