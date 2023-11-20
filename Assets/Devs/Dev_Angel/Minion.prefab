@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6679839977410569530}
   - component: {fileID: 5078653274019669916}
   - component: {fileID: -3470265380118003121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
