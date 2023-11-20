@@ -318,26 +318,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 133135864249398463, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: m_Name
-      value: Invincibility
-      objectReference: {fileID: 0}
-    - target: {fileID: 133135864249398463, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: minionPrefab
-      value: 
-      objectReference: {fileID: 1159814088753771391, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}
-    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: npcLayer.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 592395872965265308, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: activatedAbility_WinddownTimer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2144538258753338674, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -378,29 +358,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2612130695357902953, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5683443213276724658, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6172190136236319537, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
       propertyPath: m_Name
       value: Player Invinsibility
-      objectReference: {fileID: 0}
-    - target: {fileID: 6172190136236319537, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7562265510754849700, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7951616159569586362, guid: a038f725848c7fe43bdbf0811e2dca02, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

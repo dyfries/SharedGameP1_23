@@ -37,7 +37,6 @@ public class Invincibility_Ability : Ability_Simple
 
 		if(thisAudioOutput != null)
 		{
-            thisAudioOutput.loop = false; // Turn off looping from spaceship moving noise
             thisAudioOutput.clip = invincibilitySound;
             thisAudioOutput.Play();
         }
