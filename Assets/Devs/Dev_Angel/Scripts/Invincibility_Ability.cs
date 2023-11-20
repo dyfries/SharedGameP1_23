@@ -56,7 +56,10 @@ public class Invincibility_Ability : Ability_Simple
 		collide.excludeLayers = npcLayer;
 		//collide.enabled = false;
 
-		SpawnMinions();
+		if(minionPrefab != null)
+		{
+			SpawnMinions();
+        }
 	}
 
 	protected override void StartCooldown()
