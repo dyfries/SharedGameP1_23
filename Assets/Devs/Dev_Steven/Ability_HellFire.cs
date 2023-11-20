@@ -283,12 +283,11 @@ public class Ability_HellFire : Ability_Simple
             {
                 targetPositions[i] = detectionRay.collider.transform.position;
                 projectileSprite.color = Color.red;
+                return;
             }
-            else
-            {
-                targetPositions[i] = crosshairPosition;
-                projectileSprite.color = Color.white;
-            }
+
+            targetPositions[i] = crosshairPosition;
+            projectileSprite.color = Color.white;
         }
         else if (lockOnSetting == lockOn.OverlapCircleLockOn)
         {
@@ -301,13 +300,12 @@ public class Ability_HellFire : Ability_Simple
                 {
                     targetPositions[i] = detectionCircle[j].transform.position;
                     projectileSprite.color = Color.red;
-                }
-                else
-                {
-                    targetPositions[i] = crosshairPosition;
-                    projectileSprite.color = Color.white;
+                    return;
                 }
             }
+
+            targetPositions[i] = crosshairPosition;
+            projectileSprite.color = Color.white;
         }
     }
 
