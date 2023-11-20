@@ -19,17 +19,33 @@ public class Invincibility_Ability : Ability_Simple
 	private Animator rightAnim;
 
 	[Header("Audio")]
+	[SerializeField] private AudioSource thisAudioOutput;
+	[SerializeField] private AudioClip invincibilitySound;
 	[SerializeField] private AudioSource minionLeftAudioOutput;
 	[SerializeField] private AudioSource minionRightAudioOutput;
 	[SerializeField] private AudioClip minionState;
 
-	protected override void StartWindup()
+    private void Start()
+    {
+		// Setting this audio source
+        thisAudioOutput = gameObject.GetComponent<AudioSource>();
+    }
+
+    protected override void StartWindup()
 	{
 		base.StartWindup();
 
-		spriteRenderer.color = invinsibilityColor;
-		Debug.Log("Starting");
-	}
+		if(thisAudioOutput != null)
+		{
+            thisAudioOutput.loop = false; // Turn off looping from spaceship moving noise
+            thisAudioOutput.clip = invincibilitySound;
+            thisAudioOutput.Play();
+        }
+		if(spriteRenderer != null)
+		{
+            spriteRenderer.color = invinsibilityColor;
+        }
+    }
 
 	protected override void StartFiring()
 	{
@@ -41,8 +57,6 @@ public class Invincibility_Ability : Ability_Simple
 		//collide.enabled = false;
 
 		SpawnMinions();
-
-		Debug.Log("Firing");
 	}
 
 	protected override void StartCooldown()
@@ -60,8 +74,19 @@ public class Invincibility_Ability : Ability_Simple
 		leftAnim.SetTrigger("Explode");
 		rightAnim.SetTrigger("Explode");
 
-		// Self destruct minions
-		leftMinion.GetComponent<Minion>().SelfDestruct();
+		// Playing death sound
+        //	Left
+        minionLeftAudioOutput.loop = false; // Turn off looping from buzzing noise
+        minionLeftAudioOutput.clip = minionState;
+        minionLeftAudioOutput.Play();
+
+        //	Right
+        minionLeftAudioOutput.loop = false; // Turn off looping from buzzing noise
+        minionLeftAudioOutput.clip = minionState;
+        minionLeftAudioOutput.Play();
+
+        // Self destruct minions
+        leftMinion.GetComponent<Minion>().SelfDestruct();
 		rightMinion.GetComponent<Minion>().SelfDestruct();
 	}
 

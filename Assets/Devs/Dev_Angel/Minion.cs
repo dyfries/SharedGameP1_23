@@ -1,3 +1,4 @@
+using Microsoft.Win32.SafeHandles;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -22,6 +23,7 @@ public class Minion : MonoBehaviour
 
     [Header("Self Destruct")]
     [SerializeField] private float destructTimeAmount = 2; // After Animation explode starts
+	private bool minionIsAlive = true;
 
 	private void Start()
 	{
@@ -37,7 +39,7 @@ public class Minion : MonoBehaviour
 		FindClosestEnemy();
 
 		// Only run if there is an npc nearby
-		if(npc != null)
+		if(npc != null && minionIsAlive)
         {
 			// Move towards the closest NPC enemy
 			MoveToClosestNPC();
@@ -87,6 +89,7 @@ public class Minion : MonoBehaviour
 	// After destructTimeAmount seconds self destruct
 	public void SelfDestruct()
     {
+		minionIsAlive = false;
 		Destroy(gameObject, destructTimeAmount);
 	}
 }
