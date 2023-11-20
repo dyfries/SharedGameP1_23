@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Bits: 0
   minionPrefab: {fileID: 1159814088753771391, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}
   thisAudioOutput: {fileID: 0}
-  invincibilitySound: {fileID: 0}
+  invincibilitySound: {fileID: 8300000, guid: 354615dbec19cc5459232d7643752996, type: 3}
   minionLeftAudioOutput: {fileID: 0}
   minionRightAudioOutput: {fileID: 0}
   minionState: {fileID: 8300000, guid: c8b818690fdde22459e3f9099c5edf96, type: 3}
