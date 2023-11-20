@@ -23,7 +23,7 @@ public class Minion : MonoBehaviour
     [Header("Self Destruct")]
     [SerializeField] private float destructTimeAmount = 2; // After Animation explode starts
 
-    private void Start()
+	private void Start()
 	{
 		rigid = GetComponent<Rigidbody2D>();
 	}
