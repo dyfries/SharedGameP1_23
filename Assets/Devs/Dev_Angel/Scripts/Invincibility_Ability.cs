@@ -12,7 +12,7 @@ public class Invincibility_Ability : Ability_Simple
 
 	[Header("Spawn Minions")]
 	[SerializeField] private GameObject minionPrefab;
-	private float spawnOffset = 1;
+	[SerializeField] private float spawnOffset = 1;
 	private GameObject leftMinion;
 	private GameObject rightMinion;
 	private Animator leftAnim;
@@ -24,6 +24,7 @@ public class Invincibility_Ability : Ability_Simple
 	[SerializeField] private AudioSource minionLeftAudioOutput;
 	[SerializeField] private AudioSource minionRightAudioOutput;
 	[SerializeField] private AudioClip minionState;
+	[SerializeField] private AudioClip minionNoise;
 
     private void Start()
     {
@@ -80,9 +81,9 @@ public class Invincibility_Ability : Ability_Simple
         minionLeftAudioOutput.Play();
 
         //	Right
-        minionLeftAudioOutput.loop = false; // Turn off looping from buzzing noise
-        minionLeftAudioOutput.clip = minionState;
-        minionLeftAudioOutput.Play();
+        minionRightAudioOutput.loop = false; // Turn off looping from buzzing noise
+        minionRightAudioOutput.clip = minionState;
+        minionRightAudioOutput.Play();
 
         // Self destruct minions
         leftMinion.GetComponent<Minion>().SelfDestruct();
@@ -114,9 +115,24 @@ public class Invincibility_Ability : Ability_Simple
 		minionLeftAudioOutput.Play();
 
 		//	Right
-		minionLeftAudioOutput.loop = false; // Turn off looping from buzzing noise
-		minionLeftAudioOutput.clip = minionState;
-		minionLeftAudioOutput.Play();
+		minionRightAudioOutput.loop = false; // Turn off looping from buzzing noise
+        minionRightAudioOutput.clip = minionState;
+        minionRightAudioOutput.Play();
 
-	}
+		Invoke("TurnMinionNoiseOn", 1);
+    }
+
+	private void TurnMinionNoiseOn()
+	{
+        // Retrun back to buzzing noise
+        //	Left
+        minionLeftAudioOutput.clip = minionNoise;
+        minionLeftAudioOutput.loop = true; // Turn looping back on
+        minionLeftAudioOutput.Play();
+
+        //	Right
+        minionRightAudioOutput.clip = minionNoise;
+        minionRightAudioOutput.loop = true; // Turn looping back on
+        minionRightAudioOutput.Play();
+    }
 }

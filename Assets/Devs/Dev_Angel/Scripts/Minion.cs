@@ -15,7 +15,7 @@ public class Minion : MonoBehaviour
 
 	[Header("Find NPC")]
 	private BaseNPC npc;
-	private float findEnemyRadius = 15;
+	private float findEnemyRadius = 30;
 
 	[Header("Hit NPC")]
 	private float distanceBetween;
