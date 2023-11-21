@@ -466,11 +466,12 @@ MonoBehaviour:
   NPCLayers:
     serializedVersion: 2
     m_Bits: 256
-  projectileCount: 9
+  projectileCount: 19
   launchSpeed: 2
   targetSpeed: 4
   targetDistance: 4
   rotationSpeed: 150
+  lockOnRotationSpeed: 300
   detectionRange: 1
   destroyRange: 0.2
   explosionDestroyTime: 1.5
@@ -479,8 +480,6 @@ MonoBehaviour:
   destroyProjectileOnCollision: 1
   destroyNPCOnCollision: 1
   lockOnSetting: 2
-  projectiles: []
-  targetPositions: []
   readySound: {fileID: 7112921514879816379}
   windupSound: {fileID: 2863290195208643056}
   firingSound: {fileID: 3876277252800195568}
@@ -488,6 +487,8 @@ MonoBehaviour:
   cooldownSound: {fileID: 5468308225094344830}
   launchSound: {fileID: 3431065389016896564}
   explosionSound: {fileID: 5960635819232489264}
+  projectiles: []
+  targetPositions: []
 --- !u!1 &4044347474691781398
 GameObject:
   m_ObjectHideFlags: 0
