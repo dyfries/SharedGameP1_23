@@ -432,15 +432,15 @@ PrefabInstance:
       objectReference: {fileID: 299514739}
     - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: activatedAbility_FiringTimer
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: activatedAbility_WindupTimer
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: activatedAbility_WinddownTimer
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5936740190667811174, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: m_Name
