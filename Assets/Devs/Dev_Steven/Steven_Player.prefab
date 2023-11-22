@@ -456,13 +456,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedAbility_WindupTimer: 1
   activatedAbility_FiringTimer: 1
-  activatedAbility_WinddownTimer: 5
+  activatedAbility_WinddownTimer: 3
   activatedAbility_CooldownTimer: 1.5
   stageOfAbility: 0
   DEBUG_MODE: 1
   projectilePrefab: {fileID: 7077374961082085434, guid: e576ad3f292d8a9489948786f317fd37, type: 3}
-  explosionPrefab: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
   crosshairPrefab: {fileID: 419417887185677520, guid: 25fb06408e0b1e948a9be76c889cfd45, type: 3}
+  explosionPrefab: {fileID: 7506890194209598262, guid: 428a0aac3bcc525478ca95d0df4bb303, type: 3}
   NPCLayers:
     serializedVersion: 2
     m_Bits: 256
