@@ -4,13 +4,6 @@ using UnityEngine;
 // The HellFire ability inherits from the Ability_Simple class
 public class Ability_HellFire : Ability_Simple
 {
-    [Header("References & Layers")]
-    private SpriteRenderer playerSpriteRenderer;        // Reference to the player's sprite renderer.
-    public GameObject projectilePrefab;                 // Prefab for the projectile.
-    public GameObject crosshairPrefab;                  // Prefab for the crosshair.
-    public GameObject explosionPrefab;                  // Prefab for the explosion effect.
-    public LayerMask NPCLayers;                         // Layers considered for NPC interactions.
-
     [Header("Ability Settings")]
     [Range(1, 100)]
     public int projectileCount = 9;                     // Number of projectiles.
@@ -44,18 +37,29 @@ public class Ability_HellFire : Ability_Simple
         DisableLockOn, RayCastLockOn, OverlapCircleLockOn, 
     }
 
+    [Header("References & Layers")]
+    public GameObject projectilePrefab;                 // Prefab for the projectile.
+    public GameObject crosshairPrefab;                  // Prefab for the crosshair.
+    public GameObject explosionPrefab;                  // Prefab for the explosion effect.
+    public GameObject projectileHolder;                 // GameObject to organize spawned projectiles
+    public LayerMask NPCLayers;                         // Layers considered for NPC interactions.
+
+    private SpriteRenderer playerSpriteRenderer;        // Reference to the player's sprite renderer.
+
+    [HideInInspector]
+    public List<GameObject> projectiles;                // List to store instantiated projectiles.
+    [HideInInspector] 
+    public List<Vector3> targetPositions;               // List to store target positions for each projectile.
+
     [Header("Audio Sources")]
     public AudioSource readySound;                      // Sound played when the ability is ready.
-    public AudioSource windupSound;                     // Sound played at windup.
-    public AudioSource firingSound;                     // Sound played at firing.
-    public AudioSource winddownSound;                   // Sound played at winddown.
-    public AudioSource cooldownSound;                   // Sound played at cooldown.
+    public AudioSource windupSound;                     // Sound played at windup state.
+    public AudioSource firingSound;                     // Sound played at firing state.
+    public AudioSource winddownSound;                   // Sound played at winddown state.
+    public AudioSource cooldownSound;                   // Sound played at cooldown state.
 
     public AudioSource launchSound;                     // Sound played when projectiles are launched.
     public AudioSource explosionSound;                  // Sound played when projectile destroyed.
-
-    public List<GameObject> projectiles;                // List to store instantiated projectiles.
-    public List<Vector3> targetPositions;               // List to store target positions for each projectile.
 
 
     // Awake is called when the script instance is being loaded.
@@ -236,7 +240,7 @@ public class Ability_HellFire : Ability_Simple
             }
 
             // Instantiate projectile, set its name, and add it to the list.
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, rotation, gameObject.transform);
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, rotation, projectileHolder.transform);
             projectile.name = "Projectile " + i;
             projectiles.Add(projectile);
 
@@ -309,9 +313,9 @@ public class Ability_HellFire : Ability_Simple
             }
         }
 
-        // Clear projectile and target position lists
+        /*// Clear projectile and target position lists
         projectiles.Clear();
-        targetPositions.Clear();
+        targetPositions.Clear();*/
 
         // Call the base class StartCooldown method.
         base.StartCooldown();
@@ -423,7 +427,8 @@ public class Ability_HellFire : Ability_Simple
                 // Instantiate and destroy the explosion effect.
                 if (explosionPrefab != null)
                 {
-                    GameObject explosion = Instantiate(explosionPrefab, hitRay.collider.gameObject.transform.position, hitRay.collider.gameObject.transform.rotation);
+                    GameObject explosion = Instantiate(
+                        explosionPrefab, hitRay.collider.gameObject.transform.position, hitRay.collider.gameObject.transform.rotation);
                     Destroy(explosion, explosionDestroyTime);
                 }*/
             }
