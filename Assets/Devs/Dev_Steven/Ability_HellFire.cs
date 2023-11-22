@@ -4,13 +4,6 @@ using UnityEngine;
 // The HellFire ability inherits from the Ability_Simple class
 public class Ability_HellFire : Ability_Simple
 {
-    [Header("References & Layers")]
-    private SpriteRenderer playerSpriteRenderer;        // Reference to the player's sprite renderer.
-    public GameObject projectilePrefab;                 // Prefab for the projectile.
-    public GameObject crosshairPrefab;                  // Prefab for the crosshair.
-    public GameObject explosionPrefab;                  // Prefab for the explosion effect.
-    public LayerMask NPCLayers;                         // Layers considered for NPC interactions.
-
     [Header("Ability Settings")]
     [Range(1, 100)]
     public int projectileCount = 9;                     // Number of projectiles.
@@ -44,18 +37,29 @@ public class Ability_HellFire : Ability_Simple
         DisableLockOn, RayCastLockOn, OverlapCircleLockOn, 
     }
 
+    [Header("References & Layers")]
+    public GameObject projectilePrefab;                 // Prefab for the projectile.
+    public GameObject crosshairPrefab;                  // Prefab for the crosshair.
+    public GameObject explosionPrefab;                  // Prefab for the explosion effect.
+    public GameObject projectileHolder;                 // GameObject to organize spawned projectiles
+    public LayerMask NPCLayers;                         // Layers considered for NPC interactions.
+
+    private SpriteRenderer playerSpriteRenderer;        // Reference to the player's sprite renderer.
+
+    [HideInInspector]
+    public List<GameObject> projectiles;                // List to store instantiated projectiles.
+    [HideInInspector] 
+    public List<Vector3> targetPositions;               // List to store target positions for each projectile.
+
     [Header("Audio Sources")]
     public AudioSource readySound;                      // Sound played when the ability is ready.
-    public AudioSource windupSound;                     // Sound played at windup.
-    public AudioSource firingSound;                     // Sound played at firing.
-    public AudioSource winddownSound;                   // Sound played at winddown.
-    public AudioSource cooldownSound;                   // Sound played at cooldown.
+    public AudioSource windupSound;                     // Sound played at windup state.
+    public AudioSource firingSound;                     // Sound played at firing state.
+    public AudioSource winddownSound;                   // Sound played at winddown state.
+    public AudioSource cooldownSound;                   // Sound played at cooldown state.
 
     public AudioSource launchSound;                     // Sound played when projectiles are launched.
     public AudioSource explosionSound;                  // Sound played when projectile destroyed.
-
-    public List<GameObject> projectiles;                // List to store instantiated projectiles.
-    public List<Vector3> targetPositions;               // List to store target positions for each projectile.
 
 
     // Awake is called when the script instance is being loaded.
@@ -151,9 +155,6 @@ public class Ability_HellFire : Ability_Simple
     // Method to perform actions when ability is in "ready" state.
     protected override void StartReady()
     {
-        // Set player sprite color to white.
-        playerSpriteRenderer.color = Color.white;
-
         // Play the ready sound if available.
         if (readySound != null)
         {
@@ -171,9 +172,6 @@ public class Ability_HellFire : Ability_Simple
     // Method to perform actions when ability is in "windup" state.
     protected override void StartWindup()
     {
-        // Set player sprite color to green.
-        playerSpriteRenderer.color = Color.green;
-
         // Play the windup sound if available.
         if (windupSound != null)
         {
@@ -210,9 +208,6 @@ public class Ability_HellFire : Ability_Simple
     // Method to perform actions when ability is in "firing" state.
     protected override void StartFiring()
     {
-        // Set player sprite color to grey.
-        playerSpriteRenderer.color = Color.grey;
-
         // Calculate the angle step between projectiles.
         angleStep = 360f / projectileCount;
 
@@ -235,10 +230,22 @@ public class Ability_HellFire : Ability_Simple
                 rotation = Quaternion.Euler(0f, 0f, angle);
             }
 
-            // Instantiate projectile, set its name, and add it to the list.
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, rotation, gameObject.transform);
-            projectile.name = "Projectile " + i;
-            projectiles.Add(projectile);
+            // Check if the projectile is not null.
+            if (projectilePrefab != null)
+            {
+                // Instantiate projectile, set its name, and add it to the list.
+                GameObject projectile;
+                if (projectileHolder != null)
+                {
+                    projectile = Instantiate(projectilePrefab, transform.position, rotation, projectileHolder.transform);
+                }
+                else
+                {
+                    projectile = Instantiate(projectilePrefab, transform.position, rotation);
+                }
+                projectile.name = "Projectile " + i;
+                projectiles.Add(projectile);
+            }
 
             // Play launch sound if available.
             if (launchSound != null)
@@ -254,9 +261,6 @@ public class Ability_HellFire : Ability_Simple
     // Method to perform actions when ability is in "winddown" state.
     protected override void StartWinddown()
     {
-        // Set player sprite color to red.
-        playerSpriteRenderer.color = Color.red;
-
         // Play winddown sound if available.
         if (winddownSound != null)
         {
@@ -266,6 +270,7 @@ public class Ability_HellFire : Ability_Simple
         // Iterate through projectiles
         for (int i = 0; i < projectiles.Count; i++)
         {
+            // Check if the projectile is not null.
             if (projectiles[i] != null)
             {
                 // Play the firing sound if available
@@ -291,9 +296,6 @@ public class Ability_HellFire : Ability_Simple
     // Method to perform actions when ability is in "cooldown" state.
     protected override void StartCooldown()
     {
-        // Set player sprite color to magenta.
-        playerSpriteRenderer.color = Color.magenta;
-
         // Play the cooldown sound if available
         if (cooldownSound != null)
         {
@@ -308,10 +310,6 @@ public class Ability_HellFire : Ability_Simple
                 DestroyProjectile(i);
             }
         }
-
-        // Clear projectile and target position lists
-        projectiles.Clear();
-        targetPositions.Clear();
 
         // Call the base class StartCooldown method.
         base.StartCooldown();
@@ -414,7 +412,7 @@ public class Ability_HellFire : Ability_Simple
                 // Destroy the NPC GameObject that was hit by the ray.
                 Destroy(hitRay.collider.gameObject);
 
-               /* // Play explosion sound if available.
+                // Play explosion sound if available.
                 if (explosionSound != null)
                 {
                     explosionSound.Play();
@@ -423,9 +421,10 @@ public class Ability_HellFire : Ability_Simple
                 // Instantiate and destroy the explosion effect.
                 if (explosionPrefab != null)
                 {
-                    GameObject explosion = Instantiate(explosionPrefab, hitRay.collider.gameObject.transform.position, hitRay.collider.gameObject.transform.rotation);
+                    GameObject explosion = Instantiate(
+                    explosionPrefab, hitRay.collider.gameObject.transform.position, hitRay.collider.gameObject.transform.rotation);
                     Destroy(explosion, explosionDestroyTime);
-                }*/
+                }
             }
         }
     }
@@ -464,7 +463,7 @@ public class Ability_HellFire : Ability_Simple
             Debug.LogError(name + " is missing a reference to projectilePrefab. Please set one in the inspector.");
         }
         // Check and log missing reference for the crosshairPrefab if showCrosshair is enabled.
-        if (showCrosshair && crosshairPrefab == null)
+        if (showCrosshair == true && crosshairPrefab == null)
         {
             Debug.LogError(name + " is missing a reference to crosshairPrefab. Please set one in the inspector for this effect.");
         }
