@@ -8,7 +8,9 @@ public class InvincibilityPlayerSounds : MonoBehaviour
     private Vector2 directionalInput;
 
     [Header("Audio Source")]
-    private AudioSource thisAudioSource;
+	[SerializeField] private AudioSource collisionAudio;
+    [SerializeField] private AudioClip collisionAudioClip;
+	private AudioSource thisAudioSource;
 
     private void Start()
     {
@@ -28,5 +30,12 @@ public class InvincibilityPlayerSounds : MonoBehaviour
         {
             thisAudioSource.mute = false;
         }
+    }
+
+    public void CollisionSounds()
+    {
+        collisionAudio.clip = collisionAudioClip;
+
+        collisionAudio.Play();
     }
 }
