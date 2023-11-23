@@ -59,6 +59,8 @@ MonoBehaviour:
   npcLayer:
     serializedVersion: 2
     m_Bits: 0
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  invinsibilityColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   minionPrefab: {fileID: 1159814088753771391, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}
   spawnOffset: 1
   thisAudioOutput: {fileID: 0}
@@ -345,6 +347,8 @@ GameObject:
   - component: {fileID: 3269255543243948069}
   - component: {fileID: 5622902692444586941}
   - component: {fileID: 4962541069713216641}
+  - component: {fileID: -3665260879201761542}
+  - component: {fileID: 7821796901239610202}
   m_Layer: 6
   m_Name: Player Invinsibility
   m_TagString: Untagged
@@ -552,6 +556,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d503ad3ed2e4ce44c8a318a5a1716dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3665260879201761542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172190136236319537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d93e1c6c7b1ed4a888ce7b6ea1e33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 4173586257940219590}
+  playerArtController: {fileID: 1727364535738238174}
+  debug_Health: 0
+  debug_Damaged: 0
+--- !u!114 &7821796901239610202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172190136236319537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d775f624a1847438d380a29afd239f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3665260879201761542}
+        m_TargetAssemblyTypeName: InvincibilityPlayerHealth, Assembly-CSharp
+        m_MethodName: Damage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 40
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  collisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+  debug_Collisions: 0
 --- !u!1 &7562265510754849700
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +698,7 @@ GameObject:
   - component: {fileID: 6716073159140319775}
   - component: {fileID: 6406091369679704822}
   - component: {fileID: 1727364535738238174}
+  - component: {fileID: 4173586257940219590}
   m_Layer: 6
   m_Name: PlayerArt
   m_TagString: Untagged
@@ -747,3 +799,24 @@ MonoBehaviour:
   turnRight: {fileID: 439274411, guid: b88e43ff72711fd409063e5228d451ee, type: 3}
   turnThreshold: 0.7
   tiltThreshold: 0.2
+--- !u!95 &4173586257940219590
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951616159569586362}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 93cf7db5a3c186f4099d8b70e49c1a74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

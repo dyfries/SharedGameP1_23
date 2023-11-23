@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2496790781327372159, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}
       propertyPath: moveForce
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9032935750260989338, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}
       propertyPath: m_LocalPosition.x
