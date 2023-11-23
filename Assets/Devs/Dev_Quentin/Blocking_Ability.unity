@@ -271,11 +271,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &299514739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7617373209072942315, guid: df26788f601417841a3e031918ada0e4, type: 3}
-  m_PrefabInstance: {fileID: 1976876405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1355318556
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,34 +409,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3155089818185827803, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.095
-      objectReference: {fileID: 0}
-    - target: {fileID: 3155089818185827803, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.189
-      objectReference: {fileID: 0}
-    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1976876406}
-    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: ArtBlock
-      value: 
-      objectReference: {fileID: 299514739}
-    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: activatedAbility_FiringTimer
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: activatedAbility_WindupTimer
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: activatedAbility_WinddownTimer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5936740190667811174, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: m_Name
       value: Player_05 Blocking
@@ -486,117 +453,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7342425063138719607, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_Radius
-      value: 0.39074802
-      objectReference: {fileID: 0}
-    - target: {fileID: 7342425063138719607, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.009104359
-      objectReference: {fileID: 0}
-    - target: {fileID: 7342425063138719607, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.027313126
-      objectReference: {fileID: 0}
-    - target: {fileID: 8431566288281349554, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8431566288281349554, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8431566288281349554, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_UsedByEffector
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8953916258512200162, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_Size.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8953916258512200162, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_Size.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8953916258512200162, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 81d963f8ce439be48b2e03cbf01a32ae, type: 3}
-    - target: {fileID: 8953916258512200162, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7617373209072942315, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1976876409}
-    - targetCorrespondingSourceObject: {fileID: 7617373209072942315, guid: df26788f601417841a3e031918ada0e4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1976876411}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df26788f601417841a3e031918ada0e4, type: 3}
---- !u!95 &1976876406 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5987215008712117808, guid: df26788f601417841a3e031918ada0e4, type: 3}
-  m_PrefabInstance: {fileID: 1976876405}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &1976876409
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299514739}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.1358427, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
---- !u!250 &1976876411
-PointEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299514739}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceMagnitude: 1000
-  m_ForceVariation: 0
-  m_DistanceScale: 1
-  m_ForceSource: 1
-  m_ForceTarget: 0
-  m_ForceMode: 0
-  m_Drag: 0
-  m_AngularDrag: 0
 --- !u!1 &2071362571
 GameObject:
   m_ObjectHideFlags: 0
