@@ -5,8 +5,8 @@ public class Invincibility_Ability : Ability_Simple
 	[Header("Invinisbilty")]
 	[SerializeField] private SpriteRenderer spriteRenderer;
 	[SerializeField] private CircleCollider2D collide;
-	[SerializeField] private LayerMask nothingLayer;
-	[SerializeField] private LayerMask npcLayer;
+	[SerializeField] private LayerMask playerLayer;
+	[SerializeField] private LayerMask invincibleLayers;
 	[SerializeField] private Color defaultColor = Color.white;
 	[SerializeField] private Color invinsibilityColor = Color.grey;
 
@@ -53,10 +53,9 @@ public class Invincibility_Ability : Ability_Simple
 
 		// Stop collisions by turning off collider
 		// Stop collisions with enemies only
-		collide.excludeLayers = npcLayer;
-		//collide.enabled = false;
+		collide.excludeLayers = invincibleLayers;
 
-		if(minionPrefab != null)
+		if (minionPrefab != null)
 		{
 			SpawnMinions();
         }
@@ -68,7 +67,7 @@ public class Invincibility_Ability : Ability_Simple
 
 		// Return to colliding
 		//collide.enabled = true;
-		collide.excludeLayers = nothingLayer;
+		collide.excludeLayers = playerLayer;
 
 		// Stop invinsibility flashing
 		spriteRenderer.color = defaultColor;

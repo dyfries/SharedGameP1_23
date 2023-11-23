@@ -53,12 +53,12 @@ MonoBehaviour:
   DEBUG_MODE: 0
   spriteRenderer: {fileID: 6406091369679704822}
   collide: {fileID: 3269255543243948069}
-  nothingLayer:
+  playerLayer:
     serializedVersion: 2
-    m_Bits: 0
-  npcLayer:
+    m_Bits: 512
+  invincibleLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   invinsibilityColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   minionPrefab: {fileID: 1159814088753771391, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}

@@ -29,7 +29,7 @@ public class InvincibilityPlayerHealth : MonoBehaviour
     }
 
 	// Check if players health is too low and run animation and destroy object
-	private void CheckIfDied()
+	private void CheckIfDied() // Should be put in a player art script, but dont want to modify main script
 	{
 		// Check health only when animation references aren't null
 		if (anim != null && playerArtController != null)
@@ -44,6 +44,7 @@ public class InvincibilityPlayerHealth : MonoBehaviour
 			}
 		}
 	}
+
 	private void Update()
 	{
 		// Debugs if debug_Health is true
