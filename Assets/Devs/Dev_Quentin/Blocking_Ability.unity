@@ -409,6 +409,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 519245131124402526, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: m_Radius
+      value: 0.22504114
+      objectReference: {fileID: 0}
+    - target: {fileID: 519245131124402526, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.09976457
+      objectReference: {fileID: 0}
+    - target: {fileID: 519245131124402526, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.12880008
+      objectReference: {fileID: 0}
     - target: {fileID: 5936740190667811174, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: m_Name
       value: Player_05 Blocking
@@ -451,6 +463,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7266562694486728916, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431566288281349554, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
