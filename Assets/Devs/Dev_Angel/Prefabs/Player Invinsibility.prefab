@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Bits: 512
   invincibleLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 800
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   invinsibilityColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   minionPrefab: {fileID: 1159814088753771391, guid: 23bb5a028e21ac147ae8cb4a276bbf92, type: 3}
