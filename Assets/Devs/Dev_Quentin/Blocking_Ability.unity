@@ -421,6 +421,18 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.12880008
       objectReference: {fileID: 0}
+    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: activatedAbility_FiringTimer
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: activatedAbility_WindupTimer
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605642621025558078, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: activatedAbility_WinddownTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5936740190667811174, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: m_Name
       value: Player_05 Blocking
@@ -467,6 +479,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8431566288281349554, guid: df26788f601417841a3e031918ada0e4, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953916258512200162, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953916258512200162, guid: df26788f601417841a3e031918ada0e4, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
