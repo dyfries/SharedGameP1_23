@@ -4,6 +4,7 @@ using UnityEngine;
 public class Projectile_Missile : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 0;
+    [SerializeField] float lifeTime = 5f;
 
     [SerializeField] bool isWobble = false;
     [SerializeField] float wobbleAmount = 10;
@@ -34,6 +35,9 @@ public class Projectile_Missile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         timer += Random.Range(0, 10f);
+
+        Invoke("BlowUp", lifeTime);
+
 
     }
 
@@ -76,13 +80,17 @@ public class Projectile_Missile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        BlowUp();
+    }
+
+    void BlowUp()
+    {
         explodeAudio.Play();
 
         if (transform.GetChild(0).childCount > 0)
         {
             for (int i = 0; i < transform.GetChild(0).childCount; i++)
             {
-                Debug.Log(transform.GetChild(0).GetChild(i).gameObject.name);
                 Destroy(transform.GetChild(0).GetChild(i).gameObject);
             }
         }

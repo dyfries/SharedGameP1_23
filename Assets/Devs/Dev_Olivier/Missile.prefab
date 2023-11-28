@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 6256795774747460236}
   - component: {fileID: 7075748147514652505}
   - component: {fileID: 813251787469143121}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -475,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+  lifeTime: 4
   isWobble: 0
   wobbleAmount: 20
   wobbleSpeed: 20
@@ -612,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seekingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   seekingRadius: 3
   seekSpeed: 0.3
 --- !u!1 &7882265242407569080

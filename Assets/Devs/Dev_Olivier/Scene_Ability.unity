@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 481409894}
   - component: {fileID: 481409893}
   - component: {fileID: 481409892}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: NPCGreen_BasePrefab (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,6 +784,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: addf86f2996143e43a3037b265c86272, type: 3}
+--- !u!1001 &935628139
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4424785087360883035, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_Name
+      value: Missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.5211442
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.0897028
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781980098977300899, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dbcd61dced2682e45b1b377745c330ce, type: 3}
 --- !u!1 &1271201386
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +1008,7 @@ GameObject:
   - component: {fileID: 1926643875}
   - component: {fileID: 1926643874}
   - component: {fileID: 1926643873}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: NPCGreen_BasePrefab (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1382,7 +1439,7 @@ GameObject:
   - component: {fileID: 831805634600341441}
   - component: {fileID: 406191888180633548}
   - component: {fileID: 1918419091724876195}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: NPCGreen_BasePrefab (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1952,6 +2009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileBarrage
       objectReference: {fileID: 0}
+    - target: {fileID: 4868526165038866156, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2041,7 +2102,7 @@ GameObject:
   - component: {fileID: 262332211291912921}
   - component: {fileID: 7030683345345321220}
   - component: {fileID: 2420664080679268909}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2061,3 +2122,4 @@ SceneRoots:
   - {fileID: 488820494}
   - {fileID: 615333653}
   - {fileID: 571549496}
+  - {fileID: 935628139}
