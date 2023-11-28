@@ -17,7 +17,7 @@ public class Ability_Bomb : Ability_Simple
     //How we will apply force to the bomb.
     private Rigidbody2D bombRigidBody;
     //The amount of force to apply.
-    private float bombLaunchSpeed = 350f;
+    private float bombLaunchSpeed = 500f;
     //Ensure we only apply this force once.
     private bool doOnce = true;
 

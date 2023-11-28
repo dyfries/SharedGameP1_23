@@ -175,13 +175,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3615832983491819437, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615832983491819437, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615832983491819437, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 4138980269004528154, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6092462071222115760, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
       propertyPath: activatedAbility_FiringTimer
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6092462071222115760, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
       propertyPath: activatedAbility_WinddownTimer
