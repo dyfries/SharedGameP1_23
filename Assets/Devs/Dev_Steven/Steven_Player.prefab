@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2415189366707671271}
   - component: {fileID: 8884711930564091860}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Ship-EngineSprites-Tri_Add Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7365414306790764426}
   - component: {fileID: 8916602084739690220}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113786296319614069}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0899bafacda29cf4d9bdf9182fac82e4, type: 3}
@@ -357,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1223856734094808800}
   - component: {fileID: 4821307809114305171}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: EngineParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5824357972334676570}
   - component: {fileID: 5468308225094344830}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CooldownSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 123285673892147815}
   - component: {fileID: 3921651950076879985}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PlayerAbility_Hellfire
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -634,8 +634,6 @@ MonoBehaviour:
   NPCLayers:
     serializedVersion: 2
     m_Bits: 256
-  projectiles: []
-  targetPositions: []
   readySound: {fileID: 7112921514879816379}
   windupSound: {fileID: 2863290195208643056}
   firingSound: {fileID: 3876277252800195568}
@@ -653,7 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8259743774409205671}
   - component: {fileID: 5960635819232489264}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ExplosionSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6516883338802331617}
   - component: {fileID: 2863290195208643056}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WindupSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,7 +906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1916652322308559898}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SoundEffects
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -947,7 +945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3229612147728977384}
   - component: {fileID: 3876277252800195568}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FiringSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2434506556039617995}
   - component: {fileID: 7627658955668086847}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: EngineSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1202,7 @@ GameObject:
   - component: {fileID: 5483494534123273980}
   - component: {fileID: 8877063709533730464}
   - component: {fileID: 4148414425520187488}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PlayerArt
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1313,7 +1311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7440176715299416346}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ProjectileHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1345,7 +1343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5017457160675005934}
   - component: {fileID: 3431065389016896564}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: LaunchSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1473,7 +1471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8614985670020918392}
   - component: {fileID: 955133480893415965}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WinddownSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1601,7 +1599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031441340763774186}
   - component: {fileID: 6801423931233224198}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PlayerAbility_Fish
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1657,7 +1655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4723556594004364228}
   - component: {fileID: 7112921514879816379}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ReadySound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1785,7 +1783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7401249599267449457}
   - component: {fileID: 3375513534712436465}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Ship-EngineSprites-Reverse Thrust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1869,7 +1867,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 571177588868063492, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2783948455436694900, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
       propertyPath: m_IsTrigger
@@ -1937,7 +1935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7470418316160927018, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7470418316160927018, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
       propertyPath: m_IsActive
@@ -1949,7 +1947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8594460444634355461, guid: 0fd6c08b30459bc4fb9582502f3062c7, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

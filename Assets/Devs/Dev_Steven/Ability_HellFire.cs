@@ -513,7 +513,7 @@ public class Ability_HellFire : Ability_Simple
         // Check if DEBUG_MODE is enabled.
         if (DEBUG_MODE)
         {
-            if (projectiles.Count > 0)
+            if (projectiles != null)
             {
                 // Iterate through each projectile in the list.
                 for (int i = 0; i < projectiles.Count; i++)
