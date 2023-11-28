@@ -30,8 +30,11 @@ public class Ability_MissileBarrage : Ability_Simple
 
     public override void ActivateAbility()
     {
+        if (stageOfAbility == StageOfAbility.ready)
+        {
+            releaseAudio.Play();
+        }
         base.ActivateAbility();
-        releaseAudio.Play();
     }
 
     protected override void Update()
@@ -40,6 +43,7 @@ public class Ability_MissileBarrage : Ability_Simple
 
         if (Input.GetButtonDown("Jump"))
         {
+
             ActivateAbility();
         }
 
