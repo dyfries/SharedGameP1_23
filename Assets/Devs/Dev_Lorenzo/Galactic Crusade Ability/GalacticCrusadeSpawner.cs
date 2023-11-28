@@ -18,7 +18,7 @@ public class GalacticCrusadeSpawner : MonoBehaviour
     private List<float> _xSpawnPositions = new();       // X positions are cached to spawn NPCs randomly and evenly.
 
 
-    private void Awake()
+    private void Start()
     {
         this.enabled = false;
 
