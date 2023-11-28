@@ -11,8 +11,7 @@ public class Ability_HellFire : Ability_Simple
     public float launchSpeed = 2f;                      // Speed of projectile launch.
     [Range(0.1f, 10f)]
     public float targetSpeed = 4f;                      // Speed of projectile targeting movement.
-    [Range(0f, 8f)]
-    public float targetDistance = 4f;                   // Distance from the player to the crosshair.
+    public Vector2 targetDistance;                      // Position of the crosshair from the player.
     private Vector3 crosshairPosition;                  // Current position of the crosshair.
     [Range(0f, 500f)]
     public float rotationSpeed = 150f;                  // Base speed of projectile rotation.
@@ -179,7 +178,7 @@ public class Ability_HellFire : Ability_Simple
         }
 
         // Calculate the position of the crosshair.
-        crosshairPosition = transform.position + Vector3.up * targetDistance;
+        crosshairPosition = transform.position + (Vector3)targetDistance;
 
         // Initialize target positions based on the crosshair.
         for (int i = 0; i < projectileCount; i++)
@@ -465,7 +464,7 @@ public class Ability_HellFire : Ability_Simple
         // Check and log missing reference for the crosshairPrefab if showCrosshair is enabled.
         if (showCrosshair == true && crosshairPrefab == null)
         {
-            Debug.LogError(name + " is missing a reference to crosshairPrefab. Please set one in the inspector for this effect.");
+            Debug.LogError(name + " is missing a reference to crosshairPrefab. Please set one in the inspector or disable showCrosshair in the inspector");
         }
         // Check and log missing reference for the explosionPrefab.
         if (explosionPrefab == null)
@@ -538,6 +537,10 @@ public class Ability_HellFire : Ability_Simple
                     }
                 }
             }
+
+            // Draw a wire sphere representing the target and crosshair position.
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + (Vector3)targetDistance, 0.3f);
         }
     }
 }

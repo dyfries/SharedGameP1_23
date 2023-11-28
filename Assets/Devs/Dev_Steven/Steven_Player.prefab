@@ -616,7 +616,7 @@ MonoBehaviour:
   projectileCount: 19
   launchSpeed: 2
   targetSpeed: 4
-  targetDistance: 4
+  targetDistance: {x: 0, y: 4}
   rotationSpeed: 150
   lockOnRotationSpeed: 300
   detectionRange: 1
