@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ability_Bomb : Ability_Simple
 {
     //Used to play the particle system of the bomb.
-    private ParticleSystem bombVFX;
+    public ParticleSystem[] bombVFX;
     //Might not be needed afterall.
     private ParticleSystem.MainModule mainModule;
     //Used to make sure the inital collider is off.
@@ -42,12 +42,29 @@ public class Ability_Bomb : Ability_Simple
             spawnedBomb = Instantiate(this.gameObject, spawnPos, Quaternion.identity);
             bombRigidBody = spawnedBomb.GetComponent<Rigidbody2D>();
             bombRigidBody.AddForce(Vector2.up * bombLaunchSpeed * Time.deltaTime, ForceMode2D.Impulse);
-            bombVFX = spawnedBomb.GetComponentInChildren<ParticleSystem>(true);
+            bombVFX = spawnedBomb.GetComponentsInChildren<ParticleSystem>(true);
         }
 
         spriteRenderer = spawnedBomb.GetComponent<SpriteRenderer>();
         spawnedCollider = spawnedBomb.GetComponent<CircleCollider2D>();
         spriteRenderer.enabled = true;
+
+        if (bombVFX != null && bombVFX.Length != 0)
+        {
+            foreach (var vfx in bombVFX)
+            {
+                if (vfx == null)
+                {
+                    return;
+                }
+                else
+                {
+                    bombVFX[0].gameObject.SetActive(true);
+                    bombVFX[0].Play();
+                }
+            }
+
+        }
     }
     protected override void StartFiring()
     {
@@ -74,10 +91,21 @@ public class Ability_Bomb : Ability_Simple
         if(spriteRenderer != null)
             spriteRenderer.enabled = false;
         //Turn on the Explosion animation
-        if(bombVFX != null)
+        if(bombVFX != null && bombVFX.Length != 0)
         {
-            bombVFX.gameObject.SetActive(true);
-            bombVFX.Play();
+            foreach (var vfx in  bombVFX)
+            {
+                if(vfx == null)
+                {
+                    return;
+                }
+                else
+                {
+                    bombVFX[1].gameObject.SetActive(true);
+                    bombVFX[1].Play();
+                }
+            }
+            
         }
     }
        
@@ -85,19 +113,47 @@ public class Ability_Bomb : Ability_Simple
     protected override void StartWinddown()
     {
         base.StartWinddown();
-        Debug.Log(spawnedBomb.name);
+      
+        if (bombVFX != null && bombVFX.Length != 0)
+        {
+           
+            foreach (var vfx in bombVFX)
+            {
+               
+                if (vfx == null)
+                {
+                    return;
+                }
+                else
+                {
+                    Debug.Log(bombVFX[2].name);
+                    bombVFX[2].gameObject.SetActive(true);
+                    bombVFX[2].Play();
+                }
+            }
+
+        }
+
+       
+    }
+
+    protected override void StartCooldown()
+    {
+        base.StartCooldown();
         //Disable collider and destroy the dead bomb
         if (spawnedCollider != null)
         {
             StopAllCoroutines();
             Destroy(spawnedCollider.gameObject);
         }
-       
     }
 
     private IEnumerator TurnOffCollider()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
         spawnedCollider.enabled = false;
     }
+
+
+
 }
