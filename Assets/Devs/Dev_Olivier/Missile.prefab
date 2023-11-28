@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  lifeTime: 4
+  lifeTime: 5
   isWobble: 0
   wobbleAmount: 20
   wobbleSpeed: 20
