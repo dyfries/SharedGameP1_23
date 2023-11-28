@@ -7,7 +7,7 @@ public class Ability_ShotGunBlast : Ability_Simple
 
     [Header("Now in Ability ShotGunBlast Subclass")]
     public Rigidbody2D projectile; //rigidbody2d?
-    public Transform startPoint;
+    public Vector2 startPoint;
 
     public Rigidbody2D[] allBullets;
 
@@ -17,6 +17,7 @@ public class Ability_ShotGunBlast : Ability_Simple
     [Header("ONLY DO 3, 5, or 7")]
     [SerializeField, Range(3, 7)]
     private int bulletAmount = 3;
+    public float bulletForce = 10f;
 
     protected void Start()
     {
@@ -26,7 +27,7 @@ public class Ability_ShotGunBlast : Ability_Simple
             enabled = false;
         }
 
-        allBullets = new Rigidbody2D[bulletAmount];
+        //allBullets = new Rigidbody2D[bulletAmount];
     }
 
     protected override void StartFiring()
@@ -36,9 +37,18 @@ public class Ability_ShotGunBlast : Ability_Simple
 
         // Add projectiles
         /*GameObject newProjectile = */
-        for (int i = 0; i < bulletAmount; i++)
+        Rigidbody2D firstBullet = Instantiate(projectile, startPoint, Quaternion.identity);
+        firstBullet.AddForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
+        for (int i = 1; i < bulletAmount/2+.5; i++)
         {
-            Rigidbody2D newBullet = Instantiate(projectile, startPoint);
+                Rigidbody2D newBulletRight = Instantiate(projectile, startPoint, Quaternion.Euler(0, 0, -turnAngle * i));
+                newBulletRight.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
+
+                Rigidbody2D newBulletLeft = Instantiate(projectile, startPoint, Quaternion.Euler(0,0,turnAngle * i));
+                newBulletLeft.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
+
+            
+            
         }
         
         /*Instantiate(projectile, startPoint);

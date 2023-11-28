@@ -144,6 +144,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1154605137}
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
+      propertyPath: bulletForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: activatedAbility_FiringTimer
       value: 0.3
       objectReference: {fileID: 0}
