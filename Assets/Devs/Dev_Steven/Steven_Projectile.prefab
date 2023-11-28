@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 2946882374922764550}
   - component: {fileID: 7411356989093660120}
   - component: {fileID: 4430124662573157882}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Steven_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

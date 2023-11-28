@@ -7,15 +7,15 @@ public class Ability_HellFire : Ability_Simple
     [Header("Ability Settings")]
     [Range(1, 100)]
     public int projectileCount = 9;                     // Number of projectiles.
-    [Range(0.1f, 10f)]
+    [Range(0.1f, 20f)]
     public float launchSpeed = 2f;                      // Speed of projectile launch.
-    [Range(0.1f, 10f)]
+    [Range(0.1f, 20f)]
     public float targetSpeed = 4f;                      // Speed of projectile targeting movement.
     public Vector2 targetDistance;                      // Position of the crosshair from the player.
     private Vector3 crosshairPosition;                  // Current position of the crosshair.
-    [Range(0f, 500f)]
+    [Range(0f, 1000f)]
     public float rotationSpeed = 150f;                  // Base speed of projectile rotation.
-    [Range(0f, 500f)]
+    [Range(0f, 1000f)]
     public float lockOnRotationSpeed = 200f;            // Speed of lock-on rotation.
     [Range(0.01f, 5f)]
     public float detectionRange = 2f;                   // Range for NPC lock-on detection.
