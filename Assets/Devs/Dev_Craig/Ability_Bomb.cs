@@ -17,11 +17,9 @@ public class Ability_Bomb : Ability_Simple
     //How we will apply force to the bomb.
     private Rigidbody2D bombRigidBody;
     //The amount of force to apply.
-    private float bombLaunchSpeed = 1000f;
+    private float bombLaunchSpeed = 350f;
     //Ensure we only apply this force once.
     private bool doOnce = true;
-
-    private bool spawnOnce = true;
 
     private GameObject spawnedBomb;
 
@@ -32,13 +30,10 @@ public class Ability_Bomb : Ability_Simple
         
     }
 
-
     protected override void StartWindup()
     {
         base.StartWindup();
         //Instansiate Projectile
-
-        
 
         if (doOnce)
         {
@@ -60,7 +55,7 @@ public class Ability_Bomb : Ability_Simple
         //Seems like sometimes the impulse would increase as if the button was fired more than once.
         //This is to attempt to fix that bug.
         doOnce = true;
-
+        
         //Enable collider
         if(spawnedCollider != null)
         {
@@ -90,10 +85,10 @@ public class Ability_Bomb : Ability_Simple
     protected override void StartWinddown()
     {
         base.StartWinddown();
+        Debug.Log(spawnedBomb.name);
         //Disable collider and destroy the dead bomb
-        if(spawnedCollider != null)
+        if (spawnedCollider != null)
         {
-            
             StopAllCoroutines();
             Destroy(spawnedCollider.gameObject);
         }
