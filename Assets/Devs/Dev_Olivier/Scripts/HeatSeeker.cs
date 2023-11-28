@@ -1,35 +1,32 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Projectile_Missile))]
 public class HeatSeeker : MonoBehaviour
 {
-
     [SerializeField] private LayerMask seekingMask;
     [SerializeField] private float seekingRadius = 5;
     [SerializeField] private float seekSpeed = 0.1f;
 
     private Projectile_Missile missile;
 
-    // Start is called before the first frame update
     void Start()
     {
         missile = GetComponent<Projectile_Missile>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Transform nearestNPC = FindNearest();
 
+        //check if there's an npc near
         if (nearestNPC != null)
         {
-
             Debug.DrawLine(transform.position, nearestNPC.position, Color.red);
             FaceTarget(nearestNPC);
         }
     }
 
     //find the direction for the missile to face
-
     void FaceTarget(Transform target)
     {
         if (target != null)
@@ -52,6 +49,7 @@ public class HeatSeeker : MonoBehaviour
         }
     }
 
+    //finds the nearest transform to the current object
     private Transform FindNearest()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, seekingRadius, seekingMask);
@@ -75,7 +73,6 @@ public class HeatSeeker : MonoBehaviour
         }
         catch { return null; }
     }
-
 
     private void OnDrawGizmosSelected()
     {

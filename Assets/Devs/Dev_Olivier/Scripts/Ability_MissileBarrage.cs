@@ -43,12 +43,12 @@ public class Ability_MissileBarrage : Ability_Simple
 
         if (Input.GetButtonDown("Jump"))
         {
-
             ActivateAbility();
         }
 
         if (stageOfAbility == StageOfAbility.windup)
         {
+            //increment timer from 0 to 1
             timer += Time.deltaTime / activatedAbility_WindupTimer;
 
             for (int i = 0; i < amountOfMissiles; i++)
@@ -87,16 +87,16 @@ public class Ability_MissileBarrage : Ability_Simple
 
         if (stageOfAbility == StageOfAbility.cooldown)
         {
-            
+            //increment timer from 0 to 1
             timer += Time.deltaTime / activatedAbility_CooldownTimer;
 
+            //define two colors to lerp between
             Color clear = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
             Color opaque = new Color(outline.color.r, outline.color.g, outline.color.b, 1);
 
+            //lerp between the colors based on a curve
             outline.color = Color.Lerp(clear, opaque, outlineRegenCurve.Evaluate(timer));
-
         }
-
     }
 
     protected override void StartWinddown()
@@ -118,29 +118,29 @@ public class Ability_MissileBarrage : Ability_Simple
 
         timer = 0;
 
+        //setup arrays
         missiles = new Rigidbody2D[amountOfMissiles];
         startRotations = new Vector3[amountOfMissiles];
+        //cache the player's position
         barrageOrigin = transform.position;
 
         for (int i = 0; i < amountOfMissiles; i++)
         {
-            //create missiles in scene and keep track of them
+            //create missiles in scene and keep track of them in array
             Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)));
             newMissile.GetComponent<Collider2D>().enabled = false;
             missiles[i] = newMissile;
             startRotations[i] = missiles[i].transform.rotation.eulerAngles;
         }
 
+        //set the outline to be transparent;
         outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
-
     }
 
     protected override void StartFiring()
     {
         base.StartFiring();
-
         StartCoroutine(StageredFire());
-
     }
 
     IEnumerator StageredFire()
@@ -166,13 +166,13 @@ public class Ability_MissileBarrage : Ability_Simple
             missiles[currentMissile].GetComponent<Projectile_Missile>().setIsWobble(true);
             missiles[currentMissile].GetComponent<Collider2D>().enabled = true;
         }
-
     }
 
     private void OnDrawGizmos()
     {
         if (DEBUG_MODE)
         {
+            //shows the position that the missiles will end up in
             for (int i = 0; i < amountOfMissiles; i++)
             {
                 //gets a unit to mesure the missile and the space between missiles
@@ -199,10 +199,9 @@ public class Ability_MissileBarrage : Ability_Simple
 
                 //lerps missiles from player position to their desired position in arrow formation
                 //happens in first half of the windup
-                Gizmos.DrawWireSphere(formationPos, missileUnit/2);
+                Gizmos.DrawWireSphere(formationPos, missileUnit / 2);
 
             }
         }
     }
-
 }
