@@ -45,10 +45,10 @@ public class Ability_HellFire : Ability_Simple
 
     private SpriteRenderer playerSpriteRenderer;        // Reference to the player's sprite renderer.
 
-    [HideInInspector]
-    public List<GameObject> projectiles;                // List to store instantiated projectiles.
-    [HideInInspector] 
-    public List<Vector3> targetPositions;               // List to store target positions for each projectile.
+    //[HideInInspector]
+    private List<GameObject> projectiles;                // List to store instantiated projectiles.
+    //[HideInInspector]
+    private List<Vector3> targetPositions;               // List to store target positions for each projectile.
 
     [Header("Audio Sources")]
     public AudioSource readySound;                      // Sound played when the ability is ready.
@@ -67,6 +67,9 @@ public class Ability_HellFire : Ability_Simple
         // Locate SpriteRenderer in children of the parent object.
         playerSpriteRenderer = transform.parent.GetComponentInChildren<SpriteRenderer>();
 
+        projectiles = new List<GameObject>();
+        targetPositions = new List<Vector3>();
+
         // Check and log missing references.
         ReferenceErrorCheck();
     }
@@ -82,6 +85,7 @@ public class Ability_HellFire : Ability_Simple
     protected override void Update()
     {
         // Check if projectiles exist.
+
         if (projectiles.Count > 0)
         {
             // Iterate through each projectile.
@@ -509,34 +513,37 @@ public class Ability_HellFire : Ability_Simple
         // Check if DEBUG_MODE is enabled.
         if (DEBUG_MODE)
         {
-            // Iterate through each projectile in the list.
-            for (int i = 0; i < projectiles.Count; i++)
+            if (projectiles.Count > 0)
             {
-                // Check if the projectile exists.
-                if (projectiles[i] != null)
+                // Iterate through each projectile in the list.
+                for (int i = 0; i < projectiles.Count; i++)
                 {
-                    // Set Gizmos color to red for projectile rays.
-                    Gizmos.color = Color.red;
-                    // Draw a ray from the projectile towards its up direction, representing the destroyRange.
-                    Gizmos.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * destroyRange);
+                    // Check if the projectile exists.
+                    if (projectiles[i] != null)
+                    {
+                        // Set Gizmos color to red for projectile rays.
+                        Gizmos.color = Color.red;
+                        // Draw a ray from the projectile towards its up direction, representing the destroyRange.
+                        Gizmos.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * destroyRange);
 
-                    // Check the lock-on setting for additional visualization.
-                    if (lockOnSetting == lockOn.OverlapCircleLockOn)
-                    {
-                        // If using Overlap Circle Lock-On, set Gizmos color to blue.
-                        Gizmos.color = Color.blue;
-                        // Draw a wire sphere around the projectile, representing the detectionRange.
-                        Gizmos.DrawWireSphere(projectiles[i].transform.position, detectionRange);
-                    }
-                    else if (lockOnSetting == lockOn.RayCastLockOn)
-                    {
-                        // If using RayCast Lock-On, set Gizmos color to yellow.
-                        Gizmos.color = Color.yellow;
-                        // Draw a ray from the projectile towards its up direction, representing the detectionRange.
-                        Gizmos.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * detectionRange);
+                        // Check the lock-on setting for additional visualization.
+                        if (lockOnSetting == lockOn.OverlapCircleLockOn)
+                        {
+                            // If using Overlap Circle Lock-On, set Gizmos color to blue.
+                            Gizmos.color = Color.blue;
+                            // Draw a wire sphere around the projectile, representing the detectionRange.
+                            Gizmos.DrawWireSphere(projectiles[i].transform.position, detectionRange);
+                        }
+                        else if (lockOnSetting == lockOn.RayCastLockOn)
+                        {
+                            // If using RayCast Lock-On, set Gizmos color to yellow.
+                            Gizmos.color = Color.yellow;
+                            // Draw a ray from the projectile towards its up direction, representing the detectionRange.
+                            Gizmos.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * detectionRange);
+                        }
                     }
                 }
-            }
+            }            
 
             // Draw a wire sphere representing the target and crosshair position.
             Gizmos.color = Color.red;
