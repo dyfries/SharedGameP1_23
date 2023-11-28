@@ -8,17 +8,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - wall
+  - 
   - Water
   - UI
+  - 
+  - 
+  - NPC
   - Player
   - PlayerAbility
-  - NPC
   - NPCAbility
   - Boundary
-  - 
-  - 
-  - 
   - 
   - 
   - 

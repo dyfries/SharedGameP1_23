@@ -1,0 +1,1121 @@
+fileFormatVersion: 2
+guid: 07b08bf2d006bf241a1df62f2f3f2eae
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 380
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MetalSlugMissile_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 249
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4fcdcfd19079464d9b703e603cd4521
+      internalID: -1378226414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 249
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725d4bd8844a53244aa700fd2c51d828
+      internalID: 53546581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 249
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b82c99662945346a18d8ffa9ba163c
+      internalID: 87757123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 249
+        width: 25
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83c4e6720f0dbef468d7a274a94b9520
+      internalID: -678368852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_4
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 249
+        width: 24
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80730ca61a061ce4095d254f4c5f4f30
+      internalID: -656682587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_5
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 249
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f82dd8e7bbd0c419fe2aff5ab3ad4e
+      internalID: -1252262089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_6
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 249
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e21e925c888579d49a30ad70378831ed
+      internalID: 1431721424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_7
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 249
+        width: 28
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9d0ebd78d64d7428f1e9690754a601
+      internalID: 1385302962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_8
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 249
+        width: 30
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27b3b54c012c3c4286f3f71d0fbbeac
+      internalID: -175840291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_9
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 248
+        width: 32
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f347beb9eebbe8345b590012281e3a5c
+      internalID: -1070333538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_10
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 248
+        width: 32
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed8063f8584d7404bb65807588e470bd
+      internalID: -364435548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_11
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 248
+        width: 32
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7458a9cae5a93454b861066b7e437ee8
+      internalID: -1747129115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_12
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 118
+        width: 30
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac0934b2fdcae324290a4a75d5bad08d
+      internalID: 1656191794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_13
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 118
+        width: 28
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7cdc37224fde324aae3c9bb65292bdf
+      internalID: -879849923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_14
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 118
+        width: 25
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e1a1687b938b964b8244cae4428df21
+      internalID: 1789191477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 118
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d710e4d9615b5ae4ea53ea706a8c41a6
+      internalID: -396200465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_16
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 118
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a51c3ced9badd64c983093a186fead4
+      internalID: 485949376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_17
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 118
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba4d44e76c8c3f4f88b732433ca4b51
+      internalID: -530394817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_18
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 118
+        width: 25
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a8215254f4676646910c0bc8c5212a5
+      internalID: -1172227131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_19
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 118
+        width: 24
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d10a9dd68434514f854f12646776972
+      internalID: 186434489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_20
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 118
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64bf28952a6ed84297a39281dabeffe
+      internalID: -1410384899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_21
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 118
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 155a34f615bac5a46af996f49d2aa976
+      internalID: -1287901333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_22
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 118
+        width: 26
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a5cca7716980e64ca40c99fcb0aee2b
+      internalID: 1611544934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_23
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 118
+        width: 25
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc24c93b826d9174299427e79fbfd95c
+      internalID: 1989268231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_24
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 118
+        width: 24
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d651efa0b9fdbd41ab7f935f61252e8
+      internalID: 805015369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_25
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 48
+        width: 26
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ce7cb8426dc5e746b520977f338f537
+      internalID: -1355755852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_26
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 48
+        width: 26
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31577a8f7bac02447ad380c0c1b14b63
+      internalID: -1917410137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_27
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 48
+        width: 24
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 606a2ea8f9a8d614c84c4ea781e82cc9
+      internalID: -776770619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 26
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a663bab06c72ae4295a1aa8851a139d
+      internalID: -1078612596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_29
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 48
+        width: 30
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10167eb27538f5646b5396936cc508be
+      internalID: 1626687634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_30
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 48
+        width: 32
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a62d03a3a28c0947a65b851929c9e5a
+      internalID: 954280556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_31
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 48
+        width: 32
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9633f709af25f2468452022671083af
+      internalID: 363975699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_32
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 48
+        width: 28
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4972c4745222b084e81c11cc9c519e62
+      internalID: 1271641486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_33
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 48
+        width: 26
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b200e2bb80b66844f89ff73fbccc65c1
+      internalID: 1868072239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_34
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 48
+        width: 26
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91215f96a98b5440a34c830bc0ae924
+      internalID: 430341425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_35
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 48
+        width: 24
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ced4d0e8868a0b4397e533c7ad4962b
+      internalID: -502599720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_36
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 48
+        width: 26
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05bd70e68eb3c2c44b47ca2e4a84f09a
+      internalID: -426786664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_37
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 48
+        width: 25
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 557570e3e022a7245a6f60e6463d8472
+      internalID: -703803750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_38
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 24
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd63d3b9490c618469d89e2abbeba67c
+      internalID: 608439038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_39
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 14
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2171fbebcf7b1cd4093fa14f1bccd4f9
+      internalID: -729394041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_40
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 12
+        width: 10
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64dfa321117bee041baa27139f65a485
+      internalID: 1425391683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MetalSlugMissile_41
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 8
+        width: 5
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8c6f3bc32ff8c4e9ebf01b27202b24
+      internalID: -817864579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MetalSlugMissile_0: -1378226414
+      MetalSlugMissile_1: 53546581
+      MetalSlugMissile_10: -364435548
+      MetalSlugMissile_100: -760216719
+      MetalSlugMissile_101: -1661822735
+      MetalSlugMissile_102: -511782968
+      MetalSlugMissile_103: 777909676
+      MetalSlugMissile_104: -59337175
+      MetalSlugMissile_105: -1109528085
+      MetalSlugMissile_106: -1768277208
+      MetalSlugMissile_107: 183193635
+      MetalSlugMissile_108: 889271337
+      MetalSlugMissile_109: -434380645
+      MetalSlugMissile_11: -1747129115
+      MetalSlugMissile_110: 178539158
+      MetalSlugMissile_111: -129531958
+      MetalSlugMissile_12: 1656191794
+      MetalSlugMissile_13: -879849923
+      MetalSlugMissile_14: 1789191477
+      MetalSlugMissile_15: -396200465
+      MetalSlugMissile_16: 485949376
+      MetalSlugMissile_17: -530394817
+      MetalSlugMissile_18: -1172227131
+      MetalSlugMissile_19: 186434489
+      MetalSlugMissile_2: 87757123
+      MetalSlugMissile_20: -1410384899
+      MetalSlugMissile_21: -1287901333
+      MetalSlugMissile_22: 1611544934
+      MetalSlugMissile_23: 1989268231
+      MetalSlugMissile_24: 805015369
+      MetalSlugMissile_25: -1355755852
+      MetalSlugMissile_26: -1917410137
+      MetalSlugMissile_27: -776770619
+      MetalSlugMissile_28: -1078612596
+      MetalSlugMissile_29: 1626687634
+      MetalSlugMissile_3: -678368852
+      MetalSlugMissile_30: 954280556
+      MetalSlugMissile_31: 363975699
+      MetalSlugMissile_32: 1271641486
+      MetalSlugMissile_33: 1868072239
+      MetalSlugMissile_34: 430341425
+      MetalSlugMissile_35: -502599720
+      MetalSlugMissile_36: -426786664
+      MetalSlugMissile_37: -703803750
+      MetalSlugMissile_38: 608439038
+      MetalSlugMissile_39: -729394041
+      MetalSlugMissile_4: -656682587
+      MetalSlugMissile_40: 1425391683
+      MetalSlugMissile_41: -817864579
+      MetalSlugMissile_42: -928489770
+      MetalSlugMissile_43: 286144379
+      MetalSlugMissile_44: 562324805
+      MetalSlugMissile_45: -1925443643
+      MetalSlugMissile_46: 1568817704
+      MetalSlugMissile_47: 2049839062
+      MetalSlugMissile_48: -1428724998
+      MetalSlugMissile_49: -695744783
+      MetalSlugMissile_5: -1252262089
+      MetalSlugMissile_50: -13846584
+      MetalSlugMissile_51: 1011680590
+      MetalSlugMissile_52: 442399241
+      MetalSlugMissile_53: 52737126
+      MetalSlugMissile_54: -104324398
+      MetalSlugMissile_55: 1919735005
+      MetalSlugMissile_56: -1949843033
+      MetalSlugMissile_57: -1308179323
+      MetalSlugMissile_58: 234839336
+      MetalSlugMissile_59: 1820905050
+      MetalSlugMissile_6: 1431721424
+      MetalSlugMissile_60: -236908756
+      MetalSlugMissile_61: -519724329
+      MetalSlugMissile_62: -1064359143
+      MetalSlugMissile_63: 369605383
+      MetalSlugMissile_64: 1841642937
+      MetalSlugMissile_65: 1101838177
+      MetalSlugMissile_66: 829550976
+      MetalSlugMissile_67: -802298933
+      MetalSlugMissile_68: 1507394218
+      MetalSlugMissile_69: -321007747
+      MetalSlugMissile_7: 1385302962
+      MetalSlugMissile_70: -1331199392
+      MetalSlugMissile_71: -1244738406
+      MetalSlugMissile_72: 1753750931
+      MetalSlugMissile_73: -1050476456
+      MetalSlugMissile_74: 447418480
+      MetalSlugMissile_75: -986490841
+      MetalSlugMissile_76: 2113092497
+      MetalSlugMissile_77: -1627008779
+      MetalSlugMissile_78: -1767826044
+      MetalSlugMissile_79: -1151102918
+      MetalSlugMissile_8: -175840291
+      MetalSlugMissile_80: -1472114231
+      MetalSlugMissile_81: 162423478
+      MetalSlugMissile_82: -1154349287
+      MetalSlugMissile_83: 1701969334
+      MetalSlugMissile_84: 152493062
+      MetalSlugMissile_85: 407555729
+      MetalSlugMissile_86: 1392636461
+      MetalSlugMissile_87: 1329618090
+      MetalSlugMissile_88: 307837912
+      MetalSlugMissile_89: 743438984
+      MetalSlugMissile_9: -1070333538
+      MetalSlugMissile_90: -282306481
+      MetalSlugMissile_91: -340748648
+      MetalSlugMissile_92: 1579436008
+      MetalSlugMissile_93: 1820071788
+      MetalSlugMissile_94: -1439245811
+      MetalSlugMissile_95: 1004049398
+      MetalSlugMissile_96: 1658422756
+      MetalSlugMissile_97: 1970213103
+      MetalSlugMissile_98: -681042695
+      MetalSlugMissile_99: -142966566
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
