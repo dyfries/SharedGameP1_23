@@ -46,7 +46,8 @@ public class Ability_SlowDown : Ability_Simple
             {
                 GameObject block = Instantiate(freezeBlock, objectsInRadius[i].transform.position, objectsInRadius[i].transform.rotation, objectsInRadius[i].transform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
-                blockAnimators.Add(block.GetComponent<Animator>()); 
+                blockAnimators.Add(block.GetComponent<Animator>());
+                
             }
         }
         startMelting();
@@ -111,6 +112,7 @@ public class Ability_SlowDown : Ability_Simple
     {
         
             for(int i = 0; i< blockAnimators.Count; i++) {
+       
             blockAnimators[i].SetTrigger("start melting");
         }
 
@@ -118,4 +120,6 @@ public class Ability_SlowDown : Ability_Simple
             
  
     }
+
+   
 }
