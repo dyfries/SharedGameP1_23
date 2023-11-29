@@ -42,7 +42,7 @@ public class Ability_SlowDown : Ability_Simple
         //going to implement a freeze blast animation and an animation that freezes objects in radius
         for (int i = 0; i < objectsInRadius.Count; i++)
         {
-            if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null)
+            if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null && objectsInRadius[i].name.Contains("NPC")) //had to check contains npc so walls dont get blocks
             {
                 GameObject block = Instantiate(freezeBlock, objectsInRadius[i].transform.position, objectsInRadius[i].transform.rotation, objectsInRadius[i].transform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
@@ -59,9 +59,7 @@ public class Ability_SlowDown : Ability_Simple
 
         //animation
      
-            for(int i=0; i< blockAnimators.Count; i++) {
-            blockAnimators[i].ResetTrigger("start melting");
-        }
+    
             
        
 
