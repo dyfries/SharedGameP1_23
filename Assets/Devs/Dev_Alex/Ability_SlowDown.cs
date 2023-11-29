@@ -15,13 +15,13 @@ public class Ability_SlowDown : Ability_Simple
     public GameObject freezeBlock;
     private List<GameObject> frozenBlocks = new List<GameObject>(); 
 
-    public Animator animator;
+    public List<Animator> blockAnimators = new List<Animator>();
     protected void Start()
     {
         gameObject.AddComponent<CircleCollider2D>();
         gameObject.GetComponent<CircleCollider2D>().isTrigger = true; //makes the collider a trigger
         gameObject.GetComponent<CircleCollider2D>().radius = radius; //sets player's radius to the radius variable
-        animator = freezeBlock.GetComponent<Animator>();
+
    
     }
 
@@ -46,6 +46,7 @@ public class Ability_SlowDown : Ability_Simple
             {
                 GameObject block = Instantiate(freezeBlock, objectsInRadius[i].transform.position, objectsInRadius[i].transform.rotation, objectsInRadius[i].transform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
+                blockAnimators.Add(block.GetComponent<Animator>()); 
             }
         }
         startMelting();
@@ -57,10 +58,17 @@ public class Ability_SlowDown : Ability_Simple
         StopSlowDown(); //reverse slow down
 
         //animation
-        animator.ResetTrigger("start melting");
+     
+            for(int i=0; i< blockAnimators.Count; i++) {
+            blockAnimators[i].ResetTrigger("start melting");
+        }
+            
+       
+
         for (int i = 0; i < frozenBlocks.Count; i++)
         {
-             Destroy(frozenBlocks[i].gameObject);
+            blockAnimators[i].ResetTrigger("start melting");
+            Destroy(frozenBlocks[i].gameObject);
         }
     }
 
@@ -103,7 +111,13 @@ public class Ability_SlowDown : Ability_Simple
 
     private void startMelting()
     {
-        animator.SetTrigger("start melting");
+        
+            for(int i = 0; i< blockAnimators.Count; i++) {
+            blockAnimators[i].SetTrigger("start melting");
+        }
+
+        
+            
  
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7239448720350055005}
   - component: {fileID: 1290004531837231601}
-  - component: {fileID: 2151216188794760965}
+  - component: {fileID: -1196340717580241746}
   m_Layer: 0
   m_Name: FreezeBlock
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2151216188794760965
+--- !u!95 &-1196340717580241746
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -104,5 +104,5 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 1
   m_WriteDefaultValuesOnDisable: 0
