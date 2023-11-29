@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Ability_Bomb : Ability_Simple
 {
+    //Used to play the particle system of the bomb.
+    private ParticleSystem bombVFX;
+    //Might not be needed afterall.
+    private ParticleSystem.MainModule mainModule;
     //Used to make sure the inital collider is off.
     private CircleCollider2D bombCollider;
     //Bomb Sprite.
@@ -13,31 +17,41 @@ public class Ability_Bomb : Ability_Simple
     //How we will apply force to the bomb.
     private Rigidbody2D bombRigidBody;
     //The amount of force to apply.
-    private float bombLaunchSpeed = 1500f;
+    private float bombLaunchSpeed = 1000f;
     //Ensure we only apply this force once.
     private bool doOnce = true;
+
+    private bool spawnOnce = true;
+
+    private GameObject spawnedBomb;
 
     private void Awake()
     {
         bombCollider = GetComponent<CircleCollider2D>();
         bombCollider.enabled = false;
+        
     }
+
 
     protected override void StartWindup()
     {
         base.StartWindup();
         //Instansiate Projectile
-        GameObject spawnedBomb = Instantiate(this.gameObject, transform.parent.GetComponent<Transform>().position, Quaternion.identity);
-        bombRigidBody = spawnedBomb.GetComponent<Rigidbody2D>();
+
+        
 
         if (doOnce)
         {
             doOnce = false;
+            Vector3 spawnPos = transform.parent.GetComponent<Transform>().position;
+            spawnedBomb = Instantiate(this.gameObject, spawnPos, Quaternion.identity);
+            bombRigidBody = spawnedBomb.GetComponent<Rigidbody2D>();
             bombRigidBody.AddForce(Vector2.up * bombLaunchSpeed * Time.deltaTime, ForceMode2D.Impulse);
+            bombVFX = spawnedBomb.GetComponentInChildren<ParticleSystem>(true);
         }
 
         spriteRenderer = spawnedBomb.GetComponent<SpriteRenderer>();
-        spawnedCollider = spawnedBomb.GetComponent <CircleCollider2D>();
+        spawnedCollider = spawnedBomb.GetComponent<CircleCollider2D>();
         spriteRenderer.enabled = true;
     }
     protected override void StartFiring()
@@ -50,7 +64,9 @@ public class Ability_Bomb : Ability_Simple
         //Enable collider
         if(spawnedCollider != null)
         {
-            spawnedCollider.enabled = true;
+            
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, spawnedCollider.radius, Vector2.zero);
+            Debug.Log(hit.collider.gameObject.name);
             StartCoroutine(TurnOffCollider());
         }
            
@@ -63,7 +79,13 @@ public class Ability_Bomb : Ability_Simple
         if(spriteRenderer != null)
             spriteRenderer.enabled = false;
         //Turn on the Explosion animation
+        if(bombVFX != null)
+        {
+            bombVFX.gameObject.SetActive(true);
+            bombVFX.Play();
+        }
     }
+       
 
     protected override void StartWinddown()
     {
@@ -71,6 +93,7 @@ public class Ability_Bomb : Ability_Simple
         //Disable collider and destroy the dead bomb
         if(spawnedCollider != null)
         {
+            
             StopAllCoroutines();
             Destroy(spawnedCollider.gameObject);
         }
