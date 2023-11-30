@@ -10,6 +10,8 @@ public class GalacticCrusadeShip : MonoBehaviour
     [SerializeField] private GameObject _projectile;
     [Header("Movement Settings")]
     [SerializeField] private float _moveSpeed = 1f;
+    [SerializeField] private float _strafeSpeed = 1f;
+    [SerializeField] private float _exitSpeed = 1f;
     [SerializeField] private float _initialMovementDuration = 0.5f;
     [SerializeField] private float _firingDuration = 3f;
     [SerializeField] private float _exitLifetime = 10f;
@@ -71,7 +73,7 @@ public class GalacticCrusadeShip : MonoBehaviour
             // Strafe movement using sine.
             strafeTimer += Time.deltaTime * _sineMoveStrength;
             float sinValue = Mathf.Sin(strafeTimer);
-            transform.Translate(strafeDirection * sinValue * _moveSpeed * Time.deltaTime);
+            transform.Translate(strafeDirection * sinValue * _strafeSpeed * Time.deltaTime);
 
             // Shoot projectiles.
             if (_projectileTimer >= _attackSpeed)
@@ -89,7 +91,7 @@ public class GalacticCrusadeShip : MonoBehaviour
         _timer = 0f;
         while (_timer < _exitLifetime)
         {
-            transform.Translate(Vector2.up * Time.deltaTime * _moveSpeed);
+            transform.Translate(Vector2.up * Time.deltaTime * _exitSpeed);
             yield return null;
         }
     }
