@@ -45,6 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902879880d534e344a1690dcb512746c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activatedAbility_WindupTimer: 1
+  activatedAbility_FiringTimer: 2
+  activatedAbility_WinddownTimer: 1
+  activatedAbility_CooldownTimer: 3
+  stageOfAbility: 0
+  DEBUG_MODE: 0
+  slowDownRate: 0.5
+  freezeBlock: {fileID: 5403427817954351278, guid: d0a26c4f640c017409673b0eeb52084c, type: 3}
+  blockAnimators: []
+  player: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!1 &4419069916089207724
 GameObject:
   m_ObjectHideFlags: 0

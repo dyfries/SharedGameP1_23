@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AbilitySlowDownSelect : Ability_Simple
@@ -29,7 +28,7 @@ public class AbilitySlowDownSelect : Ability_Simple
         base.Update();
 
         SelectObject();
-       // DrawLaser();
+        // DrawLaser();
     }
     protected override void StartWindup()
     {
@@ -113,7 +112,7 @@ public class AbilitySlowDownSelect : Ability_Simple
         }
     }
 
-  private void SelectObject()
+    private void SelectObject()
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 0;
@@ -125,8 +124,10 @@ public class AbilitySlowDownSelect : Ability_Simple
         {
             if (hit.collider.gameObject.name.Contains("NPC") && hit.collider != null)
             {
-
-                hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                if (hit.collider.gameObject.GetComponent<SpriteRenderer>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                }
                 objectsInRadius.Add(hit.collider.gameObject);
             }
         }

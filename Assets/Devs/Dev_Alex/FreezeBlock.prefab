@@ -131,7 +131,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.25
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -244,7 +244,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -826,7 +826,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.3112366
+      value: 0.27322835
       mode: 0
       spread: 0
       speed:
@@ -1385,9 +1385,9 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 0.95071214}
-        key2: {r: 1, g: 1, b: 1, a: 0.5686275}
-        key3: {r: 0, g: 0, b: 0, a: 0.3647059}
-        key4: {r: 0, g: 0, b: 0, a: 0}
+        key2: {r: 1, g: 1, b: 1, a: 0.9323475}
+        key3: {r: 0, g: 0, b: 0, a: 0.22352941}
+        key4: {r: 0, g: 0, b: 0, a: 0.3647059}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
@@ -1401,16 +1401,16 @@ ParticleSystem:
         ctime7: 0
         atime0: 0
         atime1: 7903
-        atime2: 27949
-        atime3: 48959
-        atime4: 0
+        atime2: 8481
+        atime3: 13685
+        atime4: 48959
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 4
+        m_NumAlphaKeys: 5
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
