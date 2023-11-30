@@ -14,6 +14,7 @@ public class Ability_MissileBarrage : Ability_Simple
 
     private Rigidbody2D[] missiles;
     private Vector3[] startRotations;
+    private Vector2[] endPositions;
     private Vector2 barrageOrigin;
     private float timer = 0;
     private AudioSource releaseAudio;
@@ -28,15 +29,6 @@ public class Ability_MissileBarrage : Ability_Simple
         outline = GetComponentInChildren<SpriteRenderer>();
     }
 
-    public override void ActivateAbility()
-    {
-        if (stageOfAbility == StageOfAbility.ready)
-        {
-            releaseAudio.Play();
-        }
-        base.ActivateAbility();
-    }
-
     protected override void Update()
     {
         base.Update();
@@ -46,57 +38,52 @@ public class Ability_MissileBarrage : Ability_Simple
             ActivateAbility();
         }
 
-        if (stageOfAbility == StageOfAbility.windup)
+        WindupLerp();
+        CooldownLerp();
+    }
+
+    public override void ActivateAbility()
+    {
+        if (stageOfAbility == StageOfAbility.ready)
         {
-            //increment timer from 0 to 1
-            timer += Time.deltaTime / activatedAbility_WindupTimer;
+            releaseAudio.Play();
 
-            for (int i = 0; i < amountOfMissiles; i++)
-            {
-                //gets a unit to mesure the missile and the space between missiles
-                float missileUnit = missile.transform.localScale.x;
-                float spacingUnit = horizontalSpacing * missile.transform.localScale.x;
-
-                //line up the missiles side by side with spacing included
-                float xPos = i * (missileUnit + spacingUnit);
-                //offset the line of missiles left to center it on the ship
-                xPos -= (amountOfMissiles - 1) * (missileUnit + spacingUnit) / 2f;
-
-                //find points to make a triangle with the y coordinates of the line of missiles
-                //triangle ranges from 0 - 1 in position
-                float yPos = 1 - (Mathf.Abs(xPos) / ((amountOfMissiles - 1) * (missileUnit + spacingUnit) / 2f));
-                //evaluates to a curve for extra style
-                yPos = missilePlacementCurve.Evaluate(yPos);
-
-                //offset the missiles to the player position
-                xPos += barrageOrigin.x;
-                yPos += barrageOrigin.y;
-
-                //creates a vector out of the found positions
-                Vector2 formationPos = new Vector2(xPos, yPos);
-
-                //lerps missiles from player position to their desired position in arrow formation
-                //happens in first half of the windup
-                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, formationPos, windupCurve.Evaluate(timer * 2));
-
-                //lerps rotaion to be forward
-                //happens in second half of the windup
-                missiles[i].GetComponent<Projectile_Missile>().setHeadingDirection(Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((timer * 2) - 1)).eulerAngles.z);
-            }
         }
+        base.ActivateAbility();
+    }
 
-        if (stageOfAbility == StageOfAbility.cooldown)
+    protected override void StartWindup()
+    {
+        base.StartWindup();
+
+        timer = 0;
+
+        //setup arrays
+        missiles = new Rigidbody2D[amountOfMissiles];
+        startRotations = new Vector3[amountOfMissiles];
+        endPositions = new Vector2[amountOfMissiles];
+        //cache the player's position
+        barrageOrigin = transform.position;
+
+        for (int i = 0; i < amountOfMissiles; i++)
         {
-            //increment timer from 0 to 1
-            timer += Time.deltaTime / activatedAbility_CooldownTimer;
-
-            //define two colors to lerp between
-            Color clear = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
-            Color opaque = new Color(outline.color.r, outline.color.g, outline.color.b, 1);
-
-            //lerp between the colors based on a curve
-            outline.color = Color.Lerp(clear, opaque, outlineRegenCurve.Evaluate(timer));
+            //create missiles in scene and keep track of them in array
+            Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)));
+            newMissile.GetComponent<Collider2D>().enabled = false;
+            missiles[i] = newMissile;
+            //get random rotation for missile
+            startRotations[i] = missiles[i].transform.rotation.eulerAngles;
+            //find the poition each missile should be in the final formation
+            endPositions[i] = getEndPos(i);
         }
+        //set the outline to be transparent;
+        outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
+    }
+
+    protected override void StartFiring()
+    {
+        base.StartFiring();
+        StartCoroutine(StaggeredFire());
     }
 
     protected override void StartWinddown()
@@ -112,38 +99,69 @@ public class Ability_MissileBarrage : Ability_Simple
         timer = 0;
     }
 
-    protected override void StartWindup()
+    private void CooldownLerp()
     {
-        base.StartWindup();
-
-        timer = 0;
-
-        //setup arrays
-        missiles = new Rigidbody2D[amountOfMissiles];
-        startRotations = new Vector3[amountOfMissiles];
-        //cache the player's position
-        barrageOrigin = transform.position;
-
-        for (int i = 0; i < amountOfMissiles; i++)
+        if (stageOfAbility == StageOfAbility.cooldown)
         {
-            //create missiles in scene and keep track of them in array
-            Rigidbody2D newMissile = Instantiate(missile, barrageOrigin, Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)));
-            newMissile.GetComponent<Collider2D>().enabled = false;
-            missiles[i] = newMissile;
-            startRotations[i] = missiles[i].transform.rotation.eulerAngles;
+            //increment timer from 0 to 1
+            timer += Time.deltaTime / activatedAbility_CooldownTimer;
+
+            //define two colors to lerp between
+            Color clear = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
+            Color opaque = new Color(outline.color.r, outline.color.g, outline.color.b, 1);
+
+            //lerp between the colors based on a curve
+            outline.color = Color.Lerp(clear, opaque, outlineRegenCurve.Evaluate(timer));
         }
-
-        //set the outline to be transparent;
-        outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0);
     }
 
-    protected override void StartFiring()
+    private void WindupLerp()
     {
-        base.StartFiring();
-        StartCoroutine(StageredFire());
+        if (stageOfAbility == StageOfAbility.windup)
+        {
+            //increment timer from 0 to 1
+            timer += Time.deltaTime / activatedAbility_WindupTimer;
+
+            for (int i = 0; i < amountOfMissiles; i++)
+            {
+                //lerps missiles from player position to their desired position in arrow formation
+                //happens in first half of the windup
+                missiles[i].transform.position = Vector2.Lerp(barrageOrigin, endPositions[i], windupCurve.Evaluate(timer * 2));
+
+                //lerps rotaion to be forward
+                //happens in second half of the windup
+                missiles[i].GetComponent<Projectile_Missile>().setHeadingDirection(Quaternion.Slerp(Quaternion.Euler(startRotations[i]), Quaternion.Euler(Vector3.zero), windupCurve.Evaluate((timer * 2) - 1)).eulerAngles.z);
+            }
+        }
     }
 
-    IEnumerator StageredFire()
+    private Vector2 getEndPos(int i)
+    {
+        //gets a unit to mesure the missile and the space between missiles
+        float missileUnit = missile.transform.localScale.x;
+        float spacingUnit = horizontalSpacing * missile.transform.localScale.x;
+
+        //line up the missiles side by side with spacing included
+        float xPos = i * (missileUnit + spacingUnit);
+        //offset the line of missiles left to center it on the ship
+        xPos -= (amountOfMissiles - 1) * (missileUnit + spacingUnit) / 2f;
+
+        //find points to make a triangle with the y coordinates of the line of missiles
+        //triangle ranges from 0 - 1 in position
+        float yPos = 1 - (Mathf.Abs(xPos) / ((amountOfMissiles - 1) * (missileUnit + spacingUnit) / 2f));
+        //evaluates to a curve for extra style
+        yPos = missilePlacementCurve.Evaluate(yPos);
+
+        //offset the missiles to the player position
+        xPos += barrageOrigin.x;
+        yPos += barrageOrigin.y;
+
+        //creates a vector out of the found positions
+        Vector2 formationPos = new Vector2(xPos, yPos);
+        return formationPos;
+    }
+
+    IEnumerator StaggeredFire()
     {
         for (int i = 0; i < amountOfMissiles; i++)
         {

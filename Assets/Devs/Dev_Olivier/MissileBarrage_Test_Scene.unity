@@ -1852,8 +1852,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[0].inSlope
+      value: -0.0022165421
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[1].inSlope
+      value: 748.5826
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[0].time
-      value: 0.27500153
+      value: 0.38750458
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[1].time
@@ -1864,8 +1872,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[0].outSlope
+      value: -0.0022165421
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[1].inWeight
+      value: 0.0009558201
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[1].outSlope
+      value: 748.5826
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[0].value
-      value: 0.5636902
+      value: 0.66275024
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[1].value
@@ -1876,24 +1896,40 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[0].outWeight
+      value: 0.9990442
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[0].inSlope
-      value: 2
+      value: 2.8559308
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[1].inSlope
-      value: 0
+      value: 0.0147066
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[0].outSlope
-      value: 2
+      value: 2.8559308
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[1].inWeight
-      value: 0
+      value: 0.4325968
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[1].outSlope
-      value: 0
+      value: 0.0147066
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: outlineRegenCurve.m_Curve.Array.data[1].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: missilePlacementCurve.m_Curve.Array.data[0].outWeight
+      value: 0.3236571
       objectReference: {fileID: 0}
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[1].outWeight
@@ -1906,6 +1942,14 @@ PrefabInstance:
     - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: missilePlacementCurve.m_Curve.Array.data[1].tangentMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: missilePlacementCurve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360569139823982250, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
+      propertyPath: missilePlacementCurve.m_Curve.Array.data[1].weightedMode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3718958715182013826, guid: 3766dc9bc362b074aaa28f50d515c683, type: 3}
       propertyPath: m_LocalPosition.x
