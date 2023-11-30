@@ -142,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: startPoint
       value: 
-      objectReference: {fileID: 1154605137}
+      objectReference: {fileID: 1702635691}
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: bulletForce
       value: 2
@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_4_ShotGunBlast
       objectReference: {fileID: 0}
+    - target: {fileID: 8856883836795755337, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
     - target: {fileID: 8890917970017823625, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -212,11 +216,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
---- !u!4 &1154605137 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4077028443499675588, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
-  m_PrefabInstance: {fileID: 167479980}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1273625760
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +308,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1702635691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8856883836795755337, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
+  m_PrefabInstance: {fileID: 167479980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2045262954
 PrefabInstance:
   m_ObjectHideFlags: 0

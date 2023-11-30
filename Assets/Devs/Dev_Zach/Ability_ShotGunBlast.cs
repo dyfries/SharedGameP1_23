@@ -6,10 +6,10 @@ public class Ability_ShotGunBlast : Ability_Simple
 {
 
     [Header("Now in Ability ShotGunBlast Subclass")]
-    public Rigidbody2D projectile; //rigidbody2d?
-    public Transform startPoint;  //Vector2
+    public Rigidbody2D projectile;                                                                                                                                                                            //rigidbody2d?
+    public Transform startPoint;                                                                                                                                                                                    //Vector2
 
-    public Rigidbody2D[] allBullets;// only one bullet to be able to use
+    public Rigidbody2D[] allBullets;// only one bullet obj to be able to use
 
 
     public float turnAngle = 30.0f;
@@ -27,7 +27,7 @@ public class Ability_ShotGunBlast : Ability_Simple
             enabled = false;
         }
 
-        //allBullets = new Rigidbody2D[bulletAmount];
+                                                                                                                                                                                                        //allBullets = new Rigidbody2D[bulletAmount];
     }
 
     protected override void StartFiring()
@@ -36,18 +36,18 @@ public class Ability_ShotGunBlast : Ability_Simple
         base.StartFiring();
 
         // Add projectiles
-        /*GameObject newProjectile = */
-        Rigidbody2D firstBullet = Instantiate(projectile, startPoint/*, Quaternion.identity*/);
+                                                                                                                                                                                                            /*GameObject newProjectile = */
+        Rigidbody2D firstBullet = Instantiate(projectile, startPoint);                                                                                                                              /*, Quaternion.identity*/
         firstBullet.SetRotation( Quaternion.identity );
         firstBullet.AddForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
         for (int i = 1; i < bulletAmount/2+.5; i++)
         {
-            Rigidbody2D newBulletRight = Instantiate(projectile, startPoint/*, Quaternion.Euler(0, 0, -turnAngle * i)*/);
-            //move to the right some how
+            Rigidbody2D newBulletRight = Instantiate(projectile, startPoint);                                                                                                                   /*, Quaternion.Euler(0, 0, -turnAngle * i)*/
+
             newBulletRight.SetRotation(Quaternion.Euler(0, 0, -turnAngle * i));
             newBulletRight.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
 
-            Rigidbody2D newBulletLeft = Instantiate(projectile, startPoint/*, Quaternion.Euler(0,0,turnAngle * i)*/);
+            Rigidbody2D newBulletLeft = Instantiate(projectile, startPoint);                                                                                                                        /*, Quaternion.Euler(0,0,turnAngle * i)*/
             newBulletLeft.SetRotation(Quaternion.Euler(0, 0, turnAngle * i));
             newBulletLeft.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
 
@@ -55,8 +55,8 @@ public class Ability_ShotGunBlast : Ability_Simple
             
         }
         
-        /*Instantiate(projectile, startPoint);
-        Instantiate(projectile, startPoint);*/
+                                                                                                                                                                                                    /*Instantiate(projectile, startPoint);
+                                                                                                                                                                                                    Instantiate(projectile, startPoint);*/
 
 
     }
