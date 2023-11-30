@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen_BasePrefab Variant_MoveSideToSide
       objectReference: {fileID: 0}
+    - target: {fileID: 7690878363376579359, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
       propertyPath: m_RootOrder
       value: 2
