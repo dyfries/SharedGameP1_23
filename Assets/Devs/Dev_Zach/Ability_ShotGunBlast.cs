@@ -7,9 +7,9 @@ public class Ability_ShotGunBlast : Ability_Simple
 
     [Header("Now in Ability ShotGunBlast Subclass")]
     public Rigidbody2D projectile; //rigidbody2d?
-    public Vector2 startPoint;
+    public Transform startPoint;  //Vector2
 
-    public Rigidbody2D[] allBullets;
+    public Rigidbody2D[] allBullets;// only one bullet to be able to use
 
 
     public float turnAngle = 30.0f;
@@ -37,15 +37,19 @@ public class Ability_ShotGunBlast : Ability_Simple
 
         // Add projectiles
         /*GameObject newProjectile = */
-        Rigidbody2D firstBullet = Instantiate(projectile, startPoint, Quaternion.identity);
+        Rigidbody2D firstBullet = Instantiate(projectile, startPoint/*, Quaternion.identity*/);
+        firstBullet.SetRotation( Quaternion.identity );
         firstBullet.AddForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
         for (int i = 1; i < bulletAmount/2+.5; i++)
         {
-                Rigidbody2D newBulletRight = Instantiate(projectile, startPoint, Quaternion.Euler(0, 0, -turnAngle * i));
-                newBulletRight.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
+            Rigidbody2D newBulletRight = Instantiate(projectile, startPoint/*, Quaternion.Euler(0, 0, -turnAngle * i)*/);
+            //move to the right some how
+            newBulletRight.SetRotation(Quaternion.Euler(0, 0, -turnAngle * i));
+            newBulletRight.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
 
-                Rigidbody2D newBulletLeft = Instantiate(projectile, startPoint, Quaternion.Euler(0,0,turnAngle * i));
-                newBulletLeft.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
+            Rigidbody2D newBulletLeft = Instantiate(projectile, startPoint/*, Quaternion.Euler(0,0,turnAngle * i)*/);
+            newBulletLeft.SetRotation(Quaternion.Euler(0, 0, turnAngle * i));
+            newBulletLeft.AddRelativeForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
 
             
             
