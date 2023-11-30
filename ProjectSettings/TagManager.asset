@@ -15,6 +15,9 @@ TagManager:
   - 
   - NPC
   - Player
+  - PlayerAbility
+  - NPCAbility
+  - Boundary
   - 
   - 
   - 
