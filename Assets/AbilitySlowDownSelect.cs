@@ -6,7 +6,7 @@ public class AbilitySlowDownSelect : Ability_Simple
     [Header("Slow Down Ability Settings")]
     [SerializeField] private float slowDownRate = 0.5f; // rate to add to drag to slow down object
 
-    private List<GameObject> objectsInRadius = new List<GameObject>();  // a list of the objects within radius
+    private List<GameObject> selectedObjects = new List<GameObject>();  // a list of the objects within radius
     private float initialDrag;  // A variable to kepe track of the objects initial drag
     public GameObject freezeBlock; //freeze block object
     private List<GameObject> frozenBlocks = new List<GameObject>();  //list of frozen blocks
@@ -14,6 +14,8 @@ public class AbilitySlowDownSelect : Ability_Simple
 
     public GameObject player;
     private SoundManager soundManager;
+
+    public LayerMask NPCLayer;
 
     //ray casting
     public Camera mainCamera;
@@ -43,12 +45,12 @@ public class AbilitySlowDownSelect : Ability_Simple
 
         //animation
         //going to implement a freeze blast animation and an animation that freezes objects in radius
-        for (int i = 0; i < objectsInRadius.Count; i++)
+        for (int i = 0; i < selectedObjects.Count; i++)
         {
-            objectsInRadius[i].GetComponent<SpriteRenderer>().color = Color.white;
-            if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null && objectsInRadius[i].name.Contains("NPC")) //had to check contains npc so walls dont get blocks
+            selectedObjects[i].GetComponent<SpriteRenderer>().color = Color.white;
+            if (selectedObjects[i].GetComponent<SpriteRenderer>() != null && selectedObjects[i].name.Contains("NPC")) //had to check contains npc so walls dont get blocks
             {
-                GameObject block = Instantiate(freezeBlock, objectsInRadius[i].transform.position, objectsInRadius[i].transform.rotation, objectsInRadius[i].transform); //puts the object in a freeze block
+                GameObject block = Instantiate(freezeBlock, selectedObjects[i].transform.position, selectedObjects[i].transform.rotation, selectedObjects[i].transform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
                 blockAnimators.Add(block.GetComponent<Animator>());
 
@@ -76,23 +78,23 @@ public class AbilitySlowDownSelect : Ability_Simple
 
     private void SlowDown()
     {
-        Debug.Log(objectsInRadius.ToString());
-        for (int i = 0; i < objectsInRadius.Count; i++)
+        Debug.Log(selectedObjects.ToString());
+        for (int i = 0; i < selectedObjects.Count; i++)
         {
-            initialDrag = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag;
-            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = initialDrag + slowDownRate;
+            initialDrag = selectedObjects[i].gameObject.GetComponent<Rigidbody2D>().drag;
+            selectedObjects[i].gameObject.GetComponent<Rigidbody2D>().drag = initialDrag + slowDownRate;
         }
     }
 
     private void StopSlowDown()
     {
-        for (int i = 0; i < objectsInRadius.Count; i++) // go through every object in radius
+        for (int i = 0; i < selectedObjects.Count; i++) // go through every object in radius
         {
-            objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag = -slowDownRate; //reverse slow down rate
-            if (objectsInRadius[i].gameObject.name.Contains("NPC")) //check if game object is an NPC
+            selectedObjects[i].gameObject.GetComponent<Rigidbody2D>().drag = -slowDownRate; //reverse slow down rate
+            if (selectedObjects[i].gameObject.name.Contains("NPC")) //check if game object is an NPC
             {
-                Rigidbody2D rb = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>();
-                float forceAmount = objectsInRadius[i].gameObject.GetComponent<BaseNPC>().startMoveForceY;
+                Rigidbody2D rb = selectedObjects[i].gameObject.GetComponent<Rigidbody2D>();
+                float forceAmount = selectedObjects[i].gameObject.GetComponent<BaseNPC>().startMoveForceY;
                 rb.AddForce(new Vector2(0, forceAmount), ForceMode2D.Impulse); //so speed continues, using impulse right now
             }
         }
@@ -118,17 +120,17 @@ public class AbilitySlowDownSelect : Ability_Simple
         mousePos.z = 0;
         mousePos = mainCamera.ScreenToWorldPoint(mousePos);
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, NPCLayer);
 
         if (Input.GetMouseButtonDown(0)) //left mouse button down
         {
-            if (hit.collider.gameObject.name.Contains("NPC") && hit.collider != null)
+            if ( hit.collider != null)
             {
                 if (hit.collider.gameObject.GetComponent<SpriteRenderer>() != null)
                 {
                     hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 }
-                objectsInRadius.Add(hit.collider.gameObject);
+                selectedObjects.Add(hit.collider.gameObject);
             }
         }
     }
