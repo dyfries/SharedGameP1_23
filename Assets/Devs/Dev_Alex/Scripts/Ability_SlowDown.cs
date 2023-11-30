@@ -79,7 +79,7 @@ public class Ability_SlowDown : Ability_Simple
             Destroy(radiusDrawing);
         }
        
-        soundManager.PlayFreezeSound();
+
         base.StartFiring();
         SlowDown(); //call slow down
 
@@ -89,6 +89,7 @@ public class Ability_SlowDown : Ability_Simple
         {
             if (selectedObjects[i].GetComponent<SpriteRenderer>() != null) //had to check contains npc so walls dont get blocks
             {
+                soundManager.PlayFreezeSound();
                 GameObject block = Instantiate(freezeBlock, selectedObjects[i].transform.position, selectedObjects[i].transform.rotation, selectedObjects[i].transform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
                 blockAnimators.Add(block.GetComponent<Animator>());

@@ -38,8 +38,6 @@ public class AbilitySlowDownSelect : Ability_Simple
     }
     protected override void StartFiring()
     {
-
-        soundManager.PlayFreezeSound();
         base.StartFiring();
         SlowDown(); //call slow down
 
@@ -50,6 +48,7 @@ public class AbilitySlowDownSelect : Ability_Simple
             selectedObjects[i].GetComponent<SpriteRenderer>().color = Color.white;
             if (selectedObjects[i].GetComponent<SpriteRenderer>() != null && selectedObjects[i].name.Contains("NPC")) //had to check contains npc so walls dont get blocks
             {
+                soundManager.PlayFreezeSound();
                 GameObject block = Instantiate(freezeBlock, selectedObjects[i].transform.position, selectedObjects[i].transform.rotation, selectedObjects[i].transform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
                 blockAnimators.Add(block.GetComponent<Animator>());
