@@ -105,7 +105,7 @@ MonoBehaviour:
   _npcToSpawn: {fileID: 3963591687228475006, guid: 335b63b5af5882d4aacfe710fe471b72, type: 3}
   _spawnInterval: 0.1
   _spawnDelay: 0
-  _maxSpawnCount: 9
+  _maxSpawnCount: 12
   _spawnAreaCenter: {x: 0, y: 0}
   _boundsSize: {x: 0, y: 0}
 --- !u!1 &8949166097645491878
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _npcToSpawn: {fileID: 3963591687228475006, guid: dc22cd6ac9f3e42459e958d52244b89a, type: 3}
-  _spawnInterval: 0.35
+  _spawnInterval: 0.2
   _spawnDelay: 0
-  _maxSpawnCount: 5
+  _maxSpawnCount: 6
   _spawnAreaCenter: {x: 0, y: 0}
   _boundsSize: {x: 0, y: 0}
