@@ -313,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &260695372
 Transform:
   m_ObjectHideFlags: 0
@@ -447,6 +447,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1117613840288118787, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
+      propertyPath: m_Color.a
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360823526943797835, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
+      propertyPath: m_Color.a
+      value: 0.007843138
+      objectReference: {fileID: 0}
     - target: {fileID: 1646394054934392448, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
       propertyPath: m_Name
       value: Boundaries
@@ -494,6 +502,14 @@ PrefabInstance:
     - target: {fileID: 2954057221919692530, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564110995856015040, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
+      propertyPath: m_Color.a
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050907015457657450, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
+      propertyPath: m_Color.a
+      value: 0.007843138
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1187,6 +1203,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 560419265}
+    - target: {fileID: 6164303615838223841, guid: 72a5ad204651c574fbf18798fbad64a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
