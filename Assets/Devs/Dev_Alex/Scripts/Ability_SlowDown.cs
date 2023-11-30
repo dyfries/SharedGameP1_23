@@ -4,7 +4,7 @@ using UnityEngine;
 public class Ability_SlowDown : Ability_Simple
 {
     [Header("Slow Down Ability Settings")]
-    [SerializeField] private int radius = 5; //radius of player 
+    [SerializeField] private float radius = 5; //radius of player 
     [SerializeField] private float slowDownRate = 0.5f; // rate to add to drag to slow down object
 
     private List<GameObject> objectsInRadius = new List<GameObject>();  // a list of the objects within radius
@@ -28,6 +28,7 @@ public class Ability_SlowDown : Ability_Simple
         */
         //assign sounds
         soundManager = gameObject.GetComponentInChildren<SoundManager>();
+        DrawRadius();
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class Ability_SlowDown : Ability_Simple
     {
         base.StartReady();
         print("test");
+        DrawRadius();
     }
     protected override void StartWindup()
     {
@@ -43,7 +45,7 @@ public class Ability_SlowDown : Ability_Simple
     }
     protected override void StartFiring()
     {
-
+        Destroy(radiusDrawing);
         soundManager.PlayFreezeSound();
         base.StartFiring();
         SlowDown(); //call slow down
@@ -60,7 +62,7 @@ public class Ability_SlowDown : Ability_Simple
 
             }
         }
-        
+
     }
 
     protected override void StartWinddown()
@@ -68,7 +70,7 @@ public class Ability_SlowDown : Ability_Simple
         base.StartWinddown();
         StopSlowDown(); //reverse slow down
         StartMelting();
-       
+
         for (int i = 0; i < frozenBlocks.Count; i++)
         {
             if (blockAnimators[i] != null)
@@ -82,12 +84,14 @@ public class Ability_SlowDown : Ability_Simple
 
     private void CheckRadius()
     {
-        
+
         RaycastHit2D[] hits = Physics2D.CircleCastAll(player.transform.position, radius, Vector2.zero, NPCLayer);
-        for(int i=0; i<hits.Length; i++)
+        for (int i = 0; i < hits.Length; i++)
         {
             objectsInRadius.Add(hits[i].collider.gameObject);
         }
+
+
 
     }
     private void SlowDown()
@@ -120,16 +124,19 @@ public class Ability_SlowDown : Ability_Simple
         soundManager.PlayWaterDripSound();
         for (int i = 0; i < blockAnimators.Count; i++)
         {
-            if (blockAnimators[i] != null){
+            if (blockAnimators[i] != null)
+            {
                 blockAnimators[i].SetTrigger("start melting");
             }
-        
+
         }
     }
 
     private void DrawRadius()
     {
-        radiusDrawing = Instantiate(radiusArt, player.transform.position, Quaternion.identity);
+        radiusDrawing = Instantiate(radiusArt, player.transform.position, player.transform.rotation, player.transform);
+        radiusDrawing.transform.localScale = new Vector3(radius / 10, radius / 10, radius / 10);
+
     }
 
 }

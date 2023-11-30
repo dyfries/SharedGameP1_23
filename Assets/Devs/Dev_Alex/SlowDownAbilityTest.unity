@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1696562541858018925, guid: a3386e920bab9e84181982940e683f4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.105
       objectReference: {fileID: 0}
     - target: {fileID: 1696562541858018925, guid: a3386e920bab9e84181982940e683f4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -292,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2878100849628158434, guid: bf114827cb9bae547912840f858993e7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3314149644320058659, guid: bf114827cb9bae547912840f858993e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -334,6 +334,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8465243127576435586, guid: bf114827cb9bae547912840f858993e7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 339207114}
+    - target: {fileID: 8465243127576435586, guid: bf114827cb9bae547912840f858993e7, type: 3}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465243127576435586, guid: bf114827cb9bae547912840f858993e7, type: 3}
+      propertyPath: radiusArt
+      value: 
+      objectReference: {fileID: 5139486036334186910, guid: b92a07e86f5316c4dbb19862938f94cd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -355,13 +367,17 @@ PrefabInstance:
       propertyPath: _settingsArray.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6961607931080608236, guid: 8557c79a277d6724cb2483600d19df11, type: 3}
+      propertyPath: _settingsArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1df660453ea292e46b52a5c3a3146efb, type: 2}
     - target: {fileID: 4986564341372481862, guid: 8557c79a277d6724cb2483600d19df11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4986564341372481862, guid: 8557c79a277d6724cb2483600d19df11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.9
+      value: 5.51
       objectReference: {fileID: 0}
     - target: {fileID: 4986564341372481862, guid: 8557c79a277d6724cb2483600d19df11, type: 3}
       propertyPath: m_LocalPosition.z
@@ -425,12 +441,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 618418763}
     - target: {fileID: -697509783304491765, guid: 7e2717dea3d0b8b4abd1a120072a4cea, type: 3}
-      propertyPath: activatedAbility_FiringTimer
-      value: 5
+      propertyPath: NPCLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2878100849628158434, guid: 7e2717dea3d0b8b4abd1a120072a4cea, type: 3}
       propertyPath: m_Name
       value: Ability_SlowDown_Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 2878100849628158434, guid: 7e2717dea3d0b8b4abd1a120072a4cea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3314149644320058659, guid: 7e2717dea3d0b8b4abd1a120072a4cea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -553,6 +573,10 @@ PrefabInstance:
     - target: {fileID: 1646394054934392448, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646394054934392448, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1804690039086000932, guid: 414a3b48835a65645b8ab41bf09cded0, type: 3}
       propertyPath: m_Layer
