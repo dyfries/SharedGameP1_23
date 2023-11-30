@@ -25,6 +25,11 @@ public class Ability_SlowDown : Ability_Simple
     }
 
     // Update is called once per frame
+    protected override void StartReady()
+    {
+        base.StartReady();
+        print("test");
+    }
     protected override void StartWindup()
     {
         base.StartWindup();
@@ -49,17 +54,21 @@ public class Ability_SlowDown : Ability_Simple
 
             }
         }
-        StartMelting();
+        
     }
 
     protected override void StartWinddown()
     {
         base.StartWinddown();
         StopSlowDown(); //reverse slow down
-
+        StartMelting();
+       
         for (int i = 0; i < frozenBlocks.Count; i++)
         {
-            blockAnimators[i].ResetTrigger("start melting");
+            if (blockAnimators[i] != null)
+            {
+                blockAnimators[i].ResetTrigger("start melting");
+            }
             Destroy(frozenBlocks[i].gameObject);
         }
     }
@@ -82,6 +91,7 @@ public class Ability_SlowDown : Ability_Simple
 
     private void SlowDown()
     {
+        Debug.Log(objectsInRadius.ToString());
         for (int i = 0; i < objectsInRadius.Count; i++)
         {
             initialDrag = objectsInRadius[i].gameObject.GetComponent<Rigidbody2D>().drag;
@@ -109,7 +119,10 @@ public class Ability_SlowDown : Ability_Simple
         soundManager.PlayWaterDripSound();
         for (int i = 0; i < blockAnimators.Count; i++)
         {
-            blockAnimators[i].SetTrigger("start melting");
+            if (blockAnimators[i] != null){
+                blockAnimators[i].SetTrigger("start melting");
+            }
+        
         }
     }
 
