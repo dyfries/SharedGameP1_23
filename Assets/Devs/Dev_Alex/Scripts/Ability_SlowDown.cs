@@ -14,12 +14,18 @@ public class Ability_SlowDown : Ability_Simple
     public List<Animator> blockAnimators = new List<Animator>(); //list of animators on blocks
 
     private SoundManager soundManager;
+    public LayerMask NPCLayer;
+    public GameObject player;
+
+    private GameObject radiusDrawing;
+    public GameObject radiusArt;
     protected void Start()
     {
+        /*
         gameObject.AddComponent<CircleCollider2D>(); //add a circle collider
         gameObject.GetComponent<CircleCollider2D>().isTrigger = true; //makes the collider a trigger
         gameObject.GetComponent<CircleCollider2D>().radius = radius; //sets player's radius to the radius variable
-
+        */
         //assign sounds
         soundManager = gameObject.GetComponentInChildren<SoundManager>();
     }
@@ -33,7 +39,7 @@ public class Ability_SlowDown : Ability_Simple
     protected override void StartWindup()
     {
         base.StartWindup();
-
+        CheckRadius();
     }
     protected override void StartFiring()
     {
@@ -46,7 +52,7 @@ public class Ability_SlowDown : Ability_Simple
         //going to implement a freeze blast animation and an animation that freezes objects in radius
         for (int i = 0; i < objectsInRadius.Count; i++)
         {
-            if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null && objectsInRadius[i].name.Contains("NPC")) //had to check contains npc so walls dont get blocks
+            if (objectsInRadius[i].GetComponent<SpriteRenderer>() != null) //had to check contains npc so walls dont get blocks
             {
                 GameObject block = Instantiate(freezeBlock, objectsInRadius[i].transform.position, objectsInRadius[i].transform.rotation, objectsInRadius[i].transform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
@@ -73,22 +79,17 @@ public class Ability_SlowDown : Ability_Simple
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
-        {
-            objectsInRadius.Add(collision.gameObject);
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void CheckRadius()
     {
-        if (objectsInRadius.Contains(collision.gameObject))
+        
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(player.transform.position, radius, Vector2.zero, NPCLayer);
+        for(int i=0; i<hits.Length; i++)
         {
-            objectsInRadius.Remove(collision.gameObject);
+            objectsInRadius.Add(hits[i].collider.gameObject);
         }
-    }
 
+    }
     private void SlowDown()
     {
         Debug.Log(objectsInRadius.ToString());
@@ -126,5 +127,9 @@ public class Ability_SlowDown : Ability_Simple
         }
     }
 
+    private void DrawRadius()
+    {
+        radiusDrawing = Instantiate(radiusArt, player.transform.position, Quaternion.identity);
+    }
 
 }
