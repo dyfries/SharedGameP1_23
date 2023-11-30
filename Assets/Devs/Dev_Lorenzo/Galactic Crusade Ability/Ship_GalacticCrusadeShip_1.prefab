@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpawnPoint: {fileID: 8843622368188265645}
-  _projectile: {fileID: 3963591687228475006, guid: fdc5e644cc7312748bcc9b674b2e9bae, type: 3}
+  _projectile: {fileID: 3963591687228475006, guid: 31b1d53a980e8264b875924fd053be1b, type: 3}
   _moveSpeed: 10
   _initialMovementDuration: 0.35
   _firingDuration: 5
