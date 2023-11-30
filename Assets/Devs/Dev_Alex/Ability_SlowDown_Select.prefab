@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatedAbility_WindupTimer: 1
-  activatedAbility_FiringTimer: 2
+  activatedAbility_FiringTimer: 5
   activatedAbility_WinddownTimer: 1
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
@@ -55,6 +55,9 @@ MonoBehaviour:
   freezeBlock: {fileID: 5403427817954351278, guid: d0a26c4f640c017409673b0eeb52084c, type: 3}
   blockAnimators: []
   player: {fileID: 0}
+  NPCLayer:
+    serializedVersion: 2
+    m_Bits: 0
   mainCamera: {fileID: 0}
 --- !u!1 &4419069916089207724
 GameObject:

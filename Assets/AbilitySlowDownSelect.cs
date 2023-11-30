@@ -124,7 +124,7 @@ public class AbilitySlowDownSelect : Ability_Simple
 
         if (Input.GetMouseButtonDown(0)) //left mouse button down
         {
-            if ( hit.collider != null)
+            if (  hit.collider != null)
             {
                 if (hit.collider.gameObject.GetComponent<SpriteRenderer>() != null)
                 {
