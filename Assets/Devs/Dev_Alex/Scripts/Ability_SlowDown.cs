@@ -17,7 +17,6 @@ public class Ability_SlowDown : Ability_Simple
     [SerializeField] private FreezeMode mode = FreezeMode.Radius;
 
     [Header("References: ")]
-    public LayerMask NPCLayer;
     private GameObject player;
     private SoundManager soundManager;
     public GameObject radiusArt;
@@ -32,12 +31,14 @@ public class Ability_SlowDown : Ability_Simple
 
     private float initialDrag;  // A variable to kepe track of the objects initial drag
     private Transform playerTransform;
+    private int layerMask;
     protected void Start()
     {
         //assign variables
         soundManager = gameObject.GetComponentInChildren<SoundManager>();
         player = gameObject.transform.parent.gameObject;
         mainCamera= Camera.main;
+        layerMask = LayerMask.GetMask("NPC");
 
         if (mode == FreezeMode.Radius) //if mode is radius draw the radius on start
         {
@@ -57,6 +58,12 @@ public class Ability_SlowDown : Ability_Simple
                 Destroy(radiusDrawing); //destroy the radius
             }
         }
+        for(int i = 0; i< selectedObjects.Count; i++)
+        {
+            Debug.Log(selectedObjects[i]);
+        }
+
+        Debug.Log("player drag: " + player.GetComponent<Rigidbody2D>().drag);
     }
 
     // Update is called once per frame
@@ -133,11 +140,14 @@ public class Ability_SlowDown : Ability_Simple
 
     private void CheckRadius()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(player.transform.position, radius, Vector2.zero, NPCLayer); //get array of objects hit by circlcast that are in NPC layer
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(player.transform.position, radius, Vector2.zero, 0,  layerMask); //get array of objects hit by circlcast that are in NPC layer
 
         for (int i = 0; i < hits.Length; i++)
         {
-            selectedObjects.Add(hits[i].collider.gameObject);
+            if (hits[i].collider.gameObject !=  null) {
+                selectedObjects.Add(hits[i].collider.gameObject);
+            }
+
         }
     }
     private void SlowDown()
@@ -188,7 +198,7 @@ public class Ability_SlowDown : Ability_Simple
         mousePos.z = 0;
         mousePos = mainCamera.ScreenToWorldPoint(mousePos);
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, NPCLayer);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, 0, layerMask);
 
 
         if (Input.GetMouseButtonDown(0)) //left mouse button down
