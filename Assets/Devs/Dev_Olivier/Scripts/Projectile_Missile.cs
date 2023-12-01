@@ -6,10 +6,12 @@ public class Projectile_Missile : MonoBehaviour
     [SerializeField] float moveSpeed = 0;
     [SerializeField] float lifeTime = 5f;
 
+    [Header("Wobble Settings")]
     [SerializeField] bool isWobble = false;
     [SerializeField] float wobbleAmount = 10;
     [SerializeField] float wobbleSpeed = 10;
 
+    [Header("Thrusters")]
     [SerializeField] GameObject mainThrust;
     [SerializeField] GameObject rightThrust;
     [SerializeField] GameObject leftThrust;
@@ -35,17 +37,14 @@ public class Projectile_Missile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         timer += Random.Range(0, 10f);
-
+        //will destroy itself after n seconds
         Invoke("BlowUp", lifeTime);
-
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //sets an offset for the rocket to missile as it flies
-
+        //use a sin wave to wobble the missiles as they fly
+        //adds character
         if (isWobble)
         {
             timer += Time.deltaTime * wobbleSpeed;
@@ -83,6 +82,7 @@ public class Projectile_Missile : MonoBehaviour
         BlowUp();
     }
 
+    //stop the missile, play a sound, and play explosion animation
     void BlowUp()
     {
         explodeAudio.Play();
@@ -100,10 +100,10 @@ public class Projectile_Missile : MonoBehaviour
         rb.simulated = false;
     }
 
+    //used for the animator to destroy this
     public void DestroySelf()
     {
         explodeAudio.Stop();
         Destroy(gameObject);
     }
-
 }
