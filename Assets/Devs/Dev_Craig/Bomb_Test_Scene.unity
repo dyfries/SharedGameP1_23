@@ -131,10 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2756037152622177566, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3323396517723659399, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -175,37 +171,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3615832983491819437, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: VelocityModule.y.scalar
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3615832983491819437, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3615832983491819437, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 4138980269004528154, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6092462071222115760, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: activatedAbility_FiringTimer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6092462071222115760, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: activatedAbility_WinddownTimer
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6158942406894613726, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
       propertyPath: m_Name
       value: Player_Bomb_Ability
-      objectReference: {fileID: 0}
-    - target: {fileID: 9084479084740973369, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
