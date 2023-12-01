@@ -22,7 +22,7 @@ public class Ability_SlowDown : Ability_Simple
     private SoundManager soundManager;
     public GameObject radiusArt;
     public GameObject freezeBlock; //freeze block object
-    public Camera mainCamera;
+    private Camera mainCamera;
     private GameObject radiusDrawing;
 
     [Header("Lists of selects objects and components: ")]
@@ -37,6 +37,7 @@ public class Ability_SlowDown : Ability_Simple
         //assign variables
         soundManager = gameObject.GetComponentInChildren<SoundManager>();
         player = gameObject.transform.parent.gameObject;
+        mainCamera= Camera.main;
 
         if (mode == FreezeMode.Radius) //if mode is radius draw the radius on start
         {
