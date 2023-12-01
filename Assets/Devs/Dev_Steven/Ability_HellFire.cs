@@ -106,100 +106,8 @@ public class Ability_HellFire : Ability_Simple
     // Update is called once per frame.
     protected override void Update()
     {
-        // Check if projectiles exist.
-        if (projectiles.Count > 0)
-        {
-            // Iterate through each projectile.
-            for (int i = 0; i < projectiles.Count; i ++)
-            {
-                // Check if the projectile and target position are not null.
-                if (projectiles[i] != null && targetPositions[i] != null)
-                {                    
-                    // Check ability state and perform relevant actions.
-                    if (stageOfAbility == StageOfAbility.firing || stageOfAbility == StageOfAbility.winddown)
-                    {
-                        // Check if the projectile is within target range.
-                        CrosshairRangeDetection(i);
-                        // Perform NPC lock-on detection if enabled.
-                        if (lockOnSetting != lockOn.DisableLockOn)
-                        {
-                            NPCLockOnDetection(i);
-                        }
-                        // Perform NPC hit detection.
-                        NPCHitDetection(i);
-                    }
-
-                    // Move projectile based on ability state.
-                    if (stageOfAbility == StageOfAbility.firing)
-                    {
-                        // Move the projectile forward at launchSpeed.
-                        projectiles[i].transform.position = projectiles[i].transform.position + launchSpeed * Time.deltaTime * projectiles[i].transform.up;
-
-                        // Check if growDuringFiring is enabled.
-                        if (growDuringFiring)
-                        {
-                            // Check if the current scale of the projectile is less than the middle scale.
-                            if (projectiles[i].transform.localScale.x < middleScale.x)
-                            {
-                                // Increase the projectile's scale based on the growth rate and time.
-                                projectiles[i].transform.localScale += new Vector3(growDuringFiringRate * Time.deltaTime, growDuringFiringRate * Time.deltaTime, 0f);
-                            }                            
-                        }
-                    }
-
-                    if (stageOfAbility == StageOfAbility.winddown)
-                    {
-                        // Calculate rotation angle towards the target position.
-                        Vector3 rotateTowards = (targetPositions[i] - projectiles[i].transform.position).normalized;
-                        float smoothRotateAngle = Vector2.SignedAngle(projectiles[i].transform.up, rotateTowards);
-
-                        // Smoothly rotate the projectile based on the calculated angle.
-                        if (smoothRotateAngle > 0.1f)
-                        {
-                            // Check if the target position is not the crosshair position.
-                            if (targetPositions[i] != crosshairPosition)
-                            {
-                                // Rotate the projectile towards the target with lock-on rotation speed.
-                                projectiles[i].transform.Rotate(0f, 0f, lockOnRotationSpeed * Time.deltaTime);
-                            }
-                            else
-                            {
-                                // Rotate the projectile towards the target with regular rotation speed.
-                                projectiles[i].transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
-                            }
-                        }
-                        else if (smoothRotateAngle < -0.1f)
-                        {
-                            // Check if the target position is not the crosshair position.
-                            if (targetPositions[i] != crosshairPosition)
-                            {
-                                // Rotate the projectile towards the target with negative lock-on rotation speed.
-                                projectiles[i].transform.Rotate(0f, 0f, -lockOnRotationSpeed * Time.deltaTime);
-                            }
-                            else
-                            {
-                                // Rotate the projectile towards the target with negative regular rotation speed.
-                                projectiles[i].transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
-                            }
-                        }
-
-                        // Move the projectile forward at targetSpeed.
-                        projectiles[i].transform.position = projectiles[i].transform.position + targetSpeed * Time.deltaTime * projectiles[i].transform.up;
-
-                        // Check if shrinkDuringWinddown is enabled.
-                        if (shrinkDuringWinddown)
-                        {
-                            // Check if the projectile's current scale is larger than the specified final scale.
-                            if (projectiles[i].transform.localScale.x > endScale.x)
-                            {
-                                // Shrink the projectile's scale based on the specified rate and deltaTime.
-                                projectiles[i].transform.localScale -= new Vector3(shrinkDuringWinddownRate * Time.deltaTime, shrinkDuringWinddownRate * Time.deltaTime, 0f);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        // Update projectiles movement, rotation, scale, and target based on the current stage of the ability.
+        ProjectilesBehavior();
 
         // Adjust the scale of the missileDock based on the current stage of the ability.
         MissleDockReload();
@@ -289,7 +197,7 @@ public class Ability_HellFire : Ability_Simple
             // Check if the projectile is not null.
             if (projectilePrefab != null)
             {
-                // Instantiate projectile, set its name and scale, and add it to the list.
+                // Instantiate projectile, set its name & starting scale, and add it to the list.
                 GameObject projectile;
                 if (projectileHolder != null)
                 {
@@ -344,6 +252,7 @@ public class Ability_HellFire : Ability_Simple
                     firingSound.Play();
                 }
 
+                // Get the ParticleSystem component of the projectile.
                 ParticleSystem particles = projectiles[i].GetComponentInChildren<ParticleSystem>();
 
                 // Play particle effects if available
@@ -387,9 +296,104 @@ public class Ability_HellFire : Ability_Simple
         base.StartCooldown();
     }
 
+    // Update projectiles movement, rotation, scale, and target based on the current stage of the ability.
     private void ProjectilesBehavior()
     {
+        // Check if projectiles exist.
+        if (projectiles.Count > 0)
+        {
+            // Iterate through each projectile.
+            for (int i = 0; i < projectiles.Count; i++)
+            {
+                // Check if the projectile and target position are not null.
+                if (projectiles[i] != null && targetPositions[i] != null)
+                {
+                    // Check if the ability is in the "firing" or "winddown" state.
+                    if (stageOfAbility == StageOfAbility.firing || stageOfAbility == StageOfAbility.winddown)
+                    {
+                        // Check if the projectile is within target range.
+                        CrosshairRangeDetection(i);
+                        // Perform NPC lock-on detection if enabled.
+                        if (lockOnSetting != lockOn.DisableLockOn)
+                        {
+                            NPCLockOnDetection(i);
+                        }
+                        // Perform NPC hit detection.
+                        NPCHitDetection(i);
+                    }
 
+                    // Check if the ability is in the "firing" state.
+                    if (stageOfAbility == StageOfAbility.firing)
+                    {
+                        // Move the projectile forward at launchSpeed.
+                        projectiles[i].transform.position = projectiles[i].transform.position + launchSpeed * Time.deltaTime * projectiles[i].transform.up;
+
+                        // Check if growDuringFiring is enabled.
+                        if (growDuringFiring)
+                        {
+                            // Check if the current scale of the projectile is less than the middle scale.
+                            if (projectiles[i].transform.localScale.x < middleScale.x)
+                            {
+                                // Increase the projectile's scale based on the growth rate and time.
+                                projectiles[i].transform.localScale += new Vector3(growDuringFiringRate * Time.deltaTime, growDuringFiringRate * Time.deltaTime, 0f);
+                            }
+                        }
+                    }
+
+                    // Check if the ability is in the "winddown" state.
+                    if (stageOfAbility == StageOfAbility.winddown)
+                    {
+                        // Calculate rotation angle towards the target position.
+                        Vector3 rotateTowards = (targetPositions[i] - projectiles[i].transform.position).normalized;
+                        float smoothRotateAngle = Vector2.SignedAngle(projectiles[i].transform.up, rotateTowards);
+
+                        // Smoothly rotate the projectile based on the calculated angle.
+                        if (smoothRotateAngle > 0.1f)
+                        {
+                            // Check if the target position is not the crosshair position.
+                            if (targetPositions[i] != crosshairPosition)
+                            {
+                                // Rotate the projectile towards the target with lock-on rotation speed.
+                                projectiles[i].transform.Rotate(0f, 0f, lockOnRotationSpeed * Time.deltaTime);
+                            }
+                            else
+                            {
+                                // Rotate the projectile towards the target with regular rotation speed.
+                                projectiles[i].transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
+                            }
+                        }
+                        else if (smoothRotateAngle < -0.1f)
+                        {
+                            // Check if the target position is not the crosshair position.
+                            if (targetPositions[i] != crosshairPosition)
+                            {
+                                // Rotate the projectile towards the target with negative lock-on rotation speed.
+                                projectiles[i].transform.Rotate(0f, 0f, -lockOnRotationSpeed * Time.deltaTime);
+                            }
+                            else
+                            {
+                                // Rotate the projectile towards the target with negative regular rotation speed.
+                                projectiles[i].transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
+                            }
+                        }
+
+                        // Move the projectile forward at targetSpeed.
+                        projectiles[i].transform.position = projectiles[i].transform.position + targetSpeed * Time.deltaTime * projectiles[i].transform.up;
+
+                        // Check if shrinkDuringWinddown is enabled.
+                        if (shrinkDuringWinddown)
+                        {
+                            // Check if the projectile's current scale is larger than the specified final scale.
+                            if (projectiles[i].transform.localScale.x > endScale.x)
+                            {
+                                // Shrink the projectile's scale based on the specified rate and deltaTime.
+                                projectiles[i].transform.localScale -= new Vector3(shrinkDuringWinddownRate * Time.deltaTime, shrinkDuringWinddownRate * Time.deltaTime, 0f);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // Adjust the scale of the missileDock based on the current stage of the ability.
@@ -407,9 +411,7 @@ public class Ability_HellFire : Ability_Simple
                     missileDock.transform.localScale += new Vector3(2f, 0f, 0f) * Time.deltaTime;
                 }   
             }
-
-            // Check if the ability is in the "windup" or "firing" state.
-            if (stageOfAbility == StageOfAbility.windup || stageOfAbility == StageOfAbility.firing)
+            else
             {
                 // Decrease the missileDock scale gradually if it's above zero.
                 if (missileDock.transform.localScale.x >= 0f)
@@ -562,7 +564,7 @@ public class Ability_HellFire : Ability_Simple
         {
             Debug.LogError(name + " can't locate a SpriteRenderer in children of the parent object.");
         }
-        // Check and log missing reference for the players Rigidbody2D.
+        // Check and log missing reference for the players Rigidbody2D if firingPause is enabled.
         if (firingPause == true && playerRidigbody == null)
         {
             Debug.LogError(name + " can't locate a Rigidbody2D on the parent object for the firingPause effect.");
@@ -584,12 +586,12 @@ public class Ability_HellFire : Ability_Simple
             Debug.Log(name + " is missing a reference to explosionPrefab. Please set one in the inspector for this effect.");
         }
 
-        //
+        // Check and log missing reference for the projectileHolder.
         if (projectileHolder == null)
         {
             Debug.Log(name + " is missing a reference to a projectileHolder. Please set one in the inspector for this effect.");
         }
-        //
+        // Check and log missing reference for the missileDock.
         if (missileDock == null)
         {
             Debug.Log(name + " is missing a reference to a missileDock. Please set one in the inspector for this effect.");
