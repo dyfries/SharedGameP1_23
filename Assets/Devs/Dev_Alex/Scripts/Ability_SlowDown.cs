@@ -119,6 +119,8 @@ public class Ability_SlowDown : Ability_Simple
             }
             Destroy(frozenBlocks[i].gameObject);
         }
+
+        selectedObjects.Clear();
     }
 
 
