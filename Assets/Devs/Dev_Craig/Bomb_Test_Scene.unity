@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Bomb_Ability
       objectReference: {fileID: 0}
+    - target: {fileID: 7452355882150075130, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9084479084740973369, guid: 253b9c8a704b4944d9269a2dba84acf3, type: 3}
       propertyPath: m_IsActive
       value: 0
