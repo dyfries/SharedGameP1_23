@@ -14,6 +14,9 @@ public class Ability_Block : Ability_Simple
     private string anim_firingString = "Shield_On";
     private string anim_winddownString = "Shield_Winddown";
 
+    public AudioSource staticSound;
+    public AudioSource boomSound;
+
     // For refrence, the way the shield should work is that the shield animtion will play when you press a button.
     // Then when it hits "StartWinddown" it will play the recharge animation for a set amount of time.
     // After that set amount of time has passed there would be a visual effect that would play, showing that you can use the shield again.
@@ -33,7 +36,7 @@ public class Ability_Block : Ability_Simple
     {
         base.StartWindup();
 
-
+        staticSound.Play();
         anim.SetBool(anim_windupString, true);
 
     }
@@ -41,8 +44,8 @@ public class Ability_Block : Ability_Simple
     protected override void StartFiring()
     {
         base.StartFiring();
-        //ArtBlock.GetComponent<CircleCollider2D>().enabled = true;
-        // When in StartFiring shield is fully charged
+
+        boomSound.Play();
         anim.SetBool(anim_windupString, false);
         anim.SetBool(anim_firingString, true);
 
@@ -51,8 +54,8 @@ public class Ability_Block : Ability_Simple
     protected override void StartWinddown()
     {
         base.StartWinddown();
-        //ArtBlock.GetComponent<CircleCollider2D>().enabled = false;
-        // When StartWinddown is active then shield will entire it's broken/recharge state
+
+        staticSound.Stop();
         anim.SetBool(anim_firingString, false);
         anim.SetBool(anim_winddownString, true);
     }
