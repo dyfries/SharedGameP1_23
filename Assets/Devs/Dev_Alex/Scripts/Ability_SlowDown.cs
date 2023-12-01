@@ -52,6 +52,10 @@ public class Ability_SlowDown : Ability_Simple
         if (mode == FreezeMode.Select)
         {
             SelectObject();
+            if (radiusDrawing != null)
+            {
+                Destroy(radiusDrawing); //destroy the radius
+            }
         }
     }
 
