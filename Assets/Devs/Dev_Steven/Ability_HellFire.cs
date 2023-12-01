@@ -17,6 +17,16 @@ public class Ability_HellFire : Ability_Simple
     public float rotationSpeed = 150f;                  // Base speed of projectile rotation.
     [Range(0f, 1000f)]
     public float lockOnRotationSpeed = 200f;            // Speed of lock-on rotation.
+    [Range(0f, 200f)]
+    public float firingDrag = 20f;                      // Drag applied to the player during firing.
+    private float startingDrag;                         // Initial drag value of the player.
+    [Range(0.1f, 20f)]
+    public float growDuringFiringRate = 2.0f;           // Rate at which projectiles grow during firing.
+    [Range(0.1f, 20f)]
+    public float shrinkDuringWinddownRate = 2.0f;       // Rate at which projectiles shrink during winddown.
+    public Vector2 startScale = new Vector2(0.5f, 1f);  // Initial scale of the projectiles.
+    public Vector2 middleScale = new Vector2(6f, 12f);  // Intermediate scale of the projectiles during firing.
+    public Vector2 endScale = new Vector2(0.5f, 1f);    // Final scale of the projectiles during winddown.
     [Range(0.01f, 5f)]
     public float detectionRange = 2f;                   // Range for NPC lock-on detection.
     [Range(0.01f, 5f)]
@@ -27,6 +37,9 @@ public class Ability_HellFire : Ability_Simple
     [Header("Ability Toggles")]
     public bool randomSpawnAngle = false;               // Toggle for random projectile spawn angles.
     private float angleStep;                            // Angle step between projectiles.
+    public bool firingPause = true;                     // Toggle to apply drag to the player during firing.
+    public bool growDuringFiring = false;               // Toggle to enable projectile growth during firing.
+    public bool shrinkDuringWinddown = false;           // Toggle to enable projectile shrinkage during winddown.
     public bool showCrosshair = true;                   // Toggle to show the crosshair.
     public bool destroyProjectileOnCollision = true;    // Toggle for destroying projectiles on NPC collision.
     public bool destroyNPCOnCollision = true;           // Toggle for destroying NPCs on collision.
@@ -40,15 +53,14 @@ public class Ability_HellFire : Ability_Simple
     public GameObject projectilePrefab;                 // Prefab for the projectile.
     public GameObject crosshairPrefab;                  // Prefab for the crosshair.
     public GameObject explosionPrefab;                  // Prefab for the explosion effect.
+    public GameObject missileDock;                      // Gameobject to visualize ready after cooldown
     public GameObject projectileHolder;                 // GameObject to organize spawned projectiles
     public LayerMask NPCLayers;                         // Layers considered for NPC interactions.
 
     private SpriteRenderer playerSpriteRenderer;        // Reference to the player's sprite renderer.
-
-    //[HideInInspector]
-    private List<GameObject> projectiles;                // List to store instantiated projectiles.
-    //[HideInInspector]
-    private List<Vector3> targetPositions;               // List to store target positions for each projectile.
+    private Rigidbody2D playerRidigbody;                // Reference to the player's rigidbody2D.
+    private List<GameObject> projectiles;               // List to store instantiated projectiles.
+    private List<Vector3> targetPositions;              // List to store target positions for each projectile.
 
     [Header("Audio Sources")]
     public AudioSource readySound;                      // Sound played when the ability is ready.
@@ -67,6 +79,16 @@ public class Ability_HellFire : Ability_Simple
         // Locate SpriteRenderer in children of the parent object.
         playerSpriteRenderer = transform.parent.GetComponentInChildren<SpriteRenderer>();
 
+        // Get the Rigidbody2D component from the parent object.
+        playerRidigbody = transform.parent.GetComponent<Rigidbody2D>();
+
+        // Set the initial drag value of the player.
+        if (firingPause && playerRidigbody != null)
+        {
+            startingDrag = playerRidigbody.drag;
+        }
+
+        // Initialize lists for projectiles and target positions.
         projectiles = new List<GameObject>();
         targetPositions = new List<Vector3>();
 
@@ -85,7 +107,6 @@ public class Ability_HellFire : Ability_Simple
     protected override void Update()
     {
         // Check if projectiles exist.
-
         if (projectiles.Count > 0)
         {
             // Iterate through each projectile.
@@ -93,7 +114,7 @@ public class Ability_HellFire : Ability_Simple
             {
                 // Check if the projectile and target position are not null.
                 if (projectiles[i] != null && targetPositions[i] != null)
-                {
+                {                    
                     // Check ability state and perform relevant actions.
                     if (stageOfAbility == StageOfAbility.firing || stageOfAbility == StageOfAbility.winddown)
                     {
@@ -113,6 +134,17 @@ public class Ability_HellFire : Ability_Simple
                     {
                         // Move the projectile forward at launchSpeed.
                         projectiles[i].transform.position = projectiles[i].transform.position + launchSpeed * Time.deltaTime * projectiles[i].transform.up;
+
+                        // Check if growDuringFiring is enabled.
+                        if (growDuringFiring)
+                        {
+                            // Check if the current scale of the projectile is less than the middle scale.
+                            if (projectiles[i].transform.localScale.x < middleScale.x)
+                            {
+                                // Increase the projectile's scale based on the growth rate and time.
+                                projectiles[i].transform.localScale += new Vector3(growDuringFiringRate * Time.deltaTime, growDuringFiringRate * Time.deltaTime, 0f);
+                            }                            
+                        }
                     }
 
                     if (stageOfAbility == StageOfAbility.winddown)
@@ -124,33 +156,54 @@ public class Ability_HellFire : Ability_Simple
                         // Smoothly rotate the projectile based on the calculated angle.
                         if (smoothRotateAngle > 0.1f)
                         {
+                            // Check if the target position is not the crosshair position.
                             if (targetPositions[i] != crosshairPosition)
                             {
+                                // Rotate the projectile towards the target with lock-on rotation speed.
                                 projectiles[i].transform.Rotate(0f, 0f, lockOnRotationSpeed * Time.deltaTime);
                             }
                             else
                             {
+                                // Rotate the projectile towards the target with regular rotation speed.
                                 projectiles[i].transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
                             }
                         }
                         else if (smoothRotateAngle < -0.1f)
                         {
+                            // Check if the target position is not the crosshair position.
                             if (targetPositions[i] != crosshairPosition)
                             {
+                                // Rotate the projectile towards the target with negative lock-on rotation speed.
                                 projectiles[i].transform.Rotate(0f, 0f, -lockOnRotationSpeed * Time.deltaTime);
                             }
                             else
                             {
+                                // Rotate the projectile towards the target with negative regular rotation speed.
                                 projectiles[i].transform.Rotate(0f, 0f, -rotationSpeed * Time.deltaTime);
                             }
                         }
+
                         // Move the projectile forward at targetSpeed.
                         projectiles[i].transform.position = projectiles[i].transform.position + targetSpeed * Time.deltaTime * projectiles[i].transform.up;
+
+                        // Check if shrinkDuringWinddown is enabled.
+                        if (shrinkDuringWinddown)
+                        {
+                            // Check if the projectile's current scale is larger than the specified final scale.
+                            if (projectiles[i].transform.localScale.x > endScale.x)
+                            {
+                                // Shrink the projectile's scale based on the specified rate and deltaTime.
+                                projectiles[i].transform.localScale -= new Vector3(shrinkDuringWinddownRate * Time.deltaTime, shrinkDuringWinddownRate * Time.deltaTime, 0f);
+                            }
+                        }
                     }
                 }
             }
         }
 
+        // Adjust the scale of the missileDock based on the current stage of the ability.
+        MissleDockReload();
+        
         // Call the base class Update method.
         base.Update();
     }
@@ -174,7 +227,7 @@ public class Ability_HellFire : Ability_Simple
 
     // Method to perform actions when ability is in "windup" state.
     protected override void StartWindup()
-    {
+    {        
         // Play the windup sound if available.
         if (windupSound != null)
         {
@@ -236,7 +289,7 @@ public class Ability_HellFire : Ability_Simple
             // Check if the projectile is not null.
             if (projectilePrefab != null)
             {
-                // Instantiate projectile, set its name, and add it to the list.
+                // Instantiate projectile, set its name and scale, and add it to the list.
                 GameObject projectile;
                 if (projectileHolder != null)
                 {
@@ -245,8 +298,10 @@ public class Ability_HellFire : Ability_Simple
                 else
                 {
                     projectile = Instantiate(projectilePrefab, transform.position, rotation);
-                }
+                }                
                 projectile.name = "Projectile " + i;
+                projectile.transform.localScale = new Vector3(startScale.x, startScale.y, 1f);                
+
                 projectiles.Add(projectile);
             }
 
@@ -255,6 +310,13 @@ public class Ability_HellFire : Ability_Simple
             {
                 launchSound.Play();
             }
+        }
+
+        // Check if firingPause is enabled and playerRidigbody is not null.
+        if (firingPause && playerRidigbody != null)
+        {
+            // Set drag of the player's Rigidbody2D back to the firing drag
+            playerRidigbody.drag = firingDrag;
         }
 
         // Call the base class StartFiring method.
@@ -292,6 +354,13 @@ public class Ability_HellFire : Ability_Simple
             }
         }
 
+        // Check if firingPause is enabled and playerRidigbody is not null.
+        if (firingPause && playerRidigbody != null)
+        {
+            // Set drag of the player's Rigidbody2D back to the initial starting drag.
+            playerRidigbody.drag = startingDrag;
+        }
+
         // Call the base class StartWinddown method.
         base.StartWinddown();
     }
@@ -316,6 +385,39 @@ public class Ability_HellFire : Ability_Simple
 
         // Call the base class StartCooldown method.
         base.StartCooldown();
+    }
+
+    private void ProjectilesBehavior()
+    {
+
+    }
+
+    // Adjust the scale of the missileDock based on the current stage of the ability.
+    private void MissleDockReload()
+    {
+        // Check if the missileDock reference is not null.            
+        if (missileDock != null)
+        {
+            // Check if the ability is in the "ready" state.
+            if (stageOfAbility == StageOfAbility.ready)
+            {
+                // Increase the missileDock scale gradually if it's below the threshold.
+                if (missileDock.transform.localScale.x <= 1)
+                {
+                    missileDock.transform.localScale += new Vector3(2f, 0f, 0f) * Time.deltaTime;
+                }   
+            }
+
+            // Check if the ability is in the "windup" or "firing" state.
+            if (stageOfAbility == StageOfAbility.windup || stageOfAbility == StageOfAbility.firing)
+            {
+                // Decrease the missileDock scale gradually if it's above zero.
+                if (missileDock.transform.localScale.x >= 0f)
+                {
+                    missileDock.transform.localScale -= new Vector3(4f, 0f, 0f) * Time.deltaTime;
+                }           
+            }
+        }
     }
 
     // Check if the projectile is within range of the Crosshair and destroy it if needed.
@@ -432,6 +534,7 @@ public class Ability_HellFire : Ability_Simple
         }
     }
 
+    // Method to destroy a projectile, play explosion sound, and create explosion effect.
     private void DestroyProjectile(int i)
     {
         // Play explosion sound if available.
@@ -454,10 +557,15 @@ public class Ability_HellFire : Ability_Simple
     // Check and log missing references.
     private void ReferenceErrorCheck()
     {
-        // Check and log missing reference for the SpriteRenderer.
+        // Check and log missing reference for the players SpriteRenderer.
         if (playerSpriteRenderer == null)
         {
-            Debug.LogError(name + " can't locate SpriteRenderer in children of the parent object.");
+            Debug.LogError(name + " can't locate a SpriteRenderer in children of the parent object.");
+        }
+        // Check and log missing reference for the players Rigidbody2D.
+        if (firingPause == true && playerRidigbody == null)
+        {
+            Debug.LogError(name + " can't locate a Rigidbody2D on the parent object for the firingPause effect.");
         }
 
         // Check and log missing reference for the projectilePrefab.
@@ -474,6 +582,17 @@ public class Ability_HellFire : Ability_Simple
         if (explosionPrefab == null)
         {
             Debug.Log(name + " is missing a reference to explosionPrefab. Please set one in the inspector for this effect.");
+        }
+
+        //
+        if (projectileHolder == null)
+        {
+            Debug.Log(name + " is missing a reference to a projectileHolder. Please set one in the inspector for this effect.");
+        }
+        //
+        if (missileDock == null)
+        {
+            Debug.Log(name + " is missing a reference to a missileDock. Please set one in the inspector for this effect.");
         }
 
         // Check and log missing references for audio sources.
