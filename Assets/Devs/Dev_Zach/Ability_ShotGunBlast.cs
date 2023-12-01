@@ -19,7 +19,6 @@ public class Ability_ShotGunBlast : Ability_Simple
     private int bulletAmount = 3;
     public float bulletForce = 10f;
 
-    [SerializeField]
     private SpriteRenderer windupRenderer;
     public Sprite windup1;
 
@@ -40,6 +39,7 @@ public class Ability_ShotGunBlast : Ability_Simple
     {
         base.StartWindup();
 
+        windupRenderer.sprite = windup1;
 
     }
 
