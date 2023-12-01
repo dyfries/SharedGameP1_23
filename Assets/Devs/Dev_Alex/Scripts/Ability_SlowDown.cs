@@ -94,6 +94,7 @@ public class Ability_SlowDown : Ability_Simple
             {
                 objectsSR.color = Color.white; //change to white in case it has been selected in select mode
                 soundManager.PlayFreezeSound();
+                soundManager.PlayWaterDripSound();
                 GameObject block = Instantiate(freezeBlock, objectsTransform.position, objectsTransform.rotation, objectsTransform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
 
@@ -119,7 +120,7 @@ public class Ability_SlowDown : Ability_Simple
             }
             Destroy(frozenBlocks[i].gameObject);
         }
-
+        soundManager.waterDripSound.Stop();
         selectedObjects.Clear();
     }
 
@@ -155,12 +156,10 @@ public class Ability_SlowDown : Ability_Simple
                 rb.AddForce(new Vector2(0, forceAmount), ForceMode2D.Impulse); //so speed continues, using impulse right now
             }
         }
-        soundManager.waterDripSound.Stop();
     }
 
     private void StartMelting()
     {
-        soundManager.PlayWaterDripSound();
         for (int i = 0; i < blockAnimators.Count; i++)
         {
             if (blockAnimators[i] != null)

@@ -289,6 +289,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 339207118}
     m_Modifications:
+    - target: {fileID: 1242667027228752305, guid: bf114827cb9bae547912840f858993e7, type: 3}
+      propertyPath: Priority
+      value: 173
+      objectReference: {fileID: 0}
     - target: {fileID: 2878100849628158434, guid: bf114827cb9bae547912840f858993e7, type: 3}
       propertyPath: m_Name
       value: SlowDownAbility
@@ -331,6 +335,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3314149644320058659, guid: bf114827cb9bae547912840f858993e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465243127576435586, guid: bf114827cb9bae547912840f858993e7, type: 3}
+      propertyPath: mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8465243127576435586, guid: bf114827cb9bae547912840f858993e7, type: 3}
