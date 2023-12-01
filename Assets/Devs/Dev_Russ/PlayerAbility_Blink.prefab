@@ -54,9 +54,12 @@ MonoBehaviour:
   rb: {fileID: 0}
   baseDistance: 2
   anim: {fileID: 8380074261899485091}
+  colourSpeed: 1
+  sr: {fileID: 0}
   blinkBubble: {fileID: 4061962759321733599}
   blinkDivisor: 1.5
-  staticDistance: 1
+  staticDistance: 0
+  teleportEffects: {fileID: 4977268067521119835, guid: 9cb6779c722703e4ab402f839ff757e4, type: 3}
 --- !u!1 &4061962759321733599
 GameObject:
   m_ObjectHideFlags: 0
