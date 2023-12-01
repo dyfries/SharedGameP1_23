@@ -109,13 +109,14 @@ public class Ability_SlowDown : Ability_Simple
                 }
             }
         }
+
+        StartMelting(); //start melting animation
     }
 
     protected override void StartWinddown()
     {
         base.StartWinddown();
         StopSlowDown(); //reverse slow down
-        StartMelting(); //start melting animation
 
         for (int i = 0; i < frozenBlocks.Count; i++)
         {
@@ -169,6 +170,7 @@ public class Ability_SlowDown : Ability_Simple
         {
             if (blockAnimators[i] != null)
             {
+                print("start ");
                 blockAnimators[i].SetTrigger("start melting");
             }
         }
