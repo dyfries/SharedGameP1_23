@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3314149644320058659}
-  - component: {fileID: -697509783304491765}
+  - component: {fileID: 8465243127576435586}
   m_Layer: 0
-  m_Name: Ability_SlowDown_Select
+  m_Name: SlowDownAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 8473607332676994553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-697509783304491765
+--- !u!114 &8465243127576435586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,22 +42,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2878100849628158434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902879880d534e344a1690dcb512746c, type: 3}
+  m_Script: {fileID: 11500000, guid: 18b2754c02a38fd4285b2bf5c4c198e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activatedAbility_WindupTimer: 1
-  activatedAbility_FiringTimer: 5
+  activatedAbility_FiringTimer: 2
   activatedAbility_WinddownTimer: 1
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
   DEBUG_MODE: 0
-  slowDownRate: 0.5
-  freezeBlock: {fileID: 5403427817954351278, guid: d0a26c4f640c017409673b0eeb52084c, type: 3}
-  blockAnimators: []
-  player: {fileID: 0}
+  radius: 5
+  slowDownRate: 0.7
+  mode: 0
   NPCLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  radiusArt: {fileID: 5139486036334186910, guid: b92a07e86f5316c4dbb19862938f94cd, type: 3}
+  freezeBlock: {fileID: 5403427817954351278, guid: d0a26c4f640c017409673b0eeb52084c, type: 3}
   mainCamera: {fileID: 0}
 --- !u!1 &4419069916089207724
 GameObject:
