@@ -18,10 +18,10 @@ public class Ability_ShotGunBlast : Ability_Simple
     public float bulletForce = 10f;
 
     private SpriteRenderer windupRenderer;
-    public Sprite noneSprite;
+    private Sprite noneSprite;
     public Sprite[] windupSprites;
 
-    public float windupTimer;
+    private float windupTimer;
 
     protected void Start()
     {

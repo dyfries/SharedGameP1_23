@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 1702635691}
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: bulletForce
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: bulletAmount
@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7143980080068621574, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8132874567107252834, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.057
@@ -254,6 +258,10 @@ PrefabInstance:
     - target: {fileID: 7161992183559241862, guid: addf86f2996143e43a3037b265c86272, type: 3}
       propertyPath: m_Name
       value: NPCGreen_BasePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161992183559241862, guid: addf86f2996143e43a3037b265c86272, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8469018818805241201, guid: addf86f2996143e43a3037b265c86272, type: 3}
       propertyPath: m_LocalPosition.x
