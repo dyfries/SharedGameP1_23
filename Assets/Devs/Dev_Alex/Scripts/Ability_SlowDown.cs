@@ -12,6 +12,7 @@ public class Ability_SlowDown : Ability_Simple
 
     [Range(1f, 10f)]
     [SerializeField] private float radius = 5; //radius of player 
+    private float previousRadius; //keep track if radius size changes
     [Range(0.1f, 1f)]
     [SerializeField] private float slowDownRate = 0.5f; // rate to add to drag to slow down object
     [SerializeField] private FreezeMode mode = FreezeMode.Radius;
@@ -30,15 +31,16 @@ public class Ability_SlowDown : Ability_Simple
     private List<GameObject> selectedObjects = new List<GameObject>();  // a list of the objects within radius
 
     private float initialDrag;  // A variable to kepe track of the objects initial drag
-    private Transform playerTransform;
-    private int layerMask;
+    private Transform playerTransform; //keep track of the player character transform
+    private int layerMask; //int for layermask for raycasts
     protected void Start()
     {
         //assign variables
         soundManager = gameObject.GetComponentInChildren<SoundManager>();
         player = gameObject.transform.parent.gameObject;
-        mainCamera= Camera.main;
+        mainCamera = Camera.main;
         layerMask = LayerMask.GetMask("NPC");
+        previousRadius = radius;
 
         if (mode == FreezeMode.Radius) //if mode is radius draw the radius on start
         {
@@ -55,18 +57,22 @@ public class Ability_SlowDown : Ability_Simple
             SelectObject();
             if (radiusDrawing != null)
             {
-                Destroy(radiusDrawing); //destroy the radius
+                Destroy(radiusDrawing); //destroy the radius if switched to select mode
             }
         }
-        for(int i = 0; i< selectedObjects.Count; i++)
+        else if (mode == FreezeMode.Radius && radiusDrawing == null && stageOfAbility  == StageOfAbility.ready)
         {
-            Debug.Log(selectedObjects[i]);
+            DrawRadius(); //draw radius if switched to radius mode
         }
 
-        Debug.Log("player drag: " + player.GetComponent<Rigidbody2D>().drag);
+        if (previousRadius != radius && radiusDrawing != null) //redraws the radius if the size is changed while playing
+        {
+            print("drawing radius" +  "prev" + previousRadius + "radius"+ radius);
+            Destroy(radiusDrawing);
+            DrawRadius();
+            previousRadius = radius ;
+        }
     }
-
-    // Update is called once per frame
     protected override void StartReady()
     {
         base.StartReady();
@@ -89,12 +95,13 @@ public class Ability_SlowDown : Ability_Simple
     {
         if (radiusDrawing != null)
         {
-            Destroy(radiusDrawing); //destroy the radius
+            Destroy(radiusDrawing); //destroy the radius on fire
         }
 
         base.StartFiring();
-        SlowDown(); //call slow down
+        SlowDown();
 
+        //object variab;es
         SpriteRenderer objectsSR;
         Transform objectsTransform;
 
@@ -102,7 +109,7 @@ public class Ability_SlowDown : Ability_Simple
         {
             objectsSR = selectedObjects[i].GetComponent<SpriteRenderer>();
             objectsTransform = selectedObjects[i].transform;
-            if (objectsSR != null) 
+            if (objectsSR != null)
             {
                 objectsSR.color = Color.white; //change to white in case it has been selected in select mode
                 soundManager.PlayFreezeSound();
@@ -110,7 +117,7 @@ public class Ability_SlowDown : Ability_Simple
                 GameObject block = Instantiate(freezeBlock, objectsTransform.position, objectsTransform.rotation, objectsTransform); //puts the object in a freeze block
                 frozenBlocks.Add(block);
 
-                if(block.GetComponent<Animator>() != null)
+                if (block.GetComponent<Animator>() != null)
                 {
                     blockAnimators.Add(block.GetComponent<Animator>()); //add the blocks animator to the list of animators
                 }
@@ -134,17 +141,18 @@ public class Ability_SlowDown : Ability_Simple
             Destroy(frozenBlocks[i].gameObject);
         }
         soundManager.waterDripSound.Stop();
-        selectedObjects.Clear();
+        selectedObjects.Clear(); //clear selected objects so ones no longer in radius/selected get froze
     }
 
 
     private void CheckRadius()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(player.transform.position, radius, Vector2.zero, 0,  layerMask); //get array of objects hit by circlcast that are in NPC layer
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(player.transform.position, radius, Vector2.zero, 0, layerMask); //get array of objects hit by circlcast that are in NPC layer
 
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].collider.gameObject !=  null) {
+            if (hits[i].collider.gameObject != null)
+            {
                 selectedObjects.Add(hits[i].collider.gameObject);
             }
 
@@ -154,8 +162,9 @@ public class Ability_SlowDown : Ability_Simple
     {
         for (int i = 0; i < selectedObjects.Count; i++)
         {
-            initialDrag = selectedObjects[i].gameObject.GetComponent<Rigidbody2D>().drag;
-            selectedObjects[i].gameObject.GetComponent<Rigidbody2D>().drag = initialDrag + slowDownRate;
+            Rigidbody2D rb = selectedObjects[i].gameObject.GetComponent<Rigidbody2D>(); //variable for selected objects drag
+            initialDrag = rb.drag;
+            rb.drag = initialDrag + slowDownRate; //add the slow down rate to the objects initial drag
         }
     }
 
@@ -163,13 +172,15 @@ public class Ability_SlowDown : Ability_Simple
     {
         for (int i = 0; i < selectedObjects.Count; i++) // go through every object in radius
         {
+
             Rigidbody2D rb = selectedObjects[i].gameObject.GetComponent<Rigidbody2D>();
             BaseNPC npcScript = selectedObjects[i].gameObject.GetComponent<BaseNPC>();
             rb.drag = -slowDownRate; //reverse slow down rate
-            if (rb!= null && npcScript != null) //check if game object is an NPC
+
+            if (rb != null && npcScript != null) //check if game object is an NPC and has npc script
             {
                 float forceAmount = npcScript.startMoveForceY;
-                rb.AddForce(new Vector2(0, forceAmount), ForceMode2D.Impulse); //so speed continues, using impulse right now
+                rb.AddForce(new Vector2(0, forceAmount), ForceMode2D.Impulse); //so speed continues, using impulse 
             }
         }
     }
@@ -181,7 +192,7 @@ public class Ability_SlowDown : Ability_Simple
             if (blockAnimators[i] != null)
             {
                 print("start ");
-                blockAnimators[i].SetTrigger("start melting");
+                blockAnimators[i].SetTrigger("start melting"); //trigger melting animation
             }
         }
     }
@@ -198,7 +209,7 @@ public class Ability_SlowDown : Ability_Simple
         mousePos.z = 0;
         mousePos = mainCamera.ScreenToWorldPoint(mousePos);
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, 0, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, 0, layerMask); //raycast from mouse to world to select objects
 
 
         if (Input.GetMouseButtonDown(0)) //left mouse button down
@@ -207,7 +218,7 @@ public class Ability_SlowDown : Ability_Simple
             {
                 if (hit.collider.gameObject.GetComponent<SpriteRenderer>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                    hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red; //set colour to red when selected
                 }
                 selectedObjects.Add(hit.collider.gameObject);
             }
