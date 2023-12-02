@@ -7,9 +7,11 @@ using UnityEngine.UIElements;
 public class Ability_Blink : Ability_Simple
 {
     [Header("Ability Blink Subclass")]
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     private Vector2 cachedSpeed;
     private Vector2 blinkDistance;
+    private AudioSource teleportWindup;
+    private AudioSource teleportInstantate;
     [SerializeField] private float baseDistance = 5f;
 
     [Header("Animations")]
@@ -27,13 +29,22 @@ public class Ability_Blink : Ability_Simple
 
     [Header("Particle System")]
     public GameObject teleportEffects;
+    
     protected void Start()
     {
         //We want almost instant teleportation
-
-
+        teleportWindup = transform.GetChild(1).gameObject.GetComponent<AudioSource>();
+        teleportInstantate = transform.GetChild(2).gameObject.GetComponent<AudioSource>();
         rb = GetComponentInParent<Rigidbody2D>();
         sr = blinkBubble.GetComponent<SpriteRenderer>();
+        if (teleportWindup == null)
+        {
+            Debug.LogWarning("No AudioSource detected for first effect");
+        }
+        if (teleportInstantate == null)
+        {
+            Debug.LogWarning("No AudioSource detected for second effect");
+        }
         if (rb == null)
         {
             Debug.LogWarning("No Rigidbody2D found");
@@ -58,6 +69,7 @@ public class Ability_Blink : Ability_Simple
         StartCoroutine(ChangeBubbleColour());
         blinkBubble.SetActive(true);
         anim.SetBool("Windup", true);
+        teleportWindup.Play();
     }
     protected override void StartFiring()
     {
@@ -95,6 +107,7 @@ public class Ability_Blink : Ability_Simple
 
         //Add the blink distance to the player's current position
         rb.MovePosition(blinkDistance);
+        teleportInstantate.Play();
         Instantiate(teleportEffects, blinkDistance, new Quaternion(0, 0, 0, 0));
     }
 
