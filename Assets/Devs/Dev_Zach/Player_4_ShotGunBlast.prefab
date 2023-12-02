@@ -220,7 +220,13 @@ MonoBehaviour:
   stageOfAbility: 0
   DEBUG_MODE: 0
   projectile: {fileID: 5424538340458179883, guid: d267e866a2409d041b31c0304c4d6011, type: 3}
-  playerPos: {fileID: 4077028443499675588}
+  startPoint: {fileID: 0}
+  turnAngle: 30
+  bulletAmount: 3
+  bulletForce: 10
+  noneSprite: {fileID: 0}
+  windupSprites: []
+  windupTimer: 0
 --- !u!1 &4470285500598028082
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,9 +528,9 @@ GameObject:
   - component: {fileID: 8517970690987818547}
   - component: {fileID: 509544631522444061}
   - component: {fileID: 6827305929125588627}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Player_4_ShotGunBlast
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
