@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class Ability_Blink : Ability_Simple
 {
+    // Private fields for various components and parameters
     [Header("Ability Blink Subclass")]
     private Rigidbody2D rb;
     private Vector2 cachedSpeed;
@@ -17,7 +18,7 @@ public class Ability_Blink : Ability_Simple
     [Header("Animations")]
     public Animator anim;
     public float colourSpeed;
-    [SerializeField] private SpriteRenderer sr;
+    private SpriteRenderer sr;
     [SerializeField] private GameObject blinkBubble;
 
 
@@ -29,40 +30,32 @@ public class Ability_Blink : Ability_Simple
 
     [Header("Particle System")]
     public GameObject teleportEffects;
-    
+
     protected void Start()
     {
-        //We want almost instant teleportation
         teleportWindup = transform.GetChild(1).gameObject.GetComponent<AudioSource>();
         teleportInstantate = transform.GetChild(2).gameObject.GetComponent<AudioSource>();
         rb = GetComponentInParent<Rigidbody2D>();
         sr = blinkBubble.GetComponent<SpriteRenderer>();
-        if (teleportWindup == null)
+
+        // Null checks
+        if (teleportWindup == null || teleportInstantate == null || rb == null || sr == null)
         {
-            Debug.LogWarning("No AudioSource detected for first effect");
-        }
-        if (teleportInstantate == null)
-        {
-            Debug.LogWarning("No AudioSource detected for second effect");
-        }
-        if (rb == null)
-        {
-            Debug.LogWarning("No Rigidbody2D found");
+            Debug.LogError("One or more components are missing. Check the setup.");
             enabled = false;
         }
-        if (sr == null)
-        {
-            Debug.LogWarning("No SpriteRenderer found");
-            enabled = false;
-        }
+
+        anim = blinkBubble.GetComponent<Animator>();
         if (anim == null)
         {
-            anim = blinkBubble.GetComponent<Animator>();
-            Debug.LogWarning("Animator cannot be found");
+            anim = blinkBubble.AddComponent<Animator>();
+            Debug.LogWarning("Animator cannot be found, adding a new one.");
         }
+
         blinkBubble.SetActive(false);
     }
 
+    // Method to start the windup phase of the ability
     protected override void StartWindup()
     {
         base.StartWindup();
@@ -76,50 +69,38 @@ public class Ability_Blink : Ability_Simple
         anim.SetBool("Windup", false);
         base.StartFiring();
         sr.color = new Color(1, 1, 1, 0.5f);
-        // Will choose what kind of movement is used dependant on whether boolean is on
+
+        // Calculate the blink distance based on velocity or set distance
         if (!staticDistance)
-        {// Distance based on velocity
+        {
             cachedSpeed = rb.velocity;
-            Debug.Log(rb.velocity);
             blinkDistance = cachedSpeed / blinkDivisor;
-            Debug.Log(blinkDistance);
         }
         else
-        {// Set distance
-            if (rb.velocity.x < -1)
-            {
-                blinkDistance.x -= baseDistance;
-            }
-            else if (rb.velocity.x > 1)
-            {
-                blinkDistance.x += baseDistance;
-            }
-            if (rb.velocity.y < -1)
-            {
-                blinkDistance.y -= baseDistance;
-            }
-            else if (rb.velocity.y > 1)
-            {
-                blinkDistance.y += baseDistance;
-            }
-            Debug.Log(blinkDistance);
+        {
+            // Set distance based on velocity direction using Mathf.Sign
+            blinkDistance.x += Mathf.Sign(rb.velocity.x) * baseDistance;
+            blinkDistance.y += Mathf.Sign(rb.velocity.y) * baseDistance;
         }
 
-        //Add the blink distance to the player's current position
+        // Move the player to the blink distance
         rb.MovePosition(blinkDistance);
+        // Play sound Effect
         teleportInstantate.Play();
-        Instantiate(teleportEffects, blinkDistance, new Quaternion(0, 0, 0, 0));
+        Instantiate(teleportEffects, blinkDistance, Quaternion.identity);
     }
 
+    // Method to start the winddown phase of the ability
     protected override void StartWinddown()
     {
         base.StartWinddown();
 
-        //Return blinkDistance to 0, to prevent continuous growth
+        // Reset blinkDistance to prevent continuous growth
         blinkDistance = new Vector2(0, 0);
         blinkBubble.SetActive(false);
     }
 
+    // Coroutine to gradually change the color of the blink bubble during windup
     private IEnumerator ChangeBubbleColour()
     {
         float tick = 0f;
