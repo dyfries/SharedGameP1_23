@@ -12,6 +12,7 @@ public class Ability_SlowDown : Ability_Simple
 
     [Range(1f, 10f)]
     [SerializeField] private float radius = 5; //radius of player 
+    private float previousRadius; //keep track if radius size changes
     [Range(0.1f, 1f)]
     [SerializeField] private float slowDownRate = 0.5f; // rate to add to drag to slow down object
     [SerializeField] private FreezeMode mode = FreezeMode.Radius;
@@ -39,6 +40,7 @@ public class Ability_SlowDown : Ability_Simple
         player = gameObject.transform.parent.gameObject;
         mainCamera= Camera.main;
         layerMask = LayerMask.GetMask("NPC");
+        previousRadius = radius;
 
         if (mode == FreezeMode.Radius) //if mode is radius draw the radius on start
         {
@@ -48,6 +50,8 @@ public class Ability_SlowDown : Ability_Simple
 
     protected override void Update()
     {
+
+
         base.Update();
 
         if (mode == FreezeMode.Select)
@@ -63,7 +67,12 @@ public class Ability_SlowDown : Ability_Simple
             Debug.Log(selectedObjects[i]);
         }
 
-        Debug.Log("player drag: " + player.GetComponent<Rigidbody2D>().drag);
+        if(previousRadius != radius && radiusDrawing != null)
+        {
+            Destroy(radiusDrawing);
+            DrawRadius();
+            previousRadius = radius;
+        }
     }
 
     // Update is called once per frame
