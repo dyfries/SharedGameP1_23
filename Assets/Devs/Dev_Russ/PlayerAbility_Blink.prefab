@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 2790652283074675552}
   - component: {fileID: 4408553567706157715}
   - component: {fileID: 3872093142262461030}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Blink_Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
