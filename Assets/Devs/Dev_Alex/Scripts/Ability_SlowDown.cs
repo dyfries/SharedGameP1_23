@@ -60,20 +60,19 @@ public class Ability_SlowDown : Ability_Simple
                 Destroy(radiusDrawing); //destroy the radius if switched to select mode
             }
         }
-        else if (mode == FreezeMode.Radius && radiusDrawing == null)
+        else if (mode == FreezeMode.Radius && radiusDrawing == null && stageOfAbility  == StageOfAbility.ready)
         {
             DrawRadius(); //draw radius if switched to radius mode
         }
 
         if (previousRadius != radius && radiusDrawing != null) //redraws the radius if the size is changed while playing
         {
+            print("drawing radius" +  "prev" + previousRadius + "radius"+ radius);
             Destroy(radiusDrawing);
             DrawRadius();
-            previousRadius = radius;
+            previousRadius = radius ;
         }
     }
-
-    // Update is called once per frame
     protected override void StartReady()
     {
         base.StartReady();
