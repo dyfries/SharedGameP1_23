@@ -482,9 +482,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3323396517723659399}
     m_Modifications:
+    - target: {fileID: 511343218719764669, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190504630137534846, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2443657505617377305, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
       propertyPath: m_Name
       value: Bomb_Ability
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280572794497613364, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: activatedAbility_FiringTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280572794497613364, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: activatedAbility_WinddownTimer
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646226945010743710, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5130918535860772150, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -524,6 +544,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5130918535860772150, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414503894543799337, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414503894543799337, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5414503894543799337, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860463661676875418, guid: bbc3cf77cabc4c2428c0bfe9c3d5b6bc, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
