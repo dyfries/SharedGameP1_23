@@ -6,71 +6,71 @@ public class Ability_HellFire : Ability_Simple
 {
     [Header("Ability Settings")]
     [Range(1, 100)]
-    public int projectileCount = 9;                     // Number of projectiles.
+    [SerializeField] private int projectileCount = 9;                   // Number of projectiles.
     [Range(0.1f, 20f)]
-    public float launchSpeed = 2f;                      // Speed of projectile launch.
+    [SerializeField] private float launchSpeed = 2f;                    // Speed of projectile launch.    
     [Range(0.1f, 20f)]
-    public float targetSpeed = 4f;                      // Speed of projectile targeting movement.
-    public Vector2 targetDistance;                      // Position of the crosshair from the player.
-    private Vector3 crosshairPosition;                  // Current position of the crosshair.
+    [SerializeField] private float targetSpeed = 4f;                    // Speed of projectile targeting movement.
+    [SerializeField] private Vector2 targetDistance;                    // Position of the crosshair from the player.
+    private Vector3 crosshairPosition;                                  // Current position of the crosshair.
     [Range(0f, 1000f)]
-    public float rotationSpeed = 150f;                  // Base speed of projectile rotation.
+    [SerializeField] private float rotationSpeed = 150f;                // Base speed of projectile rotation.
     [Range(0f, 1000f)]
-    public float lockOnRotationSpeed = 200f;            // Speed of lock-on rotation.
+    [SerializeField] private float lockOnRotationSpeed = 200f;          // Speed of lock-on rotation.
     [Range(0f, 200f)]
-    public float firingDrag = 20f;                      // Drag applied to the player during firing.
-    private float startingDrag;                         // Initial drag value of the player.
+    [SerializeField] private float firingDrag = 20f;                    // Drag applied to the player during firing.
+    private float startingDrag;                                         // Initial drag value of the player.
     [Range(0.1f, 20f)]
-    public float growDuringFiringRate = 2.0f;           // Rate at which projectiles grow during firing.
+    [SerializeField] private float growDuringFiringRate = 2.0f;         // Rate at which projectiles grow during firing.
     [Range(0.1f, 20f)]
-    public float shrinkDuringWinddownRate = 2.0f;       // Rate at which projectiles shrink during winddown.
-    public Vector2 startScale = new Vector2(0.5f, 1f);  // Initial scale of the projectiles.
-    public Vector2 middleScale = new Vector2(6f, 12f);  // Intermediate scale of the projectiles during firing.
-    public Vector2 endScale = new Vector2(0.5f, 1f);    // Final scale of the projectiles during winddown.
+    [SerializeField] private float shrinkDuringWinddownRate = 2.0f;     // Rate at which projectiles shrink during winddown.
+    [SerializeField] private Vector2 startScale = new Vector2(0.5f, 1f);// Initial scale of the projectiles.
+    [SerializeField] private Vector2 middleScale = new Vector2(6f, 12f);// Intermediate scale of the projectiles during firing.
+    [SerializeField] private Vector2 endScale = new Vector2(0.5f, 1f);  // Final scale of the projectiles during winddown.
     [Range(0.01f, 5f)]
-    public float detectionRange = 2f;                   // Range for NPC lock-on detection.
+    [SerializeField] private float detectionRange = 2f;                 // Range for NPC lock-on detection.
     [Range(0.01f, 5f)]
-    public float destroyRange = 0.2f;                   // Range for NPC hit detection.
+    [SerializeField] private float destroyRange = 0.2f;                 // Range for NPC hit detection.
     [Range(0.1f, 5f)]
-    public float explosionDestroyTime = 1.5f;           // Time for the explosion effect to destroy itself.
+    [SerializeField] private float explosionDestroyTime = 1.5f;         // Time for the explosion effect to destroy itself.
 
     [Header("Ability Toggles")]
-    public bool randomSpawnAngle = false;               // Toggle for random projectile spawn angles.
-    private float angleStep;                            // Angle step between projectiles.
-    public bool firingPause = true;                     // Toggle to apply drag to the player during firing.
-    public bool growDuringFiring = false;               // Toggle to enable projectile growth during firing.
-    public bool shrinkDuringWinddown = false;           // Toggle to enable projectile shrinkage during winddown.
-    public bool showCrosshair = true;                   // Toggle to show the crosshair.
-    public bool destroyProjectileOnCollision = true;    // Toggle for destroying projectiles on NPC collision.
-    public bool destroyNPCOnCollision = true;           // Toggle for destroying NPCs on collision.
-    public lockOn lockOnSetting;                        // Enum for lock-on settings.
-    public enum lockOn
+    [SerializeField] private bool randomSpawnAngle = false;             // Toggle for random projectile spawn angles.
+    private float angleStep;                                            // Angle step between projectiles.
+    [SerializeField] private bool firingPause = true;                   // Toggle to apply drag to the player during firing.
+    [SerializeField] private bool growDuringFiring = false;             // Toggle to enable projectile growth during firing.
+    [SerializeField] private bool shrinkDuringWinddown = false;         // Toggle to enable projectile shrinkage during winddown.
+    [SerializeField] private bool showCrosshair = true;                 // Toggle to show the crosshair.
+    [SerializeField] private bool destroyProjectileOnCollision = true;  // Toggle for destroying projectiles on NPC collision.
+    [SerializeField] private bool destroyNPCOnCollision = true;         // Toggle for destroying NPCs on collision.
+    [SerializeField] private LockOn lockOnSetting;                      // Enum for lock-on settings.
+    [SerializeField] private enum LockOn
     {
         DisableLockOn, RayCastLockOn, OverlapCircleLockOn, 
     }
 
     [Header("References & Layers")]
-    public GameObject projectilePrefab;                 // Prefab for the projectile.
-    public GameObject crosshairPrefab;                  // Prefab for the crosshair.
-    public GameObject explosionPrefab;                  // Prefab for the explosion effect.
-    public GameObject missileDock;                      // Gameobject to visualize ready after cooldown
-    public GameObject projectileHolder;                 // GameObject to organize spawned projectiles
-    public LayerMask NPCLayers;                         // Layers considered for NPC interactions.
+    [SerializeField] private GameObject projectilePrefab;               // Prefab for the projectile.
+    [SerializeField] private GameObject crosshairPrefab;                // Prefab for the crosshair.
+    [SerializeField] private GameObject explosionPrefab;                // Prefab for the explosion effect.
+    [SerializeField] private GameObject missileDock;                    // Gameobject to visualize ready after cooldown
+    [SerializeField] private GameObject projectileHolder;               // GameObject to organize spawned projectiles
+    [SerializeField] private LayerMask NPCLayers;                       // Layers considered for NPC interactions.
 
-    private SpriteRenderer playerSpriteRenderer;        // Reference to the player's sprite renderer.
-    private Rigidbody2D playerRidigbody;                // Reference to the player's rigidbody2D.
-    private List<GameObject> projectiles;               // List to store instantiated projectiles.
-    private List<Vector3> targetPositions;              // List to store target positions for each projectile.
+    private SpriteRenderer playerSpriteRenderer;                        // Reference to the player's sprite renderer.
+    private Rigidbody2D playerRidigbody;                                // Reference to the player's rigidbody2D.
+    private List<GameObject> projectiles;                               // List to store instantiated projectiles.
+    private List<Vector3> targetPositions;                              // List to store target positions for each projectile.
 
     [Header("Audio Sources")]
-    public AudioSource readySound;                      // Sound played when the ability is ready.
-    public AudioSource windupSound;                     // Sound played at windup state.
-    public AudioSource firingSound;                     // Sound played at firing state.
-    public AudioSource winddownSound;                   // Sound played at winddown state.
-    public AudioSource cooldownSound;                   // Sound played at cooldown state.
+    [SerializeField] private AudioSource readySound;                    // Sound played when the ability is ready.
+    [SerializeField] private AudioSource windupSound;                   // Sound played at windup state.
+    [SerializeField] private AudioSource firingSound;                   // Sound played at firing state.
+    [SerializeField] private AudioSource winddownSound;                 // Sound played at winddown state.
+    [SerializeField] private AudioSource cooldownSound;                 // Sound played at cooldown state.
 
-    public AudioSource launchSound;                     // Sound played when projectiles are launched.
-    public AudioSource explosionSound;                  // Sound played when projectile destroyed.
+    [SerializeField] private AudioSource launchSound;                   // Sound played when projectiles are launched.
+    [SerializeField] private AudioSource explosionSound;                // Sound played when projectile destroyed.
 
 
     // Awake is called when the script instance is being loaded.
@@ -314,7 +314,7 @@ public class Ability_HellFire : Ability_Simple
                         // Check if the projectile is within target range.
                         CrosshairRangeDetection(i);
                         // Perform NPC lock-on detection if enabled.
-                        if (lockOnSetting != lockOn.DisableLockOn)
+                        if (lockOnSetting != LockOn.DisableLockOn)
                         {
                             NPCLockOnDetection(i);
                         }
@@ -451,7 +451,7 @@ public class Ability_HellFire : Ability_Simple
         }
 
         // Check the lock-on setting to determine the detection method.
-        if (lockOnSetting == lockOn.RayCastLockOn)
+        if (lockOnSetting == LockOn.RayCastLockOn)
         {
             // Perform a raycast to detect NPCs within the specified range.
             RaycastHit2D detectionRay = Physics2D.Raycast(projectiles[i].transform.position, projectiles[i].transform.up, detectionRange, NPCLayers);
@@ -471,7 +471,7 @@ public class Ability_HellFire : Ability_Simple
             targetPositions[i] = crosshairPosition;
             projectileSprite.color = Color.white;
         }
-        else if (lockOnSetting == lockOn.OverlapCircleLockOn)
+        else if (lockOnSetting == LockOn.OverlapCircleLockOn)
         {
             // Perform an overlap circle check to detect NPCs within the specified range.
             Collider2D[] detectionCircle = Physics2D.OverlapCircleAll(projectiles[i].transform.position, detectionRange, NPCLayers);
@@ -648,14 +648,14 @@ public class Ability_HellFire : Ability_Simple
                         Gizmos.DrawRay(projectiles[i].transform.position, projectiles[i].transform.up * destroyRange);
 
                         // Check the lock-on setting for additional visualization.
-                        if (lockOnSetting == lockOn.OverlapCircleLockOn)
+                        if (lockOnSetting == LockOn.OverlapCircleLockOn)
                         {
                             // If using Overlap Circle Lock-On, set Gizmos color to blue.
                             Gizmos.color = Color.blue;
                             // Draw a wire sphere around the projectile, representing the detectionRange.
                             Gizmos.DrawWireSphere(projectiles[i].transform.position, detectionRange);
                         }
-                        else if (lockOnSetting == lockOn.RayCastLockOn)
+                        else if (lockOnSetting == LockOn.RayCastLockOn)
                         {
                             // If using RayCast Lock-On, set Gizmos color to yellow.
                             Gizmos.color = Color.yellow;
