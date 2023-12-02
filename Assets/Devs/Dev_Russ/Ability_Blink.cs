@@ -128,7 +128,7 @@ public class Ability_Blink : Ability_Simple
         {
             tick += Time.deltaTime * colourSpeed;
             timer += Time.deltaTime;
-            sr.color = Color.Lerp(Color.white, Color.red, tick);
+            sr.color = Color.Lerp(new Color(1, 1, 1, 0f), Color.red, tick);
             Debug.Log("Running coroutine");
             yield return null;
         }
