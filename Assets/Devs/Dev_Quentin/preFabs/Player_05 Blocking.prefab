@@ -385,9 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4afb5b188faa94b8226d959a9409cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activatedAbility_WindupTimer: 0.2
-  activatedAbility_FiringTimer: 0.1
-  activatedAbility_WinddownTimer: 0.3
+  activatedAbility_WindupTimer: 0.4
+  activatedAbility_FiringTimer: 0.2
+  activatedAbility_WinddownTimer: 0.6
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
   DEBUG_MODE: 0
@@ -550,7 +550,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ce159d2c9f44a47418ff296188c88c44, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e6ea31cfde7db334cb4f2e793c84b2fd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -713,11 +713,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.21340132, g: 1, b: 0, a: 0.19215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1009,11 +1009,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 77f658cee97ffb94c8206f44c73ce04d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5c3dabe95d17f38489d39182abd86fed, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
