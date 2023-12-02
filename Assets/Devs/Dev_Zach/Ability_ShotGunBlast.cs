@@ -10,11 +10,13 @@ public class Ability_ShotGunBlast : Ability_Simple
     public Rigidbody2D projectile;     //rigidbody2d?
     public Transform startPoint;       //Vector2
 
+    [SerializeField, Range(1f, 45f)]
     public float turnAngle = 30.0f;
 
     [Header("ONLY DO 3, 5, or 7")]
     [SerializeField, Range(3, 7)]
     private int bulletAmount = 3;
+    [SerializeField, Range(1f, 50f)]
     public float bulletForce = 10f;
 
     private SpriteRenderer windupRenderer;

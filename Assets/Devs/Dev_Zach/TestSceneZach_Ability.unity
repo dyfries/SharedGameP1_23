@@ -132,6 +132,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
+      propertyPath: turnAngle
+      value: 25.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: waveSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -145,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 1702635691}
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: bulletForce
-      value: 10
+      value: 16.9
       objectReference: {fileID: 0}
     - target: {fileID: 2395798941913626807, guid: ddf49c6051f69a34dbf0bc23b5e21ae5, type: 3}
       propertyPath: bulletAmount
