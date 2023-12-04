@@ -17,6 +17,6 @@ MonoBehaviour:
   waveOffset: 6
   flightPattern: 0
   wavePatterns: 0
-  delayBetweenSpawns: 0
+  delayBetweenSpawns: 5
   waveSpeed: 1
-  localOffset: 0
+  localOffset: 6.63

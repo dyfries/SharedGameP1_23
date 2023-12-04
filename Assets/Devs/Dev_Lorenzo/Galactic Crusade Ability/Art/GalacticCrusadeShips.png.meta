@@ -1,0 +1,469 @@
+fileFormatVersion: 2
+guid: 19a0162b6d47511489d049d4975d64a1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SpaceshipKit3_142
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d29fa55abbeda0a4cb2c56f784eff88f
+      internalID: 875899574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_143
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 34
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363954ad004735e42916bc478a58df8a
+      internalID: -1693716963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_144
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 37
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c6eb644331e824e9569f884ffc3541
+      internalID: -1696421830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_145
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 32
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d67e0eb6b7d4949aec804bc2a9c4f4
+      internalID: -1619771364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_146
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 11
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9255ddb392944ca41a7c319de894ff2d
+      internalID: 466002247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_147
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 8
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac50fc934c26bd443be0a890c399fbf4
+      internalID: -303255579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_148
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dcfb7451e381da4b80274b2b66334b3
+      internalID: -1368989261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_149
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 3
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ee7c1dc722147469c64d96be86b7b2
+      internalID: -1791683219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceshipKit3_150
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6abfdb59c58cac4aabf9fe7d04ea4b4
+      internalID: -1730732635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GalacticCrusadeShips_0: -73538479
+      SpaceshipKit3_0: -244066246
+      SpaceshipKit3_1: -1735411332
+      SpaceshipKit3_10: -1320902294
+      SpaceshipKit3_100: 1886265401
+      SpaceshipKit3_101: -568386135
+      SpaceshipKit3_102: 1108828723
+      SpaceshipKit3_103: -347224658
+      SpaceshipKit3_104: 440843290
+      SpaceshipKit3_105: 749138673
+      SpaceshipKit3_106: 787331255
+      SpaceshipKit3_107: 1106214569
+      SpaceshipKit3_108: 1027670394
+      SpaceshipKit3_109: -894208385
+      SpaceshipKit3_11: 508874109
+      SpaceshipKit3_110: -1100614589
+      SpaceshipKit3_111: 1523107174
+      SpaceshipKit3_112: -486847167
+      SpaceshipKit3_113: 906729210
+      SpaceshipKit3_114: -294824122
+      SpaceshipKit3_115: 600147176
+      SpaceshipKit3_116: -60804072
+      SpaceshipKit3_117: -1475579283
+      SpaceshipKit3_118: -1399347490
+      SpaceshipKit3_119: -762780495
+      SpaceshipKit3_12: 1356165888
+      SpaceshipKit3_120: 1140743782
+      SpaceshipKit3_121: -1914253767
+      SpaceshipKit3_122: -1263891885
+      SpaceshipKit3_123: -1225452229
+      SpaceshipKit3_124: 2026430927
+      SpaceshipKit3_125: -1892224717
+      SpaceshipKit3_126: 1283117929
+      SpaceshipKit3_127: 769820522
+      SpaceshipKit3_128: -1658225399
+      SpaceshipKit3_129: -114499904
+      SpaceshipKit3_13: -1211679704
+      SpaceshipKit3_130: -1998977312
+      SpaceshipKit3_131: -951379142
+      SpaceshipKit3_132: -1559259545
+      SpaceshipKit3_133: -501912233
+      SpaceshipKit3_134: -662768537
+      SpaceshipKit3_135: 1418403011
+      SpaceshipKit3_136: -493852730
+      SpaceshipKit3_137: -105441011
+      SpaceshipKit3_138: 639807463
+      SpaceshipKit3_139: 102031069
+      SpaceshipKit3_14: -1021180251
+      SpaceshipKit3_140: -299151513
+      SpaceshipKit3_141: -1055767568
+      SpaceshipKit3_142: 875899574
+      SpaceshipKit3_143: -1693716963
+      SpaceshipKit3_144: -1696421830
+      SpaceshipKit3_145: -1619771364
+      SpaceshipKit3_146: 466002247
+      SpaceshipKit3_147: -303255579
+      SpaceshipKit3_148: -1368989261
+      SpaceshipKit3_149: -1791683219
+      SpaceshipKit3_15: -1515134393
+      SpaceshipKit3_150: -1730732635
+      SpaceshipKit3_151: 1558279953
+      SpaceshipKit3_16: -837188049
+      SpaceshipKit3_17: -97295023
+      SpaceshipKit3_18: 397443540
+      SpaceshipKit3_19: -2078023795
+      SpaceshipKit3_2: -1970752610
+      SpaceshipKit3_20: 1969271914
+      SpaceshipKit3_21: -89459429
+      SpaceshipKit3_22: -356763817
+      SpaceshipKit3_23: 60654001
+      SpaceshipKit3_24: 1506458639
+      SpaceshipKit3_25: -125238714
+      SpaceshipKit3_26: 1011991763
+      SpaceshipKit3_27: -1189849057
+      SpaceshipKit3_28: -775142076
+      SpaceshipKit3_29: -1157335526
+      SpaceshipKit3_3: -705549537
+      SpaceshipKit3_30: -850823594
+      SpaceshipKit3_31: 1377339328
+      SpaceshipKit3_32: 1819660584
+      SpaceshipKit3_33: 1848343554
+      SpaceshipKit3_34: 560575795
+      SpaceshipKit3_35: -246124125
+      SpaceshipKit3_36: -452193797
+      SpaceshipKit3_37: -1242660702
+      SpaceshipKit3_38: 1043622906
+      SpaceshipKit3_39: 1677112452
+      SpaceshipKit3_4: -1325752103
+      SpaceshipKit3_40: -1295147941
+      SpaceshipKit3_41: 744203441
+      SpaceshipKit3_42: 1934674796
+      SpaceshipKit3_43: 1022469901
+      SpaceshipKit3_44: -816660192
+      SpaceshipKit3_45: -1943063888
+      SpaceshipKit3_46: -1806209731
+      SpaceshipKit3_47: -828032892
+      SpaceshipKit3_48: -2120432141
+      SpaceshipKit3_49: 218010458
+      SpaceshipKit3_5: 987207333
+      SpaceshipKit3_50: 2129209219
+      SpaceshipKit3_51: 30679520
+      SpaceshipKit3_52: -1016808939
+      SpaceshipKit3_53: -1461941454
+      SpaceshipKit3_54: 2130457748
+      SpaceshipKit3_55: -1713073227
+      SpaceshipKit3_56: -1981463933
+      SpaceshipKit3_57: -821681050
+      SpaceshipKit3_58: 690966773
+      SpaceshipKit3_59: 1766131493
+      SpaceshipKit3_6: 807024818
+      SpaceshipKit3_60: 807903796
+      SpaceshipKit3_61: -1535044444
+      SpaceshipKit3_62: 1336685362
+      SpaceshipKit3_63: -1240955616
+      SpaceshipKit3_64: -861080301
+      SpaceshipKit3_65: -1818840753
+      SpaceshipKit3_66: 1754243299
+      SpaceshipKit3_67: 858739608
+      SpaceshipKit3_68: -75078833
+      SpaceshipKit3_69: 1751794963
+      SpaceshipKit3_7: -1898004347
+      SpaceshipKit3_70: -2095837382
+      SpaceshipKit3_71: 256843362
+      SpaceshipKit3_72: 1695786599
+      SpaceshipKit3_73: 1171019513
+      SpaceshipKit3_74: -433114566
+      SpaceshipKit3_75: -1489084947
+      SpaceshipKit3_76: 625824977
+      SpaceshipKit3_77: -2032973392
+      SpaceshipKit3_78: -374810084
+      SpaceshipKit3_79: 1974329090
+      SpaceshipKit3_8: -912024170
+      SpaceshipKit3_80: -1176223101
+      SpaceshipKit3_81: 417192833
+      SpaceshipKit3_82: -1235053498
+      SpaceshipKit3_83: 1314895277
+      SpaceshipKit3_84: -274569975
+      SpaceshipKit3_85: 524883251
+      SpaceshipKit3_86: -270925226
+      SpaceshipKit3_87: 885121253
+      SpaceshipKit3_88: 385968660
+      SpaceshipKit3_89: -422669588
+      SpaceshipKit3_9: -1751972524
+      SpaceshipKit3_90: -138004184
+      SpaceshipKit3_91: -1648431641
+      SpaceshipKit3_92: -1546576281
+      SpaceshipKit3_93: -2130754914
+      SpaceshipKit3_94: 1398521099
+      SpaceshipKit3_95: 317987407
+      SpaceshipKit3_96: 523945937
+      SpaceshipKit3_97: 1297978296
+      SpaceshipKit3_98: -2145753398
+      SpaceshipKit3_99: -125374077
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
