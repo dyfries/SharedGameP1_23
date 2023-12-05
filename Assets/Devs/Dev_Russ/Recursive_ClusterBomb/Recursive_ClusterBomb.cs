@@ -8,6 +8,7 @@ public class Recursive_ClusterBomb : MonoBehaviour
 
     public GameObject toSpawnAtEnd;
     public float destroyTimer = 1.5f;
+    public float endDestroyTimer = 1f;
 
     public float countdownTimer = 1f;
     public int depthCounter = 3;
@@ -79,7 +80,7 @@ public class Recursive_ClusterBomb : MonoBehaviour
     private void OnDestroy()
     {
         GameObject end = Instantiate<GameObject>(toSpawnAtEnd, transform.position, Quaternion.identity);
-        Destroy(end, destroyTimer);
+        Destroy(end, endDestroyTimer);
         end.transform.localScale *= sizeScale;
         if (depthCounter > 0)
         {

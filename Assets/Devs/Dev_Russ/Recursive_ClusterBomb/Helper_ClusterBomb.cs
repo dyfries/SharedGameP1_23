@@ -9,7 +9,7 @@ public class Helper_ClusterBomb : Ability_Simple
     {
         base.StartFiring();
 
-        Recursive_ClusterBomb rb = Instantiate<Recursive_ClusterBomb>(bombToSpawn, transform.position + (Vector3)bombToSpawn.spawnOffset, Quaternion.identity);
+        Recursive_ClusterBomb rb = Instantiate<Recursive_ClusterBomb>(bombToSpawn, transform.position + Vector3.up, Quaternion.identity);
         rb.ability = this;
         Rigidbody2D rigid = rb.GetComponent<Rigidbody2D>();
         rigid.AddForce(Vector2.up * 2, ForceMode2D.Impulse);
