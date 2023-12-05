@@ -9,7 +9,9 @@ public class Ability_Recursion : Ability_Simple
    protected override void StartFiring() {
         base.StartFiring();
 
-        RecursionBomb rb = Instantiate<RecursionBomb>(bombToSpawn, transform.position + (Vector3)bombToSpawn.spawnOffset, Quaternion.identity);
+        RecursionBomb rb = Instantiate<RecursionBomb>(bombToSpawn, transform.position + (Vector3)bombToSpawn.spawnOffsetLeft, Quaternion.identity);
         rb.ability = this;
+        RecursionBomb rb1 = Instantiate<RecursionBomb>(bombToSpawn, transform.position + (Vector3)bombToSpawn.spawnOffsetRight, Quaternion.identity);
+        rb1.ability = this;
     }
 }
