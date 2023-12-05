@@ -7,11 +7,12 @@ public class Recursive_ClusterBomb : MonoBehaviour
     public Helper_ClusterBomb ability;
 
     public GameObject toSpawnAtEnd;
-    public float destroyTimer = 1f;
+    public float destroyTimer = 1.5f;
 
     public float countdownTimer = 1f;
     public int depthCounter = 3;
-    public int maxNumberBombs = 6;
+    public int maxNumberBombs = 4;
+    public float sizeScale = 1f;
 
     public Vector2 spawnOffset = Vector2.up;
     // Start is called before the first frame update
@@ -70,21 +71,31 @@ public class Recursive_ClusterBomb : MonoBehaviour
         */
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
+
     private void OnDestroy()
     {
         GameObject end = Instantiate<GameObject>(toSpawnAtEnd, transform.position, Quaternion.identity);
         Destroy(end, destroyTimer);
+        end.transform.localScale *= sizeScale;
         if (depthCounter > 0)
         {
 
             for(int i = Random.Range(1, maxNumberBombs); i > 0; i--)
             {
-                Recursive_ClusterBomb rb = Instantiate<Recursive_ClusterBomb>(ability.bombToSpawn, transform.position, Quaternion.identity);
+                float x = Random.Range(-1f, 1f);
+                float y = Random.Range(-1f, 1f);
+                Recursive_ClusterBomb rb = Instantiate<Recursive_ClusterBomb>(ability.bombToSpawn, transform.position + new Vector3(x,y), Quaternion.identity);
                 rb.ability = ability;
                 rb.depthCounter = depthCounter - 1;
                 rb.destroyTimer = destroyTimer / 2;
+                rb.transform.localScale *= sizeScale;
+                rb.sizeScale -= 0.15f;
                 Rigidbody2D rigid = rb.GetComponent<Rigidbody2D>();
-                rigid.AddForce(new Vector2(Random.Range(-1f, 1f) * 2, Random.Range(-1f, 1f)) * 2, ForceMode2D.Impulse);
+                rigid.AddForce(new Vector2(x, y) * 2, ForceMode2D.Impulse);
 
             }
             //Activate: 

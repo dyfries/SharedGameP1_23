@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2935293386365871404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49840394, y: 0.56107116, z: 0.17689028}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50,4 +50,4 @@ MonoBehaviour:
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
   DEBUG_MODE: 0
-  bombToSpawn: {fileID: 3281375915030543226, guid: a67d7464fa8a0bf469e69916ab586251, type: 3}
+  bombToSpawn: {fileID: 6474713902216240279, guid: a67d7464fa8a0bf469e69916ab586251, type: 3}
