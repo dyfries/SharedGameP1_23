@@ -5,11 +5,12 @@ using UnityEngine;
 public class Ability_Recursion : Ability_Simple
 {
 
-   public RecursionBomb bombToSpawn;
-   protected override void StartFiring() {
+    public RecursionBomb bombToSpawn;
+    public Vector2 initialOffset = Vector2.up;
+    protected override void StartFiring() {
         base.StartFiring();
 
-        RecursionBomb rb = Instantiate<RecursionBomb>(bombToSpawn, transform.position + (Vector3)bombToSpawn.spawnOffset, Quaternion.identity);
+        RecursionBomb rb = Instantiate<RecursionBomb>(bombToSpawn, transform.position + (Vector3)initialOffset, Quaternion.identity);
         rb.ability = this;
     }
 }
