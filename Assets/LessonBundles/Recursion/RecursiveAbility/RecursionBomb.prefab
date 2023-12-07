@@ -50,7 +50,8 @@ MonoBehaviour:
   destroyTimer: 7
   countdownTimer: 0.5
   depthCounter: 5
-  spawnOffset: {x: 0, y: 1}
+  spawnOffsetLeft: {x: 0.5, y: 1}
+  spawnOffsetRight: {x: -0.5, y: 1}
 --- !u!212 &9126864557910275214
 SpriteRenderer:
   m_ObjectHideFlags: 0
