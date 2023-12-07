@@ -50,4 +50,4 @@ MonoBehaviour:
   activatedAbility_CooldownTimer: 3
   stageOfAbility: 0
   DEBUG_MODE: 0
-  bombToSpawn: {fileID: 6474713902216240279, guid: a67d7464fa8a0bf469e69916ab586251, type: 3}
+  bombToSpawn: {fileID: 4313715876337268460, guid: a67d7464fa8a0bf469e69916ab586251, type: 3}
