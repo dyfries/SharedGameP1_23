@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f0ee56286be4c4ebb62bfe3d476122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  order: 4
-  length: 1
+  maxOrder: 4
+  startLength: 1
   rotationAngle: 60
+  upDirectionRandomProb: 1
+  updateTimer: 2
 --- !u!4 &1789182075
 Transform:
   m_ObjectHideFlags: 0
