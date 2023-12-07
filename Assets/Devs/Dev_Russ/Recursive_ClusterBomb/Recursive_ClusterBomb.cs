@@ -85,11 +85,11 @@ public class Recursive_ClusterBomb : MonoBehaviour
         if (depthCounter > 0)
         {
 
-            for(int i = Random.Range(1, maxNumberBombs); i > 0; i--)
+            for (int i = Random.Range(1, maxNumberBombs); i > 0; i--)
             {
                 float x = Random.Range(-1f, 1f);
                 float y = Random.Range(-1f, 1f);
-                Recursive_ClusterBomb rb = Instantiate<Recursive_ClusterBomb>(ability.bombToSpawn, transform.position + new Vector3(x,y), Quaternion.identity);
+                Recursive_ClusterBomb rb = Instantiate<Recursive_ClusterBomb>(ability.bombToSpawn, transform.position + new Vector3(x, y), Quaternion.identity);
                 rb.ability = ability;
                 rb.depthCounter = depthCounter - 1;
                 rb.destroyTimer = destroyTimer / 2;
@@ -100,7 +100,7 @@ public class Recursive_ClusterBomb : MonoBehaviour
 
             }
             //Activate: 
-            
+
             /*
             Recursive_ClusterBomb rb = Instantiate<Recursive_ClusterBomb>(ability.bombToSpawn, transform.position, Quaternion.identity);
                 
@@ -128,7 +128,7 @@ public class Recursive_ClusterBomb : MonoBehaviour
             rigid2.AddForce(new Vector2(Random.Range(-1f, 1f) * 2, Random.Range(-1f, 1f)) * 2, ForceMode2D.Impulse);
             */
 
-                // disable self so we don't spawn again
+            // disable self so we don't spawn again
             this.enabled = false;
 
         }
